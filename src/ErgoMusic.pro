@@ -11,8 +11,18 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    Utilities/logger.cpp \
+    Utilities/sharedobject.cpp
 
-HEADERS  += mainwindow.hpp
+HEADERS  += mainwindow.hpp \
+    Utilities/singleton.hpp \
+    Utilities/logger.hpp \
+    Utilities/sharedobject.hpp
 
 FORMS    += mainwindow.ui
+
+
+
+
+
