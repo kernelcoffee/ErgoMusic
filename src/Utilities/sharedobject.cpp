@@ -1,6 +1,6 @@
 /**
  * ErgoMusic - Simple music player and music library manager.
- * Copyright (C) 2011 Alexandre Moore <alexandre.moore@kernelcoffee.org>
+ * Copyright (C) 2011-2012 Alexandre Moore <alexandre.moore@kernelcoffee.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,7 +15,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 
 #include "sharedobject.hpp"
 #include "Utilities/logger.hpp"
