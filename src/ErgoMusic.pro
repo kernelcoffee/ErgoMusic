@@ -13,14 +13,22 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     Utilities/logger.cpp \
-    Utilities/sharedobject.cpp
+    Utilities/sharedobject.cpp \
+    initialization.cpp
 
 HEADERS  += mainwindow.hpp \
     Utilities/singleton.hpp \
     Utilities/logger.hpp \
-    Utilities/sharedobject.hpp
+    Utilities/sharedobject.hpp \
+    initialization.hpp
 
 FORMS    += mainwindow.ui
+
+RESOURCES += \
+    Ressources/ErgoMusic.qrc
+
+
+
 
 
 

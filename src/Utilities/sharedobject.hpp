@@ -20,7 +20,6 @@
 #define SHAREDOBJECT_HPP
 
 #include <QSettings>
-
 #include "singleton.hpp"
 
 const static QString	APPLICATION_VERSION	= "0.0.1";
