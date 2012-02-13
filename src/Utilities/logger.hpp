@@ -28,6 +28,17 @@
 #include "sharedobject.hpp"
 
 /**
+ * This is my generic log management class.
+ * It will log by day.
+ * Linux : ~/.config/ORGANIZATION_NAME/APPLICATION_NAME/log_<date>.log
+ * OS X  :
+ * Windows :
+ *
+ * HOW TO USE IT
+ * include this header file and use logger::log(<log_message>, <debug_level>);
+ *
+ * DEBUG LEVELS
+ *
  * LOG_CRIT     This is catastrophic. Basically, the program can not recover
  *              from this. If you're going to log at this level provide
  *              as much information as possible.
@@ -63,13 +74,6 @@ enum	logLevel {
     LOG_NOTICE,
     LOG_INFO,
     LOG_DEBUG
-};
-
-enum	notifyLevel {
-    NOTIFY_NOICON,
-    NOTIFY_INFORMATION,
-    NOTIFY_WARNING,
-    NOTIFY_CRITICAL
 };
 
 class Logger : public	Singleton<Logger>
