@@ -25,8 +25,6 @@
 
 Initialization::Initialization(void)
 {
-    QSettings settings;
-
     Logger::log("Starting initialization.", LOG_DEBUG);
 
     _arguments = qApp->arguments();
@@ -38,7 +36,10 @@ Initialization::Initialization(void)
     Logger::log("Settings initilized", LOG_DEBUG);
 
     _translator = new QTranslator();
-    Logger::log("Language found : " + settings.value("language").toString());
+
+    QSettings settings;
+
+    Logger::log("Language found : " + settings.value("language").toString(), LOG_DEBUG);
     //    _translator->load(QString("lang_" + QSettings.value("language").toStdString());
 
     Logger::log("intialization done.");
