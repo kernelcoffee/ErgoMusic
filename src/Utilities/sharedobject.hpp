@@ -20,6 +20,7 @@
 #define SHAREDOBJECT_HPP
 
 #include <QSettings>
+#include "Database/importengine.hpp"
 #include "singleton.hpp"
 
 const static QString	APPLICATION_VERSION	= "0.0.1";
@@ -37,6 +38,7 @@ public:
     SharedObject();
     ~SharedObject();
 private:
+    ImportEngine*    m_iEngine;
 };
 
 #endif // SHAREDOBJECT_HPP

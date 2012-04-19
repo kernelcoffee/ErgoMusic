@@ -16,20 +16,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "mainwindow.hpp"o
-#include "ui_mainwindow.h"
-#include "Utilities/logger.hpp"
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
+#include "importengine.hpp"
+
+ImportEngine::ImportEngine(QObject *parent) :
+    QObject(parent)
 {
-    QSettings   settings;
-
-    ui->setupUi(this);
 }
 
-MainWindow::~MainWindow()
+ImportEngine::~ImportEngine()
 {
-    delete ui;
 }

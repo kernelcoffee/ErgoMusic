@@ -16,20 +16,27 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "mainwindow.hpp"o
-#include "ui_mainwindow.h"
-#include "Utilities/logger.hpp"
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
+#ifndef IMPORTENGINE_HPP
+#define IMPORTENGINE_HPP
+
+#include <QFileSystemWatcher>
+#include <QDir>
+#include <QObject>
+
+class ImportEngine : public QObject
 {
-    QSettings   settings;
+    Q_OBJECT
+public:
+    explicit ImportEngine(QObject *parent = 0);
+    ~ImportEngine();
 
-    ui->setupUi(this);
-}
+signals:
 
-MainWindow::~MainWindow()
-{
-    delete ui;
-}
+public slots:
+
+private:
+
+};
+
+#endif // IMPORTENGINE_HPP

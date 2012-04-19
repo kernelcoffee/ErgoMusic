@@ -16,20 +16,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "mainwindow.hpp"o
-#include "ui_mainwindow.h"
-#include "Utilities/logger.hpp"
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
+#ifndef SONG_HPP
+#define SONG_HPP
+
+class Song
 {
-    QSettings   settings;
+public:
+    Song();
+};
 
-    ui->setupUi(this);
-}
-
-MainWindow::~MainWindow()
-{
-    delete ui;
-}
+#endif // SONG_HPP

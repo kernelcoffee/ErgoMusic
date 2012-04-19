@@ -14,18 +14,26 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     Utilities/logger.cpp \
     Utilities/sharedobject.cpp \
-    initialization.cpp
+    initialization.cpp \
+    Database/importengine.cpp \
+    Media/song.cpp
 
 HEADERS  += mainwindow.hpp \
     Utilities/singleton.hpp \
     Utilities/logger.hpp \
     Utilities/sharedobject.hpp \
-    initialization.hpp
+    initialization.hpp \
+    Database/importengine.hpp \
+    Media/song.hpp
 
 FORMS    += mainwindow.ui
 
 RESOURCES += \
     Ressources/ErgoMusic.qrc
+
+
+
+
 
 
 
