@@ -26,10 +26,16 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     QSettings   settings;
 
+
     ui->setupUi(this);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void    MainWindow::refreshWindow()
+{
+
 }

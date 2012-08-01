@@ -16,7 +16,9 @@ SOURCES += main.cpp\
     Utilities/sharedobject.cpp \
     initialization.cpp \
     Database/importengine.cpp \
-    Media/song.cpp
+    Media/song.cpp \
+    Media/collection.cpp \
+    Media/artist.cpp
 
 HEADERS  += mainwindow.hpp \
     Utilities/singleton.hpp \
@@ -24,7 +26,9 @@ HEADERS  += mainwindow.hpp \
     Utilities/sharedobject.hpp \
     initialization.hpp \
     Database/importengine.hpp \
-    Media/song.hpp
+    Media/song.hpp \
+    Media/collection.hpp \
+    Media/artist.hpp
 
 FORMS    += mainwindow.ui
 
