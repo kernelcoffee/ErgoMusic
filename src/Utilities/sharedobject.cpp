@@ -21,10 +21,8 @@
 
 SharedObject::SharedObject()
 {
-    m_iEngine = new ImportEngine();
 }
 
 SharedObject::~SharedObject()
 {
-    delete  m_iEngine;
 }

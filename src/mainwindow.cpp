@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "mainwindow.hpp"o
+#include "mainwindow.hpp"
 #include "ui_mainwindow.h"
 #include "Utilities/logger.hpp"
 
@@ -24,9 +24,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    QSettings   settings;
-
-
     ui->setupUi(this);
 }
 

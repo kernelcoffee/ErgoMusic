@@ -57,14 +57,10 @@ void    Initialization::initSettings(void)
     QSettings settings;
 
     if (_arguments.contains("--reset-all"))
-    {
         settings.clear();
-    }
 
     if (settings.value("initialized").isNull())
-    {
         initDefault();
-    }
 
     if (settings.value("version").isNull())
         settings.setValue("version", APPLICATION_VERSION);

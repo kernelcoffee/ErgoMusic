@@ -18,7 +18,13 @@ SOURCES += main.cpp\
     Database/importengine.cpp \
     Media/song.cpp \
     Media/collection.cpp \
-    Media/artist.cpp
+    Media/artist.cpp \
+    Database/integrityengine.cpp \
+    Database/migrationengine.cpp \
+    Database/syncengine.cpp \
+    Database/databasemanager.cpp \
+    Network/networkmanager.cpp \
+    Network/gatekeeper.cpp
 
 HEADERS  += mainwindow.hpp \
     Utilities/singleton.hpp \
@@ -28,7 +34,13 @@ HEADERS  += mainwindow.hpp \
     Database/importengine.hpp \
     Media/song.hpp \
     Media/collection.hpp \
-    Media/artist.hpp
+    Media/artist.hpp \
+    Database/integrityengine.hpp \
+    Database/migrationengine.hpp \
+    Database/syncengine.hpp \
+    Database/databasemanager.hpp \
+    Network/networkmanager.hpp \
+    Network/gatekeeper.hpp
 
 FORMS    += mainwindow.ui
 
