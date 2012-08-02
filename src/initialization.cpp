@@ -22,6 +22,7 @@
 
 #include "initialization.hpp"
 #include "Utilities/logger.hpp"
+#include "coremanager.hpp"
 #include "common.hpp"
 
 Initialization::Initialization(void)
@@ -33,9 +34,6 @@ Initialization::Initialization(void)
 
     Q_INIT_RESOURCE(ErgoMusic);
     Logger::log("Ressources Loaded.", LOG_DEBUG);
-
-    initSettings();
-    Logger::log("Settings initilized", LOG_DEBUG);
 
     _translator = new QTranslator();
 
@@ -69,8 +67,9 @@ void    Initialization::initSettings(void)
     {
         Logger::log("Version doesn't match, pleaze do a migration");
         // do migration
-        return;
     }
+    Logger::log("Settings initilized", LOG_DEBUG);
+
 }
 
 void    Initialization::initDefault(void)
@@ -86,4 +85,9 @@ void    Initialization::initDefault(void)
     settings.setValue("dbLogin", "login");
     settings.setValue("dbPassword", "password");
     settings.setValue("language", QLocale::system().name());
+}
+
+void    Initialization::initManagers()
+{
+   CoreManager::instance()->initManagers(_arguments);
 }

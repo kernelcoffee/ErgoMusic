@@ -23,7 +23,8 @@ SOURCES += main.cpp\
     Database/syncengine.cpp \
     Database/databasemanager.cpp \
     Network/networkmanager.cpp \
-    Network/gatekeeper.cpp
+    Network/gatekeeper.cpp \
+    coremanager.cpp
 
 HEADERS  += mainwindow.hpp \
     Utilities/singleton.hpp \
@@ -39,7 +40,8 @@ HEADERS  += mainwindow.hpp \
     Database/databasemanager.hpp \
     Network/networkmanager.hpp \
     Network/gatekeeper.hpp \
-    common.hpp
+    common.hpp \
+    coremanager.hpp
 
 FORMS    += mainwindow.ui
 

@@ -8,21 +8,10 @@ DatabaseManager::DatabaseManager()
 {
     Logger::log("DatabaseManager - Initiatlization start", LOG_DEBUG);
 
-    QSettings   settings;
-
     m_importEngine = new ImportEngine();
     m_integrityEngine = new IntegrityEngine();
     m_migrationEngine = new MigrationEngine();
     m_syncEngine = new SyncEngine();
-
-
-    if (settings.value("dbType").toString() == "SQLITE")
-        m_db = QSqlDatabase::addDatabase("QSQLITE");
-    else
-        Logger::log("Database type not valid.", LOG_CRIT);
-
-    openDatabase();
-    Logger::log("DatabaseManager - Initiatlization end", LOG_DEBUG);
 }
 
 DatabaseManager::~DatabaseManager()
@@ -31,6 +20,19 @@ DatabaseManager::~DatabaseManager()
     delete m_integrityEngine;
     delete m_migrationEngine;
     delete m_syncEngine;
+}
+
+void    DatabaseManager::init(QStringList &arguments)
+{
+    QSettings   settings;
+
+    if (settings.value("dbType").toString() == "SQLITE")
+        m_db = QSqlDatabase::addDatabase("QSQLITE");
+    else
+        Logger::log("Database type not valid.", LOG_CRIT);
+
+    openDatabase();
+    Logger::log("DatabaseManager - Initiatlization end", LOG_DEBUG);
 }
 
 void    DatabaseManager::openDatabase()

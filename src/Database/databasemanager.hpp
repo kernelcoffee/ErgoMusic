@@ -15,6 +15,8 @@ class DatabaseManager
 public:
     DatabaseManager();
     ~DatabaseManager();
+
+    void                init(QStringList&);
 private:
     void                openDatabase();
     bool                connect();

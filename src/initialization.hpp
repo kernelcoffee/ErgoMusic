@@ -22,16 +22,16 @@
 #include <QSplashScreen>
 #include <QTranslator>
 
-#include "Utilities/sharedobject.hpp"
-
 class Initialization
 {
 public:
     Initialization(void);
     ~Initialization(void);
+    void    initSettings(void);
+    void    initManagers(void);
+
 private:
     void    initDefault(void);
-    void    initSettings(void);
 
     QTranslator*    _translator;
     QStringList     _arguments;

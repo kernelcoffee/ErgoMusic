@@ -19,7 +19,6 @@
 #include <QtGui/QApplication>
 #include "mainwindow.hpp"
 
-#include "Utilities/sharedobject.hpp"
 #include "initialization.hpp"
 #include "common.hpp"
 
@@ -27,6 +26,8 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     Initialization* init = new Initialization();
+    init->initSettings();
+    init->initManagers();
     delete init;
 
     MainWindow w;
