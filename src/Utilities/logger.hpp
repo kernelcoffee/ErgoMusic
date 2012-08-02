@@ -24,8 +24,10 @@
 #include <QDebug>
 #include <QSystemTrayIcon>
 #include <QDesktopServices>
+#include <QSettings>
 
-#include "sharedobject.hpp"
+#include "common.hpp"
+#include "singleton.hpp"
 
 /**
  * This is my generic log management class.

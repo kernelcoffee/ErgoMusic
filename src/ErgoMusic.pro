@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui sql network
 
 TARGET = ErgoMusic
 TEMPLATE = app
@@ -13,7 +13,6 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     Utilities/logger.cpp \
-    Utilities/sharedobject.cpp \
     initialization.cpp \
     Database/importengine.cpp \
     Media/song.cpp \
@@ -29,7 +28,6 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.hpp \
     Utilities/singleton.hpp \
     Utilities/logger.hpp \
-    Utilities/sharedobject.hpp \
     initialization.hpp \
     Database/importengine.hpp \
     Media/song.hpp \
@@ -40,7 +38,8 @@ HEADERS  += mainwindow.hpp \
     Database/syncengine.hpp \
     Database/databasemanager.hpp \
     Network/networkmanager.hpp \
-    Network/gatekeeper.hpp
+    Network/gatekeeper.hpp \
+    common.hpp
 
 FORMS    += mainwindow.ui
 

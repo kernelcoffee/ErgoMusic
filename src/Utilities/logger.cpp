@@ -51,6 +51,8 @@ Logger::~Logger()
 
 void	Logger::log(const QString &message, logLevel level)
 {
+    if (level < LOG_CRIT)
+        exit(-1);
     Logger::instance()->update(message, level);
 }
 

@@ -6,12 +6,23 @@
 #include "migrationengine.hpp"
 #include "syncengine.hpp"
 
+#include <QtSql/QSqlDatabase>
+#include <QtSql/QSqlQuery>
+#include <QFile>
+
 class DatabaseManager
 {
 public:
     DatabaseManager();
     ~DatabaseManager();
 private:
+    void                openDatabase();
+    bool                connect();
+
+    QSqlDatabase        m_db;
+    QSqlQuery*          m_query;
+    QFile*              m_dbFile;
+
     ImportEngine*       m_importEngine;
     IntegrityEngine*    m_integrityEngine;
     MigrationEngine*    m_migrationEngine;

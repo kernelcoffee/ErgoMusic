@@ -22,11 +22,13 @@
 
 #include "initialization.hpp"
 #include "Utilities/logger.hpp"
+#include "common.hpp"
 
 Initialization::Initialization(void)
 {
-    Logger::log("Starting initialization.", LOG_DEBUG);
+    QSettings settings;
 
+    Logger::log("Starting initialization.", LOG_DEBUG);
     _arguments = qApp->arguments();
 
     Q_INIT_RESOURCE(ErgoMusic);
@@ -36,8 +38,6 @@ Initialization::Initialization(void)
     Logger::log("Settings initilized", LOG_DEBUG);
 
     _translator = new QTranslator();
-
-    QSettings settings;
 
     Logger::log("Language found : " + settings.value("language").toString(), LOG_DEBUG);
     //    _translator->load(QString("lang_" + QSettings.value("language").toStdString());
