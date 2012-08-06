@@ -23,6 +23,7 @@
 #include <QFileSystemWatcher>
 #include <QDir>
 #include <QObject>
+#include <QSqlQuery>
 
 class ImportEngine : public QObject
 {
@@ -30,12 +31,14 @@ class ImportEngine : public QObject
 public:
     explicit ImportEngine(QObject *parent = 0);
     ~ImportEngine();
-
+    void    init(QStringList&);
+    void    setQuery(QSqlQuery*);
 signals:
 
 public slots:
 
 private:
+    QSqlQuery*  m_query;
 
 };
 

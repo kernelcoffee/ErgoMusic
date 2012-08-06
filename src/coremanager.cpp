@@ -1,20 +1,27 @@
 #include "coremanager.hpp"
+#include "Utilities/logger.hpp"
+
 
 CoreManager::CoreManager()
 {
+    Logger::log("CoreManager - contruction", LOG_DEBUG);
     m_databaseManager = new DatabaseManager();
     m_networkManager = new NetworkManager();
 }
 
 CoreManager::~CoreManager()
-{}
+{
+}
 
 
 void    CoreManager::aboutToQuit()
-{}
+{
+    Logger::log("About to quit");
+}
 
 void    CoreManager::initManagers(QStringList &arguments)
 {
+    Logger::log("CoreManager - initManager", LOG_DEBUG);
     m_databaseManager->init(arguments);
     m_networkManager->init(arguments);
 }

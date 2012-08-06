@@ -32,6 +32,18 @@ void    DatabaseManager::init(QStringList &arguments)
         Logger::log("Database type not valid.", LOG_CRIT);
 
     openDatabase();
+    Logger::log("DatabaseManager - Database opened");
+
+    m_importEngine->setQuery(m_query);
+    m_integrityEngine->setQuery(m_query);
+    m_migrationEngine->setQuery(m_query);
+    m_syncEngine->setQuery(m_query);
+
+
+    m_importEngine->init(arguments);
+    m_integrityEngine->init(arguments);
+    m_migrationEngine->init(arguments);
+    m_syncEngine->init(arguments);
     Logger::log("DatabaseManager - Initiatlization end", LOG_DEBUG);
 }
 
@@ -48,8 +60,6 @@ void    DatabaseManager::openDatabase()
         Logger::log("DatabaseManager - Connect Failed", LOG_CRIT);
 
     m_query = new QSqlQuery(m_db);
-    m_migrationEngine->setQuery(m_query);
-    m_migrationEngine->migrate();
 }
 
 bool    DatabaseManager::connect()

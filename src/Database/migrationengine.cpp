@@ -8,6 +8,10 @@ MigrationEngine::MigrationEngine()
 MigrationEngine::~MigrationEngine()
 {}
 
+void    MigrationEngine::init(QStringList &arguments)
+{
+}
+
 void    MigrationEngine::setQuery(QSqlQuery* query)
 {
     if (!query)

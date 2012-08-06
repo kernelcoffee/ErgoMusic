@@ -27,3 +27,11 @@ ImportEngine::ImportEngine(QObject *parent) :
 ImportEngine::~ImportEngine()
 {
 }
+
+void    ImportEngine::init(QStringList &arguments)
+{}
+
+void    ImportEngine::setQuery(QSqlQuery *query)
+{
+    m_query = query;
+}

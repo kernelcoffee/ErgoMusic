@@ -3,11 +3,18 @@
 
 #include <QSqlQuery>
 
+/**
+  * The migration engine create and upgrade the database
+  * layout through the different versions.
+  */
+
+
 class MigrationEngine
 {
 public:
     MigrationEngine();
     ~MigrationEngine();
+    void    init(QStringList&);
     void    setQuery(QSqlQuery*);
     void    migrate();
 private:
