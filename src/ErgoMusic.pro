@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql network
+QT       += core gui widgets sql network
 
 TARGET = ErgoMusic
 TEMPLATE = app

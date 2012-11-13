@@ -16,9 +16,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QSettings>
-#include <QCoreApplication>
-#include <QDesktopServices>
+#include <QtCore/QSettings>
+#include <QtCore/QCoreApplication>
+#include <QtCore/QStandardPaths>
 
 #include "initialization.hpp"
 #include "Utilities/logger.hpp"
@@ -76,11 +76,11 @@ void    Initialization::initDefault(void)
 {
     QSettings	settings;
 
-    settings.setValue("musicFolder", QDesktopServices::storageLocation(QDesktopServices::MusicLocation));
+    settings.setValue("musicFolder", QStandardPaths::writableLocation(QStandardPaths::MusicLocation));
     settings.setValue("watchFolder", "");
     settings.setValue("watchFolderActivated", false);
     settings.setValue("dbType", "SQLITE");
-    settings.setValue("dbPath", QDesktopServices::storageLocation(QDesktopServices::DataLocation));
+    settings.setValue("dbPath", QStandardPaths::writableLocation(QStandardPaths::DataLocation));
     settings.setValue("dbName", "ergomusic");
     settings.setValue("dbLogin", "login");
     settings.setValue("dbPassword", "password");

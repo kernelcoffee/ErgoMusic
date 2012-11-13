@@ -20,9 +20,6 @@
 
 #include <QDateTime>
 #include <QDir>
-#include <QSettings>
-#include <QDesktopServices>
-
 
 static const QString	logLevel_str[] = {
     "CRITICAL",
@@ -40,7 +37,7 @@ Logger::Logger()
     dir.mkpath(DEFAULT_LOG_DIR);
     _logFile = new QFile(getLogFileName());
     _logFile->open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text);
-    _logFile->write(getLogHeader().toAscii());
+    _logFile->write(getLogHeader().toLatin1());
 }
 
 Logger::~Logger()
@@ -64,7 +61,7 @@ void	Logger::update(QString msg, logLevel level)
     logMessage += logLevel_str[level] + " : " + msg + "\n";
 
     qDebug() << logLevel_str[level] << " : " << msg;
-    _logFile->write(logMessage.toAscii());
+    _logFile->write(logMessage. toLatin1());
     _logFile->flush();
 }
 
