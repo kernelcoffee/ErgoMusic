@@ -19,12 +19,12 @@
 #ifndef LOGGER_HPP
 #define LOGGER_HPP
 
-#include <QFile>
-#include <QString>
-#include <QDebug>
-#include <QSystemTrayIcon>
-#include <QDesktopServices>
-#include <QSettings>
+#include <QtCore/QFile>
+#include <QtCore/QString>
+#include <QtCore/QDebug>
+#include <QtGui/QSystemTrayIcon>
+#include <QtCore/QStandardPaths>
+#include <QtCore/QSettings>
 
 #include "common.hpp"
 #include "singleton.hpp"
@@ -65,7 +65,7 @@
  * LOG_DEBUG    The default debug mode level for developping goodness.
  **/
 
-const static QString DEFAULT_LOG_DIR = QDesktopServices::storageLocation(QDesktopServices::DataLocation) + "/" + ORGANIZATION_NAME + "/" + APPLICATION_NAME + "/logs";	///< Log directory
+const static QString DEFAULT_LOG_DIR = QStandardPaths::writableLocation(QStandardPaths::DataLocation) + "/" + ORGANIZATION_NAME + "/" + APPLICATION_NAME + "/logs";	///< Log directory
 const static QString DEFAULT_LOG_FILE = "logFile";	///< Log file name
 const static QString DEFAULT_LOG_EXT = "log";
 

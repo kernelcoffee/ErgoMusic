@@ -17,12 +17,10 @@
  */
 
 #include "mainwindow.hpp"
-#include "ui_mainwindow.h"
 #include "Utilities/logger.hpp"
 
 MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 }
