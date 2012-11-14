@@ -1,5 +1,5 @@
-#include "coremanager.hpp"
-#include "Utilities/logger.hpp"
+#include "coremanager.h"
+#include "Utilities/logger.h"
 
 
 CoreManager::CoreManager()

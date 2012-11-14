@@ -16,19 +16,36 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "mainwindow.hpp"
+#include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "Utilities/logger.hpp"
+#include "Utilities/logger.h"
+
+#include <QVBoxLayout>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+
+    m_playerWidget = new PlayerWidget();
+    m_playlistWidget = new PlaylistWidget();
+    m_viewWidget = new ViewWidget();
+
     ui->setupUi(this);
+
+    QSplitter*   splitter = new QSplitter();
+    splitter->addWidget(m_playlistWidget);
+    splitter->addWidget(m_viewWidget);
+
+    ui->verticalLayout->addWidget(m_playerWidget);
+    ui->verticalLayout->addWidget(splitter);
 }
 
 MainWindow::~MainWindow()
 {
+    delete m_playerWidget;
+    delete m_playlistWidget;
+    delete m_viewWidget;
     delete ui;
 }
 

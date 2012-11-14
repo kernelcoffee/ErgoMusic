@@ -17,10 +17,10 @@
  */
 
 #include <QApplication>
-#include "mainwindow.hpp"
+#include "mainwindow.h"
 
-#include "initialization.hpp"
-#include "common.hpp"
+#include "initialization.h"
+#include "common.h"
 
 int main(int argc, char *argv[])
 {

@@ -1,10 +1,10 @@
-#ifndef DATABASEMANAGER_HPP
-#define DATABASEMANAGER_HPP
+#ifndef DATABASEMANAGER_H
+#define DATABASEMANAGER_H
 
-#include "importengine.hpp"
-#include "integrityengine.hpp"
-#include "migrationengine.hpp"
-#include "syncengine.hpp"
+#include "importengine.h"
+#include "integrityengine.h"
+#include "migrationengine.h"
+#include "syncengine.h"
 
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlQuery>
@@ -31,4 +31,4 @@ private:
     SyncEngine*         m_syncEngine;
 };
 
-#endif // DATABASEMANAGER_HPP
+#endif // DATABASEMANAGER_H

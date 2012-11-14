@@ -1,10 +1,10 @@
-#ifndef COREMANAGER_HPP
-#define COREMANAGER_HPP
+#ifndef COREMANAGER_H
+#define COREMANAGER_H
 
-#include "Database/databasemanager.hpp"
-#include "Network/networkmanager.hpp"
+#include "Database/databasemanager.h"
+#include "Network/networkmanager.h"
 
-#include "Utilities/singleton.hpp"
+#include "Utilities/singleton.h"
 
 class CoreManager : public QObject, public Singleton<CoreManager>
 {
@@ -27,4 +27,4 @@ private:
     NetworkManager*     m_networkManager;
 };
 
-#endif // COREMANAGER_HPP
+#endif // COREMANAGER_H

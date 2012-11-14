@@ -24,24 +24,31 @@ SOURCES += main.cpp\
     Database/databasemanager.cpp \
     Network/networkmanager.cpp \
     Network/gatekeeper.cpp \
-    coremanager.cpp
+    coremanager.cpp \
+    Gui/playerwidget.cpp \
+    Gui/playlistwidget.cpp \
+    Gui/viewwidget.cpp
 
-HEADERS  += mainwindow.hpp \
-    Utilities/singleton.hpp \
-    Utilities/logger.hpp \
-    initialization.hpp \
-    Database/importengine.hpp \
-    Media/song.hpp \
-    Media/collection.hpp \
-    Media/artist.hpp \
-    Database/integrityengine.hpp \
-    Database/migrationengine.hpp \
-    Database/syncengine.hpp \
-    Database/databasemanager.hpp \
-    Network/networkmanager.hpp \
-    Network/gatekeeper.hpp \
-    common.hpp \
-    coremanager.hpp
+HEADERS  += \
+    Database/databasemanager.h \
+    Database/importengine.h \
+    Database/integrityengine.h \
+    Database/migrationengine.h \
+    Database/syncengine.h \
+    Media/artist.h \
+    Media/collection.h \
+    Media/song.h \
+    Network/gatekeeper.h \
+    Network/networkmanager.h \
+    Utilities/logger.h \
+    Utilities/singleton.h \
+    common.h \
+    coremanager.h \
+    initialization.h \
+    mainwindow.h \
+    Gui/playerwidget.h \
+    Gui/playlistwidget.h \
+    Gui/viewwidget.h
 
 FORMS    += mainwindow.ui
 

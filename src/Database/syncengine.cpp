@@ -1,4 +1,4 @@
-#include "syncengine.hpp"
+#include "syncengine.h"
 
 SyncEngine::SyncEngine()
 {

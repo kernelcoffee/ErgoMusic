@@ -1,4 +1,4 @@
-#include "collection.hpp"
+#include "collection.h"
 
 Collection::Collection()
 {

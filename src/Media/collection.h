@@ -2,7 +2,7 @@
 #define COLLECTION_H
 
 #include <QVector>
-#include "song.hpp"
+#include "song.h"
 
 class Collection
 {

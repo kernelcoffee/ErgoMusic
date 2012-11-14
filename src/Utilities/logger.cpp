@@ -16,10 +16,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "logger.hpp"
+#include "logger.h"
 
 #include <QDateTime>
 #include <QDir>
+#include <QDebug>
 
 static const QString	logLevel_str[] = {
     "CRITICAL",
@@ -60,7 +61,6 @@ void	Logger::update(QString msg, logLevel level)
     logMessage = getLogPrefix();
     logMessage += logLevel_str[level] + " : " + msg + "\n";
 
-    qDebug() << logLevel_str[level] << " : " << msg;
     _logFile->write(logMessage. toLatin1());
     _logFile->flush();
 }

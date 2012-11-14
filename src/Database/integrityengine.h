@@ -1,5 +1,5 @@
-#ifndef INTEGRITYENGINE_HPP
-#define INTEGRITYENGINE_HPP
+#ifndef INTEGRITYENGINE_H
+#define INTEGRITYENGINE_H
 
 #include <QSqlQuery>
 
@@ -19,4 +19,4 @@ private:
     QSqlQuery*  m_query;
 };
 
-#endif // INTEGRITYENGINE_HPP
+#endif // INTEGRITYENGINE_H

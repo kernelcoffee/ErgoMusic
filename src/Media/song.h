@@ -17,29 +17,13 @@
  */
 
 
-#ifndef IMPORTENGINE_HPP
-#define IMPORTENGINE_HPP
+#ifndef SONG_H
+#define SONG_H
 
-#include <QFileSystemWatcher>
-#include <QDir>
-#include <QObject>
-#include <QSqlQuery>
-
-class ImportEngine : public QObject
+class Song
 {
-    Q_OBJECT
 public:
-    explicit ImportEngine(QObject *parent = 0);
-    ~ImportEngine();
-    void    init(QStringList&);
-    void    setQuery(QSqlQuery*);
-signals:
-
-public slots:
-
-private:
-    QSqlQuery*  m_query;
-
+    Song();
 };
 
-#endif // IMPORTENGINE_HPP
+#endif // SONG_H

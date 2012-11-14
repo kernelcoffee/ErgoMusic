@@ -16,8 +16,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LOGGER_HPP
-#define LOGGER_HPP
+#ifndef LOGGER_H
+#define LOGGER_H
 
 #include <QtCore/QFile>
 #include <QtCore/QString>
@@ -26,8 +26,8 @@
 #include <QtCore/QStandardPaths>
 #include <QtCore/QSettings>
 
-#include "common.hpp"
-#include "singleton.hpp"
+#include "common.h"
+#include "singleton.h"
 
 /**
  * This is my generic log management class.
@@ -99,4 +99,4 @@ private:
     QFile*		_logFile;
 };
 
-#endif // LOGGER_HPP
+#endif // LOGGER_H

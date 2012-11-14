@@ -16,8 +16,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef INITIALIZATION_HPP
-#define INITIALIZATION_HPP
+#ifndef INITIALIZATION_H
+#define INITIALIZATION_H
 
 #include <QSplashScreen>
 #include <QtCore/QTranslator>
@@ -37,4 +37,4 @@ private:
     QStringList     _arguments;
 };
 
-#endif // INITIALIZATION_HPP
+#endif // INITIALIZATION_H

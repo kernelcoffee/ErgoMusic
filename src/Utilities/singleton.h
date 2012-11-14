@@ -16,14 +16,29 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef SINGLETON_H
+#define SINGLETON_H
 
-#ifndef SONG_HPP
-#define SONG_HPP
+#include <stdlib.h>
+#include <assert.h>
 
-class Song
+template <class T>  class Singleton
 {
 public:
-    Song();
+  static T* instance() {
+      if(!m_pInstance) m_pInstance = new T;
+      assert(m_pInstance != NULL);
+      return m_pInstance;
+  }
+protected:
+  Singleton() {}
+  ~Singleton() {}
+private:
+  Singleton(Singleton const&);
+  Singleton& operator=(Singleton const&);
+  static T* m_pInstance;
 };
 
-#endif // SONG_HPP
+template <class T> T* Singleton<T>::m_pInstance=NULL;
+
+#endif // SINGLETON_H

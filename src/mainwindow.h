@@ -16,29 +16,34 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SINGLETON_HPP
-#define SINGLETON_HPP
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
 
-#include <stdlib.h>
-#include <assert.h>
+#include <QMainWindow>
+#include <QSplitter>
+#include "Gui/playerwidget.h"
+#include "Gui/playlistwidget.h"
+#include "Gui/viewwidget.h"
 
-template <class T>  class Singleton
+namespace Ui {
+    class MainWindow;
+}
+
+class MainWindow : public QMainWindow
 {
+    Q_OBJECT
+
 public:
-  static T* instance() {
-      if(!m_pInstance) m_pInstance = new T;
-      assert(m_pInstance != NULL);
-      return m_pInstance;
-  }
-protected:
-  Singleton() {}
-  ~Singleton() {}
+    explicit MainWindow(QWidget *parent = 0);
+    ~MainWindow();
+
+    void    refreshWindow();
+    void    createLayout();
 private:
-  Singleton(Singleton const&);
-  Singleton& operator=(Singleton const&);
-  static T* m_pInstance;
+    Ui::MainWindow *ui;
+    PlayerWidget    *m_playerWidget;
+    PlaylistWidget  *m_playlistWidget;
+    ViewWidget      *m_viewWidget;
 };
 
-template <class T> T* Singleton<T>::m_pInstance=NULL;
-
-#endif // SINGLETON_HPP
+#endif // MAINWINDOW_H

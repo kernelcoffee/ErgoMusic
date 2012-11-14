@@ -1,5 +1,5 @@
-#ifndef SYNCENGINE_HPP
-#define SYNCENGINE_HPP
+#ifndef SYNCENGINE_H
+#define SYNCENGINE_H
 
 #include <QSqlQuery>
 
@@ -19,4 +19,4 @@ private:
     QSqlQuery*  m_query;
 };
 
-#endif // SYNCENGINE_HPP
+#endif // SYNCENGINE_H

@@ -1,4 +1,4 @@
-#include "networkmanager.hpp"
+#include "networkmanager.h"
 
 NetworkManager::NetworkManager()
 {

@@ -17,7 +17,7 @@
  */
 
 
-#include "importengine.hpp"
+#include "importengine.h"
 
 ImportEngine::ImportEngine(QObject *parent) :
     QObject(parent)

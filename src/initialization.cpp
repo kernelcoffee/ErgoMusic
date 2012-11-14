@@ -20,10 +20,10 @@
 #include <QtCore/QCoreApplication>
 #include <QtCore/QStandardPaths>
 
-#include "initialization.hpp"
-#include "Utilities/logger.hpp"
-#include "coremanager.hpp"
-#include "common.hpp"
+#include "initialization.h"
+#include "Utilities/logger.h"
+#include "coremanager.h"
+#include "common.h"
 
 Initialization::Initialization(void)
 {

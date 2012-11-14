@@ -1,5 +1,5 @@
-#ifndef MIGRATIONENGINE_HPP
-#define MIGRATIONENGINE_HPP
+#ifndef MIGRATIONENGINE_H
+#define MIGRATIONENGINE_H
 
 #include <QSqlQuery>
 
@@ -21,4 +21,4 @@ private:
     QSqlQuery*  m_query;
 };
 
-#endif // MIGRATIONENGINE_HPP
+#endif // MIGRATIONENGINE_H

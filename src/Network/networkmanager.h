@@ -1,5 +1,5 @@
-#ifndef NETWORKMANAGER_HPP
-#define NETWORKMANAGER_HPP
+#ifndef NETWORKMANAGER_H
+#define NETWORKMANAGER_H
 
 #include <QStringList>
 
@@ -12,4 +12,4 @@ public:
     void    init(QStringList&);
 };
 
-#endif // NETWORKMANAGER_HPP
+#endif // NETWORKMANAGER_H

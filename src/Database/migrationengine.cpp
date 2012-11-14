@@ -1,5 +1,5 @@
-#include "migrationengine.hpp"
-#include "../Utilities/logger.hpp"
+#include "migrationengine.h"
+#include "../Utilities/logger.h"
 
 MigrationEngine::MigrationEngine()
 {

@@ -16,27 +16,30 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MAINWINDOW_HPP
-#define MAINWINDOW_HPP
 
-#include <QMainWindow>
+#ifndef IMPORTENGINE_H
+#define IMPORTENGINE_H
 
-namespace Ui {
-    class MainWindow;
-}
+#include <QFileSystemWatcher>
+#include <QDir>
+#include <QObject>
+#include <QSqlQuery>
 
-class MainWindow : public QMainWindow
+class ImportEngine : public QObject
 {
     Q_OBJECT
-
 public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
+    explicit ImportEngine(QObject *parent = 0);
+    ~ImportEngine();
+    void    init(QStringList&);
+    void    setQuery(QSqlQuery*);
+signals:
 
-    void    refreshWindow();
+public slots:
 
 private:
-    Ui::MainWindow *ui;
+    QSqlQuery*  m_query;
+
 };
 
-#endif // MAINWINDOW_HPP
+#endif // IMPORTENGINE_H

@@ -1,5 +1,5 @@
-#include "databasemanager.hpp"
-#include "../Utilities/logger.hpp"
+#include "databasemanager.h"
+#include "../Utilities/logger.h"
 
 #include <QDir>
 #include <QtSql/QSqlError>

@@ -1,4 +1,4 @@
-#include "artist.hpp"
+#include "artist.h"
 
 Artist::Artist()
 {
