@@ -19,7 +19,7 @@
 #ifndef MAINWINDOW_HPP
 #define MAINWINDOW_HPP
 
-#include <QtGui/QMainWindow>
+#include <QMainWindow>
 
 namespace Ui {
     class MainWindow;

@@ -19,7 +19,7 @@
 #ifndef INITIALIZATION_HPP
 #define INITIALIZATION_HPP
 
-#include <QtGui/QSplashScreen>
+#include <QSplashScreen>
 #include <QtCore/QTranslator>
 
 class Initialization

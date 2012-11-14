@@ -22,7 +22,7 @@
 #include <QtCore/QFile>
 #include <QtCore/QString>
 #include <QtCore/QDebug>
-#include <QtGui/QSystemTrayIcon>
+#include <QSystemTrayIcon>
 #include <QtCore/QStandardPaths>
 #include <QtCore/QSettings>
 
