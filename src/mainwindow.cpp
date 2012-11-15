@@ -27,19 +27,23 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
 
-    m_playerWidget = new PlayerWidget();
+    m_playerWidget = new PlayerWidget(this);
     m_playlistWidget = new PlaylistWidget();
     m_viewWidget = new ViewWidget();
-
     ui->setupUi(this);
 
     QSplitter*   splitter = new QSplitter();
     splitter->addWidget(m_playlistWidget);
     splitter->addWidget(m_viewWidget);
+    splitter->setContentsMargins(0,0,0,0);
 
-    ui->verticalLayout->addWidget(m_playerWidget);
-    ui->verticalLayout->addWidget(splitter);
-}
+    m_playerWidget->setMaximumHeight(100);
+
+    ui->verticalLayout->addWidget(m_playerWidget, 1);
+    ui->verticalLayout->addWidget(splitter, 1);
+
+    ui->verticalLayout->setContentsMargins(0,0,0,0);
+ }
 
 MainWindow::~MainWindow()
 {
