@@ -40,13 +40,26 @@ public:
     void    refreshWindow();
     void    createLayout();
 private:
+    void    initMenuBar();
+    void    initMenuBarActions();
+
     Ui::MainWindow *ui;
 
     QSplitter      *splitter;
 
+    // main widgets
     PlayerWidget    *m_playerWidget;
     PlaylistWidget  *m_playlistWidget;
     ViewWidget      *m_viewWidget;
+
+    //menu bar
+    QMenu           *m_fileMenu;
+    QMenu           *m_editMenu;
+
+    //menu bar actions
+    QAction         *m_preferencesAct;
+
+    QAction         *m_newPlaylistAct;
 };
 
 #endif // MAINWINDOW_H

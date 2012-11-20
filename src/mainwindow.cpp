@@ -77,3 +77,37 @@ void    MainWindow::refreshWindow()
 {
 
 }
+
+void    MainWindow::initMenuBar()
+{
+
+#ifdef Q_WS_MAC
+#endif
+
+    m_fileMenu = menuBar()->addMenu(tr("&File"));
+//    fileMenu->addAction(m_newPlaylistAct);
+//    fileMenu->addAction(openAct);
+//    fileMenu->addAction(saveAct);
+//    fileMenu->addAction(printAct);
+    m_fileMenu->addSeparator();
+//    fileMenu->addAction(exitAct);
+
+    m_editMenu = menuBar()->addMenu(tr("&Edit"));
+//    editMenu->addAction(undoAct);
+//    editMenu->addAction(redoAct);
+    m_editMenu->addSeparator();
+//    editMenu->addAction(cutAct);
+//    editMenu->addAction(copyAct);
+//    editMenu->addAction(pasteAct);
+//    editMenu->addSeparator();
+
+}
+
+void    MainWindow::initMenuBarActions()
+{
+    m_newPlaylistAct = new QAction(tr("&newPlaylist"));
+    m_newPlaylistAct->setShortcuts(QKeySequence::New);
+    m_newPlaylistAct->setStatusTip(tr("Create a new playlist"));
+    //connect(m_newPlaylistAct, SIGNAL(triggered()), this, SLOT(newFile()));
+
+}
