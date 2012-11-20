@@ -39,6 +39,10 @@ public:
 
     void    refreshWindow();
     void    createLayout();
+
+public slots:
+    void    newPlaylist();
+    void    showPreferences();
 private:
     void    initMenuBar();
     void    initMenuBarActions();
@@ -60,6 +64,7 @@ private:
     QAction         *m_preferencesAct;
 
     QAction         *m_newPlaylistAct;
+    QAction         *m_exitAct;
 };
 
 #endif // MAINWINDOW_H

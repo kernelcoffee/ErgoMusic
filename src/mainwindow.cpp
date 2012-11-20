@@ -21,6 +21,7 @@
 #include "Utilities/logger.h"
 
 #include <QVBoxLayout>
+#include <QAction>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -49,7 +50,7 @@ MainWindow::MainWindow(QWidget *parent) :
     if (!settings.value("splitterSizes").isNull())
         splitter->restoreState(settings.value("splitterSizes").toByteArray());
     splitter->setContentsMargins(0, 0 , 0, 0);
-    splitter->setHandleWidth(2);
+//    splitter->setHandleWidth(2);
 
     m_playlistWidget->setContentsMargins(0, 0, 0, 0);
     m_viewWidget->setContentsMargins(0, 0, 0, 0);
@@ -58,6 +59,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->verticalLayout->addWidget(m_playerWidget, 1);
     ui->verticalLayout->addWidget(splitter, 1);
     ui->verticalLayout->setContentsMargins(0,0,0,0);
+
+    initMenuBarActions();
+    initMenuBar();
  }
 
 MainWindow::~MainWindow()
@@ -81,33 +85,54 @@ void    MainWindow::refreshWindow()
 void    MainWindow::initMenuBar()
 {
 
+
 #ifdef Q_WS_MAC
 #endif
 
     m_fileMenu = menuBar()->addMenu(tr("&File"));
-//    fileMenu->addAction(m_newPlaylistAct);
+    m_fileMenu->addAction(m_newPlaylistAct);
 //    fileMenu->addAction(openAct);
 //    fileMenu->addAction(saveAct);
 //    fileMenu->addAction(printAct);
     m_fileMenu->addSeparator();
-//    fileMenu->addAction(exitAct);
+    m_fileMenu->addAction(m_exitAct);
 
     m_editMenu = menuBar()->addMenu(tr("&Edit"));
 //    editMenu->addAction(undoAct);
 //    editMenu->addAction(redoAct);
-    m_editMenu->addSeparator();
+//    m_editMenu->addSeparator();
 //    editMenu->addAction(cutAct);
 //    editMenu->addAction(copyAct);
 //    editMenu->addAction(pasteAct);
-//    editMenu->addSeparator();
+    m_editMenu->addSeparator();
 
 }
 
 void    MainWindow::initMenuBarActions()
 {
-    m_newPlaylistAct = new QAction(tr("&newPlaylist"));
+    m_newPlaylistAct = new QAction(tr("&newPlaylist"), this);
     m_newPlaylistAct->setShortcuts(QKeySequence::New);
     m_newPlaylistAct->setStatusTip(tr("Create a new playlist"));
-    //connect(m_newPlaylistAct, SIGNAL(triggered()), this, SLOT(newFile()));
+    connect(m_newPlaylistAct, SIGNAL(triggered()), this, SLOT(newPlaylist()));
+
+    m_preferencesAct = new QAction(tr("&preferences"), this);
+    m_preferencesAct->setShortcut(QKeySequence::Preferences);
+    m_preferencesAct->setStatusTip(tr("Edit ErgoMusic preferences"));
+    connect(m_preferencesAct, SIGNAL(triggered(), this, SLOT(showPreferences()));
+
+    m_exitAct = new QAction(tr("&exit"), 0);
+    m_exitAct->setShortcut(QKeySequence::Quit);
+    m_exitAct->setStatusTip(tr("Exit ErgoMusic"));
+    connect(m_exitAct, SIGNAL(triggered()), this, SLOT(close()));
+}
+
+// SLOTS
+void    MainWindow::newPlaylist()
+{
+
+}
+
+void    MainWindow::showPreferences()
+{
 
 }
