@@ -27,26 +27,46 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
 
+    QSettings settings;
+    QList<int> splitterSize;
+
     m_playerWidget = new PlayerWidget(this);
     m_playlistWidget = new PlaylistWidget();
     m_viewWidget = new ViewWidget();
     ui->setupUi(this);
 
-    QSplitter*   splitter = new QSplitter();
+    splitter = new QSplitter();
+    splitter->setOrientation(Qt::Horizontal);
+
+
     splitter->addWidget(m_playlistWidget);
     splitter->addWidget(m_viewWidget);
-    splitter->setContentsMargins(0,0,0,0);
 
-    m_playerWidget->setMaximumHeight(100);
+    splitter->setCollapsible(0, false);
+    splitter->setCollapsible(1, false);
+    splitterSize << 250 << m_viewWidget->width();
+    splitter->setSizes(splitterSize);
+    if (!settings.value("splitterSizes").isNull())
+        splitter->restoreState(settings.value("splitterSizes").toByteArray());
+    splitter->setContentsMargins(0, 0 , 0, 0);
+    splitter->setHandleWidth(2);
 
+    m_playlistWidget->setContentsMargins(0, 0, 0, 0);
+    m_viewWidget->setContentsMargins(0, 0, 0, 0);
+
+    ui->verticalLayout->setSpacing(0);
     ui->verticalLayout->addWidget(m_playerWidget, 1);
     ui->verticalLayout->addWidget(splitter, 1);
-
     ui->verticalLayout->setContentsMargins(0,0,0,0);
  }
 
 MainWindow::~MainWindow()
 {
+    QSettings settings;
+
+    Logger::log("Destroying MainWindow", LOG_DEBUG);
+    settings.setValue("splitterSizes", splitter->saveState());
+
     delete m_playerWidget;
     delete m_playlistWidget;
     delete m_viewWidget;

@@ -41,6 +41,9 @@ public:
     void    createLayout();
 private:
     Ui::MainWindow *ui;
+
+    QSplitter      *splitter;
+
     PlayerWidget    *m_playerWidget;
     PlaylistWidget  *m_playlistWidget;
     ViewWidget      *m_viewWidget;
