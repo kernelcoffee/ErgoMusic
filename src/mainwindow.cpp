@@ -19,6 +19,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "Utilities/logger.h"
+#include "Gui/preferenceswidget.h"
 
 #include <QVBoxLayout>
 #include <QAction>
@@ -84,55 +85,131 @@ void    MainWindow::refreshWindow()
 
 void    MainWindow::initMenuBar()
 {
-
+    Logger::log("init menuBar - START", LOG_DEBUG);
 
 #ifdef Q_WS_MAC
 #endif
 
+    // File menu
     m_fileMenu = menuBar()->addMenu(tr("&File"));
     m_fileMenu->addAction(m_newPlaylistAct);
-//    fileMenu->addAction(openAct);
-//    fileMenu->addAction(saveAct);
-//    fileMenu->addAction(printAct);
+    m_fileMenu->addAction(m_openAct);
+    m_fileMenu->addAction(m_saveAct);
     m_fileMenu->addSeparator();
     m_fileMenu->addAction(m_exitAct);
 
+    // Edit menu
     m_editMenu = menuBar()->addMenu(tr("&Edit"));
-//    editMenu->addAction(undoAct);
-//    editMenu->addAction(redoAct);
-//    m_editMenu->addSeparator();
-//    editMenu->addAction(cutAct);
-//    editMenu->addAction(copyAct);
-//    editMenu->addAction(pasteAct);
+    m_editMenu->addAction(m_undoAct);
     m_editMenu->addSeparator();
+    m_editMenu->addAction(m_cutAct);
+    m_editMenu->addAction(m_copyAct);
+    m_editMenu->addAction(m_pasteAct);
+    m_editMenu->addSeparator();
+#ifndef Q_WS_MAC
+    m_editMenu->addAction(m_preferencesAct);
+#endif
+
+    Logger::log("init menuBar - END", LOG_DEBUG);
 
 }
 
 void    MainWindow::initMenuBarActions()
 {
+    Logger::log("init menuBar Action - START", LOG_DEBUG);
+
+    // File Menu
     m_newPlaylistAct = new QAction(tr("&newPlaylist"), this);
     m_newPlaylistAct->setShortcuts(QKeySequence::New);
     m_newPlaylistAct->setStatusTip(tr("Create a new playlist"));
     connect(m_newPlaylistAct, SIGNAL(triggered()), this, SLOT(newPlaylist()));
 
-    m_preferencesAct = new QAction(tr("&preferences"), this);
-    m_preferencesAct->setShortcut(QKeySequence::Preferences);
-    m_preferencesAct->setStatusTip(tr("Edit ErgoMusic preferences"));
-    connect(m_preferencesAct, SIGNAL(triggered(), this, SLOT(showPreferences()));
+    m_openAct = new QAction(tr("&open"), this);
+    m_openAct->setShortcut(QKeySequence::Open);
+    m_openAct->setStatusTip(tr(""));
+    connect(m_openAct, SIGNAL(triggered()), this, SLOT(open()));
 
-    m_exitAct = new QAction(tr("&exit"), 0);
+    m_saveAct = new QAction(tr("&save"), this);
+    m_saveAct->setShortcut(QKeySequence::Save);
+    m_saveAct->setStatusTip(tr(""));
+    connect(m_saveAct, SIGNAL(triggered()), this, SLOT(save()));
+
+    m_importAct = new QAction(tr("&import"), this);
+//    m_importAct->setShortcut(QKeySequence::);
+    //m_importAct->setStatusTip(tr(""));
+    connect(m_importAct, SIGNAL(triggered()), this, SLOT(import()));
+
+    m_exportAct = new QAction(tr("&export"), this);
+//    m_exportAct->setShortcut(QKeySequence::);
+  //  m_exportAct->setStatusTip(tr(""));
+    connect(m_openAct, SIGNAL(triggered()), this, SLOT(exportf()));
+
+    m_exitAct = new QAction(tr("&exit"), this);
     m_exitAct->setShortcut(QKeySequence::Quit);
     m_exitAct->setStatusTip(tr("Exit ErgoMusic"));
     connect(m_exitAct, SIGNAL(triggered()), this, SLOT(close()));
+
+
+    // Edit Menu
+    m_undoAct = new QAction(tr("&undo"), this);
+    m_undoAct->setShortcut(QKeySequence::Undo);
+    m_undoAct->setStatusTip(tr(""));
+    connect(m_undoAct, SIGNAL(triggered()), this, SLOT(undo()));
+
+    m_copyAct = new QAction(tr("&copy"), this);
+    m_copyAct->setShortcut(QKeySequence::Copy);
+    m_copyAct->setStatusTip(tr(""));
+    connect(m_copyAct, SIGNAL(triggered()), this, SLOT(copy()));
+
+    m_cutAct = new QAction(tr("&cut"), this);
+    m_cutAct->setShortcut(QKeySequence::Cut);
+    m_cutAct->setStatusTip(tr(""));
+    connect(m_cutAct, SIGNAL(triggered()), this, SLOT(cut()));
+
+    m_pasteAct = new QAction(tr("&paste"), this);
+    m_pasteAct->setShortcut(QKeySequence::Paste);
+    m_pasteAct->setStatusTip(tr(""));
+    connect(m_pasteAct, SIGNAL(triggered()), this, SLOT(paste()));
+
+
+    m_preferencesAct = new QAction(tr("&preferences"), this);
+    m_preferencesAct->setShortcut(QKeySequence::Preferences);
+    m_preferencesAct->setStatusTip(tr("Edit ErgoMusic preferences"));
+    connect(m_preferencesAct, SIGNAL(triggered()), this, SLOT(showPreferences()));
+
+    Logger::log("init menuBar Action - END", LOG_DEBUG);
 }
 
 // SLOTS
 void    MainWindow::newPlaylist()
-{
+{}
 
-}
+void    MainWindow::open()
+{}
+
+void    MainWindow::save()
+{}
+
+void    MainWindow::import()
+{}
+
+void    MainWindow::exportf()
+{}
+
+void    MainWindow::undo()
+{}
+
+void    MainWindow::copy()
+{}
+
+void    MainWindow::paste()
+{}
+
+void    MainWindow::cut()
+{}
 
 void    MainWindow::showPreferences()
 {
-
+    PreferencesWidget *widget = new PreferencesWidget();
+    widget->show();
 }

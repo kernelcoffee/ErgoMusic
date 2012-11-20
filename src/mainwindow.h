@@ -42,6 +42,17 @@ public:
 
 public slots:
     void    newPlaylist();
+    void    open();
+    void    save();
+    void    import();
+    void    exportf();
+
+
+    void    undo();
+    void    copy();
+    void    paste();
+    void    cut();
+
     void    showPreferences();
 private:
     void    initMenuBar();
@@ -63,7 +74,16 @@ private:
     //menu bar actions
     QAction         *m_preferencesAct;
 
+    QAction         *m_undoAct;
+    QAction         *m_copyAct;
+    QAction         *m_cutAct;
+    QAction         *m_pasteAct;
+
     QAction         *m_newPlaylistAct;
+    QAction         *m_openAct;
+    QAction         *m_importAct;
+    QAction         *m_exportAct;
+    QAction         *m_saveAct;
     QAction         *m_exitAct;
 };
 
