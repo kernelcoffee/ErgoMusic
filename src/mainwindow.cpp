@@ -19,7 +19,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "Utilities/logger.h"
-#include "Gui/preferenceswidget.h"
+#include "Gui/settingswidget.h"
 
 #include <QVBoxLayout>
 #include <QAction>
@@ -39,7 +39,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     splitter = new QSplitter();
     splitter->setOrientation(Qt::Horizontal);
-
 
     splitter->addWidget(m_playlistWidget);
     splitter->addWidget(m_viewWidget);
@@ -75,6 +74,7 @@ MainWindow::~MainWindow()
     delete m_playerWidget;
     delete m_playlistWidget;
     delete m_viewWidget;
+    delete m_settingsWidget;
     delete ui;
 }
 
@@ -87,11 +87,8 @@ void    MainWindow::initMenuBar()
 {
     Logger::log("init menuBar - START", LOG_DEBUG);
 
-#ifdef Q_WS_MAC
-#endif
-
     // File menu
-    m_fileMenu = menuBar()->addMenu(tr("&File"));
+    m_fileMenu = menuBar()->addMenu(tr("&file"));
     m_fileMenu->addAction(m_newPlaylistAct);
     m_fileMenu->addAction(m_openAct);
     m_fileMenu->addAction(m_saveAct);
@@ -99,16 +96,22 @@ void    MainWindow::initMenuBar()
     m_fileMenu->addAction(m_exitAct);
 
     // Edit menu
-    m_editMenu = menuBar()->addMenu(tr("&Edit"));
+    m_editMenu = menuBar()->addMenu(tr("&edit"));
     m_editMenu->addAction(m_undoAct);
     m_editMenu->addSeparator();
     m_editMenu->addAction(m_cutAct);
     m_editMenu->addAction(m_copyAct);
     m_editMenu->addAction(m_pasteAct);
     m_editMenu->addSeparator();
-#ifndef Q_WS_MAC
-    m_editMenu->addAction(m_preferencesAct);
-#endif
+    m_editMenu->addAction(m_settingsAct);
+
+    m_presentationMenu = menuBar()->addMenu(tr("&presentation"));
+    m_commandsMenu = menuBar()->addMenu(tr("&commands"));
+    m_advancedMenu = menuBar()->addMenu(tr("&advanced"));
+    m_helpMenu = menuBar()->addMenu(tr("&help"));
+    m_helpMenu->addAction(m_aboutQt);
+    m_helpMenu->addAction(m_aboutErgoMusic);
+
 
     Logger::log("init menuBar - END", LOG_DEBUG);
 
@@ -136,12 +139,12 @@ void    MainWindow::initMenuBarActions()
 
     m_importAct = new QAction(tr("&import"), this);
 //    m_importAct->setShortcut(QKeySequence::);
-    //m_importAct->setStatusTip(tr(""));
+    m_importAct->setStatusTip(tr("Import files"));
     connect(m_importAct, SIGNAL(triggered()), this, SLOT(import()));
 
     m_exportAct = new QAction(tr("&export"), this);
 //    m_exportAct->setShortcut(QKeySequence::);
-  //  m_exportAct->setStatusTip(tr(""));
+    m_exportAct->setStatusTip(tr("Export files"));
     connect(m_openAct, SIGNAL(triggered()), this, SLOT(exportf()));
 
     m_exitAct = new QAction(tr("&exit"), this);
@@ -171,12 +174,23 @@ void    MainWindow::initMenuBarActions()
     m_pasteAct->setStatusTip(tr(""));
     connect(m_pasteAct, SIGNAL(triggered()), this, SLOT(paste()));
 
+    m_settingsAct = new QAction(tr("&settings"), this);
+    m_settingsAct->setShortcut(QKeySequence::Preferences);
+    m_settingsAct->setStatusTip(tr("Edit ErgoMusic settings"));
+    connect(m_settingsAct, SIGNAL(triggered()), this, SLOT(showSettings()));
 
-    m_preferencesAct = new QAction(tr("&preferences"), this);
-    m_preferencesAct->setShortcut(QKeySequence::Preferences);
-    m_preferencesAct->setStatusTip(tr("Edit ErgoMusic preferences"));
-    connect(m_preferencesAct, SIGNAL(triggered()), this, SLOT(showPreferences()));
+    //Presentation Menu
 
+    //Commands Menu
+
+    //Help Menu
+    m_aboutQt = new QAction(tr("&about Qt"), this);
+    m_aboutQt->setStatusTip(tr("Display informations about Qt"));
+    connect(m_aboutQt, SIGNAL(triggered()), this, SLOT(aboutQt()));
+
+    m_aboutErgoMusic = new QAction(tr("&about ErgoMusic"), this);
+    m_aboutErgoMusic->setStatusTip(tr("Display informations about ErgoMusic"));
+    connect(m_aboutErgoMusic, SIGNAL(triggered()), this, SLOT(aboutErgoMusic()));
     Logger::log("init menuBar Action - END", LOG_DEBUG);
 }
 
@@ -208,8 +222,19 @@ void    MainWindow::paste()
 void    MainWindow::cut()
 {}
 
-void    MainWindow::showPreferences()
+void    MainWindow::showSettings()
 {
-    PreferencesWidget *widget = new PreferencesWidget();
-    widget->show();
+    if (!m_settingsWidget)
+        m_settingsWidget = new SettingsWidget();
+    m_settingsWidget->show();
+}
+
+void    MainWindow::aboutQt()
+{
+    QApplication::aboutQt();
+}
+
+void    MainWindow::aboutErgoMusic()
+{
+
 }

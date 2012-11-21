@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>PreferencesWidget</class>
- <widget class="QDialog" name="PreferencesWidget">
+ <class>SettingsWidget</class>
+ <widget class="QDialog" name="SettingsWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -13,29 +13,25 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QDialogButtonBox" name="buttonBox">
-   <property name="geometry">
-    <rect>
-     <x>310</x>
-     <y>410</y>
-     <width>341</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-   <property name="standardButtons">
-    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-   </property>
-  </widget>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Apply|QDialogButtonBox::Cancel|QDialogButtonBox::Ok|QDialogButtonBox::Reset</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections>
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>PreferencesWidget</receiver>
+   <receiver>SettingsWidget</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -51,7 +47,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>PreferencesWidget</receiver>
+   <receiver>SettingsWidget</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">

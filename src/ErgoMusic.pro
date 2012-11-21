@@ -28,7 +28,7 @@ SOURCES += main.cpp\
     Gui/playerwidget.cpp \
     Gui/playlistwidget.cpp \
     Gui/viewwidget.cpp \
-    Gui/preferenceswidget.cpp
+    Gui/settingswidget.cpp
 
 HEADERS  += \
     Database/databasemanager.h \
@@ -50,10 +50,10 @@ HEADERS  += \
     Gui/playerwidget.h \
     Gui/playlistwidget.h \
     Gui/viewwidget.h \
-    Gui/preferenceswidget.h
+    Gui/settingswidget.h
 
 FORMS    += mainwindow.ui \
-    Gui/preferenceswidget.ui
+    Gui/settingswidget.ui
 
 RESOURCES += \
     Ressources/ErgoMusic.qrc

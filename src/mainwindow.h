@@ -24,6 +24,7 @@
 #include "Gui/playerwidget.h"
 #include "Gui/playlistwidget.h"
 #include "Gui/viewwidget.h"
+#include "Gui/settingswidget.h"
 
 namespace Ui {
     class MainWindow;
@@ -52,8 +53,11 @@ public slots:
     void    copy();
     void    paste();
     void    cut();
+    void    showSettings();
 
-    void    showPreferences();
+    void    aboutQt();
+    void    aboutErgoMusic();
+
 private:
     void    initMenuBar();
     void    initMenuBarActions();
@@ -66,13 +70,18 @@ private:
     PlayerWidget    *m_playerWidget;
     PlaylistWidget  *m_playlistWidget;
     ViewWidget      *m_viewWidget;
+    SettingsWidget  *m_settingsWidget;
 
     //menu bar
     QMenu           *m_fileMenu;
     QMenu           *m_editMenu;
+    QMenu           *m_presentationMenu;
+    QMenu           *m_commandsMenu;
+    QMenu           *m_advancedMenu;
+    QMenu           *m_helpMenu;
 
     //menu bar actions
-    QAction         *m_preferencesAct;
+    QAction         *m_settingsAct;
 
     QAction         *m_undoAct;
     QAction         *m_copyAct;
@@ -85,6 +94,10 @@ private:
     QAction         *m_exportAct;
     QAction         *m_saveAct;
     QAction         *m_exitAct;
+
+    // Help
+    QAction         *m_aboutQt;
+    QAction         *m_aboutErgoMusic;
 };
 
 #endif // MAINWINDOW_H
