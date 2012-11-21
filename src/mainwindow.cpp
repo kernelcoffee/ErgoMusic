@@ -35,6 +35,7 @@ MainWindow::MainWindow(QWidget *parent) :
     m_playerWidget = new PlayerWidget(this);
     m_playlistWidget = new PlaylistWidget();
     m_viewWidget = new ViewWidget();
+    m_settingsWidget = NULL;
     ui->setupUi(this);
 
     splitter = new QSplitter();
@@ -50,7 +51,6 @@ MainWindow::MainWindow(QWidget *parent) :
     if (!settings.value("splitterSizes").isNull())
         splitter->restoreState(settings.value("splitterSizes").toByteArray());
     splitter->setContentsMargins(0, 0 , 0, 0);
-//    splitter->setHandleWidth(2);
 
     m_playlistWidget->setContentsMargins(0, 0, 0, 0);
     m_viewWidget->setContentsMargins(0, 0, 0, 0);
@@ -138,12 +138,10 @@ void    MainWindow::initMenuBarActions()
     connect(m_saveAct, SIGNAL(triggered()), this, SLOT(save()));
 
     m_importAct = new QAction(tr("&import"), this);
-//    m_importAct->setShortcut(QKeySequence::);
     m_importAct->setStatusTip(tr("Import files"));
     connect(m_importAct, SIGNAL(triggered()), this, SLOT(import()));
 
     m_exportAct = new QAction(tr("&export"), this);
-//    m_exportAct->setShortcut(QKeySequence::);
     m_exportAct->setStatusTip(tr("Export files"));
     connect(m_openAct, SIGNAL(triggered()), this, SLOT(exportf()));
 

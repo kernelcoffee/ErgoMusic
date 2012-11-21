@@ -28,7 +28,8 @@ SOURCES += main.cpp\
     Gui/playerwidget.cpp \
     Gui/playlistwidget.cpp \
     Gui/viewwidget.cpp \
-    Gui/settingswidget.cpp
+    Gui/settingswidget.cpp \
+    Audio/audiomanager.cpp
 
 HEADERS  += \
     Database/databasemanager.h \
@@ -50,7 +51,8 @@ HEADERS  += \
     Gui/playerwidget.h \
     Gui/playlistwidget.h \
     Gui/viewwidget.h \
-    Gui/settingswidget.h
+    Gui/settingswidget.h \
+    Audio/audiomanager.h
 
 FORMS    += mainwindow.ui \
     Gui/settingswidget.ui
