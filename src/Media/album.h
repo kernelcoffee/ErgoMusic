@@ -18,7 +18,8 @@ private:
 
     QImage          *m_illustration;
 
-    int             m_year;
+    int             uid, m_year, m_disk, m_diskTotal;
+    QString         *m_title, *m_description;
 };
 
 #endif // ALBUM_H
