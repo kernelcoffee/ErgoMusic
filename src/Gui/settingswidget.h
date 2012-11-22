@@ -14,9 +14,10 @@ private slots:
     void on_musicFolderEditButton_clicked();
     void on_watchFolderEditButton_clicked();
     void on_databaseEditButton_clicked();
-    void on_validationBox_clicked(QAbstractButton *button);
 
-    void on_validationBox_accepted();
+    void on_buttonBox_clicked(QAbstractButton *button);
+
+    void on_checkBoxWatchFolder_clicked(bool checked);
 
 signals:
     void    musicFolderPath_changed();
@@ -24,6 +25,7 @@ signals:
     void    databaseFolderPath_changed();
 private:
     void    apply();
+    void    reset();
 };
 
 #endif // SETTINGSWIDGET_H

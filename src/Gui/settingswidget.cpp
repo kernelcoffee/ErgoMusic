@@ -23,13 +23,16 @@ SettingsWidget::SettingsWidget(QWidget *parent) :
     watchFolderLabel->setText(settings.value("watchFolder").toString());
     musicFolderLabel->setText(settings.value("musicFolder").toString());
     databaseFolderLabel->setText(settings.value("dbPath").toString());
+
+    checkBoxWatchFolder->setChecked(settings.value("watchFolderActivated").toBool());
+    watchFolderLayer->setEnabled(checkBoxWatchFolder->isChecked());
+
 }
 
 SettingsWidget::~SettingsWidget()
 {
     Logger::log("destroying SettingsWidget", LOG_DEBUG);
 }
-
 void SettingsWidget::on_musicFolderEditButton_clicked()
 {
     QSettings   settings;
@@ -43,43 +46,84 @@ void SettingsWidget::on_musicFolderEditButton_clicked()
 
 void SettingsWidget::on_watchFolderEditButton_clicked()
 {
+    QSettings   settings;
+
+    QDir dir = QFileDialog::getExistingDirectory(this, tr("open directory"), settings.value("watchFolder").toString());
+    if (dir.exists())
+    {
+        watchFolderLabel->setText(dir.absolutePath());
+    }
 
 }
 
 void SettingsWidget::on_databaseEditButton_clicked()
 {
+    QSettings   settings;
+
+    QDir dir = QFileDialog::getExistingDirectory(this, tr("open directory"), settings.value("dbFolder").toString());
+    if (dir.exists())
+    {
+        databaseFolderLabel->setText(dir.absolutePath());
+    }
 
 }
 
-void SettingsWidget::on_validationBox_clicked(QAbstractButton *button)
+
+void SettingsWidget::on_buttonBox_clicked(QAbstractButton *button)
 {
-    Logger::log("Cliqued on button");
+    // tried a switch, refused because it wasn't an integer
+    if (button == buttonBox->button(QDialogButtonBox::Apply)) {
+        apply();
+    } else if (button == buttonBox->button(QDialogButtonBox::Reset)) {
+        reset();
+    } else if (button == buttonBox->button(QDialogButtonBox::Ok)) {
+        apply();
+        close();
+    } else if (button == buttonBox->button(QDialogButtonBox::Cancel)) {
+        reset();
+        close();
+    }
 }
 
 void    SettingsWidget::apply()
 {
     QSettings   settings;
 
+    Logger::log("Applying changes in settings", LOG_DEBUG);
     if (musicFolderLabel->text() != settings.value("musicFolder").toString())
     {
-        settings.setValue("musicFolder", QVariant(musicFolderLabel->text()));
+        settings.setValue("musicFolder", musicFolderLabel->text());
+        Logger::log("Changed Music folder path to " + settings.value("musicFolder").toString());
         musicFolderPath_changed();
     }
     if (watchFolderLabel->text() != settings.value("watchFolder").toString())
     {
-        settings.setValue("watchFolderLabel", QVariant(musicFolderLabel->text()));
+        settings.setValue("watchFolder", watchFolderLabel->text());
+        Logger::log("Changed Watch folder path to " + settings.value("watchFolder").toString());
         watchFolderPath_changed();
     }
     if (databaseFolderLabel->text() != settings.value("dbPath").toString())
     {
-        settings.setValue("dbPath", QVariant(databaseFolderLabel->text()));
+        settings.setValue("dbPath", databaseFolderLabel->text());
+        Logger::log("Changed Database folder path to " + settings.value("musicFolder").toString());
         databaseFolderPath_changed();
     }
 }
 
-
-
-void SettingsWidget::on_validationBox_accepted()
+void    SettingsWidget::reset()
 {
-    Logger::log("Settings validated");
+    QSettings   settings;
+
+    musicFolderLabel->setText(settings.value("musicFolder").toString());
+    watchFolderLabel->setText(settings.value("watchFolder").toString());
+    databaseFolderLabel->setText(settings.value("dbPath").toString());
+}
+
+void SettingsWidget::on_checkBoxWatchFolder_clicked(bool checked)
+{
+    QSettings settings;
+
+    checkBoxWatchFolder->setChecked(checked);
+    watchFolderLayer->setEnabled(checked);
+    settings.setValue("watchFolderActivated", checked);
 }

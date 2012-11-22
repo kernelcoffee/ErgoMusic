@@ -2,14 +2,20 @@
 #define COLLECTION_H
 
 #include <QVector>
-#include "song.h"
+#include <QMap>
+
+#include "track.h"
+#include "album.h"
+#include "artist.h"
 
 class Collection
 {
 public:
     Collection();
 protected:
-    QVector<Song*>  m_collection;
+    QMap<int, Track*>   *m_tracks;
+    QMap<int, Artist*>  *m_artists;
+    QMap<int, Album*>   *m_albums;
 };
 
 #endif // COLLECTION_H

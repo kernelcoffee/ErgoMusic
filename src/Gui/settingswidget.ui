@@ -71,6 +71,17 @@
         </widget>
        </item>
        <item>
+        <layout class="QHBoxLayout" name="checkBoxWatchFolderLayout">
+         <item>
+          <widget class="QCheckBox" name="checkBoxWatchFolder">
+           <property name="text">
+            <string>Enable watch folder</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
         <widget class="QGroupBox" name="watchFolderLayer">
          <property name="title">
           <string>Watch Folder Path</string>
@@ -160,7 +171,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QDialogButtonBox" name="validationBox">
+    <widget class="QDialogButtonBox" name="buttonBox">
      <property name="standardButtons">
       <set>QDialogButtonBox::Apply|QDialogButtonBox::Cancel|QDialogButtonBox::Ok|QDialogButtonBox::Reset</set>
      </property>

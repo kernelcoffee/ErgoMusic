@@ -15,7 +15,6 @@ SOURCES += main.cpp\
     Utilities/logger.cpp \
     initialization.cpp \
     Database/importengine.cpp \
-    Media/song.cpp \
     Media/collection.cpp \
     Media/artist.cpp \
     Database/integrityengine.cpp \
@@ -29,7 +28,9 @@ SOURCES += main.cpp\
     Gui/playlistwidget.cpp \
     Gui/viewwidget.cpp \
     Gui/settingswidget.cpp \
-    Audio/audiomanager.cpp
+    Audio/audiomanager.cpp \
+    Media/album.cpp \
+    Media/track.cpp
 
 HEADERS  += \
     Database/databasemanager.h \
@@ -39,7 +40,6 @@ HEADERS  += \
     Database/syncengine.h \
     Media/artist.h \
     Media/collection.h \
-    Media/song.h \
     Network/gatekeeper.h \
     Network/networkmanager.h \
     Utilities/logger.h \
@@ -52,7 +52,9 @@ HEADERS  += \
     Gui/playlistwidget.h \
     Gui/viewwidget.h \
     Gui/settingswidget.h \
-    Audio/audiomanager.h
+    Audio/audiomanager.h \
+    Media/album.h \
+    Media/track.h
 
 FORMS    += mainwindow.ui \
     Gui/settingswidget.ui

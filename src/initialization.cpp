@@ -69,7 +69,6 @@ void    Initialization::initSettings(void)
         // do migration
     }
     Logger::log("Settings initilized", LOG_DEBUG);
-
 }
 
 void    Initialization::initDefault(void)
@@ -85,6 +84,7 @@ void    Initialization::initDefault(void)
     settings.setValue("dbLogin", "login");
     settings.setValue("dbPassword", "password");
     settings.setValue("language", QLocale::system().name());
+    settings.setValue("initialized", true);
 }
 
 void    Initialization::initManagers()
