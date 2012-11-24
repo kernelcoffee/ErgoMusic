@@ -3,3 +3,7 @@
 Collection::Collection()
 {
 }
+
+
+Collection::~Collection()
+{}

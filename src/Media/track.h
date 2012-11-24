@@ -15,9 +15,11 @@ public:
     Track();
     Track(QString path);
 
+    int         getUid();
     QString     getTitle();
     Artist*     getArtist();
 
+    void        setUid(int);
     void        setTitle(QString);
     void        setArtist(QString);
 private:

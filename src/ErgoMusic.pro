@@ -30,7 +30,9 @@ SOURCES += main.cpp\
     Gui/settingswidget.cpp \
     Audio/audiomanager.cpp \
     Media/album.cpp \
-    Media/track.cpp
+    Media/track.cpp \
+    Media/playlist.cpp \
+    Media/watchplaylist.cpp
 
 HEADERS  += \
     Database/databasemanager.h \
@@ -54,7 +56,9 @@ HEADERS  += \
     Gui/settingswidget.h \
     Audio/audiomanager.h \
     Media/album.h \
-    Media/track.h
+    Media/track.h \
+    Media/playlist.h \
+    Media/watchplaylist.h
 
 FORMS    += mainwindow.ui \
     Gui/settingswidget.ui
