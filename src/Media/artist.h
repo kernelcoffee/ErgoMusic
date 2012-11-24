@@ -4,13 +4,17 @@
 #include "album.h"
 
 #include <QVector>
+#include <QImage>
+
+class Album;
 
 class Artist
 {
 public:
     Artist();
+    ~Artist();
 private:
-    Qvector<Album*> m_album;
+    QVector<Album*> *m_album;
 
     int             uid;
     QImage          *m_photo;

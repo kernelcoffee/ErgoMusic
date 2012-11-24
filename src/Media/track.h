@@ -6,6 +6,9 @@
 
 #include <QFileInfo>
 
+class Artist;
+class Album;
+
 class Track
 {
 public:

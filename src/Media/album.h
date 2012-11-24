@@ -7,6 +7,9 @@
 #include <QVector>
 #include <QImage>
 
+class Artist;
+class Track;
+
 class Album
 {
 public:

@@ -3,3 +3,7 @@
 Artist::Artist()
 {
 }
+
+Artist::~Artist()
+{
+}
