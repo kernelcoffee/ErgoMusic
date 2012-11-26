@@ -53,7 +53,6 @@ void SettingsWidget::on_watchFolderEditButton_clicked()
     {
         watchFolderLabel->setText(dir.absolutePath());
     }
-
 }
 
 void SettingsWidget::on_databaseEditButton_clicked()
@@ -94,19 +93,23 @@ void    SettingsWidget::apply()
     {
         settings.setValue("musicFolder", musicFolderLabel->text());
         Logger::log("Changed Music folder path to " + settings.value("musicFolder").toString());
-        musicFolderPath_changed();
+        musicFolderPath_updated();
+    }
+    if (checkBoxWatchFolder->isChecked() != settings.value("watchFolderEnable").toBool())
+    {
+        watchFolderPath_updated();
     }
     if (watchFolderLabel->text() != settings.value("watchFolder").toString())
     {
         settings.setValue("watchFolder", watchFolderLabel->text());
         Logger::log("Changed Watch folder path to " + settings.value("watchFolder").toString());
-        watchFolderPath_changed();
+        watchFolderPath_updated();
     }
     if (databaseFolderLabel->text() != settings.value("dbPath").toString())
     {
         settings.setValue("dbPath", databaseFolderLabel->text());
         Logger::log("Changed Database folder path to " + settings.value("musicFolder").toString());
-        databaseFolderPath_changed();
+        databaseFolderPath_updated();
     }
 }
 

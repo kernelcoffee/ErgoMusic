@@ -20,9 +20,9 @@ private slots:
     void on_checkBoxWatchFolder_clicked(bool checked);
 
 signals:
-    void    musicFolderPath_changed();
-    void    watchFolderPath_changed();
-    void    databaseFolderPath_changed();
+    void    musicFolderPath_updated();
+    void    watchFolderPath_updated();
+    void    databaseFolderPath_updated();
 private:
     void    apply();
     void    reset();
