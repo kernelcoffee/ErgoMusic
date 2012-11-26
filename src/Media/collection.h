@@ -16,6 +16,8 @@ public:
     Collection();
     ~Collection();
     void                createPlaylist(QString &name = "");
+public slots:
+    void    setWatchFolder(QString);
 protected:
     QMap<int, Track*>   *m_tracks;
     QMap<int, Artist*>  *m_artists;
