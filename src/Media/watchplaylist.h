@@ -16,6 +16,7 @@ signals:
 public slots:
     void    updateWatchFolder();
 private:
+    void            update();
     void            setWatchFolder();
     QList<Track*>   *m_list;
 };

@@ -24,6 +24,7 @@ SettingsWidget::SettingsWidget(QWidget *parent) :
     musicFolderLabel->setText(settings.value("musicFolder").toString());
     databaseFolderLabel->setText(settings.value("dbPath").toString());
 
+
     checkBoxWatchFolder->setChecked(settings.value("watchFolderActivated").toBool());
     watchFolderLayer->setEnabled(checkBoxWatchFolder->isChecked());
 

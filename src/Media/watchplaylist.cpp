@@ -29,7 +29,7 @@ void    WatchPlaylist::update()
     QSettings   settings;
     QDir        watchFolder(settings.value("watchFolder").toString());
 
-    if (watchFolder.exist())
+    if (watchFolder.exists())
     {
 
         Logger::log("WatchPlaylist - Path correct : " + watchFolder.absolutePath());

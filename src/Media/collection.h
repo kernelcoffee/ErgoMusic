@@ -15,7 +15,7 @@ class Collection
 public:
     Collection();
     ~Collection();
-    void                createPlaylist(QString &name = "");
+    void                createPlaylist(QString name = "");
 public slots:
     void    setWatchFolder(QString);
 protected:
