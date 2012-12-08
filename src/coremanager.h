@@ -3,6 +3,7 @@
 
 #include "Database/databasemanager.h"
 #include "Network/networkmanager.h"
+#include "Audio/audiomanager.h"
 
 #include "Utilities/singleton.h"
 
@@ -19,12 +20,14 @@ public:
 
     DatabaseManager*    database() const;
     NetworkManager*     network() const;
+    AudioManager*       audio() const;
 
 public slots:
     void    aboutToQuit();
 private:
     DatabaseManager*    m_databaseManager;
     NetworkManager*     m_networkManager;
+    AudioManager*       m_audioManager;
 };
 
 #endif // COREMANAGER_H

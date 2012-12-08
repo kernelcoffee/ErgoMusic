@@ -8,4 +8,6 @@ NetworkManager::~NetworkManager()
 {}
 
 void    NetworkManager::init(QStringList &arguments)
-{}
+{
+    Q_UNUSED(arguments);
+}
