@@ -28,6 +28,7 @@ int main(int argc, char *argv[])
     Initialization* init = new Initialization();
     init->initSettings();
     init->initManagers();
+    init->initCollection();
     delete init;
 
     MainWindow w;

@@ -10,14 +10,18 @@
 #include "playlist.h"
 #include "watchplaylist.h"
 
-class Collection
+#include "Utilities/singleton.h"
+
+class Collection : public Singleton<Collection>
 {
+    friend class Singleton<Collection>;
 public:
     Collection();
     ~Collection();
+    void                init(QStringList&);
     void                createPlaylist(QString name = "");
 public slots:
-    void    setWatchFolder(QString);
+    void                setWatchFolder(QString);
 protected:
     QMap<int, Track*>   *m_tracks;
     QMap<int, Artist*>  *m_artists;

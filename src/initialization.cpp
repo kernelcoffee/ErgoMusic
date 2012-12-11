@@ -19,20 +19,30 @@
 #include <QtCore/QSettings>
 #include <QtCore/QCoreApplication>
 #include <QtCore/QStandardPaths>
+#include <QPixmap>
 
 #include "initialization.h"
 #include "Utilities/logger.h"
 #include "coremanager.h"
 #include "common.h"
+#include "Media/collection.h"
 
 Initialization::Initialization(void)
 {
     QSettings settings;
 
+    Q_INIT_RESOURCE(ErgoMusic);
+
+    QPixmap splashPixmap("");
+
+    _splash = new QSplashScreen(splashPixmap);
+    _splash->show();
+    _splash->showMessage("Initialization...");
+    qApp->processEvents();
     Logger::log("Starting initialization.", LOG_DEBUG);
+
     _arguments = qApp->arguments();
 
-    Q_INIT_RESOURCE(ErgoMusic);
     Logger::log("Ressources Loaded.", LOG_DEBUG);
 
     _translator = new QTranslator();
@@ -44,7 +54,9 @@ Initialization::Initialization(void)
 }
 
 Initialization::~Initialization()
-{}
+{
+    delete  _splash;
+}
 
 void    Initialization::initSettings(void)
 {
@@ -90,4 +102,9 @@ void    Initialization::initDefault(void)
 void    Initialization::initManagers()
 {
    CoreManager::instance()->initManagers(_arguments);
+}
+
+void    Initialization::initCollection()
+{
+    Collection::instance()->init(_arguments);
 }

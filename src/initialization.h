@@ -21,6 +21,7 @@
 
 #include <QSplashScreen>
 #include <QtCore/QTranslator>
+#include <QSplashScreen>
 
 class Initialization
 {
@@ -29,12 +30,14 @@ public:
     ~Initialization(void);
     void    initSettings(void);
     void    initManagers(void);
+    void    initCollection(void);
 
 private:
     void    initDefault(void);
 
     QTranslator*    _translator;
     QStringList     _arguments;
+    QSplashScreen*   _splash;
 };
 
 #endif // INITIALIZATION_H
