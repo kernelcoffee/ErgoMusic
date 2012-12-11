@@ -3,3 +3,5 @@ src/*.pro.user
 */**/.DS_Store
 *-build-desktop*
 *-build-Qt*
+docs/html
+docs/latex
