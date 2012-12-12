@@ -76,7 +76,7 @@ void    Initialization::initSettings(void)
     }
 
     Logger::log("Language found : " + settings.value("language").toString(), LOG_DEBUG);
-    if (QFile::exists(":/languages/lang_" + settings.value("language").toString()) == false) {
+    if (QFile::exists(":qm_files/languages/lang_" + settings.value("language").toString()) == false) {
         Logger::log("lang file :/languages/lang_" + settings.value("language").toString() + "  not found");
     } else {
         _translator->load(":/languages/lang_" + settings.value("language").toString());

@@ -1,142 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="en_US">
+<TS version="2.0" language="fr_FR">
 <context>
     <name>MainWindow</name>
     <message>
         <location filename="../../mainwindow.ui" line="17"/>
         <source>ErgoMusic</source>
-        <translation type="unfinished">ErgoMusic</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../mainwindow.cpp" line="91"/>
         <source>&amp;file</source>
-        <translation>Files</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../mainwindow.cpp" line="99"/>
         <source>&amp;edit</source>
-        <translation>Edit</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../mainwindow.cpp" line="108"/>
         <source>&amp;presentation</source>
-        <translation>Presentation</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../mainwindow.cpp" line="109"/>
         <source>&amp;commands</source>
-        <translation>Commands</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../mainwindow.cpp" line="110"/>
         <source>&amp;advanced</source>
-        <translation>Advances</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../mainwindow.cpp" line="111"/>
         <source>&amp;help</source>
-        <translation>Help</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../mainwindow.cpp" line="125"/>
         <source>&amp;newPlaylist</source>
-        <translation type="unfinished">New playlist</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../mainwindow.cpp" line="127"/>
         <source>Create a new playlist</source>
-        <translation type="unfinished">Create a new playlist</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../mainwindow.cpp" line="130"/>
         <source>&amp;open</source>
-        <translation>Open</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../mainwindow.cpp" line="135"/>
         <source>&amp;save</source>
-        <translation>Save</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../mainwindow.cpp" line="140"/>
         <source>&amp;import</source>
-        <translation>Import</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../mainwindow.cpp" line="141"/>
         <source>Import files</source>
-        <translation type="unfinished">Import files into your library</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../mainwindow.cpp" line="144"/>
         <source>&amp;export</source>
-        <translation type="unfinished">Export</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../mainwindow.cpp" line="145"/>
         <source>Export files</source>
-        <translation type="unfinished">Export files from libraries</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../mainwindow.cpp" line="148"/>
         <source>&amp;exit</source>
-        <translation>Exit</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../mainwindow.cpp" line="150"/>
         <source>Exit ErgoMusic</source>
-        <translation type="unfinished">Exit ErgoMusic</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../mainwindow.cpp" line="155"/>
         <source>&amp;undo</source>
-        <translation>Undo</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../mainwindow.cpp" line="160"/>
         <source>&amp;copy</source>
-        <translation>Copy</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../mainwindow.cpp" line="165"/>
         <source>&amp;cut</source>
-        <translation>Cut</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../mainwindow.cpp" line="170"/>
         <source>&amp;paste</source>
-        <translation>Paste</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../mainwindow.cpp" line="175"/>
         <source>&amp;settings</source>
-        <translation>Settings</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../mainwindow.cpp" line="177"/>
         <source>Edit ErgoMusic settings</source>
-        <translation type="unfinished">Edit ErgoMusic settings</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../mainwindow.cpp" line="185"/>
         <source>&amp;about Qt</source>
-        <translation>About Qt</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../mainwindow.cpp" line="186"/>
         <source>Display informations about Qt</source>
-        <translation type="unfinished">Display informations about QT</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../mainwindow.cpp" line="189"/>
         <source>&amp;about ErgoMusic</source>
-        <translation type="unfinished">About ErgoMusic</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../mainwindow.cpp" line="190"/>
         <source>Display informations about ErgoMusic</source>
-        <translation type="unfinished">Display informations about ErgoMusic</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -208,7 +208,7 @@
     <message>
         <location filename="../../Gui/settingswidget.cpp" line="22"/>
         <source>&amp;advanced</source>
-        <translation type="unfinished">Advances</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../Gui/settingswidget.cpp" line="39"/>
