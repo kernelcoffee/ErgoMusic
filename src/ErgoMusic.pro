@@ -66,6 +66,7 @@ FORMS    += mainwindow.ui \
 RESOURCES += \
     Ressources/ErgoMusic.qrc
 
+TRANSLATIONS = Ressources/languages/lang_en_US.ts
 
 
 

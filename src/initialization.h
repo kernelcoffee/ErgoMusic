@@ -32,6 +32,8 @@ public:
     void    initManagers(void);
     void    initCollection(void);
 
+    QSplashScreen*  getSplashScreen() const;
+
 private:
     void    initDefault(void);
 

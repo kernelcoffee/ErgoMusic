@@ -3,6 +3,7 @@
 
 #include <QVector>
 #include <QMap>
+#include <QSplashScreen>
 
 #include "track.h"
 #include "album.h"
@@ -18,7 +19,7 @@ class Collection : public Singleton<Collection>
 public:
     Collection();
     ~Collection();
-    void                init(QStringList&);
+    void                init(QStringList&, QSplashScreen*);
     void                createPlaylist(QString name = "");
 public slots:
     void                setWatchFolder(QString);

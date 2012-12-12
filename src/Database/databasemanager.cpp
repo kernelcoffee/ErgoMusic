@@ -26,7 +26,7 @@ void    DatabaseManager::init(QStringList &arguments)
 {
     QSettings   settings;
 
-    if (settings.value("dbType").toString() == "SQLITE")
+    if (settings.value("database/type").toString() == "SQLITE")
         m_db = QSqlDatabase::addDatabase("QSQLITE");
     else
         Logger::log("Database type not valid.", LOG_CRIT);
@@ -38,7 +38,6 @@ void    DatabaseManager::init(QStringList &arguments)
     m_integrityEngine->setQuery(m_query);
     m_migrationEngine->setQuery(m_query);
     m_syncEngine->setQuery(m_query);
-
 
     m_importEngine->init(arguments);
     m_integrityEngine->init(arguments);
@@ -52,7 +51,7 @@ void    DatabaseManager::openDatabase()
     QDir    dir;
     QSettings   settings;
 
-    m_dbFile = new QFile(settings.value("dbPath").toString() + "ergoMusicDB.sqlite");
+    m_dbFile = new QFile(settings.value("database/path").toString() + "ergoMusicDB.sqlite");
     dir.mkpath(settings.value("dbPath").toString());
     Logger::log("DataManager - m_dbFile init OK " + settings.value("dbPath").toString() + "database.sqlite", LOG_DEBUG);
 
@@ -74,6 +73,6 @@ bool    DatabaseManager::connect()
         else
             return false;
     }
-    m_db.setDatabaseName(settings.value("dbName").toString());
+    m_db.setDatabaseName(settings.value("database/name").toString());
     return m_db.open();
 }

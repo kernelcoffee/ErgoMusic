@@ -49,8 +49,9 @@ Logger::~Logger()
 
 void	Logger::log(const QString &message, logLevel level)
 {
-    if (level < LOG_CRIT)
+    if (level < LOG_CRIT) {
         exit(-1);
+    }
     Logger::instance()->update(message, level);
 }
 
@@ -61,7 +62,9 @@ void	Logger::update(QString msg, logLevel level)
     logMessage = getLogPrefix();
     logMessage += logLevel_str[level] + " : " + msg + "\n";
 
-    _logFile->write(logMessage. toLatin1());
+    if (level == LOG_DEBUG && DEBUG_MODE)
+        qDebug() << logLevel_str[level] + " : " + msg;
+    _logFile->write(logMessage.toUtf8());
     _logFile->flush();
 }
 

@@ -29,10 +29,11 @@ int main(int argc, char *argv[])
     init->initSettings();
     init->initManagers();
     init->initCollection();
-    delete init;
 
     MainWindow w;
     w.show();
+    init->getSplashScreen()->finish(&w);
 
+    delete init;
     return a.exec();
 }

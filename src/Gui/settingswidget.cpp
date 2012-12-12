@@ -22,12 +22,10 @@ SettingsWidget::SettingsWidget(QWidget *parent) :
     tabWidget->setTabText(2, tr("&advanced"));
     watchFolderLabel->setText(settings.value("watchFolder").toString());
     musicFolderLabel->setText(settings.value("musicFolder").toString());
-    databaseFolderLabel->setText(settings.value("dbPath").toString());
-
+    databaseFolderLabel->setText(settings.value("database/path").toString());
 
     checkBoxWatchFolder->setChecked(settings.value("watchFolderActivated").toBool());
     watchFolderLayer->setEnabled(checkBoxWatchFolder->isChecked());
-
 }
 
 SettingsWidget::~SettingsWidget()
@@ -60,7 +58,7 @@ void SettingsWidget::on_databaseEditButton_clicked()
 {
     QSettings   settings;
 
-    QDir dir = QFileDialog::getExistingDirectory(this, tr("open directory"), settings.value("dbFolder").toString());
+    QDir dir = QFileDialog::getExistingDirectory(this, tr("open directory"), settings.value("database/path").toString());
     if (dir.exists())
     {
         databaseFolderLabel->setText(dir.absolutePath());
@@ -108,8 +106,8 @@ void    SettingsWidget::apply()
     }
     if (databaseFolderLabel->text() != settings.value("dbPath").toString())
     {
-        settings.setValue("dbPath", databaseFolderLabel->text());
-        Logger::log("Changed Database folder path to " + settings.value("musicFolder").toString());
+        settings.setValue("database/path", databaseFolderLabel->text());
+        Logger::log("Changed Database folder path to " + settings.value("database/path").toString());
         databaseFolderPath_updated();
     }
 }
@@ -120,7 +118,7 @@ void    SettingsWidget::reset()
 
     musicFolderLabel->setText(settings.value("musicFolder").toString());
     watchFolderLabel->setText(settings.value("watchFolder").toString());
-    databaseFolderLabel->setText(settings.value("dbPath").toString());
+    databaseFolderLabel->setText(settings.value("database/path").toString());
 }
 
 void SettingsWidget::on_checkBoxWatchFolder_clicked(bool checked)

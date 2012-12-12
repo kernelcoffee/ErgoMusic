@@ -29,28 +29,19 @@
 
 Initialization::Initialization(void)
 {
-    QSettings settings;
+
+    Logger::log("Starting initialization.", LOG_DEBUG);
 
     Q_INIT_RESOURCE(ErgoMusic);
+    Logger::log("Ressources Loaded.", LOG_DEBUG);
 
-    QPixmap splashPixmap("");
-
+    QPixmap splashPixmap(":/images/spashScreen.png");
     _splash = new QSplashScreen(splashPixmap);
     _splash->show();
     _splash->showMessage("Initialization...");
     qApp->processEvents();
-    Logger::log("Starting initialization.", LOG_DEBUG);
-
     _arguments = qApp->arguments();
-
-    Logger::log("Ressources Loaded.", LOG_DEBUG);
-
     _translator = new QTranslator();
-
-    Logger::log("Language found : " + settings.value("language").toString(), LOG_DEBUG);
-    //    _translator->load(QString("lang_" + QSettings.value("language").toStdString());
-
-    Logger::log("intialization done.");
 }
 
 Initialization::~Initialization()
@@ -60,14 +51,17 @@ Initialization::~Initialization()
 
 void    Initialization::initSettings(void)
 {
+    QSettings settings;
+
     QCoreApplication::setApplicationName(APPLICATION_NAME);
     QCoreApplication::setOrganizationName(ORGANIZATION_NAME);
     QCoreApplication::setOrganizationDomain(ORGANIZATION_DOMAIN);
 
-    QSettings settings;
-
     if (_arguments.contains("--reset-all"))
+    {
+        Logger::log("Reset all settings enabled");
         settings.clear();
+    }
 
     if (settings.value("initialized").isNull())
         initDefault();
@@ -80,6 +74,17 @@ void    Initialization::initSettings(void)
         Logger::log("Version doesn't match, pleaze do a migration");
         // do migration
     }
+
+    Logger::log("Language found : " + settings.value("language").toString(), LOG_DEBUG);
+    if (QFile::exists(":/languages/lang_" + settings.value("language").toString()) == false) {
+        Logger::log("lang file :/languages/lang_" + settings.value("language").toString() + "  not found");
+    } else {
+        _translator->load(":/languages/lang_" + settings.value("language").toString());
+        qApp->installTranslator(_translator);
+    }
+
+    //    _translator->load(QString(":/language/lang_" + settings.value("language").toStdString());
+
     Logger::log("Settings initilized", LOG_DEBUG);
 }
 
@@ -87,16 +92,21 @@ void    Initialization::initDefault(void)
 {
     QSettings	settings;
 
+    Logger::log("Initialization - set default values");
+    settings.setValue("language", QLocale::system().name());
     settings.setValue("musicFolder", QStandardPaths::writableLocation(QStandardPaths::MusicLocation));
     settings.setValue("watchFolder", "");
     settings.setValue("watchFolderActivated", false);
-    settings.setValue("dbType", "SQLITE");
-    settings.setValue("dbPath", QStandardPaths::writableLocation(QStandardPaths::DataLocation));
-    settings.setValue("dbName", "ergomusic");
-    settings.setValue("dbLogin", "login");
-    settings.setValue("dbPassword", "password");
-    settings.setValue("language", QLocale::system().name());
+    settings.setValue("database/type", "SQLITE");
+    settings.setValue("database/path", QStandardPaths::writableLocation(QStandardPaths::DataLocation));
+    settings.setValue("database/name", "ergomusic");
+    settings.setValue("database/login", "login");
+    settings.setValue("database/password", "password");
     settings.setValue("initialized", true);
+
+    settings.sync();
+    Logger::log("Language found : " + settings.value("language").toString(), LOG_DEBUG);
+    settings.sync();
 }
 
 void    Initialization::initManagers()
@@ -106,5 +116,10 @@ void    Initialization::initManagers()
 
 void    Initialization::initCollection()
 {
-    Collection::instance()->init(_arguments);
+    Collection::instance()->init(_arguments, _splash);
+}
+
+QSplashScreen*  Initialization::getSplashScreen() const
+{
+    return _splash;
 }
