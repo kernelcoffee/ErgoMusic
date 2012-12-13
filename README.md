@@ -2,7 +2,7 @@ ErgoMusic
 =========
 
 ErgoMusic is a Qt-based open-source music player and manager.
-It is inspired by iTunes for which I haven't found a suitable replacmement.
+It is inspired by iTunes for which I haven't found a suitable replacemement.
 
 But why ?
 ---------

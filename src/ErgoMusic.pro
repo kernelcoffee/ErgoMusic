@@ -15,6 +15,7 @@ macx {
 	LIBS += -L/opt/local/lib -ltag
 }
 
+LIBS += -ltag
 
 
 SOURCES += main.cpp\
