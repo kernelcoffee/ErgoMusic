@@ -10,6 +10,7 @@ MigrationEngine::~MigrationEngine()
 
 void    MigrationEngine::init(QStringList &arguments)
 {
+    Q_UNUSED(arguments);
 }
 
 void    MigrationEngine::setQuery(QSqlQuery* query)

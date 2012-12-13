@@ -4,6 +4,11 @@ Playlist::Playlist()
 {
 }
 
+Playlist::Playlist(QString name)
+{
+    m_name = name;
+}
+
 Playlist::~Playlist()
 {
 

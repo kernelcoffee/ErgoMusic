@@ -9,11 +9,13 @@ class Playlist
 {
 public:
     Playlist();
+    Playlist(QString);
     ~Playlist();
 
     void    addTrack(Track*);
 private:
-    QList<Track*>    *m_list;
+    QString         m_name;
+    QList<Track*>   *m_list;
 };
 
 #endif // PLAYLIST_H

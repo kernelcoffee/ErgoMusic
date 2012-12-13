@@ -13,6 +13,8 @@ Collection::~Collection()
 
 void Collection::init(QStringList &arguments, QSplashScreen* splash)
 {
+    Q_UNUSED(arguments);
+
     Logger::log("Collection - Initialization", LOG_DEBUG);
 
     m_watchPlaylist = new WatchPlaylist();
@@ -26,5 +28,6 @@ WatchPlaylist*  Collection::getWatchPlaylist() const
 
 void Collection::createPlaylist(QString name)
 {
+    m_playlists->append(new Playlist(name));
 }
 

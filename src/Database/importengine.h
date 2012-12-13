@@ -26,7 +26,7 @@
 class ImportEngine
 {
 public:
-    ImportEngine(QObject *parent = 0);
+    ImportEngine();
     ~ImportEngine();
     void            init(QStringList&);
     void            setQuery(QSqlQuery*);

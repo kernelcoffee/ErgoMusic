@@ -13,12 +13,15 @@ class Artist
 public:
     Artist();
     ~Artist();
+
+    QString    name();
+    void    setName(QString);
 private:
     QVector<Album*> *m_album;
 
     int             uid;
     QImage          *m_photo;
-    QString         *m_name, *m_bio;
+    QString         m_name, m_bio;
 };
 
 #endif // ARTIST_H

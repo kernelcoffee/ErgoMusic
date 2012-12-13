@@ -4,10 +4,17 @@
 #
 #-------------------------------------------------
 
-QT       += core gui widgets sql network
+QT       += core gui widgets sql network multimedia
 
 TARGET = ErgoMusic
 TEMPLATE = app
+
+macx {
+	#using default path of MacPort
+	INCLUDEPATH += /opt/local/include/
+	LIBS += -L/opt/local/lib -ltag
+}
+
 
 
 SOURCES += main.cpp\

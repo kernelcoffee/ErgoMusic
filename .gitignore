@@ -5,3 +5,4 @@ src/*.pro.user
 *-build-Qt*
 docs/html
 docs/latex
+*~

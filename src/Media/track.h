@@ -13,23 +13,29 @@ class Track
 {
 public:
     Track();
-    Track(QString path);
+    Track(QString);
+    ~Track();
 
-    int         getUid();
-    QString     getTitle();
-    Artist*     getArtist();
+    int         uid();
+    QString     title();
+    Artist*     artist();
+    Album*      album();
 
     void        setUid(int);
     void        setTitle(QString);
     void        setArtist(QString);
+    void        setArtist(Artist*);
+    void        setAlbum(QString);
+    void        setAlbum(Album*);
 private:
+    void        _extractTags();
     Album       *m_album;
-    Artist      *m_artiste;
+    Artist      *m_artist;
 
-    QString     *m_title;
+    QString     m_title;
     QFileInfo   *m_file;
 
-    int         uid, m_duration, m_track;
+    int         m_uid, m_duration, m_track;
 };
 
 #endif // TRACK_H
