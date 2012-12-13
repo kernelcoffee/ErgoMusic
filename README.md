@@ -44,7 +44,7 @@ How I do it ?
 
 Download and install MacPort
 in a console :
-sudo port install libtag
+$ sudo port install libtag
 
 Download and install the Qt5 SDK from qt-project.org
 using QtCreator 2.6 from the SDK open the project and compile
