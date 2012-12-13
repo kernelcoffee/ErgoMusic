@@ -12,12 +12,14 @@ public:
     explicit WatchPlaylist(QObject *parent = 0);
     ~WatchPlaylist();
 signals:
-    
+    void            refreshed();
 public slots:
-    void    updateWatchFolder();
-private:
     void            update();
-    void            setWatchFolder();
+private slots:
+    void            _refresh(QString);
+private:
+    void            _update();
+    void            _disable();
     QList<Track*>   *m_list;
 };
 

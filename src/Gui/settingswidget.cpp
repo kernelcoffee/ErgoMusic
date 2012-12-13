@@ -94,8 +94,10 @@ void    SettingsWidget::apply()
         Logger::log("Changed Music folder path to " + settings.value("musicFolder").toString());
         musicFolderPath_updated();
     }
-    if (checkBoxWatchFolder->isChecked() != settings.value("watchFolderEnable").toBool())
+    if (checkBoxWatchFolder->isChecked() != settings.value("watchFolderActivated").toBool())
     {
+        Logger::log("WatchFolder status changed.");
+        settings.setValue("watchFolderActivated", checkBoxWatchFolder->isChecked());
         watchFolderPath_updated();
     }
     if (watchFolderLabel->text() != settings.value("watchFolder").toString())
@@ -104,7 +106,7 @@ void    SettingsWidget::apply()
         Logger::log("Changed Watch folder path to " + settings.value("watchFolder").toString());
         watchFolderPath_updated();
     }
-    if (databaseFolderLabel->text() != settings.value("dbPath").toString())
+    if (databaseFolderLabel->text() != settings.value("database/path").toString())
     {
         settings.setValue("database/path", databaseFolderLabel->text());
         Logger::log("Changed Database folder path to " + settings.value("database/path").toString());
@@ -127,5 +129,4 @@ void SettingsWidget::on_checkBoxWatchFolder_clicked(bool checked)
 
     checkBoxWatchFolder->setChecked(checked);
     watchFolderLayer->setEnabled(checked);
-    settings.setValue("watchFolderActivated", checked);
 }

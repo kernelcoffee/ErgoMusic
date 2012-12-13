@@ -11,7 +11,6 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
-
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -31,6 +30,10 @@ Initialization::Initialization(void)
 {
 
     Logger::log("Starting initialization.", LOG_DEBUG);
+
+    QCoreApplication::setApplicationName(APPLICATION_NAME);
+    QCoreApplication::setOrganizationName(ORGANIZATION_NAME);
+    QCoreApplication::setOrganizationDomain(ORGANIZATION_DOMAIN);
 
     Q_INIT_RESOURCE(ErgoMusic);
     Logger::log("Ressources Loaded.", LOG_DEBUG);
@@ -53,17 +56,13 @@ void    Initialization::initSettings(void)
 {
     QSettings settings;
 
-    QCoreApplication::setApplicationName(APPLICATION_NAME);
-    QCoreApplication::setOrganizationName(ORGANIZATION_NAME);
-    QCoreApplication::setOrganizationDomain(ORGANIZATION_DOMAIN);
-
     if (_arguments.contains("--reset-all"))
     {
         Logger::log("Reset all settings enabled");
         settings.clear();
     }
 
-    if (settings.value("initialized").isNull())
+    if (settings.contains("initialized") && settings.value("initialized") == false)
         initDefault();
 
     if (settings.value("version").isNull())

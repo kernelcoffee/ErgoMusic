@@ -46,6 +46,11 @@ void    DatabaseManager::init(QStringList &arguments)
     Logger::log("DatabaseManager - Initiatlization end", LOG_DEBUG);
 }
 
+ImportEngine*   DatabaseManager::importEngine() const
+{
+    return m_importEngine;
+}
+
 void    DatabaseManager::openDatabase()
 {
     QDir    dir;

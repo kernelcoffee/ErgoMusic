@@ -17,6 +17,7 @@ public:
     ~DatabaseManager();
 
     void                init(QStringList&);
+    ImportEngine*       importEngine() const;
 private:
     void                openDatabase();
     bool                connect();

@@ -16,12 +16,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
+#include "Utilities/logger.h"
 #include "importengine.h"
 
-ImportEngine::ImportEngine(QObject *parent) :
-    QObject(parent)
+ImportEngine::ImportEngine(QObject *parent)
 {
+    Logger::log("ImportEngine - Creating Instance", LOG_DEBUG);
 }
 
 ImportEngine::~ImportEngine()
@@ -29,9 +29,18 @@ ImportEngine::~ImportEngine()
 }
 
 void    ImportEngine::init(QStringList &arguments)
-{}
+{
+    Logger::log("ImportEngine - Inititialization", LOG_DEBUG);
+}
 
 void    ImportEngine::setQuery(QSqlQuery *query)
 {
     m_query = query;
+}
+
+QList<Track*>*   ImportEngine::importPath(QString &path)
+{
+    Logger::log("ImportEngine - importPath - " + path, LOG_DEBUG);
+
+    return NULL;
 }

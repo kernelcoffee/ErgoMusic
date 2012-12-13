@@ -16,27 +16,21 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 #ifndef IMPORTENGINE_H
 #define IMPORTENGINE_H
 
-#include <QFileSystemWatcher>
-#include <QDir>
-#include <QObject>
+#include "Media/track.h"
+
 #include <QSqlQuery>
 
-class ImportEngine : public QObject
+class ImportEngine
 {
-    Q_OBJECT
 public:
-    explicit ImportEngine(QObject *parent = 0);
+    ImportEngine(QObject *parent = 0);
     ~ImportEngine();
-    void    init(QStringList&);
-    void    setQuery(QSqlQuery*);
-signals:
-
-public slots:
-
+    void            init(QStringList&);
+    void            setQuery(QSqlQuery*);
+    QList<Track*> * importPath(QString&);
 private:
     QSqlQuery*  m_query;
 

@@ -14,11 +14,17 @@ Collection::~Collection()
 void Collection::init(QStringList &arguments, QSplashScreen* splash)
 {
     Logger::log("Collection - Initialization", LOG_DEBUG);
-    DatabaseManager* dbmanager = CoreManager::instance()->database();
 
+    m_watchPlaylist = new WatchPlaylist();
+//    DatabaseManager* dbmanager = CoreManager::instance()->database();
 }
 
+WatchPlaylist*  Collection::getWatchPlaylist() const
+{
+    return m_watchPlaylist;
+}
 
 void Collection::createPlaylist(QString name)
 {
 }
+

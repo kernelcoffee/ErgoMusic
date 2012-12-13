@@ -20,6 +20,7 @@
 #include "ui_mainwindow.h"
 #include "Utilities/logger.h"
 #include "Gui/settingswidget.h"
+#include "Media/collection.h"
 
 #include <QVBoxLayout>
 #include <QAction>
@@ -222,8 +223,12 @@ void    MainWindow::cut()
 
 void    MainWindow::showSettings()
 {
-    if (!m_settingsWidget)
+    if (!m_settingsWidget) {
         m_settingsWidget = new SettingsWidget();
+
+        connect(m_settingsWidget, SIGNAL(watchFolderPath_updated()), Collection::instance()->getWatchPlaylist(), SLOT(update()));
+        Logger::log("MainWindow - show setting - settingsWidget creation - end of creating signals connections.", LOG_DEBUG);
+    }
     m_settingsWidget->show();
 }
 
