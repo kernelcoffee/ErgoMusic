@@ -27,32 +27,29 @@ Doxygen for documentation
 
 ### Linux:
 
-How I do it ?
--------------
+*How I do it ?*
 
 I am currently using Fedora 17 with QtCreator 2.6 and Qt 5 from git.
 
-How you can do it ?
--------------------
+*How you can do it ?*
 
 TODO
 
 ### OS X
 
-How I do it ?
--------------
+*How I do it ?*
 
 Download and install MacPort
 in a console :
-$ sudo port install libtag
+
+   $ sudo port install libtag
 
 Download and install the Qt5 SDK from qt-project.org
 using QtCreator 2.6 from the SDK open the project and compile
 
-How you can do it ?
--------------------
+*How you can do it ?*
 
-TODO
+**TODO**
 
 ### Window
 
