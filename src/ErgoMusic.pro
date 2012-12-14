@@ -10,12 +10,14 @@ TARGET = ErgoMusic
 TEMPLATE = app
 
 macx {
-	#using default path of MacPort
-	INCLUDEPATH += /opt/local/include/
-	LIBS += -L/opt/local/lib -ltag
+    #using default path of MacPort
+    INCLUDEPATH += /opt/local/include/
+    LIBS += -L/opt/local/lib -ltag
 }
 
-LIBS += -ltag
+unix:!macx {
+    LIBS += -ltag
+}
 
 
 SOURCES += main.cpp\

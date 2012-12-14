@@ -24,6 +24,7 @@
 ImportEngine::ImportEngine()
 {
     Logger::log("ImportEngine - Creating Instance", LOG_DEBUG);
+    m_supportedExtension << "mp3" << "wma" << "ogg" << "oga" << "wav" << "flac" << "aac" << "m4a";
 }
 
 ImportEngine::~ImportEngine()
@@ -43,12 +44,21 @@ void    ImportEngine::setQuery(QSqlQuery *query)
 
 QList<Track*>*   ImportEngine::importPath(QString &path)
 {
+    Track*  track;
+
     Logger::log("ImportEngine - importPath - " + path, LOG_DEBUG);
 
     QDirIterator it(path, QDirIterator::Subdirectories);
      while (it.hasNext())
      {
-         Logger::log("Getting path -> " + it.next(), LOG_DEBUG);
+        it.next();
+        //!TODO : improve error catching
+         if (it.fileInfo().isFile() == false)
+             continue;
+         if (it.fileInfo().isReadable() == false)
+             continue;
+         if (m_supportedExtension.contains(it.fileInfo().suffix().toLower()) == true)
+            Logger::log("File -> " + it.fileInfo().absoluteFilePath(), LOG_DEBUG);
      }
     return NULL;
 }

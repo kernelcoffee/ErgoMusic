@@ -22,6 +22,7 @@
 #include "Media/track.h"
 
 #include <QSqlQuery>
+#include <QStringList>
 
 class ImportEngine
 {
@@ -34,6 +35,7 @@ public:
 private:
     QSqlQuery*  m_query;
 
+    QStringList m_supportedExtension;
 };
 
 #endif // IMPORTENGINE_H
