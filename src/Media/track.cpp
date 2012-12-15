@@ -1,4 +1,5 @@
 #include "track.h"
+#include "collection.h"
 
 // LibTag
 //#include <audioproperties.h>
@@ -58,5 +59,19 @@ void Track::setArtist(QString artist)
 
 void Track::_extractTags()
 {
+//    TagLib::FileRef file(m_file->absoluteFilePath());
 
+//    if (!file.isNull() && file.tag())
+//    {
+//        TagLib::Tag *tag = file.tag();
+//        m_title = tag->title().toCString(true);
+//        m_artist = Collection::instance()->getArtist(tag->title().toCString(true));
+//        m_album = Collection::instance()->getAlbum(tag->album().toCString(), m_artist);
+//        m_year = tag->year();
+//        m_track = tag->track();
+//        m_genre = Collection::instance()->getGenre(tag->genre().toCString());
+//    }
+//    if (!file.isNull() && file.audioProperties())
+//    {}
 }
+

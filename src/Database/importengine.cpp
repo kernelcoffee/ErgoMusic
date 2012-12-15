@@ -47,7 +47,7 @@ QList<Track*>*   ImportEngine::importPath(QString &path)
     Track*  track;
 
     Logger::log("ImportEngine - importPath - " + path, LOG_DEBUG);
-
+    QList<Track*>*  list = new QList<Track*>;
     QDirIterator it(path, QDirIterator::Subdirectories);
      while (it.hasNext())
      {
@@ -58,7 +58,10 @@ QList<Track*>*   ImportEngine::importPath(QString &path)
          if (it.fileInfo().isReadable() == false)
              continue;
          if (m_supportedExtension.contains(it.fileInfo().suffix().toLower()) == true)
-            Logger::log("File -> " + it.fileInfo().absoluteFilePath(), LOG_DEBUG);
+         {
+            track = new Track(it.fileInfo().absoluteFilePath());
+            list->append(track);
+         }
      }
-    return NULL;
+    return list;
 }

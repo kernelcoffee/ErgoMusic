@@ -21,6 +21,28 @@ void Collection::init(QStringList &arguments, QSplashScreen* splash)
 //    DatabaseManager* dbmanager = CoreManager::instance()->database();
 }
 
+Artist* Collection::getArtist(QString& artistName)
+{
+    if (m_artists->contains(artistName) == false)
+        m_artists->insert(artistName, new Artist(artistName));
+    return m_artists->value(artistName);
+}
+
+Album*  Collection::getAlbum(QString albumName, Artist *artist)
+{
+    if (m_albums->contains(albumName) == false ||
+        m_albums->value(albumName)->albumArtist() != artist)
+        m_albums->insert(albumName,new Album(albumName, artist));
+    return m_albums->value(albumName);
+}
+
+Genre*  Collection::getGenre(QString &name)
+{
+    if (m_genres->contains(name) == false)
+        m_genres->insert(name, new Genre(name));
+    return m_genres->value(name);
+}
+
 WatchPlaylist*  Collection::getWatchPlaylist() const
 {
     return m_watchPlaylist;

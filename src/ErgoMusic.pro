@@ -42,7 +42,8 @@ SOURCES += main.cpp\
     Media/album.cpp \
     Media/track.cpp \
     Media/playlist.cpp \
-    Media/watchplaylist.cpp
+    Media/watchplaylist.cpp \
+    Media/genre.cpp
 
 HEADERS  += \
     Database/databasemanager.h \
@@ -68,7 +69,8 @@ HEADERS  += \
     Media/album.h \
     Media/track.h \
     Media/playlist.h \
-    Media/watchplaylist.h
+    Media/watchplaylist.h \
+    Media/genre.h
 
 FORMS    += mainwindow.ui \
     Gui/settingswidget.ui

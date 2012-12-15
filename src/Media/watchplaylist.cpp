@@ -13,7 +13,7 @@ WatchPlaylist::WatchPlaylist(QObject *parent) :
     Logger::log("WatchPlaylist - Constructor", LOG_DEBUG);
     if (settings.value("watchFolderActivated").toBool() == true) {
         _update();
-        directoryChanged(settings.value("watchFolder").toString());
+        _refresh(settings.value("watchFolder").toString());
     }
 }
 
@@ -37,6 +37,8 @@ void    WatchPlaylist::update()
 void    WatchPlaylist::_refresh(QString path)
 {
     Logger::log("WatchPlaylist - _refresh - watchFolder modified at path " + path, LOG_DEBUG);
+    if (m_list == NULL)
+        delete m_list;
     m_list = CoreManager::instance()->database()->importEngine()->importPath(path);
     refreshed();
 }
@@ -55,6 +57,7 @@ void    WatchPlaylist::_update()
             Logger::log("WatchPlaylist - _update - signal not set -> connecting", LOG_DEBUG);
             connect(this, SIGNAL(directoryChanged(QString)), this, SLOT(_refresh(QString)));
         }
+        _refresh(settings.value("watchFolder").toString());
     }
     else
     {
@@ -68,5 +71,4 @@ void    WatchPlaylist::_disable()
     if (receivers(SIGNAL(directoryChanged(QString))) > 0)
         disconnect(this, SIGNAL(directoryChanged(QString)), this, SLOT(_refresh(QString)));
     removePaths(directories());
-
 }

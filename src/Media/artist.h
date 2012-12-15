@@ -12,6 +12,7 @@ class Artist
 {
 public:
     Artist();
+    Artist(QString);
     ~Artist();
 
     QString    name();

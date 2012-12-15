@@ -2,16 +2,19 @@
 #define COLLECTION_H
 
 #include <QVector>
-#include <QMap>
+#include <QHash>
 #include <QSplashScreen>
 
 #include "track.h"
 #include "album.h"
 #include "artist.h"
+#include "genre.h"
 #include "playlist.h"
 #include "watchplaylist.h"
 
 #include "Utilities/singleton.h"
+
+class Genre;
 
 class Collection : public Singleton<Collection>
 {
@@ -21,14 +24,19 @@ public:
     ~Collection();
     void                init(QStringList&, QSplashScreen*);
 
+    Artist*             getArtist(QString&);
+    Album*              getAlbum(QString, Artist*);
+    Genre*              getGenre(QString&);
+
     WatchPlaylist*      getWatchPlaylist() const;
 
     void                createPlaylist(QString name = "");
 public slots:
 protected:
-    QMap<int, Track*>   *m_tracks;
-    QMap<int, Artist*>  *m_artists;
-    QMap<int, Album*>   *m_albums;
+    QVector<Track*>          *m_tracks;
+    QHash<QString, Artist*>  *m_artists;
+    QHash<QString, Album*>   *m_albums;
+    QHash<QString, Genre*>   *m_genres;
 
     QVector<Playlist*>  *m_playlists;
     WatchPlaylist       *m_watchPlaylist;

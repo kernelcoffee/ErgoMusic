@@ -4,6 +4,13 @@ Artist::Artist()
 {
 }
 
+Artist::Artist(QString name)
+{
+    uid = -1;
+    m_name = name;
+    m_photo = NULL;
+}
+
 Artist::~Artist()
 {
 }
