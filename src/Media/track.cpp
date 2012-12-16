@@ -1,5 +1,6 @@
 #include "track.h"
 #include "collection.h"
+#include "Utilities/logger.h"
 
 // LibTag
 //#include <audioproperties.h>
@@ -59,19 +60,32 @@ void Track::setArtist(QString artist)
 
 void Track::_extractTags()
 {
-//    TagLib::FileRef file(m_file->absoluteFilePath());
+    TagLib::FileRef file(m_file->absoluteFilePath().toLocal8Bit().data());
 
-//    if (!file.isNull() && file.tag())
-//    {
-//        TagLib::Tag *tag = file.tag();
-//        m_title = tag->title().toCString(true);
-//        m_artist = Collection::instance()->getArtist(tag->title().toCString(true));
-//        m_album = Collection::instance()->getAlbum(tag->album().toCString(), m_artist);
-//        m_year = tag->year();
-//        m_track = tag->track();
-//        m_genre = Collection::instance()->getGenre(tag->genre().toCString());
-//    }
-//    if (!file.isNull() && file.audioProperties())
-//    {}
+    if (!file.isNull() && file.tag())
+    {
+        TagLib::Tag *tag = file.tag();
+        m_title = tag->title().toCString(true);
+        m_artist = Collection::instance()->getArtist(QString(tag->artist().toCString(true)));
+        m_album = Collection::instance()->getAlbum(QString(tag->album().toCString(true)), m_artist);
+        m_year = (int)tag->year();
+        m_track = tag->track();
+        m_genre = Collection::instance()->getGenre(QString(tag->genre().toCString(true)));
+        Logger::log("Album " + m_album->name() + " Artist " + m_artist->name() + " Title " + m_title + " file " + m_file->fileName(), LOG_DEBUG);
+    }
+    if (!file.isNull() && file.audioProperties())
+    {
+        TagLib::AudioProperties *properties = file.audioProperties();
+        m_bitrate = properties->bitrate();
+        m_sampleRate = properties->sampleRate();
+        m_channels = properties->channels();
+        m_duration = properties->length();
+        Logger::log("bitrate " + QString::number(m_bitrate) + " samplerate " + QString::number(m_sampleRate) + " Channels " + QString::number(m_channels) + " duration " + QString::number(m_duration), LOG_DEBUG);
+    }
+
+    if (m_album->illustration()->isNull())
+    {
+
+    }
 }
 

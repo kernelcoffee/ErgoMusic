@@ -5,6 +5,11 @@
 Collection::Collection()
 {
     Logger::log("Create collection instance", LOG_DEBUG);
+
+    m_artists = new QHash<QString, Artist*>;
+    m_albums = new QHash<QString, Album*>;
+    m_genres = new QHash<QString, Genre*>;
+    m_tracks = new QVector<Track*>;
 }
 
 
@@ -21,9 +26,9 @@ void Collection::init(QStringList &arguments, QSplashScreen* splash)
 //    DatabaseManager* dbmanager = CoreManager::instance()->database();
 }
 
-Artist* Collection::getArtist(QString& artistName)
+Artist* Collection::getArtist(QString artistName)
 {
-    if (m_artists->contains(artistName) == false)
+    while (m_artists->contains(artistName) == false)
         m_artists->insert(artistName, new Artist(artistName));
     return m_artists->value(artistName);
 }
@@ -36,7 +41,7 @@ Album*  Collection::getAlbum(QString albumName, Artist *artist)
     return m_albums->value(albumName);
 }
 
-Genre*  Collection::getGenre(QString &name)
+Genre*  Collection::getGenre(QString name)
 {
     if (m_genres->contains(name) == false)
         m_genres->insert(name, new Genre(name));

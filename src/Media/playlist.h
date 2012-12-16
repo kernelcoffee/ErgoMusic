@@ -5,6 +5,8 @@
 #include <QMap>
 #include <QList>
 
+class Track;
+
 class Playlist
 {
 public:

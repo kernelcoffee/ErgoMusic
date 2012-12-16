@@ -2,6 +2,7 @@
 #define PLAYLISTWIDGET_H
 
 #include <QWidget>
+#include <QTreeView>
 
 class PlaylistWidget : public QWidget
 {
@@ -13,6 +14,8 @@ signals:
     
 public slots:
     
+private:
+    QTreeView*  m_view;
 };
 
 #endif // PLAYLISTWIDGET_H

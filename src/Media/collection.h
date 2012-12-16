@@ -15,6 +15,10 @@
 #include "Utilities/singleton.h"
 
 class Genre;
+class Artist;
+class Album;
+class Playlist;
+class WatchPlaylist;
 
 class Collection : public Singleton<Collection>
 {
@@ -24,9 +28,9 @@ public:
     ~Collection();
     void                init(QStringList&, QSplashScreen*);
 
-    Artist*             getArtist(QString&);
+    Artist*             getArtist(QString);
     Album*              getAlbum(QString, Artist*);
-    Genre*              getGenre(QString&);
+    Genre*              getGenre(QString);
 
     WatchPlaylist*      getWatchPlaylist() const;
 

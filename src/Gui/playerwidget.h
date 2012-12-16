@@ -12,7 +12,8 @@ public:
 signals:
     
 public slots:
-    
+
+private:
 };
 
 #endif // PLAYERWIDGET_H

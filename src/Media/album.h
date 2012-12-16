@@ -46,7 +46,7 @@ private:
     QImage          *m_illustration;
 
     int             m_uid, m_year, m_disk, m_diskTotal;
-    QString         m_name, *m_description;
+    QString         m_name, m_description;
 };
 
 #endif // ALBUM_H

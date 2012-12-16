@@ -17,3 +17,19 @@ Artist* Album::albumArtist() const
 {
     return m_albumArtist;
 }
+
+QImage* Album::illustration() const
+{
+    return m_illustration;
+}
+
+QString Album::name() const
+{
+    return m_name;
+}
+
+QString Album::description() const
+{
+    return m_description;
+}
+

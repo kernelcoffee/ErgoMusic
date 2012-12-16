@@ -1,4 +1,5 @@
 #include "artist.h"
+#include "Utilities/logger.h"
 
 Artist::Artist()
 {
@@ -6,6 +7,7 @@ Artist::Artist()
 
 Artist::Artist(QString name)
 {
+    Logger::log("Creating artist instance for " + name, LOG_DEBUG);
     uid = -1;
     m_name = name;
     m_photo = NULL;
