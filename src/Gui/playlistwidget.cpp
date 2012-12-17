@@ -7,8 +7,7 @@ PlaylistWidget::PlaylistWidget(QWidget *parent) :
 {
     QGridLayout* layout = new QGridLayout(this);
     m_view     = new QTreeView();
-    layout->addWidget(view);
+    layout->addWidget(m_view);
     setLayout(layout);
-
     m_view->setHeaderHidden(true);
 }

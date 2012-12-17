@@ -8,6 +8,7 @@ Album::Album(QString title, Artist *artist)
 {
     m_name = title;
     m_albumArtist = artist;
+    m_illustration = NULL;
 }
 
 Album::~Album()

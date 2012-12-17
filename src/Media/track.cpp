@@ -83,7 +83,7 @@ void Track::_extractTags()
         Logger::log("bitrate " + QString::number(m_bitrate) + " samplerate " + QString::number(m_sampleRate) + " Channels " + QString::number(m_channels) + " duration " + QString::number(m_duration), LOG_DEBUG);
     }
 
-    if (m_album->illustration()->isNull())
+    if (m_album->illustration() == NULL)
     {
 
     }

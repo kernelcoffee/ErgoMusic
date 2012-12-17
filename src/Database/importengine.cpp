@@ -49,7 +49,7 @@ QList<Track*>*   ImportEngine::importPath(QString &path)
     Logger::log("ImportEngine - importPath - " + path, LOG_DEBUG);
     QList<Track*>*  list = new QList<Track*>;
     QDirIterator it(path, QDirIterator::Subdirectories);
-     while (it.hasNext())
+    while (it.hasNext())
      {
         it.next();
         //!TODO : improve error catching
@@ -63,5 +63,6 @@ QList<Track*>*   ImportEngine::importPath(QString &path)
             list->append(track);
          }
      }
+    Logger::log("Returning import list", LOG_DEBUG);
     return list;
 }
