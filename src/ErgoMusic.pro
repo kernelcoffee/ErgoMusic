@@ -43,7 +43,8 @@ SOURCES += main.cpp\
     Media/track.cpp \
     Media/playlist.cpp \
     Media/watchplaylist.cpp \
-    Media/genre.cpp
+    Media/genre.cpp \
+    Gui/playlistwidgetmodel.cpp
 
 HEADERS  += \
     Database/databasemanager.h \
@@ -70,7 +71,8 @@ HEADERS  += \
     Media/track.h \
     Media/playlist.h \
     Media/watchplaylist.h \
-    Media/genre.h
+    Media/genre.h \
+    Gui/playlistwidgetmodel.h
 
 FORMS    += mainwindow.ui \
     Gui/settingswidget.ui
@@ -81,14 +83,3 @@ RESOURCES += \
 TRANSLATIONS += \
     Ressources/languages/lang_en_US.ts \
     Ressources/languages/lang_fr_FR.ts
-
-
-
-
-
-
-
-
-
-
-
