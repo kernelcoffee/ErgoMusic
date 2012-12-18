@@ -44,7 +44,10 @@ SOURCES += main.cpp\
     Media/playlist.cpp \
     Media/watchplaylist.cpp \
     Media/genre.cpp \
-    Gui/playlistwidgetmodel.cpp
+    Gui/playlistwidgetmodel.cpp \
+    Gui/playlistwidgetitem.cpp \
+    Gui/Models/treeitem.cpp \
+    Gui/Models/treemodel.cpp
 
 HEADERS  += \
     Database/databasemanager.h \
@@ -72,7 +75,10 @@ HEADERS  += \
     Media/playlist.h \
     Media/watchplaylist.h \
     Media/genre.h \
-    Gui/playlistwidgetmodel.h
+    Gui/playlistwidgetmodel.h \
+    Gui/playlistwidgetitem.h \
+    Gui/Models/treeitem.h \
+    Gui/Models/treemodel.h
 
 FORMS    += mainwindow.ui \
     Gui/settingswidget.ui

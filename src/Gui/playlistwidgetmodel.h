@@ -1,17 +1,23 @@
 #ifndef PLAYLISTWIDGETMODEL_H
 #define PLAYLISTWIDGETMODEL_H
 
-#include <QAbstractItemModel>
+#include <QStringList>
 
-class PlaylistWidgetModel : public QAbstractItemModel
+#include "Models/treemodel.h"
+#include "playlistwidgetitem.h"
+
+class PlaylistWidgetModel : public TreeModel
 {
     Q_OBJECT
 public:
-    explicit PlaylistWidgetModel(QObject *parent = 0);
+    explicit PlaylistWidgetModel();
+    QVariant    data(const QModelIndex&, int role) const;
 signals:
     
 public slots:
-    
+
+protected:
+    void    setupModelData();
 };
 
 #endif // PLAYLISTWIDGETMODEL_H
