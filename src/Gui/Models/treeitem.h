@@ -4,10 +4,11 @@
 #include <QList>
 #include <QVariant>
 #include <QModelIndex>
+#include <QTreeWidgetItem>
 
 // For doc, TreeItem extracted from the treeview exemple on qt-project
 
-class TreeItem
+class TreeItem : public QTreeWidgetItem
 {
 public:
     TreeItem(const QList<QVariant> &data, TreeItem *parent = 0);

@@ -11,7 +11,8 @@ class PlaylistWidgetModel : public TreeModel
     Q_OBJECT
 public:
     explicit PlaylistWidgetModel();
-    QVariant    data(const QModelIndex&, int role) const;
+//    QVariant    data(const QModelIndex&, int role) const;
+
 signals:
     
 public slots:

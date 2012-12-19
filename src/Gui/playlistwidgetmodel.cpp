@@ -25,37 +25,27 @@ PlaylistWidgetModel::PlaylistWidgetModel() : TreeModel()
     setupModelData();
 }
 
-QVariant    PlaylistWidgetModel::data(const QModelIndex &index, int role) const
-{
-    Logger::log("PlaylistWidgetModel - data");
-    if (!index.isValid())
-        return QVariant();
-    if (role != Qt::DisplayRole)
-        return QVariant();
-
-    PlaylistWidgetItem* item = static_cast<PlaylistWidgetItem*>(index.internalPointer());
-
-    if (role == Qt::ToolTipRole)
-        return item->data(index.column());
-
-    return qVariantFromValue((void*)item);
-}
-
 void    PlaylistWidgetModel::setupModelData()
 {
     Logger::log("PlaylistWidgetModel - setupModelData", LOG_DEBUG);
 
+    // Default menus
     PlaylistWidgetItem* librarySection = new PlaylistWidgetItem(QString("Library"), rootItem);
+    librarySection->setFlags(Qt::NoItemFlags);
     rootItem->appendChild(librarySection);
 
     PlaylistWidgetItem* music = new PlaylistWidgetItem("music", librarySection);
     librarySection->appendChild(music);
 
+    // Playlist
     PlaylistWidgetItem* playlistSection = new PlaylistWidgetItem("Playlist", rootItem);
+    playlistSection->setDisabled(true);
     rootItem->appendChild(playlistSection);
-
+    // Watchlist
     PlaylistWidgetItem* watchlist = new PlaylistWidgetItem("watchplaylist", playlistSection);
     playlistSection->appendChild(watchlist);
+    // DynamicPlaylist
+    // StaticPlaylist
 
     Logger::log("PlaylistWidgetModel - setupModelData - END", LOG_DEBUG);
 }

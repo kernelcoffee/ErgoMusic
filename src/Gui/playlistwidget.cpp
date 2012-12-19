@@ -14,4 +14,8 @@ PlaylistWidget::PlaylistWidget(QWidget *parent) :
     setLayout(layout);
     m_view->setHeaderHidden(true);
     m_view->setModel(model);
+    m_view->setAnimated(true);
+    m_view->expandAll();
+    m_view->setIndentation(15);
+    m_view->setFocusPolicy(Qt::NoFocus);
 }
