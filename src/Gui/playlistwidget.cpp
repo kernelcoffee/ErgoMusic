@@ -1,5 +1,8 @@
 #include "playlistwidget.h"
 #include "playlistwidgetmodel.h"
+
+#include "Utilities/logger.h"
+
 #include <QGridLayout>
 #include <QTreeView>
 
@@ -18,4 +21,10 @@ PlaylistWidget::PlaylistWidget(QWidget *parent) :
     m_view->expandAll();
     m_view->setIndentation(15);
     m_view->setFocusPolicy(Qt::NoFocus);
+    connect(m_view, SIGNAL(clicked(QModelIndex)), this, SLOT(selected(QModelIndex)));
+}
+
+void    PlaylistWidget::selected(QModelIndex index)
+{
+    Logger::log("Selected Item", LOG_DEBUG);
 }

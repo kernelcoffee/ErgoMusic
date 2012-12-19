@@ -13,6 +13,7 @@ public:
 signals:
     
 public slots:
+    void    selected(QModelIndex);
     
 private:
     QTreeView*  m_view;
