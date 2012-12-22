@@ -26,5 +26,11 @@ PlaylistWidget::PlaylistWidget(QWidget *parent) :
 
 void    PlaylistWidget::selected(QModelIndex index)
 {
-    Logger::log("Selected Item", LOG_DEBUG);
+    PlaylistWidgetItem* data = static_cast<PlaylistWidgetItem*>(index.internalPointer());
+    selected(data->getType(), data->getIndex());
+}
+
+void    PlaylistWidget::update()
+{
+
 }

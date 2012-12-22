@@ -63,6 +63,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     initMenuBarActions();
     initMenuBar();
+    initSignals();
  }
 
 MainWindow::~MainWindow()
@@ -191,6 +192,11 @@ void    MainWindow::initMenuBarActions()
     m_aboutErgoMusic->setStatusTip(tr("Display informations about ErgoMusic"));
     connect(m_aboutErgoMusic, SIGNAL(triggered()), this, SLOT(aboutErgoMusic()));
     Logger::log("init menuBar Action - END", LOG_DEBUG);
+}
+
+void    MainWindow::initSignals()
+{
+    connect(m_playlistWidget, SIGNAL(selected(int,int)), m_viewWidget, SLOT(selected(int,int)));
 }
 
 // SLOTS

@@ -5,6 +5,8 @@
 
 #include <QFileSystemWatcher>
 
+class Track;
+
 class WatchPlaylist : public QFileSystemWatcher
 {
     Q_OBJECT

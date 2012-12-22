@@ -47,7 +47,10 @@ SOURCES += main.cpp\
     Gui/playlistwidgetmodel.cpp \
     Gui/playlistwidgetitem.cpp \
     Gui/Models/treeitem.cpp \
-    Gui/Models/treemodel.cpp
+    Gui/Models/treemodel.cpp \
+    Gui/Models/tablemodel.cpp \
+    Gui/viewwidgetmodel.cpp \
+    Gui/Views/tableviewwidget.cpp
 
 HEADERS  += \
     Database/databasemanager.h \
@@ -78,7 +81,10 @@ HEADERS  += \
     Gui/playlistwidgetmodel.h \
     Gui/playlistwidgetitem.h \
     Gui/Models/treeitem.h \
-    Gui/Models/treemodel.h
+    Gui/Models/treemodel.h \
+    Gui/Models/tablemodel.h \
+    Gui/viewwidgetmodel.h \
+    Gui/Views/tableviewwidget.h
 
 FORMS    += mainwindow.ui \
     Gui/settingswidget.ui

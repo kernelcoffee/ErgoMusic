@@ -11,10 +11,11 @@ public:
     explicit PlaylistWidget(QWidget *parent = 0);
     
 signals:
-    
+    void    selected(int, int);
 public slots:
     void    selected(QModelIndex);
-    
+    void    update();
+
 private:
     QTreeView*  m_view;
 };

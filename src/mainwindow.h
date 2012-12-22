@@ -61,6 +61,7 @@ public slots:
 private:
     void    initMenuBar();
     void    initMenuBarActions();
+    void    initSignals();
 
     Ui::MainWindow *ui;
 

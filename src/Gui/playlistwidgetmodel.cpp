@@ -34,7 +34,7 @@ void    PlaylistWidgetModel::setupModelData()
     librarySection->setFlags(Qt::NoItemFlags);
     rootItem->appendChild(librarySection);
 
-    PlaylistWidgetItem* music = new PlaylistWidgetItem("music", librarySection);
+    PlaylistWidgetItem* music = new PlaylistWidgetItem("music", PlaylistWidgetItem::LIBRARY, librarySection);
     librarySection->appendChild(music);
 
     // Playlist
@@ -42,7 +42,7 @@ void    PlaylistWidgetModel::setupModelData()
     playlistSection->setDisabled(true);
     rootItem->appendChild(playlistSection);
     // Watchlist
-    PlaylistWidgetItem* watchlist = new PlaylistWidgetItem("watchplaylist", playlistSection);
+    PlaylistWidgetItem* watchlist = new PlaylistWidgetItem("watchplaylist", PlaylistWidgetItem::WATCHPLAYLIST, playlistSection);
     playlistSection->appendChild(watchlist);
     // DynamicPlaylist
     // StaticPlaylist
