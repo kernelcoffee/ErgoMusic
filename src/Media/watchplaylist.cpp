@@ -6,11 +6,14 @@
 #include <QDir>
 
 WatchPlaylist::WatchPlaylist(QObject *parent) :
-    QFileSystemWatcher(parent)
+    AbstractPlaylist(parent)
 {
     QSettings   settings;
 
     Logger::log("WatchPlaylist - Constructor", LOG_DEBUG);
+
+    m_watchfolder = new QFileSystemWatcher();
+
     if (settings.value("watchFolderActivated").toBool() == true) {
         _update();
         _refresh(settings.value("watchFolder").toString());
@@ -18,7 +21,10 @@ WatchPlaylist::WatchPlaylist(QObject *parent) :
 }
 
 WatchPlaylist::~WatchPlaylist()
-{}
+{
+    delete m_watchfolder;
+    _disable();
+}
 
 void    WatchPlaylist::update()
 {
@@ -51,11 +57,12 @@ void    WatchPlaylist::_update()
     if (watchFolder.exists())
     {
         Logger::log("WatchPlaylist - Path correct : " + watchFolder.absolutePath(), LOG_DEBUG);
-        removePaths(directories());
-        addPath(watchFolder.absolutePath());
-        if (receivers(SIGNAL(directoryChanged(QString))) == 0) {
+        m_watchfolder->removePaths(m_watchfolder->directories());
+        m_watchfolder->addPath(watchFolder.absolutePath());
+
+        if (QObject::receivers(SIGNAL(directoryChanged(QString))) == 0) {
             Logger::log("WatchPlaylist - _update - signal not set -> connecting", LOG_DEBUG);
-            connect(this, SIGNAL(directoryChanged(QString)), this, SLOT(_refresh(QString)));
+            connect(m_watchfolder, SIGNAL(directoryChanged(QString)), this, SLOT(_refresh(QString)));
         }
         _refresh(settings.value("watchFolder").toString());
     }
@@ -68,7 +75,7 @@ void    WatchPlaylist::_update()
 void    WatchPlaylist::_disable()
 {
     Logger::log("WatchPlaylist - _disable", LOG_DEBUG);
-    if (receivers(SIGNAL(directoryChanged(QString))) > 0)
-        disconnect(this, SIGNAL(directoryChanged(QString)), this, SLOT(_refresh(QString)));
-    removePaths(directories());
+    if (QObject::receivers(SIGNAL(directoryChanged(QString))) > 0)
+        disconnect(m_watchfolder, SIGNAL(directoryChanged(QString)), this, SLOT(_refresh(QString)));
+    m_watchfolder->removePaths(m_watchfolder->directories());
 }

@@ -13,13 +13,14 @@
 //#include <apetag.h>
 //#include <attachedpictureframe.h>
 
-Track::Track()
-{
-}
 
-Track::Track(QString path)
+//Track::Track(QUrl path)
+//{}
+
+Track::Track(QUrl path) :
+    QMediaContent(path)
 {
-    m_file = new QFileInfo(path);
+    m_file = new QFileInfo(path.path());
     _extractTags();
 }
 

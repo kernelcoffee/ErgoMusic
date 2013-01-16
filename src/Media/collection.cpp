@@ -55,6 +55,6 @@ WatchPlaylist*  Collection::getWatchPlaylist() const
 
 void Collection::createPlaylist(QString name)
 {
-    m_playlists->append(new Playlist(name));
+//    m_playlists->append(new Playlist(name));
 }
 

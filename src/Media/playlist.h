@@ -2,19 +2,21 @@
 #define PLAYLIST_H
 
 #include "track.h"
+#include "Utilities/Abstract/abstractplaylist.h"
 
-class Track;
 
-class Playlist
+class Playlist : public AbstractPlaylist
 {
+    Q_OBJECT
 public:
-    Playlist(QObject* parent = 0);
-    Playlist(QString, QObject* parent = 0);
-    ~Playlist();
+    explicit Playlist(QObject *parent = 0);
+//    Playlist();
+//    ~Playlist();
+    
+signals:
+    
+public slots:
 
-    void    addTrack(Track*);
-private:
-    QString         m_name;
 };
 
 #endif // PLAYLIST_H

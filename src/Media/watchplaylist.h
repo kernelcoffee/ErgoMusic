@@ -2,16 +2,17 @@
 #define WATCHPLAYLIST_H
 
 #include "track.h"
+#include "Utilities/Abstract/abstractplaylist.h"
 
 #include <QFileSystemWatcher>
 
 class Track;
 
-class WatchPlaylist : public QFileSystemWatcher
+class WatchPlaylist : public AbstractPlaylist
 {
     Q_OBJECT
 public:
-    explicit WatchPlaylist(QObject *parent = 0);
+    WatchPlaylist(QObject *parent = 0);
     ~WatchPlaylist();
 signals:
     void            refreshed();
@@ -22,7 +23,7 @@ private slots:
 private:
     void            _update();
     void            _disable();
-    QList<Track*>   *m_list;
+    QFileSystemWatcher*  m_watchfolder;
 };
 
 #endif // WATCHPLAYLIST_H

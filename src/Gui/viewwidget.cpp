@@ -22,6 +22,7 @@ ViewWidget::ViewWidget(QWidget *parent) :
 
 void    ViewWidget::selected(int type, int index)
 {
+    Logger::log("ViewWwdget::selected - type : " + QString::number(type) + " index : " + QString::number(index));
     switch (type)
     {
     case (PlaylistWidgetItem::WATCHPLAYLIST) :

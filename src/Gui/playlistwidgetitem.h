@@ -12,7 +12,7 @@ public:
     PlaylistWidgetItem(const QString title, Type type = INVALID, TreeItem* parent = 0);
     PlaylistWidgetItem(const QString title, Type type = INVALID, int index = 0, TreeItem* parent = 0);
 
-    Type        getType(void) const;
+    Type       getType(void) const;
     int        getIndex(void) const;
 private:
     Type    m_type;

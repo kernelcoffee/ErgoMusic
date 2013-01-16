@@ -6,16 +6,17 @@
 #include "genre.h"
 
 #include <QFileInfo>
+#include <QUrl>
+#include <QMediaContent>
 
 class Artist;
 class Album;
 class Genre;
 
-class Track
+class Track : public QMediaContent
 {
 public:
-    Track();
-    Track(QString);
+    Track(QUrl);
     ~Track();
 
     int         uid();

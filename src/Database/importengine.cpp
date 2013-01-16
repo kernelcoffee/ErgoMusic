@@ -20,6 +20,7 @@
 #include "importengine.h"
 
 #include <QDirIterator>
+#include <QUrl>
 
 ImportEngine::ImportEngine()
 {
@@ -59,7 +60,8 @@ QList<Track*>*   ImportEngine::importPath(QString &path)
              continue;
          if (m_supportedExtension.contains(it.fileInfo().suffix().toLower()) == true)
          {
-            track = new Track(it.fileInfo().absoluteFilePath());
+//             track = new Track(it.fileInfo().absoluteFilePath());
+             track = new Track(QUrl(it.fileInfo().absoluteFilePath()));
             list->append(track);
          }
      }
