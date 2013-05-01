@@ -2,6 +2,8 @@
 #define VIEWWIDGET_H
 
 #include <QWidget>
+#include "viewwidgetmodel.h"
+
 
 
 class ViewWidget : public QWidget
@@ -17,6 +19,7 @@ public slots:
     void    selected(int, int);
 private:
     Type    m_type;
+    ViewWidgetModel*    _model;
 };
 
 #endif // VIEWWIDGET_H

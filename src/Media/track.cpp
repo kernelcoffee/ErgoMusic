@@ -72,7 +72,7 @@ void Track::_extractTags()
         m_year = (int)tag->year();
         m_track = tag->track();
         m_genre = Collection::instance()->getGenre(QString(tag->genre().toCString(true)));
-        Logger::log("Album " + m_album->name() + " Artist " + m_artist->name() + " Title " + m_title + " file " + m_file->fileName(), LOG_DEBUG);
+        //Logger::log("Album " + m_album->name() + " Artist " + m_artist->name() + " Title " + m_title + " file " + m_file->fileName(), LOG_DEBUG);
     }
     if (!file.isNull() && file.audioProperties())
     {
@@ -81,11 +81,8 @@ void Track::_extractTags()
         m_sampleRate = properties->sampleRate();
         m_channels = properties->channels();
         m_duration = properties->length();
-        Logger::log("bitrate " + QString::number(m_bitrate) + " samplerate " + QString::number(m_sampleRate) + " Channels " + QString::number(m_channels) + " duration " + QString::number(m_duration), LOG_DEBUG);
+//        Logger::log("bitrate " + QString::number(m_bitrate) + " samplerate " + QString::number(m_sampleRate) + " Channels " + QString::number(m_channels) + " duration " + QString::number(m_duration), LOG_DEBUG);
     }
 
-    if (m_album->illustration() == NULL)
-    {
-
-    }
+    /// TODO Illustration
 }

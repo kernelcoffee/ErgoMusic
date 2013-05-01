@@ -4,6 +4,7 @@
 
 #include <QSettings>
 #include <QDir>
+#include <Qt/QtConcurrent>
 
 WatchPlaylist::WatchPlaylist(QObject *parent) :
     AbstractPlaylist(parent)
@@ -16,7 +17,6 @@ WatchPlaylist::WatchPlaylist(QObject *parent) :
 
     if (settings.value("watchFolderActivated").toBool() == true) {
         _update();
-        _refresh(settings.value("watchFolder").toString());
     }
 }
 
@@ -64,7 +64,8 @@ void    WatchPlaylist::_update()
             Logger::log("WatchPlaylist - _update - signal not set -> connecting", LOG_DEBUG);
             connect(m_watchfolder, SIGNAL(directoryChanged(QString)), this, SLOT(_refresh(QString)));
         }
-        _refresh(settings.value("watchFolder").toString());
+        QtConcurrent::run(this, &WatchPlaylist::_refresh, settings.value("watchFolder").toString());
+       // m_watchfolder->directoryChanged(settings.value("watchFolder").toString());
     }
     else
     {

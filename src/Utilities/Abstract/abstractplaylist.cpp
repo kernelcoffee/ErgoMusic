@@ -20,3 +20,8 @@ AbstractPlaylist::Type    AbstractPlaylist::getType(void) const
 {
     return m_type;
 }
+
+QList<Track*>*  AbstractPlaylist::getList(void) const
+{
+    return m_list;
+}

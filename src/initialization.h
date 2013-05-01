@@ -21,7 +21,6 @@
 
 #include <QSplashScreen>
 #include <QtCore/QTranslator>
-#include <QSplashScreen>
 
 class Initialization
 {

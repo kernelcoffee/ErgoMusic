@@ -8,6 +8,7 @@
 
 class Track;
 
+
 class WatchPlaylist : public AbstractPlaylist
 {
     Q_OBJECT
