@@ -2,14 +2,16 @@
 #define VIEWWIDGET_H
 
 #include <QWidget>
-#include "Models/tablemodel.h"
+#include <QHBoxLayout>
 
+class AbstractPlaylist;
 
 class ViewWidget : public QWidget
 {
     Q_OBJECT
 public:
-    enum Type {INVALID, TABLE};
+    enum ViewType {INVALID, LIST};
+
     explicit ViewWidget(QWidget *parent = 0);
     
 signals:
@@ -17,8 +19,10 @@ signals:
 public slots:
     void    selected(int, int);
 private:
-    Type    m_type;
-    TableModel*    _model;
+    void            _selectView(ViewType, AbstractPlaylist*);
+
+//    ViewType        m_type;
+    QHBoxLayout*    m_layout;
 };
 
 #endif // VIEWWIDGET_H

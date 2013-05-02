@@ -5,16 +5,13 @@ AbstractPlaylist::AbstractPlaylist(QObject *parent) :
 {
 }
 
-//AbstractPlaylist::AbstractPlaylist(QObject *parent) :
-//    QMediaPlaylist(parent)
-//{
-//}
-
-//AbstractPlaylist::AbstractPlaylist()
-//{}
-
 AbstractPlaylist::~AbstractPlaylist()
 {}
+
+void AbstractPlaylist::setViewType(ViewWidget::ViewType type)
+{
+    m_viewType = type;
+}
 
 AbstractPlaylist::Type    AbstractPlaylist::getType(void) const
 {
@@ -24,4 +21,9 @@ AbstractPlaylist::Type    AbstractPlaylist::getType(void) const
 QList<Track*>*  AbstractPlaylist::getList(void) const
 {
     return m_list;
+}
+
+ViewWidget::ViewType AbstractPlaylist::getViewType() const
+{
+    return m_viewType;
 }

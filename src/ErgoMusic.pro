@@ -45,12 +45,13 @@ SOURCES += main.cpp\
     Gui/Models/treeitem.cpp \
     Gui/Models/treemodel.cpp \
     Gui/Models/tablemodel.cpp \
-    Gui/Views/tableviewwidget.cpp \
     Utilities/Abstract/abstractplaylist.cpp \
     Media/playlist.cpp \
     Gui/sidebarwidgetitem.cpp \
     Gui/Models/sidebarwidgetmodel.cpp \
-    Gui/sidebarwidget.cpp
+    Gui/sidebarwidget.cpp \
+    Gui/Views/listview.cpp \
+    Gui/Models/listviewmodel.cpp
 
 HEADERS  += \
     Database/databasemanager.h \
@@ -79,12 +80,13 @@ HEADERS  += \
     Gui/Models/treeitem.h \
     Gui/Models/treemodel.h \
     Gui/Models/tablemodel.h \
-    Gui/Views/tableviewwidget.h \
     Utilities/Abstract/abstractplaylist.h \
     Media/playlist.h \
     Gui/sidebarwidgetitem.h \
     Gui/sidebarwidget.h \
-    Gui/Models/sidebarwidgetmodel.h
+    Gui/Models/sidebarwidgetmodel.h \
+    Gui/Views/listview.h \
+    Gui/Models/listviewmodel.h
 
 FORMS    += mainwindow.ui \
     Gui/settingswidget.ui

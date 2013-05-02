@@ -1,45 +1,46 @@
 #include "viewwidget.h"
-#include "Views/tableviewwidget.h"
-#include "Media/collection.h"
-#include "sidebarwidgetitem.h"
-#include "Models/tablemodel.h"
 #include "Utilities/logger.h"
 #include "Media/collection.h"
+#include "sidebarwidgetitem.h"
+
+#include "Views/listview.h"
+#include "Models/listviewmodel.h"
+#include "Models/tablemodel.h"
 
 #include <QHBoxLayout>
-#include <QTableView>
 
 ViewWidget::ViewWidget(QWidget *parent) :
     QWidget(parent)
 {
-    QHBoxLayout* layout = new QHBoxLayout(this);
-    QTableView*  view = new QTableView();
-//    QTreeView*  view = new QTreeView();
-    _model = new TableModel;
-//view->setHorizontalHeader(_model->getHeader());
+    m_layout = new QHBoxLayout(this);
 
-    view->horizontalHeader()->setSortIndicatorShown(true);
 
-    layout->addWidget(view);
-    setLayout(layout);
+//    QTableView*  view = new QTableView();
+//    _model = new TableModel;
 
-    view->setModel(_model);
+//    view->horizontalHeader()->setSortIndicatorShown(true);
+
+//    m_layout->addWidget(view);
+    setLayout(m_layout);
+
+//    view->setModel(_model);
 //    view->setFocusPolicy(Qt::NoFocus);
-    view->setAlternatingRowColors(true);
+//    view->setAlternatingRowColors(true);
 //    view->setHorizontalHeader(_model->getHeader());
-    view->setSelectionBehavior(QAbstractItemView::SelectRows);
-    view->setSelectionMode(QAbstractItemView::SingleSelection);
+//    view->setSelectionBehavior(QAbstractItemView::SelectRows);
+//    view->setSelectionMode(QAbstractItemView::SingleSelection);
 }
 
 void    ViewWidget::selected(int type, int index)
 {
-    Logger::log("ViewWwdget::selected - type : " + QString::number(type) + " index : " + QString::number(index), LOG_DEBUG);
+    Logger::log("ViewWidget::selected - type : " + QString::number(type) + " index : " + QString::number(index), LOG_DEBUG);
 
     switch (type)
     {
     case (SidebarWidgetItem::WATCHPLAYLIST) :
         Logger::log("ViewWidget::selected - WatchPlaylist selected", LOG_DEBUG);
-        _model->setPlaylist(Collection::instance()->getWatchPlaylist());
+        _selectView(Collection::instance()->getWatchPlaylist()->getViewType(), Collection::instance()->getWatchPlaylist());
+//        _model->setPlaylist(Collection::instance()->getWatchPlaylist());
         break;
     case (SidebarWidgetItem::PLAYLIST):
         Logger::log("ViewWidget::selected - Playlist selected", LOG_DEBUG);
@@ -52,4 +53,20 @@ void    ViewWidget::selected(int type, int index)
         break;
     }
     update();
+}
+
+void ViewWidget::_selectView(ViewType type, AbstractPlaylist* playlist)
+{
+    QLayoutItem *item;
+    delete m_layout->takeAt(0);
+
+    switch (type) {
+    default:
+        ListView* view = new ListView;
+        m_layout->addWidget(view);
+        ListViewModel*  model = new ListViewModel;
+        model->setPlaylist(playlist);
+        view->setModel(model);
+        break;
+    }
 }
