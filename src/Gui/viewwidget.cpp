@@ -1,7 +1,8 @@
 #include "viewwidget.h"
 #include "Views/tableviewwidget.h"
 #include "Media/collection.h"
-#include "playlistwidgetitem.h"
+#include "sidebarwidgetitem.h"
+#include "Models/tablemodel.h"
 #include "Utilities/logger.h"
 #include "Media/collection.h"
 
@@ -13,8 +14,9 @@ ViewWidget::ViewWidget(QWidget *parent) :
 {
     QHBoxLayout* layout = new QHBoxLayout(this);
     QTableView*  view = new QTableView();
-    _model = new ViewWidgetModel;
-//    view->setHorizontalHeader(model->getHeader());
+//    QTreeView*  view = new QTreeView();
+    _model = new TableModel;
+//view->setHorizontalHeader(_model->getHeader());
 
     view->horizontalHeader()->setSortIndicatorShown(true);
 
@@ -22,9 +24,11 @@ ViewWidget::ViewWidget(QWidget *parent) :
     setLayout(layout);
 
     view->setModel(_model);
-    view->setFocusPolicy(Qt::NoFocus);
+//    view->setFocusPolicy(Qt::NoFocus);
     view->setAlternatingRowColors(true);
+//    view->setHorizontalHeader(_model->getHeader());
     view->setSelectionBehavior(QAbstractItemView::SelectRows);
+    view->setSelectionMode(QAbstractItemView::SingleSelection);
 }
 
 void    ViewWidget::selected(int type, int index)
@@ -33,14 +37,14 @@ void    ViewWidget::selected(int type, int index)
 
     switch (type)
     {
-    case (PlaylistWidgetItem::WATCHPLAYLIST) :
+    case (SidebarWidgetItem::WATCHPLAYLIST) :
         Logger::log("ViewWidget::selected - WatchPlaylist selected", LOG_DEBUG);
         _model->setPlaylist(Collection::instance()->getWatchPlaylist());
         break;
-    case (PlaylistWidgetItem::PLAYLIST):
+    case (SidebarWidgetItem::PLAYLIST):
         Logger::log("ViewWidget::selected - Playlist selected", LOG_DEBUG);
         break;
-    case (PlaylistWidgetItem::DPLAYLIST):
+    case (SidebarWidgetItem::DPLAYLIST):
         Logger::log("ViewWidget::selected - Dyanmic Playlist selected", LOG_DEBUG);
         break;
     default:

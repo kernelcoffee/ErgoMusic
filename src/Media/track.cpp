@@ -52,11 +52,55 @@ void Track::setUid(int uid)
 void Track::setTitle(QString title)
 {
     m_title = title;
+    m_data["title"] = m_title;
 }
 
 void Track::setArtist(QString artist)
 {
-    m_artist->setName(artist);
+//    m_artist->setName(artist);
+}
+
+void Track::setArtist(Artist *artist)
+{
+    m_artist = artist;
+}
+
+
+void Track::setAlbum(QString)
+{
+    //
+}
+
+void Track::setAlbum(Album *album)
+{
+    m_album = album;
+}
+
+void Track::setYear(int year)
+{
+    m_year = year;
+    m_data["year"] = m_year;
+}
+
+void Track::setGenre(Genre *genre)
+{
+    m_genre = genre;
+}
+
+void Track::setTrack(int track)
+{
+    m_track = track;
+    m_data["track"] = QString::number(track);
+}
+
+void Track::_setValue(QString key, QString value)
+{
+    m_data[key] = value;
+}
+
+void Track::_setValue(QString key, int value)
+{
+    _setValue(key, QString::number(value));
 }
 
 void Track::_extractTags()
@@ -66,23 +110,41 @@ void Track::_extractTags()
     if (!file.isNull() && file.tag())
     {
         TagLib::Tag *tag = file.tag();
-        m_title = tag->title().toCString(true);
-        m_artist = Collection::instance()->getArtist(QString(tag->artist().toCString(true)));
-        m_album = Collection::instance()->getAlbum(QString(tag->album().toCString(true)), m_artist);
-        m_year = (int)tag->year();
-        m_track = tag->track();
-        m_genre = Collection::instance()->getGenre(QString(tag->genre().toCString(true)));
+        setTitle(tag->title().toCString(true));
+        setArtist(Collection::instance()->getArtist(QString(tag->artist().toCString(true))));
+        setAlbum(Collection::instance()->getAlbum(QString(tag->album().toCString(true)), m_artist));
+        setYear(tag->year());
+        setTrack(tag->track());
+        setGenre(Collection::instance()->getGenre(QString(tag->genre().toCString(true))));
         //Logger::log("Album " + m_album->name() + " Artist " + m_artist->name() + " Title " + m_title + " file " + m_file->fileName(), LOG_DEBUG);
     }
     if (!file.isNull() && file.audioProperties())
     {
         TagLib::AudioProperties *properties = file.audioProperties();
         m_bitrate = properties->bitrate();
+        _setValue("bitrate", m_bitrate);
         m_sampleRate = properties->sampleRate();
+        _setValue("samplerate", m_sampleRate);
         m_channels = properties->channels();
+        _setValue("channels", m_channels);
         m_duration = properties->length();
+        _setValue("duration", m_duration);
 //        Logger::log("bitrate " + QString::number(m_bitrate) + " samplerate " + QString::number(m_sampleRate) + " Channels " + QString::number(m_channels) + " duration " + QString::number(m_duration), LOG_DEBUG);
     }
 
     /// TODO Illustration
+}
+
+
+QString Track::getValue(QString value) const
+{
+    if (value.toLower() == "artist")
+        return m_artist->name();
+    if (value.toLower() == "album")
+        return m_album->name();
+    if (value.toLower() == "genre")
+        return m_genre->name();
+    if (m_data.contains(value.toLower()))
+        return m_data[value.toLower()];
+    return "unavalable";
 }

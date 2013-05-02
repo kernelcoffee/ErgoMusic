@@ -1,5 +1,6 @@
 #include "tablemodel.h"
 #include "Utilities/logger.h"
+#include "Media/track.h"
 
 TableModel::TableModel(QObject *parent) :
     QAbstractTableModel(parent)
@@ -22,6 +23,7 @@ void    TableModel::setPlaylist(AbstractPlaylist* playlist)
     }
     _playlist = playlist;
     connect(_playlist, SIGNAL(updated()), this, SIGNAL(layoutChanged()));
+    initHeader();
     layoutAboutToBeChanged();
     layoutChanged();
 }
@@ -38,21 +40,22 @@ int TableModel::columnCount(const QModelIndex &parent) const
 {
     if (!_playlist)
         return 0;
-    return 10;
+    return _header.size();
 }
 
 QVariant    TableModel::data(const QModelIndex &index, int role) const
 {
     if (!index.isValid() || role != Qt::DisplayRole || !_playlist)
         return QVariant();
-    _playlist->getList()->at(index.row());
-    return QString("test");
+    Track* item = _playlist->getList()->at(index.row());
+    return item->getValue(_header.at(index.column()));
 }
 
 bool TableModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
+
 //    dataChanged(index);
-    true;
+    return true;
 }
 
 Qt::ItemFlags TableModel::flags(const QModelIndex &index) const
@@ -60,9 +63,12 @@ Qt::ItemFlags TableModel::flags(const QModelIndex &index) const
     return Qt::ItemIsEditable | Qt::ItemIsEnabled ;
 }
 
+QStringList TableModel::getHeader() const
+{
+    return _header;
+}
+
 void    TableModel::initHeader()
 {
-//    if (_header == NULL)
-//        _header = new QHeaderView;
-//    _header->setStretchLastSection(true);
+    _header << "Title" << "Artist" << "Album" << "Duration" << "Track";
 }

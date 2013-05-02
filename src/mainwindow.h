@@ -22,7 +22,7 @@
 #include <QMainWindow>
 #include <QSplitter>
 #include "Gui/playerwidget.h"
-#include "Gui/playlistwidget.h"
+#include "Gui/sidebarwidget.h"
 #include "Gui/viewwidget.h"
 #include "Gui/settingswidget.h"
 
@@ -69,7 +69,7 @@ private:
 
     // main widgets
     PlayerWidget    *m_playerWidget;
-    PlaylistWidget  *m_playlistWidget;
+    SidebarWidget   *m_sidebarWidget;
     ViewWidget      *m_viewWidget;
     SettingsWidget  *m_settingsWidget;
 

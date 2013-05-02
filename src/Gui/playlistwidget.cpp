@@ -1,17 +1,17 @@
-#include "playlistwidget.h"
-#include "playlistwidgetmodel.h"
+#include "sidebarwidget.h"
+#include "Models/sidebarwidgetmodel.h"
 
 #include "Utilities/logger.h"
 
 #include <QGridLayout>
 #include <QTreeView>
 
-PlaylistWidget::PlaylistWidget(QWidget *parent) :
+SidebarWidget::SidebarWidget(QWidget *parent) :
     QWidget(parent)
 {
     QGridLayout* layout = new QGridLayout(this);
     m_view     = new QTreeView();
-    PlaylistWidgetModel* model = new PlaylistWidgetModel;
+    SidebarWidgetModel* model = new SidebarWidgetModel;
 
     layout->addWidget(m_view);
     setLayout(layout);
@@ -24,13 +24,13 @@ PlaylistWidget::PlaylistWidget(QWidget *parent) :
     connect(m_view, SIGNAL(clicked(QModelIndex)), this, SLOT(selected(QModelIndex)));
 }
 
-void    PlaylistWidget::selected(QModelIndex index)
+void    SidebarWidget::selected(QModelIndex index)
 {
-    PlaylistWidgetItem* data = static_cast<PlaylistWidgetItem*>(index.internalPointer());
+    SidebarWidgetItem* data = static_cast<SidebarWidgetItem*>(index.internalPointer());
     selected(data->getType(), data->getIndex());
 }
 
-void    PlaylistWidget::update()
+void    SidebarWidget::update()
 {
 
 }

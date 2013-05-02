@@ -1,14 +1,14 @@
-#ifndef PLAYLISTWIDGET_H
-#define PLAYLISTWIDGET_H
+#ifndef SIDEBARIDGET_H
+#define SIDEBARWIDGET_H
 
 #include <QWidget>
 #include <QTreeView>
 
-class PlaylistWidget : public QWidget
+class SidebarWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit PlaylistWidget(QWidget *parent = 0);
+    explicit SidebarWidget(QWidget *parent = 0);
     
 signals:
     void    selected(int, int);
@@ -20,4 +20,4 @@ private:
     QTreeView*  m_view;
 };
 
-#endif // PLAYLISTWIDGET_H
+#endif // SidebarWIDGET_H

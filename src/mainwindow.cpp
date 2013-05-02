@@ -34,7 +34,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QList<int> splitterSize;
 
     m_playerWidget = new PlayerWidget(this);
-    m_playlistWidget = new PlaylistWidget();
+    m_sidebarWidget = new SidebarWidget();
     m_viewWidget = new ViewWidget();
     m_settingsWidget = NULL;
     ui->setupUi(this);
@@ -42,7 +42,7 @@ MainWindow::MainWindow(QWidget *parent) :
     splitter = new QSplitter();
     splitter->setOrientation(Qt::Horizontal);
 
-    splitter->addWidget(m_playlistWidget);
+    splitter->addWidget(m_sidebarWidget);
     splitter->addWidget(m_viewWidget);
 
     splitter->setCollapsible(0, false);
@@ -53,7 +53,7 @@ MainWindow::MainWindow(QWidget *parent) :
         splitter->restoreState(settings.value("splitterSizes").toByteArray());
     splitter->setContentsMargins(0, 0 , 0, 0);
 
-    m_playlistWidget->setContentsMargins(0, 0, 0, 0);
+    m_sidebarWidget->setContentsMargins(0, 0, 0, 0);
     m_viewWidget->setContentsMargins(0, 0, 0, 0);
 
     ui->verticalLayout->setSpacing(0);
@@ -74,7 +74,7 @@ MainWindow::~MainWindow()
     settings.setValue("splitterSizes", splitter->saveState());
 
     delete m_playerWidget;
-    delete m_playlistWidget;
+    delete m_sidebarWidget;
     delete m_viewWidget;
     delete m_settingsWidget;
     delete ui;
@@ -196,7 +196,7 @@ void    MainWindow::initMenuBarActions()
 
 void    MainWindow::initSignals()
 {
-    connect(m_playlistWidget, SIGNAL(selected(int,int)), m_viewWidget, SLOT(selected(int,int)));
+    connect(m_sidebarWidget, SIGNAL(selected(int,int)), m_viewWidget, SLOT(selected(int,int)));
 }
 
 // SLOTS

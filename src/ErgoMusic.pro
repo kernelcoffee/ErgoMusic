@@ -43,15 +43,14 @@ SOURCES += main.cpp\
     Media/track.cpp \
     Media/watchplaylist.cpp \
     Media/genre.cpp \
-    Gui/playlistwidgetmodel.cpp \
-    Gui/playlistwidgetitem.cpp \
     Gui/Models/treeitem.cpp \
     Gui/Models/treemodel.cpp \
     Gui/Models/tablemodel.cpp \
-    Gui/viewwidgetmodel.cpp \
     Gui/Views/tableviewwidget.cpp \
     Utilities/Abstract/abstractplaylist.cpp \
-    Media/playlist.cpp
+    Media/playlist.cpp \
+    Gui/sidebarwidgetitem.cpp \
+    Gui/Models/sidebarwidgetmodel.cpp
 
 HEADERS  += \
     Database/databasemanager.h \
@@ -70,7 +69,6 @@ HEADERS  += \
     initialization.h \
     mainwindow.h \
     Gui/playerwidget.h \
-    Gui/playlistwidget.h \
     Gui/viewwidget.h \
     Gui/settingswidget.h \
     Audio/audiomanager.h \
@@ -78,15 +76,15 @@ HEADERS  += \
     Media/track.h \
     Media/watchplaylist.h \
     Media/genre.h \
-    Gui/playlistwidgetmodel.h \
-    Gui/playlistwidgetitem.h \
     Gui/Models/treeitem.h \
     Gui/Models/treemodel.h \
     Gui/Models/tablemodel.h \
-    Gui/viewwidgetmodel.h \
     Gui/Views/tableviewwidget.h \
     Utilities/Abstract/abstractplaylist.h \
-    Media/playlist.h
+    Media/playlist.h \
+    Gui/sidebarwidgetitem.h \
+    Gui/sidebarwidget.h \
+    Gui/Models/sidebarwidgetmodel.h
 
 FORMS    += mainwindow.ui \
     Gui/settingswidget.ui
