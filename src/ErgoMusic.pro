@@ -35,7 +35,6 @@ SOURCES += main.cpp\
     Network/gatekeeper.cpp \
     coremanager.cpp \
     Gui/playerwidget.cpp \
-    Gui/playlistwidget.cpp \
     Gui/viewwidget.cpp \
     Gui/settingswidget.cpp \
     Audio/audiomanager.cpp \
@@ -50,7 +49,8 @@ SOURCES += main.cpp\
     Utilities/Abstract/abstractplaylist.cpp \
     Media/playlist.cpp \
     Gui/sidebarwidgetitem.cpp \
-    Gui/Models/sidebarwidgetmodel.cpp
+    Gui/Models/sidebarwidgetmodel.cpp \
+    Gui/sidebarwidget.cpp
 
 HEADERS  += \
     Database/databasemanager.h \
