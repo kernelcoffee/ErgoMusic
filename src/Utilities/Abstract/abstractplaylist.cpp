@@ -27,3 +27,12 @@ ViewWidget::ViewType AbstractPlaylist::getViewType() const
 {
     return m_viewType;
 }
+
+bool AbstractPlaylist::isLocked()
+{
+    bool    ret = !m_mutex.tryLock();;
+
+    if (ret)
+        m_mutex.unlock();
+    return ret;
+}

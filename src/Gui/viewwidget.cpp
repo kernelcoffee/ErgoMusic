@@ -1,7 +1,7 @@
 #include "viewwidget.h"
 #include "Utilities/logger.h"
 #include "Media/collection.h"
-#include "sidebarwidgetitem.h"
+#include "Gui/Items/sidebarwidgetitem.h"
 
 #include "Views/listview.h"
 #include "Models/listviewmodel.h"
@@ -39,7 +39,7 @@ void    ViewWidget::selected(int type, int index)
     {
     case (SidebarWidgetItem::WATCHPLAYLIST) :
         Logger::log("ViewWidget::selected - WatchPlaylist selected", LOG_DEBUG);
-        _selectView(Collection::instance()->getWatchPlaylist()->getViewType(), Collection::instance()->getWatchPlaylist());
+        _selectView(Collection::instance()->getWatchPlaylist());
 //        _model->setPlaylist(Collection::instance()->getWatchPlaylist());
         break;
     case (SidebarWidgetItem::PLAYLIST):
@@ -55,18 +55,22 @@ void    ViewWidget::selected(int type, int index)
     update();
 }
 
-void ViewWidget::_selectView(ViewType type, AbstractPlaylist* playlist)
+void ViewWidget::_selectView(AbstractPlaylist* playlist)
 {
     QLayoutItem *item;
     delete m_layout->takeAt(0);
 
-    switch (type) {
+    switch (playlist->getViewType()) {
     default:
         ListView* view = new ListView;
         m_layout->addWidget(view);
         ListViewModel*  model = new ListViewModel;
         model->setPlaylist(playlist);
         view->setModel(model);
+        view->header()->setSortIndicatorShown(true);
+        view->setAlternatingRowColors(true);
+        view->setAnimated(true);
+        connect(playlist, SIGNAL(updated()), this, SLOT(update()));
         break;
     }
 }

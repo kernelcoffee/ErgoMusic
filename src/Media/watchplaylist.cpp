@@ -4,7 +4,8 @@
 
 #include <QSettings>
 #include <QDir>
-#include <Qt/QtConcurrent>
+#include <QtConcurrent/QtConcurrent>
+#include <QMutexLocker>
 
 WatchPlaylist::WatchPlaylist(QObject *parent) :
     AbstractPlaylist(parent)
@@ -42,11 +43,13 @@ void    WatchPlaylist::update()
 
 void    WatchPlaylist::_refresh(QString path)
 {
+    m_mutex.lock();
     Logger::log("WatchPlaylist - _refresh - watchFolder modified at path " + path, LOG_DEBUG);
     if (m_list == NULL)
         delete m_list;
     m_list = CoreManager::instance()->database()->importEngine()->importPath(path);
-    refreshed();
+    m_mutex.unlock();
+    updated();
 }
 
 void    WatchPlaylist::_update()

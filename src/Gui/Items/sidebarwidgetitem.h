@@ -1,7 +1,7 @@
 #ifndef SIDEBARWIDGETITEM_H
 #define SIDEBARWIDGETITEM_H
 
-#include "Models/treeitem.h"
+#include "treeitem.h"
 
 class SidebarWidgetItem : public TreeItem
 {

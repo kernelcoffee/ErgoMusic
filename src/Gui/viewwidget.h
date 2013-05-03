@@ -19,9 +19,8 @@ signals:
 public slots:
     void    selected(int, int);
 private:
-    void            _selectView(ViewType, AbstractPlaylist*);
+    void            _selectView(AbstractPlaylist*);
 
-//    ViewType        m_type;
     QHBoxLayout*    m_layout;
 };
 

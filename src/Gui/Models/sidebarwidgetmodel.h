@@ -4,7 +4,7 @@
 #include <QStringList>
 
 #include "treemodel.h"
-#include "../sidebarwidgetitem.h"
+#include "Gui/Items/sidebarwidgetitem.h"
 
 class SidebarWidgetModel : public TreeModel
 {

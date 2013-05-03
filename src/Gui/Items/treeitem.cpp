@@ -6,7 +6,7 @@ TreeItem::TreeItem(const QList<QVariant> &data, TreeItem *parent)
     itemData = data;
 }
 
-TreeItem::TreeItem(const QString &data, TreeItem *parent)
+TreeItem::TreeItem(const QVariant &data, TreeItem *parent)
 {
     parentItem = parent;
     itemData << data;

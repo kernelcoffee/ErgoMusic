@@ -6,7 +6,7 @@ TreeModel::TreeModel(QObject *parent) :
 {
     Logger::log("TreeModel - init instance", LOG_DEBUG);
     QList<QVariant> rootData;
-    rootData << "1";
+    rootData << "root";
     rootItem = new TreeItem(rootData);}
 
 TreeModel::~TreeModel()

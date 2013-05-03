@@ -4,10 +4,8 @@
 ListView::ListView(QWidget *parent) :
     QTreeView(parent)
 {
-
 }
 
 ListView::~ListView()
 {
-
 }

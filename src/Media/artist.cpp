@@ -19,6 +19,8 @@ Artist::~Artist()
 
 QString Artist::name()
 {
+    if (m_name.isEmpty())
+        return "";
     return m_name;
 }
 

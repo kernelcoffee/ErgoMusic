@@ -12,7 +12,7 @@ class TreeItem : public QTreeWidgetItem
 {
 public:
     TreeItem(const QList<QVariant> &data, TreeItem *parent = 0);
-    TreeItem(const QString &data, TreeItem *parent = 0);
+    TreeItem(const QVariant &data, TreeItem *parent = 0);
     ~TreeItem();
 
     void            appendChild(TreeItem *child);
@@ -24,7 +24,7 @@ public:
     int             row() const;
     TreeItem        *parent();
 
-private:
+protected:
     QList<TreeItem*>    childItems;
     QList<QVariant>     itemData;
     TreeItem            *parentItem;

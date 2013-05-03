@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include "Gui/viewwidget.h"
+#include <QMutex>
 
 class Track;
 class ViewWidget;
@@ -15,18 +16,22 @@ public:
 
     virtual ~AbstractPlaylist();
 
-    virtual void                setViewType(ViewWidget::ViewType);
+    virtual void                    setViewType(ViewWidget::ViewType);
 
-    virtual Type                getType(void) const;
-    virtual QList<Track*>*      getList(void) const;
+    virtual Type                    getType(void) const;
+    virtual QList<Track*>*          getList(void) const;
     virtual ViewWidget::ViewType    getViewType(void) const;
+    virtual bool                    isLocked(void);
+
 protected:
     AbstractPlaylist();
     AbstractPlaylist(QObject *parent = 0);
 
-    QList<Track*>*      m_list;
-    Type                m_type;
+    QList<Track*>*          m_list;
+    Type                    m_type;
     ViewWidget::ViewType    m_viewType;
+    QMutex                  m_mutex;
+
 signals:
     void    updated();
 };

@@ -4,7 +4,7 @@
 // For doc, TreeModel extracted from treeview example on qt-project
 // Idea to use is as another Abstract model from project defuze.me
 
-#include "treeitem.h"
+#include "Gui/Items/treeitem.h"
 
 #include <QAbstractItemModel>
 

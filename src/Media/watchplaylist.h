@@ -5,6 +5,7 @@
 #include "Utilities/Abstract/abstractplaylist.h"
 
 #include <QFileSystemWatcher>
+#include <QMutex>
 
 class Track;
 
@@ -16,7 +17,6 @@ public:
     WatchPlaylist(QObject *parent = 0);
     ~WatchPlaylist();
 signals:
-    void            refreshed();
 public slots:
     void            update();
 private slots:
