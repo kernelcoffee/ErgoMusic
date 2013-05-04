@@ -1,4 +1,5 @@
 #include "abstractplaylist.h"
+#include "Utilities/logger.h"
 
 AbstractPlaylist::AbstractPlaylist(QObject *parent) :
     QObject(parent)
@@ -30,9 +31,12 @@ ViewWidget::ViewType AbstractPlaylist::getViewType() const
 
 bool AbstractPlaylist::isLocked()
 {
-    bool    ret = !m_mutex.tryLock();;
+    bool    ret = m_mutex.tryLock();;
 
-    if (ret)
+    if (ret) {
+        Logger::log("AbstractPlaylist - TryLock - Mutex unlock", LOG_DEBUG);
         m_mutex.unlock();
-    return ret;
+    } else
+        Logger::log("AbstractPlaylist - TryLock - Mutex locked", LOG_DEBUG);
+    return !ret;
 }

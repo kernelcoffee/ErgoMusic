@@ -8,4 +8,7 @@ ListView::ListView(QWidget *parent) :
 
 ListView::~ListView()
 {
+    if (model()) {
+        delete model();
+    }
 }

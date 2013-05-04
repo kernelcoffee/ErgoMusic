@@ -9,7 +9,8 @@ Collection::Collection()
     m_artists = new QHash<QString, Artist*>;
     m_albums = new QHash<QString, Album*>;
     m_genres = new QHash<QString, Genre*>;
-    m_tracks = new QVector<Track*>;
+    m_tracks = new QList<Track*>;
+    m_library = new Library(m_tracks);
 }
 
 
@@ -46,6 +47,11 @@ Genre*  Collection::getGenre(QString name)
     if (m_genres->contains(name) == false)
         m_genres->insert(name, new Genre(name));
     return m_genres->value(name);
+}
+
+Library *Collection::getLibrary()
+{
+    return m_library;
 }
 
 WatchPlaylist*  Collection::getWatchPlaylist() const

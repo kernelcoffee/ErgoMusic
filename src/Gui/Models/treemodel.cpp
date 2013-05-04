@@ -4,7 +4,6 @@
 TreeModel::TreeModel(QObject *parent) :
     QAbstractItemModel(parent)
 {
-    Logger::log("TreeModel - init instance", LOG_DEBUG);
     QList<QVariant> rootData;
     rootData << "root";
     rootItem = new TreeItem(rootData);}

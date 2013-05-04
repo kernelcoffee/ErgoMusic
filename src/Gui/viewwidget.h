@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include <QHBoxLayout>
+#include "Views/listview.h"
+
 
 class AbstractPlaylist;
 
@@ -19,9 +21,13 @@ signals:
 public slots:
     void    selected(int, int);
 private:
+    void            _clean(void);
+    void            _initViews(void);
     void            _selectView(AbstractPlaylist*);
 
     QHBoxLayout*    m_layout;
+
+    ListView*       m_listview;
 };
 
 #endif // VIEWWIDGET_H
