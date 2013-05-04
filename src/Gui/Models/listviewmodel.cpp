@@ -6,7 +6,6 @@
 ListViewModel::ListViewModel(QObject *parent) :
     TreeModel(parent)
 {
-    Logger::log("ListViewModel - init instance", LOG_DEBUG);
     _initHeader();
 }
 
@@ -25,10 +24,8 @@ void ListViewModel::setPlaylist(AbstractPlaylist *playlist)
 
 void ListViewModel::setupModelData()
 {
-    Logger::log("ListViewModel - setupModelData", LOG_DEBUG );
     if (m_playlist->isLocked())
         return;
-    Logger::log("ListViewModel - getList", LOG_DEBUG );
     for (int i = 0; i < m_playlist->getList()->size(); i++) {
         Track* t = m_playlist->getList()->at(i);
         ListViewItem* item = new ListViewItem(t, rootItem);

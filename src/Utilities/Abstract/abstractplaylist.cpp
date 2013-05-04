@@ -33,10 +33,7 @@ bool AbstractPlaylist::isLocked()
 {
     bool    ret = m_mutex.tryLock();;
 
-    if (ret) {
-        Logger::log("AbstractPlaylist - TryLock - Mutex unlock", LOG_DEBUG);
+    if (ret)
         m_mutex.unlock();
-    } else
-        Logger::log("AbstractPlaylist - TryLock - Mutex locked", LOG_DEBUG);
     return !ret;
 }

@@ -17,6 +17,8 @@ Even though there is plenty of valuable music player, none met my requirements :
 - Itunes like behavior : when doucle-clik on a song it plays it, it doesn't add it to a queue-list.
 - A felling of finished product, since I'm the one creating it, I'll be able to tune the software for the feeling I want.
 
+I'm also using this project to keep learning about Qt and to keep in shape on my C++ and Qt Widgets.
+
 How to compile
 ==============
 
@@ -29,7 +31,7 @@ Doxygen for documentation
 
 *How I do it ?*
 
-I am currently using Fedora 17 with QtCreator 2.6 and Qt 5 from git.
+I am currently using Fedora 18 with QtCreator and Qt 5 from git.
 
 *How you can do it ?*
 
@@ -45,7 +47,7 @@ in a console :
    $ sudo port install libtag
 
 Download and install the Qt5 SDK from qt-project.org
-using QtCreator 2.6 from the SDK open the project and compile
+using QtCreator from the SDK open the project and compile
 
 *How you can do it ?*
 
@@ -53,7 +55,7 @@ using QtCreator 2.6 from the SDK open the project and compile
 
 ### Window
 
-not tested
+not tested but beside some libraries madness it should work without a glitch.
 
 Installation
 ============
