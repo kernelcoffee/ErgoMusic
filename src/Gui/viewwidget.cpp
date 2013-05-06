@@ -12,6 +12,7 @@
 ViewWidget::ViewWidget(QWidget *parent) :
     QWidget(parent)
 {
+    m_selectedPlaylist = NULL;
     m_layout = new QHBoxLayout(this);
     setLayout(m_layout);
 }
@@ -25,7 +26,6 @@ void    ViewWidget::selected(int type, int index)
     case (SidebarWidgetItem::WATCHPLAYLIST) :
         Logger::log("ViewWidget::selected - WatchPlaylist selected", LOG_DEBUG);
         _selectView(Collection::instance()->getWatchPlaylist());
-        //        _model->setPlaylist(Collection::instance()->getWatchPlaylist());
         break;
     case (SidebarWidgetItem::PLAYLIST):
         Logger::log("ViewWidget::selected - Playlist selected", LOG_DEBUG);
@@ -55,8 +55,10 @@ void ViewWidget::_clean()
 
 void ViewWidget::_selectView(AbstractPlaylist* playlist)
 {
+    if (m_selectedPlaylist == playlist)
+        return;
+    m_selectedPlaylist = playlist;
     _clean();
-
     switch (playlist->getViewType()) {
     case INVALID:
         Logger::log("ViewWidget - Invalide", LOG_DEBUG);

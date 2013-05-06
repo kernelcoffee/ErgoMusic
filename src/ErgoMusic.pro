@@ -53,7 +53,8 @@ SOURCES += main.cpp\
     Gui/Items/treeitem.cpp \
     Gui/Items/sidebarwidgetitem.cpp \
     Gui/Items/listviewitem.cpp \
-    Media/library.cpp
+    Media/library.cpp \
+    Gui/Views/viewheader.cpp
 
 HEADERS  += \
     Database/databasemanager.h \
@@ -90,7 +91,8 @@ HEADERS  += \
     Gui/Items/treeitem.h \
     Gui/Items/sidebarwidgetitem.h \
     Gui/Items/listviewitem.h \
-    Media/library.h
+    Media/library.h \
+    Gui/Views/viewheader.h
 
 FORMS    += mainwindow.ui \
     Gui/settingswidget.ui
