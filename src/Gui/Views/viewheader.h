@@ -7,7 +7,7 @@ class ViewHeader : public QHeaderView
 {
     Q_OBJECT
 public:
-    explicit ViewHeader(QObject *parent = 0);
+    explicit ViewHeader(QWidget *parent = 0);
     ~ViewHeader();
 
     int visibleSectionCount() const;

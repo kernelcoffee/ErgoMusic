@@ -1,7 +1,7 @@
 #include "viewheader.h"
 
-ViewHeader::ViewHeader(QObject *parent) :
-       QHeaderView( Qt::Horizontal, parent )
+ViewHeader::ViewHeader(QWidget *parent) :
+       QHeaderView(Qt::Horizontal, parent )
 {
     setMinimumSectionSize( 60 );
     setDefaultAlignment( Qt::AlignLeft );
