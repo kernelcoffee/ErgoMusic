@@ -27,7 +27,7 @@ class Collection : public Singleton<Collection>
 public:
     Collection();
     ~Collection();
-    void                init(QStringList&, QSplashScreen*);
+    void                init(QStringList&);
 
     Artist*             getArtist(QString);
     Album*              getAlbum(QString, Artist*);

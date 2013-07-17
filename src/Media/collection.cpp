@@ -17,7 +17,7 @@ Collection::Collection()
 Collection::~Collection()
 {}
 
-void Collection::init(QStringList &arguments, QSplashScreen* splash)
+void Collection::init(QStringList &arguments)
 {
     Q_UNUSED(arguments);
 

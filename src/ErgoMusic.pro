@@ -4,13 +4,16 @@
 #
 #-------------------------------------------------
 
-QT       += core gui widgets sql network multimedia
+
+QT       += core gui widgets sql network multimedia quick qml
 
 TARGET = ErgoMusic
 TEMPLATE = app
 
 macx {
-    #using default path of MacPort
+	# FIX: issue where cache is not created on 5.1
+	cache()
+	#using default path of MacPort
     INCLUDEPATH += /opt/local/include/
     LIBS += -L/opt/local/lib -ltag
 }
@@ -21,7 +24,6 @@ unix:!macx {
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
     Utilities/logger.cpp \
     initialization.cpp \
     Database/importengine.cpp \
@@ -36,7 +38,6 @@ SOURCES += main.cpp\
     coremanager.cpp \
     Gui/playerwidget.cpp \
     Gui/viewwidget.cpp \
-    Gui/settingswidget.cpp \
     Audio/audiomanager.cpp \
     Media/album.cpp \
     Media/track.cpp \
@@ -71,10 +72,8 @@ HEADERS  += \
     common.h \
     coremanager.h \
     initialization.h \
-    mainwindow.h \
     Gui/playerwidget.h \
     Gui/viewwidget.h \
-    Gui/settingswidget.h \
     Audio/audiomanager.h \
     Media/album.h \
     Media/track.h \
@@ -94,11 +93,12 @@ HEADERS  += \
     Media/library.h \
     Gui/Views/viewheader.h
 
-FORMS    += mainwindow.ui \
-    Gui/settingswidget.ui
+OTHER_FILES += \
+	Ressources/qml/Desktop/main.qml
 
 RESOURCES += \
-    Ressources/ErgoMusic.qrc
+    Ressources/ErgoMusic.qrc \
+    Ressources/Desktop.qrc
 
 TRANSLATIONS += \
     Ressources/languages/lang_en_US.ts \

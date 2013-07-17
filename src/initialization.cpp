@@ -36,12 +36,10 @@ Initialization::Initialization(void)
     QCoreApplication::setOrganizationDomain(ORGANIZATION_DOMAIN);
 
     Q_INIT_RESOURCE(ErgoMusic);
+    Q_INIT_RESOURCE(Desktop);
     Logger::log("Ressources Loaded.", LOG_DEBUG);
 
-    QPixmap splashPixmap(":/images/spashScreen.png");
-    _splash = new QSplashScreen(splashPixmap);
-    _splash->show();
-    _splash->showMessage("Initialization...");
+//    QPixmap splashPixmap(":/images/spashScreen.png");
     qApp->processEvents();
     _arguments = qApp->arguments();
     _translator = new QTranslator();
@@ -49,7 +47,6 @@ Initialization::Initialization(void)
 
 Initialization::~Initialization()
 {
-    delete  _splash;
 }
 
 void    Initialization::initSettings(void)
@@ -115,10 +112,5 @@ void    Initialization::initManagers()
 
 void    Initialization::initCollection()
 {
-    Collection::instance()->init(_arguments, _splash);
-}
-
-QSplashScreen*  Initialization::getSplashScreen() const
-{
-    return _splash;
+    Collection::instance()->init(_arguments);
 }

@@ -22,7 +22,6 @@
 #include <QtCore/QFile>
 #include <QtCore/QString>
 #include <QtCore/QDebug>
-#include <QSystemTrayIcon>
 #include <QtCore/QStandardPaths>
 #include <QtCore/QSettings>
 

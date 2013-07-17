@@ -19,8 +19,8 @@
 #ifndef INITIALIZATION_H
 #define INITIALIZATION_H
 
-#include <QSplashScreen>
 #include <QtCore/QTranslator>
+#include <QStringList>
 
 class Initialization
 {
@@ -31,14 +31,11 @@ public:
     void    initManagers(void);
     void    initCollection(void);
 
-    QSplashScreen*  getSplashScreen() const;
-
 private:
     void    initDefault(void);
 
     QTranslator*    _translator;
     QStringList     _arguments;
-    QSplashScreen*   _splash;
 };
 
 #endif // INITIALIZATION_H

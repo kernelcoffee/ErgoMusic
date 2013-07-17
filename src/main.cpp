@@ -16,24 +16,21 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QApplication>
-#include "mainwindow.h"
+#include <QGuiApplication>
+#include <QQmlApplicationEngine>
 
 #include "initialization.h"
-#include "common.h"
+#include "common.h"\
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
+    QGuiApplication app(argc, argv);
+
     Initialization* init = new Initialization();
     init->initSettings();
     init->initManagers();
-    init->initCollection();
 
-    MainWindow w;
-    w.show();
-    init->getSplashScreen()->finish(&w);
+    QQmlApplicationEngine engine(QUrl("qrc:///main.qml"));
 
-    delete init;
-    return a.exec();
+    return app.exec();
 }
