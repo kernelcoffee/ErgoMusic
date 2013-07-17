@@ -4,16 +4,11 @@ import QtQuick.Controls 1.0
 
 ApplicationWindow {
     id: mainWindow
-
     width: 800
     height: 600
+    visible: true
+
+    title: "ErgoMusic"
 
 
-    Rectangle {
-        id: test
-        anchors.fill: parent
-        color: "blue"
-    }
-
-    Component.onCompleted: console.log("toto - " + mainWindow.width + "x" + mainWindow.height)
 }

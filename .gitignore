@@ -4,6 +4,7 @@ src/*.pro.user
 *-build-desktop*
 *-build-Qt*
 *build-*-Qt5-*
+build-*
 docs/html
 docs/latex
 *~
