@@ -16,21 +16,29 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QGuiApplication>
+#include <QApplication>
 #include <QQmlApplicationEngine>
+#include <QQuickWindow>
 
 #include "initialization.h"
-#include "common.h"\
+#include "common.h"
 
 int main(int argc, char *argv[])
 {
-    QGuiApplication app(argc, argv);
+    QApplication app(argc, argv);
 
     Initialization* init = new Initialization();
     init->initSettings();
     init->initManagers();
 
     QQmlApplicationEngine engine(QUrl("qrc:///main.qml"));
+    QObject *topLevel = engine.rootObjects().value(0);
+    QQuickWindow *window = qobject_cast<QQuickWindow *>(topLevel);
+    if ( !window ) {
+        qWarning("Error: Your root item has to be a Window.");
+        return -1;
+    }
+    window->show();
 
     return app.exec();
 }

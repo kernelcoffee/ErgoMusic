@@ -8,6 +8,7 @@ ApplicationWindow {
     width: 800
     height: 600
 
+
     Rectangle {
         id: test
         anchors.fill: parent
