@@ -94,7 +94,9 @@ HEADERS  += \
     Gui/Views/viewheader.h
 
 OTHER_FILES += \
-	Ressources/qml/Desktop/main.qml
+	Ressources/qml/Desktop/main.qml \
+    Ressources/qml/Desktop/Mainview/mainListView.qml \
+    Ressources/qml/Desktop/MenuBar/menuWidget.qml
 
 RESOURCES += \
     Ressources/ErgoMusic.qrc \
