@@ -2,6 +2,7 @@ import QtQuick 2.1
 import QtQuick.Controls 1.0
 
 TableView {
+    id: mainListView
     width: 100
     height: 62
     TableViewColumn{ role: "title"  ; title: "Title" ; width: 100 }
