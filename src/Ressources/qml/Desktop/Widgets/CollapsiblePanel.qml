@@ -31,7 +31,7 @@ Item{
             font.pointSize: 11
             opacity: 0
 
-            Behavior on opacity { NumberAnimation {duration: 150}}
+            Behavior on opacity { NumberAnimation {duration: 200}}
         }
         MouseArea{
             anchors.fill: parent

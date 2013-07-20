@@ -96,8 +96,11 @@ HEADERS  += \
 OTHER_FILES += \
 	Ressources/qml/Desktop/main.qml \
     Ressources/qml/Desktop/Mainview/mainListView.qml \
-    Ressources/qml/Desktop/MenuBar/menuWidget.qml \
-	Ressources/qml/Desktop/Widgets/CollapsiblePanel.qml
+	Ressources/qml/Desktop/MenuBar/MenuWidget.qml \
+	Ressources/qml/Desktop/Widgets/CollapsiblePanel.qml \
+    Ressources/qml/Desktop/StatusBar/StatusWidget.qml \
+    Ressources/qml/Desktop/TopBar/TopWidget.qml \
+    Ressources/qml/Desktop/Components/PlayerControlerIcon.qml
 
 RESOURCES += \
     Ressources/ErgoMusic.qrc \

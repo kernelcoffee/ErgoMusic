@@ -32,6 +32,8 @@ int main(int argc, char *argv[])
     init->initManagers();
 
     QQmlApplicationEngine engine(QUrl("qrc:///main.qml"));
+
+// replace the visible: true in main.qml
     QObject *topLevel = engine.rootObjects().value(0);
     QQuickWindow *window = qobject_cast<QQuickWindow *>(topLevel);
     if ( !window ) {
