@@ -51,8 +51,7 @@ Item {
         anchors.leftMargin: 20
         width: parent.width * .06
         onValueChanged: {
-            searchInnerShadow.radius = 16 * value
-            console.log(value + " " + searchInnerShadow.radius)
+            console.log(value)
         }
     }
 
@@ -95,16 +94,15 @@ Item {
             anchors.right: parent.right
             anchors.left: searchIcon.right
             anchors.verticalCenter: parent.verticalCenter
-            anchors.leftMargin: 10
-
+            anchors.leftMargin: 5
         }
-        InnerShadow {
-            id: searchInnerShadow
-            anchors.fill: parent
-            radius: 8.0
-            samples: 24
-            color: "#000"
-            source: parent
-        }
+//        InnerShadow {
+//            id: searchInnerShadow
+//            anchors.fill: parent
+//            radius: 8.0
+//            samples: 24
+//            color: "#000"
+//            source: parent
+//        }
     }
 }
