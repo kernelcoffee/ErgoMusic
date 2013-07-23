@@ -36,26 +36,14 @@ SOURCES += main.cpp\
     Network/networkmanager.cpp \
     Network/gatekeeper.cpp \
     coremanager.cpp \
-    Gui/playerwidget.cpp \
-    Gui/viewwidget.cpp \
     Audio/audiomanager.cpp \
     Media/album.cpp \
     Media/track.cpp \
     Media/watchplaylist.cpp \
     Media/genre.cpp \
-    Gui/Models/treemodel.cpp \
-    Gui/Models/tablemodel.cpp \
     Utilities/Abstract/abstractplaylist.cpp \
     Media/playlist.cpp \
-    Gui/Models/sidebarwidgetmodel.cpp \
-    Gui/sidebarwidget.cpp \
-    Gui/Views/listview.cpp \
-    Gui/Models/listviewmodel.cpp \
-    Gui/Items/treeitem.cpp \
-    Gui/Items/sidebarwidgetitem.cpp \
-    Gui/Items/listviewitem.cpp \
-    Media/library.cpp \
-    Gui/Views/viewheader.cpp
+    Media/library.cpp
 
 HEADERS  += \
     Database/databasemanager.h \
@@ -72,26 +60,14 @@ HEADERS  += \
     common.h \
     coremanager.h \
     initialization.h \
-    Gui/playerwidget.h \
-    Gui/viewwidget.h \
     Audio/audiomanager.h \
     Media/album.h \
     Media/track.h \
     Media/watchplaylist.h \
     Media/genre.h \
-    Gui/Models/treemodel.h \
-    Gui/Models/tablemodel.h \
     Utilities/Abstract/abstractplaylist.h \
     Media/playlist.h \
-    Gui/sidebarwidget.h \
-    Gui/Models/sidebarwidgetmodel.h \
-    Gui/Views/listview.h \
-    Gui/Models/listviewmodel.h \
-    Gui/Items/treeitem.h \
-    Gui/Items/sidebarwidgetitem.h \
-    Gui/Items/listviewitem.h \
-    Media/library.h \
-    Gui/Views/viewheader.h
+    Media/library.h
 
 OTHER_FILES += \
 	Ressources/qml/Desktop/main.qml \
