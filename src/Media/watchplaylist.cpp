@@ -19,7 +19,7 @@ WatchPlaylist::WatchPlaylist(QObject *parent) :
     if (settings.value("watchFolderActivated").toBool() == true) {
         _update();
     }
-    m_viewType = ViewWidget::LIST;
+//    m_viewType = ViewWidget::LIST;
 }
 
 WatchPlaylist::~WatchPlaylist()

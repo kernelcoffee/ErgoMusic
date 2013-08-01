@@ -2,8 +2,9 @@
 #define ABSTRACTPLAYLIST_H
 
 #include <QObject>
-#include "Gui/viewwidget.h"
+//#include "Gui/viewwidget.h"
 #include <QMutex>
+#include <QList>
 
 class Track;
 class ViewWidget;
@@ -16,11 +17,11 @@ public:
 
     virtual ~AbstractPlaylist();
 
-    virtual void                    setViewType(ViewWidget::ViewType);
+    virtual void                    setViewType();
 
     virtual Type                    getType(void) const;
     virtual QList<Track*>*          getList(void) const;
-    virtual ViewWidget::ViewType    getViewType(void) const;
+    /*virtual ViewWidget::ViewType    getViewType(void) const*/;
     virtual bool                    isLocked(void);
 
 protected:
@@ -29,7 +30,7 @@ protected:
 
     QList<Track*>*          m_list;
     Type                    m_type;
-    ViewWidget::ViewType    m_viewType;
+//    ViewWidget::ViewType    m_viewType;
     QMutex                  m_mutex;
 
 signals:
