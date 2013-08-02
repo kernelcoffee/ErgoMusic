@@ -13,6 +13,8 @@
 #include "playlist.h"
 #include "watchplaylist.h"
 
+#include "Models/watchplaylistsmodel.h"
+
 #include "Utilities/singleton.h"
 
 class Genre;
@@ -20,6 +22,7 @@ class Artist;
 class Album;
 class Playlist;
 class WatchPlaylist;
+class WatchPlaylistsModel;
 
 class Collection : public Singleton<Collection>
 {
@@ -33,10 +36,13 @@ public:
     Album*              getAlbum(QString, Artist*);
     Genre*              getGenre(QString);
 
-    Library*            getLibrary();
-    WatchPlaylist*      getWatchPlaylist() const;
+    Library*                  getLibrary();
+    WatchPlaylistsModel*      getWatchPlaylists() const;
 
     void                createPlaylist(QString name = "");
+    void                createWatchPlaylist(QString name, QString path);
+
+    void                initDummyData(void);
 public slots:
 protected:
     QList<Track*>            *m_tracks;
@@ -44,9 +50,9 @@ protected:
     QHash<QString, Album*>   *m_albums;
     QHash<QString, Genre*>   *m_genres;
 
-    Library             *m_library;
-    QVector<Playlist*>  *m_playlists;
-    WatchPlaylist       *m_watchPlaylist;
+    Library                 *m_library;
+    QVector<Playlist*>      *m_playlists;
+    WatchPlaylistsModel     *m_watchPlaylists;
 };
 
 #endif // COLLECTION_H

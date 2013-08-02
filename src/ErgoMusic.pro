@@ -1,10 +1,3 @@
-#-------------------------------------------------
-#
-# Project created by QtCreator 2012-02-08T18:16:30
-#
-#-------------------------------------------------
-
-
 QT       += core gui widgets sql network multimedia quick qml
 
 TARGET = ErgoMusic
@@ -43,7 +36,8 @@ SOURCES += main.cpp\
     Media/genre.cpp \
     Utilities/Abstract/abstractplaylist.cpp \
     Media/playlist.cpp \
-    Media/library.cpp
+    Media/library.cpp \
+    Models/watchplaylistsmodel.cpp
 
 HEADERS  += \
     Database/databasemanager.h \
@@ -67,7 +61,8 @@ HEADERS  += \
     Media/genre.h \
     Utilities/Abstract/abstractplaylist.h \
     Media/playlist.h \
-    Media/library.h
+    Media/library.h \
+    Models/watchplaylistsmodel.h
 
 OTHER_FILES += \
 	Ressources/qml/Desktop/main.qml \

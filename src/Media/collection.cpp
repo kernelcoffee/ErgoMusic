@@ -11,19 +11,27 @@ Collection::Collection()
     m_genres = new QHash<QString, Genre*>;
     m_tracks = new QList<Track*>;
     m_library = new Library(m_tracks);
+    m_playlists = new QVector<Playlist*>;
+    m_watchPlaylists = new WatchPlaylistsModel;
 }
 
 
 Collection::~Collection()
-{}
+{
+    delete m_artists;
+    delete m_albums;
+    delete m_genres;
+    delete m_tracks;
+    delete m_library;
+    delete m_watchPlaylists;
+}
 
 void Collection::init(QStringList &arguments)
 {
     Q_UNUSED(arguments);
 
     Logger::log("Collection - Initialization", LOG_DEBUG);
-
-    m_watchPlaylist = new WatchPlaylist();
+    initDummyData();
 //    DatabaseManager* dbmanager = CoreManager::instance()->database();
 }
 
@@ -54,9 +62,9 @@ Library *Collection::getLibrary()
     return m_library;
 }
 
-WatchPlaylist*  Collection::getWatchPlaylist() const
+WatchPlaylistsModel*  Collection::getWatchPlaylists() const
 {
-    return m_watchPlaylist;
+    return m_watchPlaylists;
 }
 
 void Collection::createPlaylist(QString name)
@@ -64,3 +72,14 @@ void Collection::createPlaylist(QString name)
 //    m_playlists->append(new Playlist(name));
 }
 
+
+void Collection::createWatchPlaylist(QString name, QString path)
+{
+//    m_watchPlaylists->append(new WatchPlaylist(name, path));
+}
+
+
+void Collection::initDummyData()
+{
+    m_watchPlaylists->addWatchPlaylist("test1", "/home/amoore/Dropbox/Music/watchFolder");
+}

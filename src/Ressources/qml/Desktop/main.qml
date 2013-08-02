@@ -8,6 +8,7 @@ import "qrc:/qml/Desktop/MenuBar"
 import "qrc:/qml/Desktop/StatusBar"
 import "qrc:/qml/Desktop/TopBar"
 
+
 ApplicationWindow {
     id: mainWindow
     width: 800
@@ -20,6 +21,7 @@ ApplicationWindow {
     title: "ErgoMusic"
 
     Component.onCompleted: {
+        console.log(watchPlaylistsModel.count);
         opacity = 1
     }
 
@@ -35,7 +37,6 @@ ApplicationWindow {
     }
 
     // DEBUG
-
     ListModel {
         id: sidebarMenuModel
 
@@ -114,7 +115,7 @@ ApplicationWindow {
                     CollapsiblePanel {
                         width: parent.width
                         title: "Playlists"
-                        model: testSidebarModel
+                        model: watchPlaylistsModel
                         delegate: sidebarSubmenuDelegate
                     }
 

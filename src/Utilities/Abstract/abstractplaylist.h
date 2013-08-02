@@ -21,13 +21,14 @@ public:
 
     virtual Type                    getType(void) const;
     virtual QList<Track*>*          getList(void) const;
-    /*virtual ViewWidget::ViewType    getViewType(void) const*/;
+    /*virtual ViewWidget::ViewType    getViewType(void) const;*/
     virtual bool                    isLocked(void);
 
 protected:
     AbstractPlaylist();
     AbstractPlaylist(QObject *parent = 0);
 
+    QString                 m_name;
     QList<Track*>*          m_list;
     Type                    m_type;
 //    ViewWidget::ViewType    m_viewType;
