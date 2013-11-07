@@ -21,8 +21,10 @@ QVariant WatchPlaylistsModel::data(const QModelIndex &index, int role) const
     if (index.row() < 0 || index.row() > rowCount())
         return QVariant();
 
+    qDebug() << "get ";
     switch (role) {
-        return "toto";
+        default:
+            return "toto";
 //    case NameRole: return m_watchPlaylists[index.row()]->name();
     }
     return "tata";

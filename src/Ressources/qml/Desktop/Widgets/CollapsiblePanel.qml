@@ -20,6 +20,7 @@ Item{
             font.capitalization: Font.SmallCaps
             font.weight: Font.Black
             font.pointSize: 15
+            color: "white"
         }
         Text {
             id: titleHide
@@ -30,6 +31,7 @@ Item{
             text: "hide"
             font.pointSize: 11
             opacity: 0
+            color: "white"
 
             Behavior on opacity { NumberAnimation {duration: 200}}
         }
@@ -56,7 +58,6 @@ Item{
         height: parent.height - titleRect.height
         anchors.top: titleRect.bottom
         interactive: false
-        model: customModel
         delegate: customDelegate
     }
 

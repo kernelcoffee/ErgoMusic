@@ -16,20 +16,15 @@ ApplicationWindow {
 
     minimumWidth: 800
     minimumHeight: 500
-    opacity: 0
 
     title: "ErgoMusic"
-
-    Component.onCompleted: {
-        console.log(watchPlaylistsModel.count);
-        opacity = 1
-    }
 
     Behavior on opacity {NumberAnimation {duration: 100}}
 
     menuBar:  MenuWidget{ id: menuWidget}
     statusBar: StatusWidget {id: statusWidget}
 
+    Component.onCompleted: console.log(watchPlaylistsModel.count)
 
     TopWidget {
         id: topWidget
@@ -75,6 +70,7 @@ ApplicationWindow {
                 id: label
                 text: name
                 font.weight: Font.Light
+                color: "white"
             }
         }
     }

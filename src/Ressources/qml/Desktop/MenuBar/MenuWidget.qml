@@ -70,7 +70,7 @@ MenuBar {
         MenuItem { text: "Cut" }
         MenuItem { text: "Copy" }
         MenuItem { text: "Paste" }
-        MenuItem { text: "Settings"; action: console.log("openSettings") }
+        MenuItem { text: "Settings"}
     }
     //Presentation Menu
 
