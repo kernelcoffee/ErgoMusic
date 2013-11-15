@@ -19,8 +19,9 @@ public:
     Q_PROPERTY(int count READ rowCount() NOTIFY countChanged())
 
     explicit WatchPlaylistsModel(QObject *parent = 0);
-    QVariant    data(const QModelIndex &index, int role) const;
-    int         rowCount(const QModelIndex &index = QModelIndex()) const;
+    QVariant                data(const QModelIndex & index, int role = Qt::DisplayRole) const;
+    int                     rowCount(const QModelIndex &index = QModelIndex()) const;
+    QHash<int, QByteArray>  roleNames() const;
 
     void        addWatchPlaylist(QString, QString);
 
@@ -38,6 +39,8 @@ public slots:
 private:
        QObject*                     m_parent;
        QVector<WatchPlaylist*>*     m_watchPlaylists;
+       QHash<int, QByteArray>       roles;
+
 };
 
 #endif // WatchPlaylistsModel_H

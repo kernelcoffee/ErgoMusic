@@ -58,7 +58,6 @@ Item{
         height: parent.height - titleRect.height
         anchors.top: titleRect.bottom
         interactive: false
-        delegate: customDelegate
     }
 
     states: [

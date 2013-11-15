@@ -24,8 +24,6 @@ ApplicationWindow {
     menuBar:  MenuWidget{ id: menuWidget}
     statusBar: StatusWidget {id: statusWidget}
 
-    Component.onCompleted: console.log(watchPlaylistsModel.count)
-
     TopWidget {
         id: topWidget
         width: parent.width

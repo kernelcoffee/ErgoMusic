@@ -15,7 +15,6 @@ class WatchPlaylist : public AbstractPlaylist
 {
     Q_OBJECT
 public:
-//    WatchPlaylist(QObject *parent = 0);
     WatchPlaylist(QString name, QString path, QObject *parent = 0);
     ~WatchPlaylist();
 signals:

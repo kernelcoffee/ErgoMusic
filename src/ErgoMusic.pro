@@ -71,7 +71,8 @@ OTHER_FILES += \
 	Ressources/qml/Desktop/Widgets/CollapsiblePanel.qml \
     Ressources/qml/Desktop/StatusBar/StatusWidget.qml \
     Ressources/qml/Desktop/TopBar/TopWidget.qml \
-    Ressources/qml/Desktop/Components/PlayerControlerIcon.qml
+    Ressources/qml/Desktop/Components/PlayerControlerIcon.qml \
+    Ressources/qml/Desktop/Windows/Settings.qml
 
 RESOURCES += \
     Ressources/ErgoMusic.qrc \

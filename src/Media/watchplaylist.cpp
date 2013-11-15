@@ -7,21 +7,6 @@
 #include <QtConcurrent/QtConcurrent>
 #include <QMutexLocker>
 
-//WatchPlaylist::WatchPlaylist(QObject *parent) :
-//    AbstractPlaylist(parent)
-//{
-//    QSettings   settings;
-
-//    Logger::log("WatchPlaylist - Constructor", LOG_DEBUG);
-
-//    m_watchfolder = new QFileSystemWatcher();
-
-//    if (settings.value("watchFolderActivated").toBool() == true) {
-//        _update();
-//    }
-////    m_viewType = ViewWidget::LIST;
-//}
-
 WatchPlaylist::WatchPlaylist(QString name, QString path, QObject *parent) :
     AbstractPlaylist(parent)
 {
