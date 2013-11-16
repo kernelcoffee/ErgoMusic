@@ -53,12 +53,12 @@ ImportEngine*   DatabaseManager::importEngine() const
 
 void    DatabaseManager::openDatabase()
 {
-    QDir        dir;
     QSettings   settings;
+    QDir        dir = QDir(settings.value("database/path").toString());
 
-    m_dbFile = new QFile(settings.value("database/path").toString() + "/ergomusicdb.sqlite");
-    dir.mkpath(settings.value("database/path").toString());
-    Logger::log("DataManager - m_dbFile init OK " + settings.value("database/path").toString() + "/ergomusicdb.sqlite", LOG_DEBUG);
+    m_dbFile = new QFile(dir.absoluteFilePath("ergomusicdb.sqlite"));
+    dir.mkpath(dir.absolutePath());
+    Logger::log("DataManager - m_dbFile init OK " + dir.absoluteFilePath("ergomusicdb.sqlite"), LOG_DEBUG);
 
     if (connect() ==  false)
         Logger::log("DatabaseManager - Connect Failed", LOG_CRIT);
