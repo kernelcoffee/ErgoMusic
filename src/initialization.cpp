@@ -42,6 +42,8 @@ Initialization::Initialization(void)
 //    QPixmap splashPixmap(":/images/spashScreen.png");
     qApp->processEvents();
     _arguments = qApp->arguments();
+
+    Logger::log("Argument value " + QString::number(_arguments.count()));
     _translator = new QTranslator();
 }
 
@@ -55,11 +57,11 @@ void    Initialization::initSettings(void)
 
     if (_arguments.contains("--reset-all"))
     {
-        Logger::log("Reset all settings enabled");
+        Logger::log("Reset all settings enabled", LOG_DEBUG);
         settings.clear();
     }
 
-    if (settings.contains("initialized") && settings.value("initialized") == false)
+    if (!settings.contains("initialized") || settings.value("initialized") == false)
         initDefault();
 
     if (settings.value("version").isNull())
@@ -67,19 +69,18 @@ void    Initialization::initSettings(void)
 
     if (settings.value("version") != APPLICATION_VERSION)
     {
-        Logger::log("Version doesn't match, pleaze do a migration");
+        Logger::log("Version doesn't match, please do a migration");
         // do migration
     }
 
     Logger::log("Language found : " + settings.value("language").toString(), LOG_DEBUG);
-    if (QFile::exists(":qm_files/languages/lang_" + settings.value("language").toString()) == false) {
+    if (QFile::exists(":/qm_files/languages/lang_" + settings.value("language").toString() + ".qm") == false) {
         Logger::log("lang file :/languages/lang_" + settings.value("language").toString() + "  not found");
     } else {
-        _translator->load(":/languages/lang_" + settings.value("language").toString());
+        _translator->load(":/languages/lang_" + settings.value("language").toString() + ".qm");
         qApp->installTranslator(_translator);
+        Logger::log("Language file " + settings.value("language").toString() + " Loaded.");
     }
-
-    //    _translator->load(QString(":/language/lang_" + settings.value("language").toStdString());
 
     Logger::log("Settings initilized", LOG_DEBUG);
 }
@@ -99,9 +100,6 @@ void    Initialization::initDefault(void)
     settings.setValue("database/login", "login");
     settings.setValue("database/password", "password");
     settings.setValue("initialized", true);
-
-    settings.sync();
-    Logger::log("Language found : " + settings.value("language").toString(), LOG_DEBUG);
     settings.sync();
 }
 

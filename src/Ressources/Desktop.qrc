@@ -8,5 +8,6 @@
         <file>qml/Desktop/StatusBar/StatusWidget.qml</file>
         <file>qml/Desktop/TopBar/TopWidget.qml</file>
         <file>qml/Desktop/Components/PlayerControlerIcon.qml</file>
+        <file>qml/Desktop/Windows/Settings.qml</file>
     </qresource>
 </RCC>

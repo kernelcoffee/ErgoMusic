@@ -1,6 +1,6 @@
 import QtQuick 2.1
 import QtQuick.Controls 1.0
-import "../Windows"
+import "qrc:/qml/Desktop/Windows/"
 
 MenuBar {
     id: menuWidget
@@ -72,7 +72,6 @@ MenuBar {
         MenuItem { text: "Copy" }
         MenuItem { text: "Paste" }
         MenuItem { text: "Settings"
-        onTriggered: new Settings
         }
     }
     //Presentation Menu
