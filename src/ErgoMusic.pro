@@ -37,7 +37,8 @@ SOURCES += main.cpp\
     Utilities/Abstract/abstractplaylist.cpp \
     Media/playlist.cpp \
     Media/library.cpp \
-    Models/watchplaylistsmodel.cpp
+    Models/watchplaylistsmodel.cpp \
+    Media/mediamanager.cpp
 
 HEADERS  += \
     Database/databasemanager.h \
@@ -62,7 +63,8 @@ HEADERS  += \
     Utilities/Abstract/abstractplaylist.h \
     Media/playlist.h \
     Media/library.h \
-    Models/watchplaylistsmodel.h
+    Models/watchplaylistsmodel.h \
+    Media/mediamanager.h
 
 OTHER_FILES += \
 	Ressources/qml/Desktop/main.qml \

@@ -8,6 +8,7 @@ CoreManager::CoreManager()
     m_databaseManager = new DatabaseManager();
     m_networkManager = new NetworkManager();
     m_audioManager = new AudioManager();
+    m_mediaManager = new MediaManager();
 }
 
 CoreManager::~CoreManager()
@@ -26,6 +27,7 @@ void    CoreManager::initManagers(QStringList &arguments)
     m_databaseManager->init(arguments);
     m_networkManager->init(arguments);
     m_audioManager->init(arguments);
+    m_mediaManager->init(arguments);
     Logger::log("CoreManager - initManagers - End of managers initialization", LOG_DEBUG);
 }
 
@@ -40,4 +42,9 @@ DatabaseManager*    CoreManager::database() const
 NetworkManager*     CoreManager::network() const
 {
     return m_networkManager;
+}
+
+MediaManager *CoreManager::media() const
+{
+    return m_mediaManager;
 }

@@ -15,13 +15,19 @@ WatchPlaylist::WatchPlaylist(QString name, QString path, QObject *parent) :
     m_name = name;
     m_path.setPath(path);
     m_watchfolder = new QFileSystemWatcher();
+    m_collection = new Collection();
     _update();
 }
 
 WatchPlaylist::~WatchPlaylist()
 {
-    delete m_watchfolder;
     _disable();
+    delete m_watchfolder;
+}
+
+QString WatchPlaylist::name() const
+{
+    return m_name;
 }
 
 void    WatchPlaylist::update()
@@ -31,9 +37,7 @@ void    WatchPlaylist::update()
     Logger::log("WatchPlaylist - update", LOG_DEBUG);
 
     if (settings.value("watchFolderActivated").toBool() == true)
-    {
         _update();
-    }
     else
         _disable();
 }
@@ -44,7 +48,7 @@ void    WatchPlaylist::_refresh(QString path)
     Logger::log("WatchPlaylist - _refresh - watchFolder modified at path " + path, LOG_DEBUG);
     if (m_list == NULL)
         delete m_list;
-    m_list = CoreManager::instance()->database()->importEngine()->importPath(path);
+    m_list = CoreManager::instance()->database()->importEngine()->importPath(path, m_collection);
     m_mutex.unlock();
     updated();
 }
@@ -52,24 +56,25 @@ void    WatchPlaylist::_refresh(QString path)
 void    WatchPlaylist::_update()
 {
     QSettings   settings;
-    QDir        watchFolder(settings.value("watchFolder").toString());
 
-    if (watchFolder.exists())
+    if (m_path.exists())
     {
-        Logger::log("WatchPlaylist - Path correct : " + watchFolder.absolutePath(), LOG_DEBUG);
+        Logger::log("WatchPlaylist - Path correct : " +  m_path.absolutePath() +  LOG_DEBUG);
         m_watchfolder->removePaths(m_watchfolder->directories());
-        m_watchfolder->addPath(watchFolder.absolutePath());
+        m_watchfolder->addPath(m_path.absolutePath());
 
         if (QObject::receivers(SIGNAL(directoryChanged(QString))) == 0) {
             Logger::log("WatchPlaylist - _update - signal not set -> connecting", LOG_DEBUG);
             connect(m_watchfolder, SIGNAL(directoryChanged(QString)), this, SLOT(_refresh(QString)));
+            Logger::log("WatchPlaylist - _update - signal not set -> connected", LOG_DEBUG);
         }
-        QtConcurrent::run(this, &WatchPlaylist::_refresh, settings.value("watchFolder").toString());
-       // m_watchfolder->directoryChanged(settings.value("watchFolder").toString());
+
+        Logger::log("WatchPlaylist - creating new thread for refresh", LOG_DEBUG);
+        QtConcurrent::run(this, &WatchPlaylist::_refresh, m_path.absolutePath());
     }
     else
     {
-        Logger::log("WatchPlaylist - Path incorrect : " + watchFolder.absolutePath(), LOG_WARNING);
+        Logger::log("WatchPlaylist - Path incorrect : " + m_path.absolutePath(), LOG_WARNING);
     }
 }
 

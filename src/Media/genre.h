@@ -1,7 +1,7 @@
 #ifndef GENRE_H
 #define GENRE_H
 
-#include "collection.h"
+#include <QString>
 
 class Genre
 {

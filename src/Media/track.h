@@ -1,9 +1,7 @@
 #ifndef TRACK_H
 #define TRACK_H
 
-#include "artist.h"
-#include "album.h"
-#include "genre.h"
+#include "collection.h"
 
 #include <QFileInfo>
 #include <QUrl>
@@ -13,6 +11,7 @@
 class Artist;
 class Album;
 class Genre;
+class Collection;
 
 class Track : public QMediaContent
 {
@@ -25,6 +24,8 @@ public:
     Artist*     artist();
     Album*      album();
 
+    void        extractTags(void);
+    void        extractTags(Collection*);
     QString     getValue(QString) const;
 
     void        setUid(int);
@@ -41,7 +42,6 @@ private:
     void        _setValue(QString, QString);
     void        _setValue(QString, int);
 
-    void        _extractTags();
     void        _debugTags();
     Album       *m_album;
     Artist      *m_artist;

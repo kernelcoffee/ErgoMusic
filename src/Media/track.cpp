@@ -1,5 +1,5 @@
 #include "track.h"
-#include "collection.h"
+#include "coremanager.h"
 #include "Utilities/logger.h"
 
 // LibTag
@@ -14,14 +14,10 @@
 //#include <attachedpictureframe.h>
 
 
-//Track::Track(QUrl path)
-//{}
-
 Track::Track(QUrl path) :
     QMediaContent(path)
 {
     m_file = new QFileInfo(path.path());
-    _extractTags();
 }
 
 Track::~Track()
@@ -103,7 +99,12 @@ void Track::_setValue(QString key, int value)
     _setValue(key, QString::number(value));
 }
 
-void Track::_extractTags()
+void Track::extractTags()
+{
+    extractTags(CoreManager::instance()->media()->getCollection());
+}
+
+void Track::extractTags(Collection* collection)
 {
     TagLib::FileRef file(m_file->absoluteFilePath().toLocal8Bit().data());
 
@@ -111,11 +112,11 @@ void Track::_extractTags()
     {
         TagLib::Tag *tag = file.tag();
         setTitle(tag->title().toCString(true));
-        setArtist(Collection::instance()->getArtist(QString(tag->artist().toCString(true))));
-        setAlbum(Collection::instance()->getAlbum(QString(tag->album().toCString(true)), m_artist));
+        setArtist(collection->getArtist(QString(tag->artist().toCString(true))));
+        setAlbum(collection->getAlbum(QString(tag->album().toCString(true)), m_artist));
         setYear(tag->year());
         setTrack(tag->track());
-        setGenre(Collection::instance()->getGenre(QString(tag->genre().toCString(true))));
+        setGenre(collection->getGenre(QString(tag->genre().toCString(true))));
         //Logger::log("Album " + m_album->name() + " Artist " + m_artist->name() + " Title " + m_title + " file " + m_file->fileName(), LOG_DEBUG);
     }
     if (!file.isNull() && file.audioProperties())

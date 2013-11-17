@@ -32,6 +32,7 @@ public:
     void            init(QStringList&);
     void            setQuery(QSqlQuery*);
     QList<Track*> * importPath(QString&);
+    QList<Track*> * importPath(QString&, Collection*);
 private:
     QSqlQuery*  m_query;
 

@@ -23,8 +23,7 @@
 #include <QDebug>
 
 #include "initialization.h"
-#include "Media/collection.h"
-#include "Models/watchplaylistsmodel.h"
+#include "coremanager.h"
 #include "common.h"
 
 int main(int argc, char *argv[])
@@ -34,16 +33,17 @@ int main(int argc, char *argv[])
     Initialization* init = new Initialization();
     init->initSettings();
     init->initManagers();
-    init->initCollection();
-
-    Collection* collection = Collection::instance();
 
     QQmlApplicationEngine engine;
     QQmlContext *context = engine.rootContext();
 
+
+    CoreManager* cores = CoreManager::instance();
+    cores->media()->initDummyData();
+
 //    qmlRegisterType<WatchPlaylistsModel>("ErgoMusic", 1, 0, "WatchPlaylistsModel");
 
-    context->setContextProperty("watchPlaylistsModel", collection->getWatchPlaylists());
+    context->setContextProperty("watchPlaylistsModel",cores->media()->getWatchPlaylists());
 
 
     // replace the visible: true in main.qml
@@ -54,7 +54,6 @@ int main(int argc, char *argv[])
         qWarning("Error: Your root item has to be a Window.");
         return -1;
     }
-
 
     window->show();
     return app.exec();

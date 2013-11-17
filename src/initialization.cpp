@@ -39,11 +39,8 @@ Initialization::Initialization(void)
     Q_INIT_RESOURCE(Desktop);
     Logger::log("Ressources Loaded.", LOG_DEBUG);
 
-//    QPixmap splashPixmap(":/images/spashScreen.png");
     qApp->processEvents();
     _arguments = qApp->arguments();
-
-    Logger::log("Argument value " + QString::number(_arguments.count()));
     _translator = new QTranslator();
 }
 
@@ -92,8 +89,6 @@ void    Initialization::initDefault(void)
     Logger::log("Initialization - set default values");
     settings.setValue("language", QLocale::system().name());
     settings.setValue("musicFolder", QStandardPaths::writableLocation(QStandardPaths::MusicLocation));
-    settings.setValue("watchFolder", "");
-    settings.setValue("watchFolderActivated", false);
     settings.setValue("database/type", "SQLITE");
     settings.setValue("database/path", QStandardPaths::writableLocation(QStandardPaths::DataLocation));
     settings.setValue("database/name", "ergomusic");
@@ -106,9 +101,4 @@ void    Initialization::initDefault(void)
 void    Initialization::initManagers()
 {
    CoreManager::instance()->initManagers(_arguments);
-}
-
-void    Initialization::initCollection()
-{
-    Collection::instance()->init(_arguments);
 }

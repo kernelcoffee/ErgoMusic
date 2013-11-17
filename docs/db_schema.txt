@@ -1,0 +1,13 @@
+Collection
+	- Artist
+	- tracks
+	- Path
+
+Artist
+	- QString Name
+	- QString Bio
+	- list Albums
+	- list Image / url to img ?
+
+Tracks
+	- 

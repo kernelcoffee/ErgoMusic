@@ -17,10 +17,13 @@
  */
 
 #include "Utilities/logger.h"
+#include "coremanager.h"
 #include "importengine.h"
 
 #include <QDirIterator>
 #include <QUrl>
+
+class Collection;
 
 ImportEngine::ImportEngine()
 {
@@ -45,6 +48,13 @@ void    ImportEngine::setQuery(QSqlQuery *query)
 
 QList<Track*>*   ImportEngine::importPath(QString &path)
 {
+    return importPath(path, CoreManager::instance()->media()->getCollection());
+}
+
+
+
+QList<Track*>*   ImportEngine::importPath(QString &path, Collection* collection)
+{
     Track*  track;
 
     Logger::log("ImportEngine - importPath - " + path, LOG_DEBUG);
@@ -61,6 +71,7 @@ QList<Track*>*   ImportEngine::importPath(QString &path)
          if (m_supportedExtension.contains(it.fileInfo().suffix().toLower()) == true)
          {
             track = new Track(QUrl(it.fileInfo().absoluteFilePath()));
+            track->extractTags(collection);
             list->append(track);
          }
      }

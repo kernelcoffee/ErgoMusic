@@ -11,20 +11,20 @@ WatchPlaylistsModel::WatchPlaylistsModel(QObject *parent) :
     roles[NameRole] = "name";
 
     m_watchPlaylists = new QVector<WatchPlaylist*>;
-
 }
 
 QVariant WatchPlaylistsModel::data(const QModelIndex &index, int role) const
 {
-    qDebug() << "get data";
+    Logger::log("WatchPlaylistModel - data", LOG_DEBUG);
     if (index.row() < 0 || index.row() > rowCount())
         return QVariant();
 
-    qDebug() << "get ";
     switch (role) {
+    case NameRole:
+        return m_watchPlaylists->at(index.row())->name();
+    break;
         default:
             return "toto";
-//    case NameRole: return m_watchPlaylists[index.row()]->name();
     }
     return "tata";
 //    return QVariant();
@@ -32,11 +32,13 @@ QVariant WatchPlaylistsModel::data(const QModelIndex &index, int role) const
 
 int WatchPlaylistsModel::rowCount(const QModelIndex &index) const
 {
+    Logger::log("WatchPlaylistModel - rowCount", LOG_DEBUG);
     return m_watchPlaylists->count();
 }
 
 QHash<int, QByteArray> WatchPlaylistsModel::roleNames() const
 {
+    Logger::log("WatchPlaylistModel - roles", LOG_DEBUG);
     return roles;
 }
 
