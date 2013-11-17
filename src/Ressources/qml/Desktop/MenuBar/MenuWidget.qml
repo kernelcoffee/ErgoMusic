@@ -72,6 +72,7 @@ MenuBar {
         MenuItem { text: "Copy" }
         MenuItem { text: "Paste" }
         MenuItem { text: "Settings"
+            onTriggered: settingsWindow.show()
         }
     }
     //Presentation Menu

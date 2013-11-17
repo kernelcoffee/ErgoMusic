@@ -23,7 +23,7 @@ How to compile
 ==============
 
 Dependency Client:
-Qt 5.0 (tested with Qt5 from git master).
+Qt >= 5.1
 TagLib (tested with TagLib 1.8).
 Doxygen for documentation
 
@@ -31,7 +31,7 @@ Doxygen for documentation
 
 *How I do it ?*
 
-I am currently using Fedora 18 with QtCreator and Qt 5 from git.
+I am currently using Fedora 19 with QtCreator and Qt 5 from git.
 
 *How you can do it ?*
 
@@ -41,7 +41,7 @@ TODO
 
 *How I do it ?*
 
-Download and install MacPort
+Download and install MacPort/Homebrew
 in a console :
 
    $ sudo port install libtag

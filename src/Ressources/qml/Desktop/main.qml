@@ -3,10 +3,10 @@ import QtQuick.Controls 1.0
 import QtQuick.Layouts 1.0
 
 import "qrc:/qml/Desktop/Widgets"
-//import "qrc:/qml/Desktop/Mainview"
 import "qrc:/qml/Desktop/MenuBar"
 import "qrc:/qml/Desktop/StatusBar"
 import "qrc:/qml/Desktop/TopBar"
+import "qrc:/qml/Desktop/Windows/"
 
 
 ApplicationWindow {
@@ -27,6 +27,10 @@ ApplicationWindow {
     TopWidget {
         id: topWidget
         width: parent.width
+    }
+
+    Settings{
+        id: settingsWindow
     }
 
     // DEBUG

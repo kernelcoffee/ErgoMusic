@@ -27,7 +27,6 @@ public:
 
 signals:
     void        countChanged();
-//    void        dataUpdated(Item*);
 
 public slots:
     void        insert(int, const QString&);
@@ -35,12 +34,11 @@ public slots:
     void        remove(int);
     QObject*    get(int); // retrieve an item
     void        setProperty(int index, const QString& property, const QVariant& value);
-//    void        dataUpdate(Item*);
+
 private:
        QObject*                     m_parent;
        QVector<WatchPlaylist*>*     m_watchPlaylists;
        QHash<int, QByteArray>       roles;
-
 };
 
 #endif // WatchPlaylistsModel_H

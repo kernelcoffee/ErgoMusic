@@ -55,8 +55,6 @@ void    WatchPlaylist::_refresh(QString path)
 
 void    WatchPlaylist::_update()
 {
-    QSettings   settings;
-
     if (m_path.exists())
     {
         Logger::log("WatchPlaylist - Path correct : " +  m_path.absolutePath() +  LOG_DEBUG);

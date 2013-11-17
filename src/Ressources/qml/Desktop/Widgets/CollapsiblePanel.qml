@@ -28,6 +28,7 @@ Item{
             width: contentWidth
             anchors.right: titleRect.right
             anchors.rightMargin: 5
+            anchors.verticalCenter: parent.verticalCenter
             text: "hide"
             font.pointSize: 11
             opacity: 0
