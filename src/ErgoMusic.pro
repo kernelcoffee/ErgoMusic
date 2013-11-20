@@ -7,8 +7,13 @@ macx {
 	# FIX: issue where cache is not created on 5.1
 	cache()
 	#using default path of MacPort
-    INCLUDEPATH += /opt/local/include/
-    LIBS += -L/opt/local/lib -ltag
+	INCLUDEPATH += /opt/local/include/
+	LIBS += -L/opt/local/lib
+	#using default path of Homebrew
+	INCLUDEPATH += /usr/local/include/
+	LIBS += -L/usr/local/lib
+
+	LIBS += -ltag
 }
 
 unix:!macx {
