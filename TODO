@@ -1,0 +1,22 @@
+Features
+- Automatic file organization (should be deactivable)
+- seamless/gapless track transition
+- Song queuing (type of playlist)
+- radio streaming
+- automatic tagging (through scrappers)
+- some sort of theme management (to be figured out)
+- multiplateform
+- flac/ogg support
+- Different library viewing modes (a la iTunes)
+
+target
+- small footprint
+
+Interresting idea (from feedback)
+- The ability to browse and actively add music from folder structure.
+- Actual GUI button to highlight currently playing song
+- API for third partie modules (foobar compatility)
+
+nice to have
+- Transcoding -> exporting to external device (meaning device management) can reencore as exporting to compatible format or for smaller file size.
+- Tracker format https://en.wikipedia.org/wiki/Module_file / http://en.wikipedia.org/wiki/Music_tracker
