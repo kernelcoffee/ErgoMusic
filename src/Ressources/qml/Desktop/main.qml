@@ -68,11 +68,17 @@ ApplicationWindow {
         id: sidebarSubmenuDelegate
         Item {
             height: label.height
+            width: parent.width
             Text {
                 id: label
                 text: name
                 font.weight: Font.Light
-                color: "white"
+            }
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    console.log("whatchPlaylist " + index + "selected");
+                }
             }
         }
     }

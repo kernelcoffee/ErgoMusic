@@ -21,24 +21,22 @@ QVariant WatchPlaylistsModel::data(const QModelIndex &index, int role) const
 
     switch (role) {
     case NameRole:
+        Logger::log("date - " + m_watchPlaylists->at(index.row())->name(), LOG_DEBUG);
         return m_watchPlaylists->at(index.row())->name();
     break;
         default:
             return "toto";
     }
-    return "tata";
-//    return QVariant();
+    return QVariant();
 }
 
 int WatchPlaylistsModel::rowCount(const QModelIndex &index) const
 {
-    Logger::log("WatchPlaylistModel - rowCount", LOG_DEBUG);
     return m_watchPlaylists->count();
 }
 
 QHash<int, QByteArray> WatchPlaylistsModel::roleNames() const
 {
-    Logger::log("WatchPlaylistModel - roles", LOG_DEBUG);
     return roles;
 }
 

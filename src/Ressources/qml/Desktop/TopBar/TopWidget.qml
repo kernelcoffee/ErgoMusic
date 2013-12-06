@@ -22,25 +22,25 @@ Item {
             height: parent.height * 0.6
             width: parent.width * 0.3
             source: "qrc:/images/images/playerControls/previous.svg"
-            onClicked: console.log("previous click")
-            onPressed: console.log("fast baskward")
-            onReleased: console.log("release")
+//            onClicked: console.log("previous click")
+//            onPressed: console.log("fast baskward")
+//            onReleased: console.log("release")
         }
         PlayerControlerIcon {
             anchors.verticalCenter: parent.verticalCenter
             height: parent.height
             width: parent.width * 0.3
             source: "qrc:/images/images/playerControls/play.svg"
-            onClicked: console.log("play click")
+//            onClicked: console.log("play click")
         }
         PlayerControlerIcon {
             anchors.verticalCenter: parent.verticalCenter
             height: parent.height * 0.6
             width: parent.width * 0.3
             source: "qrc:/images/images/playerControls/next.svg"
-            onClicked: console.log("play click")
-            onPressed: console.log("fast forward")
-            onReleased: console.log("release")
+//            onClicked: console.log("play click")
+//            onPressed: console.log("fast forward")
+//            onReleased: console.log("release")
         }
     }
 
@@ -51,7 +51,7 @@ Item {
         anchors.leftMargin: 20
         width: parent.width * .06
         onValueChanged: {
-            console.log(value)
+//            console.log(value)
         }
     }
 
