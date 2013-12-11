@@ -7,8 +7,7 @@ class Library : public AbstractPlaylist
 {
     Q_OBJECT
 public:
-    explicit Library(QObject *parent = 0);
-    explicit Library(QList<Track*>*, QObject*parent = 0);
+    explicit Library(Collection*, QObject *parent = 0);
 signals:
     
 public slots:
@@ -19,6 +18,9 @@ protected slots:
     virtual void        remove(int);
     virtual QObject*    get(int);
     virtual void        setProperty(int index, const QString &property, const QVariant &value);
+
+private:
+    Collection*         m_collection;
 
 };
 

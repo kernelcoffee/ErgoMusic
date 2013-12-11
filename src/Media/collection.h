@@ -9,8 +9,6 @@
 #include "artist.h"
 #include "genre.h"
 
-#include "Models/watchplaylistsmodel.h"
-
 // Collection is a storage point for Artist / Album / Genre and tracks
 // but is not necessarely saved in the database
 // It can be used for a library or a watchfolder before import
@@ -18,6 +16,7 @@
 class Genre;
 class Artist;
 class Album;
+class Track;
 
 class Collection
 {
@@ -26,7 +25,7 @@ public:
     ~Collection();
     void                init(QStringList&);
 
-    QList<Track*>*       getTracks(void) const;
+    QList<Track*>*      getTracks(void) const;
     Artist*             getArtist(QString) const;
     Album*              getAlbum(QString, Artist*) const;
     Genre*              getGenre(QString) const;

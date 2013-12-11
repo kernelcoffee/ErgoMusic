@@ -1,16 +1,8 @@
 #include "library.h"
-//#include "Gui/viewwidget.h"
 
-Library::Library(QObject *parent) :
-    AbstractPlaylist(parent)
+Library::Library(Collection* collection, QObject *parent) :
+    m_collection(collection), AbstractPlaylist(parent)
 {
-}
-
-Library::Library(QList<Track *> *list, QObject *parent) :
-    AbstractPlaylist(parent)
-{
-//    m_viewType = ViewWidget::INVALID;
-    m_list = list;
 }
 
 void Library::insert(int, const Track *)

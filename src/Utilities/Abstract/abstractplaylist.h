@@ -5,6 +5,7 @@
 #include <QMutex>
 #include <QList>
 #include <QAbstractListModel>
+#include "Media/collection.h"
 
 class Track;
 

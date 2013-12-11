@@ -9,7 +9,6 @@
 #include <QDir>
 #include <QMutex>
 
-class Track;
 class Collection;
 
 class WatchPlaylist : public AbstractPlaylist

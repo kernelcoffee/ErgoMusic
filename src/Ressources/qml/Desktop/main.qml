@@ -27,7 +27,7 @@ ApplicationWindow {
     QtObject {
         id: mainObject
 
-        property variant mainModel: cores;
+        property variant mainModel: cores.media.library();
     }
 
     TopWidget {
