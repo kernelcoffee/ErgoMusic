@@ -25,7 +25,6 @@ public:
 //    virtual void                    setViewType();
 
     virtual Type                    getType(void) const;
-    virtual QList<Track*>*          getList(void) const;
     virtual bool                    isLocked(void);
 
     virtual QString                 name(void) const;

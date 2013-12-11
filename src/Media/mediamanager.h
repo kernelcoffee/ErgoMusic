@@ -5,6 +5,7 @@
 #include <QList>
 
 #include "collection.h"
+#include "library.h"
 #include "Models/watchplaylistsmodel.h"
 
 class MediaManager : public QObject
@@ -16,6 +17,7 @@ public:
     void                    init(QStringList&);
 
     void                    initDummyData(void);
+    Library*                library(void) const;
     Collection*             getCollection(void) const;
     WatchPlaylistsModel*    getWatchPlaylists(void) const;
 signals:
@@ -23,8 +25,8 @@ signals:
 public slots:
 
 private:
+    Library*                m_library;
     Collection*             m_collection;
-
     WatchPlaylistsModel     *m_watchPlaylists;
 };
 

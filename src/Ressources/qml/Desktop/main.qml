@@ -24,6 +24,12 @@ ApplicationWindow {
     menuBar:  MenuWidget{ id: menuWidget}
     statusBar: StatusWidget {id: statusWidget}
 
+    QtObject {
+        id: mainObject
+
+        property variant mainModel: cores;
+    }
+
     TopWidget {
         id: topWidget
         width: parent.width
@@ -100,30 +106,29 @@ ApplicationWindow {
             frameVisible: false
 
             Column {
-                    height: sidebarMenu.height
-                    width: sidebarMenu.width
-                    spacing: 10
+                height: sidebarMenu.height
+                width: sidebarMenu.width
+                spacing: 10
 
-                    CollapsiblePanel {
-                        title: "Library"
-                        width: parent.width
-                        model: testSidebarModel
-                        delegate: sidebarSubmenuDelegate
-                    }
-                    CollapsiblePanel {
-                        width: parent.width
-                        title: "Devices"
-                        model: sidebarMenuModel
-                        delegate: sidebarSubmenuDelegate
-                    }
-                    CollapsiblePanel {
-                        width: parent.width
-                        title: "Playlists"
-                        model: watchPlaylistsModel
-                        delegate: sidebarSubmenuDelegate
-                    }
-
-                  }
+                CollapsiblePanel {
+                    title: "Library"
+                    width: parent.width
+                    model: testSidebarModel
+                    delegate: sidebarSubmenuDelegate
+                }
+                CollapsiblePanel {
+                    width: parent.width
+                    title: "Devices"
+                    model: sidebarMenuModel
+                    delegate: sidebarSubmenuDelegate
+                }
+                CollapsiblePanel {
+                    width: parent.width
+                    title: "Playlists"
+                    model: watchPlaylistsModel
+                    delegate: sidebarSubmenuDelegate
+                }
+            }
         }
         Loader {
             id: centerItem

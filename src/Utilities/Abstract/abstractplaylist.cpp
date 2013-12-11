@@ -36,11 +36,6 @@ AbstractPlaylist::Type    AbstractPlaylist::getType(void) const
     return m_type;
 }
 
-QList<Track*>*  AbstractPlaylist::getList(void) const
-{
-    return m_list;
-}
-
 //ViewWidget::ViewType AbstractPlaylist::getViewType() const
 //{
 //    return m_viewType;

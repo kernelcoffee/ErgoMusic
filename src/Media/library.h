@@ -12,7 +12,14 @@ public:
 signals:
     
 public slots:
-    
+
+protected slots:
+    virtual void        insert(int, const Track *);
+    virtual void        append(const Track *);
+    virtual void        remove(int);
+    virtual QObject*    get(int);
+    virtual void        setProperty(int index, const QString &property, const QVariant &value);
+
 };
 
 #endif // LIBRARY_H

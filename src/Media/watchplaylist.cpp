@@ -17,12 +17,14 @@ WatchPlaylist::WatchPlaylist(QString name, QString path, QObject *parent) :
     m_path.setPath(path);
     m_watchfolder = new QFileSystemWatcher();
     m_collection = new Collection();
+    m_list = m_collection->getTracks();
     _update();
 }
 
 WatchPlaylist::~WatchPlaylist()
 {
     _disable();
+    delete m_collection;
     delete m_watchfolder;
 }
 

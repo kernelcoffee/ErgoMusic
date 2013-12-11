@@ -26,9 +26,10 @@ public:
     ~Collection();
     void                init(QStringList&);
 
-    Artist*             getArtist(QString);
-    Album*              getAlbum(QString, Artist*);
-    Genre*              getGenre(QString);
+    QList<Track*>*       getTracks(void) const;
+    Artist*             getArtist(QString) const;
+    Album*              getAlbum(QString, Artist*) const;
+    Genre*              getGenre(QString) const;
 
 protected:
     QList<Track*>            *m_tracks;

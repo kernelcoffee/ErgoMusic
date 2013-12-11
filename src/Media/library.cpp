@@ -12,3 +12,28 @@ Library::Library(QList<Track *> *list, QObject *parent) :
 //    m_viewType = ViewWidget::INVALID;
     m_list = list;
 }
+
+void Library::insert(int, const Track *)
+{
+
+}
+
+void Library::append(const Track *)
+{
+
+}
+
+void Library::remove(int)
+{
+
+}
+
+QObject *Library::get(int)
+{
+
+}
+
+void Library::setProperty(int index, const QString &property, const QVariant &value)
+{
+
+}

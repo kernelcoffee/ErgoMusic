@@ -21,14 +21,19 @@ Collection::~Collection()
     delete m_tracks;
 }
 
-Artist* Collection::getArtist(QString artistName)
+QList<Track *>* Collection::getTracks() const
+{
+    return m_tracks;
+}
+
+Artist* Collection::getArtist(QString artistName) const
 {
     while (m_artists->contains(artistName) == false)
         m_artists->insert(artistName, new Artist(artistName));
     return m_artists->value(artistName);
 }
 
-Album*  Collection::getAlbum(QString albumName, Artist *artist)
+Album*  Collection::getAlbum(QString albumName, Artist *artist) const
 {
     if (m_albums->contains(albumName) == false ||
         m_albums->value(albumName)->albumArtist() != artist)
@@ -36,7 +41,7 @@ Album*  Collection::getAlbum(QString albumName, Artist *artist)
     return m_albums->value(albumName);
 }
 
-Genre*  Collection::getGenre(QString name)
+Genre*  Collection::getGenre(QString name) const
 {
     if (m_genres->contains(name) == false)
         m_genres->insert(name, new Genre(name));
