@@ -21,9 +21,9 @@ public:
 signals:
 
 public slots:
-    void            update();
+    void                update();
 private slots:
-    void            _refresh(QString);
+    void                _refresh(QString);
 protected slots:
     virtual void        insert(int, const Track *);
     virtual void        append(const Track *);

@@ -16,8 +16,6 @@ public:
         NameRole = Qt::UserRole
     };
 
-    Q_PROPERTY(int count READ rowCount() NOTIFY countChanged())
-
     explicit WatchPlaylistsModel(QObject *parent = 0);
     QVariant                data(const QModelIndex & index, int role = Qt::DisplayRole) const;
     int                     rowCount(const QModelIndex &index = QModelIndex()) const;
@@ -36,9 +34,9 @@ public slots:
     void        setProperty(int index, const QString& property, const QVariant& value);
 
 private:
-       QObject*                     m_parent;
-       QVector<WatchPlaylist*>*     m_watchPlaylists;
-       QHash<int, QByteArray>       roles;
+    QObject*                     m_parent;
+    QVector<WatchPlaylist*>*     m_watchPlaylists;
+    QHash<int, QByteArray>       roles;
 };
 
 #endif // WatchPlaylistsModel_H

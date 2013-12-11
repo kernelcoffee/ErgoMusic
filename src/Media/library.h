@@ -18,10 +18,6 @@ protected slots:
     virtual void        remove(int);
     virtual QObject*    get(int);
     virtual void        setProperty(int index, const QString &property, const QVariant &value);
-
-private:
-    Collection*         m_collection;
-
 };
 
 #endif // LIBRARY_H

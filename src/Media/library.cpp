@@ -1,8 +1,9 @@
 #include "library.h"
 
 Library::Library(Collection* collection, QObject *parent) :
-    m_collection(collection), AbstractPlaylist(parent)
+    AbstractPlaylist(parent)
 {
+    m_collection = collection;
 }
 
 void Library::insert(int, const Track *)

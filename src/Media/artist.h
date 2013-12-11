@@ -3,7 +3,7 @@
 
 #include "album.h"
 
-#include <QVector>
+#include <QList>
 #include <QImage>
 
 class Album;
@@ -16,9 +16,9 @@ public:
     ~Artist();
 
     QString    name();
-    void    setName(QString);
+    void       setName(QString);
 private:
-    QVector<Album*> *m_album;
+    QList<Album*> *m_albums;
 
     int             uid;
     QString         m_name, m_bio;

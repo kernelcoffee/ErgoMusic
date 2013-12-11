@@ -44,9 +44,9 @@ protected:
     AbstractPlaylist(QObject *parent = 0);
 
     QString                 m_name;
-    QList<Track*>*          m_list;
     Type                    m_type;
     QMutex                  m_mutex;
+    Collection*             m_collection;
 
     QHash<int, QByteArray>       roles;
 

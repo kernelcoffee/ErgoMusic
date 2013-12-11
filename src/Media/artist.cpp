@@ -14,6 +14,8 @@ Artist::Artist(QString name)
 
 Artist::~Artist()
 {
+    while (!m_albums->isEmpty())
+        delete m_albums->takeFirst();
 }
 
 QString Artist::name()

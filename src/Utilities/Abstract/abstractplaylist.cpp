@@ -23,7 +23,7 @@ QVariant AbstractPlaylist::data(const QModelIndex &index, int role) const
 int AbstractPlaylist::rowCount(const QModelIndex &index) const
 {
     Q_UNUSED(index);
-    m_list->count();
+    m_collection->getTracks()->count();
 }
 
 QHash<int, QByteArray>  AbstractPlaylist::roleNames() const

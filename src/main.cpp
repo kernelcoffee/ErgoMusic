@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
 
     context->setContextProperty("watchPlaylistsModel",cores->media()->getWatchPlaylists());
     context->setContextProperty("cores", cores);
-
+    context->setContextProperty("library", cores->media()->library());
 
     // replace the visible: true in main.qml
     engine.load(QUrl("qrc:///main.qml"));

@@ -2,16 +2,16 @@
 #include "Utilities/logger.h"
 #include "coremanager.h"
 
-Collection::Collection()
+Collection::Collection(QObject *parent) :
+    QObject(parent)
 {
     Logger::log("Create collection instance", LOG_DEBUG);
 
-    m_artists = new QHash<QString, Artist*>;
-    m_albums = new QHash<QString, Album*>;
-    m_genres = new QHash<QString, Genre*>;
+    m_artists = new QMap<QString, Artist*>;
+    m_albums = new QMap<QString, Album*>;
+    m_genres = new QMap<QString, Genre*>;
     m_tracks = new QList<Track*>;
 }
-
 
 Collection::~Collection()
 {
@@ -19,6 +19,16 @@ Collection::~Collection()
     delete m_albums;
     delete m_genres;
     delete m_tracks;
+}
+
+void Collection::reset()
+{
+     QMap<QString, Artist*>::const_iterator a = m_artists->constBegin();
+     while(a != m_artists->constEnd())
+     {
+         if (a.value())
+            delete a.value();
+     }
 }
 
 QList<Track *>* Collection::getTracks() const
@@ -36,7 +46,7 @@ Artist* Collection::getArtist(QString artistName) const
 Album*  Collection::getAlbum(QString albumName, Artist *artist) const
 {
     if (m_albums->contains(albumName) == false ||
-        m_albums->value(albumName)->albumArtist() != artist)
+            m_albums->value(albumName)->albumArtist() != artist)
         m_albums->insert(albumName,new Album(albumName, artist));
     return m_albums->value(albumName);
 }

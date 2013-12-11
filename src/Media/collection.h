@@ -1,8 +1,9 @@
 #ifndef COLLECTION_H
 #define COLLECTION_H
 
+#include <QObject>
 #include <QList>
-#include <QHash>
+#include <QMap>
 
 #include "track.h"
 #include "album.h"
@@ -18,23 +19,29 @@ class Artist;
 class Album;
 class Track;
 
-class Collection
+class Collection : public QObject
 {
+    Q_OBJECT
 public:
-    Collection();
+    explicit Collection(QObject* parent = 0);
     ~Collection();
     void                init(QStringList&);
+    void                reset(void);
 
     QList<Track*>*      getTracks(void) const;
     Artist*             getArtist(QString) const;
     Album*              getAlbum(QString, Artist*) const;
     Genre*              getGenre(QString) const;
 
+signals:
+
+public slots:
+
 protected:
     QList<Track*>            *m_tracks;
-    QHash<QString, Artist*>  *m_artists;
-    QHash<QString, Album*>   *m_albums;
-    QHash<QString, Genre*>   *m_genres;
+    QMap<QString, Artist*>   *m_artists;
+    QMap<QString, Album*>    *m_albums;
+    QMap<QString, Genre*>    *m_genres;
 };
 
 #endif // COLLECTION_H

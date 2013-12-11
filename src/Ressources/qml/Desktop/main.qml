@@ -24,10 +24,9 @@ ApplicationWindow {
     menuBar:  MenuWidget{ id: menuWidget}
     statusBar: StatusWidget {id: statusWidget}
 
-    QtObject {
-        id: mainObject
-
-        property variant mainModel: cores.media.library();
+    Component.onCompleted: {
+        console.log(cores)
+        console.log(library)
     }
 
     TopWidget {
