@@ -12,6 +12,7 @@ WatchPlaylist::WatchPlaylist(QString name, QString path, QObject *parent) :
 {
     Logger::log("New WatchPlaylist " + name + " - " + path, LOG_DEBUG);
 
+    m_type = WATCHPLAYLIST;
     m_name = name;
     m_path.setPath(path);
     m_watchfolder = new QFileSystemWatcher();
@@ -23,11 +24,6 @@ WatchPlaylist::~WatchPlaylist()
 {
     _disable();
     delete m_watchfolder;
-}
-
-QString WatchPlaylist::name() const
-{
-    return m_name;
 }
 
 void    WatchPlaylist::update()
@@ -51,6 +47,31 @@ void    WatchPlaylist::_refresh(QString path)
     m_list = CoreManager::instance()->database()->importEngine()->importPath(path, m_collection);
     m_mutex.unlock();
     updated();
+}
+
+void WatchPlaylist::insert(int, const Track *)
+{
+
+}
+
+void WatchPlaylist::append(const Track *)
+{
+
+}
+
+void WatchPlaylist::remove(int)
+{
+
+}
+
+QObject *WatchPlaylist::get(int)
+{
+
+}
+
+void WatchPlaylist::setProperty(int index, const QString &property, const QVariant &value)
+{
+
 }
 
 void    WatchPlaylist::_update()

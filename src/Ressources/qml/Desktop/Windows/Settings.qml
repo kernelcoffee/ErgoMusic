@@ -4,6 +4,7 @@ import QtQuick.Window 2.1
 
 Window {
     id: settingsWindow
-    width: 100
-    height: 62
+    width: 400
+    height: 300
+
 }

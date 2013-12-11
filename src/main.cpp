@@ -44,6 +44,7 @@ int main(int argc, char *argv[])
 //    qmlRegisterType<WatchPlaylistsModel>("ErgoMusic", 1, 0, "WatchPlaylistsModel");
 
     context->setContextProperty("watchPlaylistsModel",cores->media()->getWatchPlaylists());
+//    context->setContextProperty("", );
 
 
     // replace the visible: true in main.qml

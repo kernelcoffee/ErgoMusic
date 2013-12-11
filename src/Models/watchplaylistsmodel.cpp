@@ -32,6 +32,7 @@ QVariant WatchPlaylistsModel::data(const QModelIndex &index, int role) const
 
 int WatchPlaylistsModel::rowCount(const QModelIndex &index) const
 {
+    Q_UNUSED(index);
     return m_watchPlaylists->count();
 }
 
