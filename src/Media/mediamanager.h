@@ -17,6 +17,7 @@ public:
     void                    init(QStringList&);
 
     void                    initDummyData(void);
+    QAbstractListModel*     getCurrentModel(void) const;
     Library*                library(void) const;
     Collection*             getCollection(void) const;
     WatchPlaylistsModel*    getWatchPlaylists(void) const;

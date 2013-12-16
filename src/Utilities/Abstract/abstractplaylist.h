@@ -31,14 +31,14 @@ public:
     virtual QString                 name(void) const;
 signals:
     void        countChanged();
-
+    void        requestDisplay(AbstractPlaylist*);
 protected slots:
     virtual void        insert(int, const Track*) = 0;
     virtual void        append(const Track*) = 0;
     virtual void        remove(int) = 0;
     virtual QObject*    get(int) = 0; // retrieve an item
     virtual void        setProperty(int index, const QString& property, const QVariant& value) = 0;
-
+    virtual void        requestDisplay();
 protected:
     AbstractPlaylist();
     AbstractPlaylist(QObject *parent = 0);

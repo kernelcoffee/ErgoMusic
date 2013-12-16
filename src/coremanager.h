@@ -23,7 +23,6 @@ public:
     NetworkManager*     network() const;
     AudioManager*       audio() const;
     MediaManager*       media() const;
-
 public slots:
     void    aboutToQuit();
 private:

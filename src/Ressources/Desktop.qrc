@@ -2,12 +2,13 @@
     <qresource prefix="/">
         <file alias="main.qml">qml/Desktop/main.qml</file>
         <file>qml/Desktop/MenuWidget.qml</file>
-        <file alias="Mainview/mainListView.qml">qml/Desktop/Mainview/mainListView.qml</file>
         <file>qml/Desktop/Widgets/CollapsiblePanel.qml</file>
         <file>qml/Desktop/MenuBar/MenuWidget.qml</file>
         <file>qml/Desktop/StatusBar/StatusWidget.qml</file>
         <file>qml/Desktop/TopBar/TopWidget.qml</file>
         <file>qml/Desktop/Components/PlayerControlerIcon.qml</file>
         <file>qml/Desktop/Windows/Settings.qml</file>
+        <file>qml/Desktop/Views/MainView.qml</file>
+        <file>qml/Desktop/Views/MainListView.qml</file>
     </qresource>
 </RCC>

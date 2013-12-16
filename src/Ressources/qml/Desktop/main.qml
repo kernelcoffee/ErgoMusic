@@ -6,11 +6,12 @@ import "qrc:/qml/Desktop/Widgets"
 import "qrc:/qml/Desktop/MenuBar"
 import "qrc:/qml/Desktop/StatusBar"
 import "qrc:/qml/Desktop/TopBar"
-import "qrc:/qml/Desktop/Windows/"
+import "qrc:/qml/Desktop/Windows"
+import "qrc:/qml/Desktop/Views"
 
 
 ApplicationWindow {
-    id: mainWindow
+    id: root
     width: 800
     height: 600
 
@@ -82,6 +83,7 @@ ApplicationWindow {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
+
                     console.log("whatchPlaylist " + index + "selected");
                 }
             }
@@ -92,8 +94,8 @@ ApplicationWindow {
     SplitView {
         id: mainWidget
         orientation: Qt.Horizontal
-        height: mainWindow.height - topWidget.height
-        width: mainWindow.width
+        height: root.height - topWidget.height
+        width: root.width
         anchors.top: topWidget.bottom
 
         ScrollView {
@@ -129,10 +131,9 @@ ApplicationWindow {
                 }
             }
         }
-        Loader {
+        MainView {
             id: centerItem
             Layout.fillWidth: true
-            source: "Mainview/mainListView.qml"
         }
     }
 }

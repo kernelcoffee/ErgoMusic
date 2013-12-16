@@ -54,3 +54,8 @@ QString AbstractPlaylist::name() const
 {
     return m_name;
 }
+
+void AbstractPlaylist::requestDisplay()
+{
+    emit requestDisplay(this);
+}

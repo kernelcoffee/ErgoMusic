@@ -26,6 +26,8 @@
 #include "coremanager.h"
 #include "common.h"
 
+#include "UI/centralview.h"
+
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
@@ -41,7 +43,7 @@ int main(int argc, char *argv[])
     CoreManager* cores = CoreManager::instance();
     cores->media()->initDummyData();
 
-//    qmlRegisterType<WatchPlaylistsModel>("ErgoMusic", 1, 0, "WatchPlaylistsModel");
+    qmlRegisterType<CentralView>("ErgoMusic", 1, 0, "CentralView");
 
     context->setContextProperty("watchPlaylistsModel",cores->media()->getWatchPlaylists());
     context->setContextProperty("cores", cores);

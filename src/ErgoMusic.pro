@@ -43,7 +43,9 @@ SOURCES += main.cpp\
     Media/playlist.cpp \
     Media/library.cpp \
     Models/watchplaylistsmodel.cpp \
-    Media/mediamanager.cpp
+    Media/mediamanager.cpp \
+    UI/centralview.cpp \
+    UI/settingsview.cpp
 
 HEADERS  += \
     Database/databasemanager.h \
@@ -69,17 +71,22 @@ HEADERS  += \
     Media/playlist.h \
     Media/library.h \
     Models/watchplaylistsmodel.h \
-    Media/mediamanager.h
+    Media/mediamanager.h \
+    UI/centralview.h \
+    UI/settingsview.h
 
 OTHER_FILES += \
-	Ressources/qml/Desktop/main.qml \
+    Ressources/qml/Desktop/main.qml \
     Ressources/qml/Desktop/Mainview/mainListView.qml \
-	Ressources/qml/Desktop/MenuBar/MenuWidget.qml \
-	Ressources/qml/Desktop/Widgets/CollapsiblePanel.qml \
+    Ressources/qml/Desktop/MenuBar/MenuWidget.qml \
+    Ressources/qml/Desktop/Widgets/CollapsiblePanel.qml \
     Ressources/qml/Desktop/StatusBar/StatusWidget.qml \
     Ressources/qml/Desktop/TopBar/TopWidget.qml \
     Ressources/qml/Desktop/Components/PlayerControlerIcon.qml \
-    Ressources/qml/Desktop/Windows/Settings.qml
+    Ressources/qml/Desktop/Windows/Settings.qml \
+    Ressources/qml/Desktop/Mainview/MainView.qml \
+    Ressources/qml/Desktop/Views/MainView.qml \
+    Ressources/qml/Desktop/Views/MainListView.qml
 
 RESOURCES += \
     Ressources/ErgoMusic.qrc \
