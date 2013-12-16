@@ -15,13 +15,12 @@ WatchPlaylistsModel::WatchPlaylistsModel(QObject *parent) :
 
 QVariant WatchPlaylistsModel::data(const QModelIndex &index, int role) const
 {
-    Logger::log("WatchPlaylistModel - data", LOG_DEBUG);
     if (index.row() < 0 || index.row() > rowCount())
         return QVariant();
 
     switch (role) {
     case NameRole:
-        Logger::log("date - " + m_watchPlaylists->at(index.row())->name(), LOG_DEBUG);
+        Logger::log("WatchPlaylistModel request name - " + m_watchPlaylists->at(index.row())->name(), LOG_DEBUG);
         return m_watchPlaylists->at(index.row())->name();
     break;
         default:
@@ -71,4 +70,9 @@ QObject *WatchPlaylistsModel::get(int index)
 void WatchPlaylistsModel::setProperty(int index, const QString &property, const QVariant &value)
 {
 
+}
+
+void WatchPlaylistsModel::requestDisplay(int index)
+{
+    Logger::log("watchPlaylistModel request diplay for " + m_watchPlaylists->at(index)->name() , LOG_DEBUG);
 }

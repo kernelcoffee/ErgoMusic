@@ -32,7 +32,7 @@ public slots:
     void        remove(int);
     QObject*    get(int); // retrieve an item
     void        setProperty(int index, const QString& property, const QVariant& value);
-
+    void        requestDisplay(int);
 private:
     QObject*                     m_parent;
     QVector<WatchPlaylist*>*     m_watchPlaylists;

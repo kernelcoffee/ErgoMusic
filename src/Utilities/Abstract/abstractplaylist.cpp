@@ -57,5 +57,6 @@ QString AbstractPlaylist::name() const
 
 void AbstractPlaylist::requestDisplay()
 {
+    Logger::log("AbstractPlaylist " + m_name + " emit requestDisplay Signal");
     emit requestDisplay(this);
 }

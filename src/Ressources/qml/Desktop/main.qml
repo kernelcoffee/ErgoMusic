@@ -68,7 +68,6 @@ ApplicationWindow {
         }
     }
 
-
     //TODO : move to a separate file
     Component {
         id: sidebarSubmenuDelegate
@@ -83,8 +82,7 @@ ApplicationWindow {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-
-                    console.log("whatchPlaylist " + index + "selected");
+                    console.log("whatchPlaylist " + name + " selected");
                 }
             }
         }
