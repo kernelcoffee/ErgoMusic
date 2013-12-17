@@ -17,6 +17,7 @@ WatchPlaylist::WatchPlaylist(QString name, QString path, QObject *parent) :
     m_path.setPath(path);
     m_watchfolder = new QFileSystemWatcher();
     m_collection = new Collection();
+    qDebug() << "Collection " << m_collection << " for watchPlaylist " << this << " created";
     _update();
 }
 

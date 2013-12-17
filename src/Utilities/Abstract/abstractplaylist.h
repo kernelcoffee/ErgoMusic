@@ -41,7 +41,7 @@ protected:
     AbstractPlaylist(QObject *parent = 0);
 
     QString                 m_name;
-    ViewType                    m_type;
+    ViewType                m_type;
     QMutex                  m_mutex;
     Collection*             m_collection;
 

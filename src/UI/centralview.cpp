@@ -28,6 +28,9 @@ void CentralView::setModel(int type, int index)
 
 AbstractPlaylist *CentralView::model() const
 {
-    Logger::log("CentralView - get Model -> " + CoreManager::instance()->media()->currentModel()->name(), LOG_DEBUG);
-    return CoreManager::instance()->media()->currentModel();
+    if (CoreManager::instance()->media()->currentModel()) {
+        qDebug() << "Debug centralWidget -> currentModel " << CoreManager::instance()->media()->currentModel();
+        Logger::log("CentralView - get Model -> " + CoreManager::instance()->media()->currentModel()->name(), LOG_DEBUG);
+        return CoreManager::instance()->media()->currentModel();
+    }
 }

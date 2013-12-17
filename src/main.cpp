@@ -43,6 +43,7 @@ int main(int argc, char *argv[])
     CoreManager* cores = CoreManager::instance();
     cores->media()->initDummyData();
 
+    qmlRegisterType<AbstractPlaylist>();
     qmlRegisterType<CentralView>("ErgoMusic", 1, 0, "CentralView");
 
     context->setContextProperty("watchPlaylistsModel",cores->media()->watchPlaylists());

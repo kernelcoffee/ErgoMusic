@@ -1,16 +1,22 @@
 #include "collection.h"
 #include "Utilities/logger.h"
 #include "coremanager.h"
+#include <QDebug>
 
 Collection::Collection(QObject *parent) :
     QObject(parent)
 {
     Logger::log("Create collection instance", LOG_DEBUG);
-
     m_artists = new QMap<QString, Artist*>;
     m_albums = new QMap<QString, Album*>;
     m_genres = new QMap<QString, Genre*>;
     m_tracks = new QList<Track*>;
+
+    qDebug() << "New Collection Created " << this;
+    qDebug() << "Artist Created " << m_artists << " " << m_artists->count();
+    qDebug() << "Albums Created " << m_albums << " " << m_albums->count();
+    qDebug() << "Genres Created " << m_genres << " " << m_genres->count();
+    qDebug() << "Tracks Created " << m_tracks << " " << m_tracks->count();
 }
 
 Collection::~Collection()
@@ -31,8 +37,9 @@ void Collection::reset()
      }
 }
 
-QList<Track *>* Collection::getTracks() const
+QList<Track*>* Collection::getTracks() const
 {
+    qDebug() << "Collection getTracks : " << m_tracks;
     return m_tracks;
 }
 

@@ -7,13 +7,13 @@
 class CentralView : public QQuickItem
 {
     Q_OBJECT
-    Q_PROPERTY(QAbstractListModel* model READ model NOTIFY modelChanged)
+    Q_PROPERTY(AbstractPlaylist* model READ model NOTIFY modelChanged)
 public:
     explicit CentralView(QQuickItem *parent = 0);
     
     Q_INVOKABLE void    setModel(int, int);
 
-    AbstractPlaylist *model() const;
+    AbstractPlaylist*   model() const;
 signals:
     void    modelChanged();
 public slots:

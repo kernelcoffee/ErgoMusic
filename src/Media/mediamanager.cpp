@@ -8,6 +8,7 @@ MediaManager::MediaManager(QObject *parent) :
     m_collection = new Collection;
     m_watchPlaylists = new WatchPlaylistsModel;
     m_library = new Library(m_collection);
+    m_currentModel = m_library;
 }
 
 MediaManager::~MediaManager()
