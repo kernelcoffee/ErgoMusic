@@ -15,20 +15,24 @@ public:
     explicit MediaManager(QObject *parent = 0);
     ~MediaManager();
     void                    init(QStringList&);
-
     void                    initDummyData(void);
-    QAbstractListModel*     getCurrentModel(void) const;
-    Library*                library(void) const;
-    Collection*             getCollection(void) const;
-    WatchPlaylistsModel*    getWatchPlaylists(void) const;
-signals:
 
+    void                    setCurrentModel(AbstractPlaylist*);
+
+    AbstractPlaylist*       currentModel(void) const;
+
+    Library*                library(void) const;
+    Collection*             collection(void) const;
+    WatchPlaylistsModel*    watchPlaylists(void) const;
+signals:
+    void    currentModelUpdated();
 public slots:
 
 private:
     Library*                m_library;
     Collection*             m_collection;
     WatchPlaylistsModel     *m_watchPlaylists;
+    AbstractPlaylist*       m_currentModel;
 };
 
 #endif // MEDIAMANAGER_H

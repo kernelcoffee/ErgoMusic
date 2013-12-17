@@ -48,7 +48,7 @@ void    ImportEngine::setQuery(QSqlQuery *query)
 
 QList<Track*>*   ImportEngine::importPath(QString &path)
 {
-    return importPath(path, CoreManager::instance()->media()->getCollection());
+    return importPath(path, CoreManager::instance()->media()->collection());
 }
 
 

@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
 
     qmlRegisterType<CentralView>("ErgoMusic", 1, 0, "CentralView");
 
-    context->setContextProperty("watchPlaylistsModel",cores->media()->getWatchPlaylists());
+    context->setContextProperty("watchPlaylistsModel",cores->media()->watchPlaylists());
     context->setContextProperty("cores", cores);
     context->setContextProperty("library", cores->media()->library());
 

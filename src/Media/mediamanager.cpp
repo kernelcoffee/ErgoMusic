@@ -23,9 +23,16 @@ void MediaManager::initDummyData()
     m_watchPlaylists->addWatchPlaylist("test1", "/home/greys/Dropbox/Music/watchFolder");
 }
 
-QAbstractListModel *MediaManager::getCurrentModel() const
+void MediaManager::setCurrentModel(AbstractPlaylist * model)
 {
+    Logger::log("update set current model - " + model->name(), LOG_DEBUG);
+    m_currentModel = model;
+    emit    currentModelUpdated();
+}
 
+AbstractPlaylist *MediaManager::currentModel() const
+{
+    return  m_currentModel;
 }
 
 Library *MediaManager::library() const
@@ -33,12 +40,12 @@ Library *MediaManager::library() const
     return m_library;
 }
 
-Collection *MediaManager::getCollection() const
+Collection *MediaManager::collection() const
 {
     return  m_collection;
 }
 
-WatchPlaylistsModel *MediaManager::getWatchPlaylists() const
+WatchPlaylistsModel *MediaManager::watchPlaylists() const
 {
     return m_watchPlaylists;
 }

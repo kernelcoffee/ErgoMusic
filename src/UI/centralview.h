@@ -11,7 +11,9 @@ class CentralView : public QQuickItem
 public:
     explicit CentralView(QQuickItem *parent = 0);
     
-    QAbstractListModel *model() const;
+    Q_INVOKABLE void    setModel(int, int);
+
+    AbstractPlaylist *model() const;
 signals:
     void    modelChanged();
 public slots:

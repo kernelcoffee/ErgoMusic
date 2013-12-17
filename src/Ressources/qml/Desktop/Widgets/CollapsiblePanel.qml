@@ -58,7 +58,7 @@ Item{
         width: parent.width
         height: parent.height - titleRect.height
         anchors.top: titleRect.bottom
-        interactive: false
+        interactive: true
     }
 
     states: [

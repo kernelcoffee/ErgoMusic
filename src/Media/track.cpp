@@ -101,7 +101,7 @@ void Track::_setValue(QString key, int value)
 
 void Track::extractTags()
 {
-    extractTags(CoreManager::instance()->media()->getCollection());
+    extractTags(CoreManager::instance()->media()->collection());
 }
 
 void Track::extractTags(Collection* collection)

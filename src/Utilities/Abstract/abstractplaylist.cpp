@@ -1,5 +1,6 @@
 #include "abstractplaylist.h"
 #include "Utilities/logger.h"
+#include "common.h"
 
 AbstractPlaylist::AbstractPlaylist(QObject *parent) :
     QAbstractListModel(parent)
@@ -15,15 +16,10 @@ QVariant AbstractPlaylist::data(const QModelIndex &index, int role) const
     return "toto";
 }
 
-//void AbstractPlaylist::setViewType()
-//{
-//    m_viewType = type;
-//}
-
 int AbstractPlaylist::rowCount(const QModelIndex &index) const
 {
     Q_UNUSED(index);
-    m_collection->getTracks()->count();
+    return m_collection->getTracks()->count();
 }
 
 QHash<int, QByteArray>  AbstractPlaylist::roleNames() const
@@ -31,15 +27,10 @@ QHash<int, QByteArray>  AbstractPlaylist::roleNames() const
     return roles;
 }
 
-AbstractPlaylist::Type    AbstractPlaylist::getType(void) const
+ViewType    AbstractPlaylist::type(void) const
 {
     return m_type;
 }
-
-//ViewWidget::ViewType AbstractPlaylist::getViewType() const
-//{
-//    return m_viewType;
-//}
 
 bool AbstractPlaylist::isLocked()
 {

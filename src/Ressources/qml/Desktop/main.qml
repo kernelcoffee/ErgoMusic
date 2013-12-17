@@ -82,7 +82,8 @@ ApplicationWindow {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    console.log("whatchPlaylist " + name + " selected");
+                    console.log("whatchPlaylist " + name + " selected " + type)
+                    mainView.setModel(type, index);
                 }
             }
         }
@@ -130,7 +131,7 @@ ApplicationWindow {
             }
         }
         MainView {
-            id: centerItem
+            id: mainView
             Layout.fillWidth: true
         }
     }
