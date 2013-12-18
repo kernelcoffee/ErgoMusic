@@ -8,16 +8,21 @@ class CentralView : public QQuickItem
 {
     Q_OBJECT
     Q_PROPERTY(AbstractPlaylist* model READ model NOTIFY modelChanged)
+    Q_PROPERTY(QString state READ state WRITE setState NOTIFY stateChanged)
 public:
     explicit CentralView(QQuickItem *parent = 0);
     
     Q_INVOKABLE void    setModel(int, int);
 
     AbstractPlaylist*   model() const;
+    QString             state() const;
 signals:
     void    modelChanged();
+    void    stateChanged();
 public slots:
 
+private:
+    QString             m_state;
 };
 
 #endif // CENTRALVIEW_H

@@ -70,3 +70,8 @@ void AbstractPlaylist::requestDisplay()
     Logger::log("AbstractPlaylist " + m_name + " emit requestDisplay Signal");
     emit requestDisplay(this);
 }
+
+void AbstractPlaylist::select(int index)
+{
+    Logger::log(m_collection->getTracks()->at(index)->title() + " selected");
+}

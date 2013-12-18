@@ -97,7 +97,7 @@ ApplicationWindow {
     SplitView {
         id: mainWidget
         orientation: Qt.Horizontal
-        height: root.height - topWidget.height
+        height: root.height - topWidget.height - statusWidget.height
         width: root.width
         anchors.top: topWidget.bottom
 

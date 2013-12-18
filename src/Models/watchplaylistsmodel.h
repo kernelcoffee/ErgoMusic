@@ -17,6 +17,7 @@ public:
     QHash<int, QByteArray>  roleNames() const;
 
     void                    addWatchPlaylist(QString);
+    WatchPlaylist*          getWatchPlaylist(int);
 signals:
     void        countChanged();
 

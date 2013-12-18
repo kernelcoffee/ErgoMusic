@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QStringList>
+#include "Utilities/Abstract/abstractplaylist.h"
 
 class AudioManager : public QObject
 {
@@ -16,6 +17,7 @@ signals:
 public slots:
 
 private:
+    AbstractPlaylist*       m_current;
 };
 
 #endif // AUDIOMANAGER_H

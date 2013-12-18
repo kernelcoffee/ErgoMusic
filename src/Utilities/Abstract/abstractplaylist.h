@@ -30,6 +30,7 @@ signals:
     void        countChanged();
     void        requestDisplay(AbstractPlaylist*);
 protected slots:
+    virtual void        select(int);
     virtual void        insert(int, const Track*) = 0;
     virtual void        append(const Track*) = 0;
     virtual void        remove(int) = 0;

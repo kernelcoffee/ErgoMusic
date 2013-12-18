@@ -18,4 +18,10 @@ CentralView {
         anchors.fill: parent
         sourceComponent: listViewComponent
     }
+
+    states: [
+        State {name: "songList"
+            PropertyChanges {target: centerItem; sourceComponent: listViewComponent}
+        }
+    ]
 }

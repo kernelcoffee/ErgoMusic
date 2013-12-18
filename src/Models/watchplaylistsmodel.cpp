@@ -48,6 +48,11 @@ void WatchPlaylistsModel::addWatchPlaylist(QString path)
     m_watchPlaylists->append(new WatchPlaylist(path));
 }
 
+WatchPlaylist *WatchPlaylistsModel::getWatchPlaylist(int index)
+{
+    return m_watchPlaylists->at(index);
+}
+
 void WatchPlaylistsModel::insert(int, const QString &)
 {
 
