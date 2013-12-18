@@ -21,13 +21,14 @@ void    MediaManager::init(QStringList &arguments)
 
 void MediaManager::initDummyData()
 {
-    m_watchPlaylists->addWatchPlaylist("test1", "/home/greys/Dropbox/Music/watchFolder");
+    m_watchPlaylists->addWatchPlaylist("/home/amoore/Dropbox/Music/watchFolder/");
 }
 
 void MediaManager::setCurrentModel(AbstractPlaylist * model)
 {
     Logger::log("update set current model - " + model->name(), LOG_DEBUG);
     m_currentModel = model;
+    Logger::log("currentModel -> " + model->name() + " " + QString::number(model->rowCount()), LOG_DEBUG);
     emit    currentModelUpdated();
 }
 

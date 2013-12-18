@@ -43,9 +43,9 @@ QHash<int, QByteArray> WatchPlaylistsModel::roleNames() const
     return roles;
 }
 
-void WatchPlaylistsModel::addWatchPlaylist(QString name, QString path)
+void WatchPlaylistsModel::addWatchPlaylist(QString path)
 {
-    m_watchPlaylists->append(new WatchPlaylist(name, path));
+    m_watchPlaylists->append(new WatchPlaylist(path));
 }
 
 void WatchPlaylistsModel::insert(int, const QString &)

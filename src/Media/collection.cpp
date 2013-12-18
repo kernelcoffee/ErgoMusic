@@ -6,13 +6,13 @@
 Collection::Collection(QObject *parent) :
     QObject(parent)
 {
-    Logger::log("Create collection instance", LOG_DEBUG);
+//    Logger::log("Create collection instance", LOG_DEBUG);
+    qDebug() << "New Collection Created " << this;
     m_artists = new QMap<QString, Artist*>;
     m_albums = new QMap<QString, Album*>;
     m_genres = new QMap<QString, Genre*>;
     m_tracks = new QList<Track*>;
 
-    qDebug() << "New Collection Created " << this;
     qDebug() << "Artist Created " << m_artists << " " << m_artists->count();
     qDebug() << "Albums Created " << m_albums << " " << m_albums->count();
     qDebug() << "Genres Created " << m_genres << " " << m_genres->count();

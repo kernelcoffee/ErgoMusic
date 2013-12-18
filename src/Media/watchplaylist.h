@@ -15,7 +15,7 @@ class WatchPlaylist : public AbstractPlaylist
 {
     Q_OBJECT
 public:
-    WatchPlaylist(QString name, QString path, QObject *parent = 0);
+    WatchPlaylist(QString path, QObject *parent = 0);
     ~WatchPlaylist();
 
 signals:
@@ -32,12 +32,11 @@ protected slots:
     virtual void        setProperty(int index, const QString &property, const QVariant &value);
 
 private:
-    QDir            m_path;
+    QDir                m_path;
 
     void                 _update();
     void                 _disable();
     QFileSystemWatcher*  m_watchfolder;
-    Collection*          m_collection;
 };
 
 #endif // WATCHPLAYLIST_H

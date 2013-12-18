@@ -1,6 +1,7 @@
 #include "abstractplaylist.h"
 #include "Utilities/logger.h"
 #include "common.h"
+#include <QDebug>
 
 AbstractPlaylist::AbstractPlaylist(QObject *parent) :
     QAbstractListModel(parent)
@@ -19,6 +20,7 @@ QVariant AbstractPlaylist::data(const QModelIndex &index, int role) const
 int AbstractPlaylist::rowCount(const QModelIndex &index) const
 {
     Q_UNUSED(index);
+    qDebug() << "Abstract Playlist " << this <<  " rowCount " << m_collection->getTracks()->count();
     return m_collection->getTracks()->count();
 }
 

@@ -16,6 +16,7 @@ void CentralView::setModel(int type, int index)
         break;
     case WATCHPLAYLIST:
         WatchPlaylist* wpl = dynamic_cast<WatchPlaylist*>(CoreManager::instance()->media()->watchPlaylists()->get(index));
+        qDebug() << "CentralView watchplaylist selected " << wpl;
         CoreManager::instance()->media()->setCurrentModel(wpl);
         Logger::log("CentralView - Select WatchPlaylist " + wpl->name(), LOG_DEBUG);
         break;

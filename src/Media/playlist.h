@@ -10,7 +10,7 @@ class Playlist : public AbstractPlaylist
     Q_OBJECT
 public:
     explicit Playlist(QObject *parent = 0);
-    
+    ~Playlist();
 signals:
     
 public slots:

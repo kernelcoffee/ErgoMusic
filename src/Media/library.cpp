@@ -1,9 +1,11 @@
 #include "library.h"
+#include <QtDebug>
 
 Library::Library(Collection* collection, QObject *parent) :
     AbstractPlaylist(parent)
 {
     m_collection = collection;
+    qDebug() << "Library: "<< this <<  " - Collection " << m_collection;
 }
 
 void Library::insert(int, const Track *)

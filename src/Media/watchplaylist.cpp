@@ -7,17 +7,17 @@
 #include <QtConcurrent/QtConcurrent>
 #include <QMutexLocker>
 
-WatchPlaylist::WatchPlaylist(QString name, QString path, QObject *parent) :
+WatchPlaylist::WatchPlaylist(QString path, QObject *parent) :
     AbstractPlaylist(parent)
 {
-    Logger::log("New WatchPlaylist " + name + " - " + path, LOG_DEBUG);
+//    Logger::log("New WatchPlaylist " + name + " - " + path, LOG_DEBUG);
 
     m_type = WATCHPLAYLIST;
-    m_name = name;
     m_path.setPath(path);
+    m_name = m_path.dirName();
     m_watchfolder = new QFileSystemWatcher();
     m_collection = new Collection();
-    qDebug() << "Collection " << m_collection << " for watchPlaylist " << this << " created";
+    qDebug() << "WatchPlaylist " << this << " created with Collection " << m_collection;
     _update();
 }
 

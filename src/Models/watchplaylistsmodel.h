@@ -22,7 +22,7 @@ public:
     int                     rowCount(const QModelIndex &index = QModelIndex()) const;
     QHash<int, QByteArray>  roleNames() const;
 
-    void                    addWatchPlaylist(QString, QString);
+    void                    addWatchPlaylist(QString);
 signals:
     void        countChanged();
 
