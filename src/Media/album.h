@@ -4,7 +4,7 @@
 #include "track.h"
 #include "artist.h"
 
-#include <QVector>
+#include <QList>
 #include <QImage>
 
 class Artist;
@@ -39,7 +39,7 @@ public:
     void    setDiskTotal(int);
 
 private:
-    QVector<Track*> *m_tracks;
+    QList<Track*>   *m_tracks;
 
     Artist          *m_albumArtist;
 

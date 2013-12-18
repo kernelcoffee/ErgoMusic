@@ -12,15 +12,11 @@ Collection::Collection(QObject *parent) :
     m_albums = new QMap<QString, Album*>;
     m_genres = new QMap<QString, Genre*>;
     m_tracks = new QList<Track*>;
-
-    qDebug() << "Artist Created " << m_artists << " " << m_artists->count();
-    qDebug() << "Albums Created " << m_albums << " " << m_albums->count();
-    qDebug() << "Genres Created " << m_genres << " " << m_genres->count();
-    qDebug() << "Tracks Created " << m_tracks << " " << m_tracks->count();
 }
 
 Collection::~Collection()
 {
+    reset();
     delete m_artists;
     delete m_albums;
     delete m_genres;
@@ -29,17 +25,22 @@ Collection::~Collection()
 
 void Collection::reset()
 {
-     QMap<QString, Artist*>::const_iterator a = m_artists->constBegin();
+    QMap<QString, Artist*>::const_iterator a = m_artists->constBegin();
+    QMap<QString, Genre*>::const_iterator g = m_genres->constBegin();
      while(a != m_artists->constEnd())
      {
          if (a.value())
             delete a.value();
      }
+     while(g != m_genres->constEnd())
+     {
+         if (g.value())
+            delete g.value();
+     }
 }
 
 QList<Track*>* Collection::getTracks() const
 {
-    qDebug() << "Collection getTracks : " << m_tracks;
     return m_tracks;
 }
 
@@ -63,4 +64,10 @@ Genre*  Collection::getGenre(QString name) const
     if (m_genres->contains(name) == false)
         m_genres->insert(name, new Genre(name));
     return m_genres->value(name);
+}
+
+void Collection::addTrack(Track *track)
+{
+    m_tracks->append(track);
+    emit tracksUpdated();
 }

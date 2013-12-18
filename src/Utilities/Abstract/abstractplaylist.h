@@ -13,9 +13,8 @@ class Track;
 class AbstractPlaylist : public QAbstractListModel
 {
     Q_OBJECT
-public:
     Q_PROPERTY(int count READ rowCount() NOTIFY countChanged())
-
+public:
     virtual ~AbstractPlaylist();
 
     virtual QVariant                data(const QModelIndex & index, int role = Qt::DisplayRole) const;
@@ -37,6 +36,12 @@ protected slots:
     virtual QObject*    get(int) = 0; // retrieve an item
     virtual void        setProperty(int index, const QString& property, const QVariant& value) = 0;
 protected:
+    enum Roles {
+        Index = Qt::UserRole,
+        Title,
+        Author
+    };
+
     AbstractPlaylist();
     AbstractPlaylist(QObject *parent = 0);
 
@@ -45,7 +50,7 @@ protected:
     QMutex                  m_mutex;
     Collection*             m_collection;
 
-    QHash<int, QByteArray>       roles;
+    QHash<int, QByteArray>  m_roles;
 
 signals:
     void    updated();

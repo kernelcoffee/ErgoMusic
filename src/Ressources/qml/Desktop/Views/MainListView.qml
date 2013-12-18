@@ -5,6 +5,7 @@ TableView {
     id: mainListView
     model: mainView.model
     onModelChanged: console.log("MainView model changed")
-    TableViewColumn{ role: "name"  ; title: "Title" ; width: 100 }
+    TableViewColumn{ role: "index"  ; title: " " ; width: 20 }
+    TableViewColumn{ role: "title"  ; title: "Title" ; width: 100 }
     TableViewColumn{ role: "author" ; title: "Author" ; width: 200 }
 }

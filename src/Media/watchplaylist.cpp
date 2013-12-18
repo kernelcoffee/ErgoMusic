@@ -89,6 +89,7 @@ void    WatchPlaylist::_update()
             Logger::log("WatchPlaylist - _update - signal not set -> connected", LOG_DEBUG);
         }
 
+        // Create a Job in job manager
         Logger::log("WatchPlaylist - creating new thread for refresh", LOG_DEBUG);
         QtConcurrent::run(this, &WatchPlaylist::_refresh, m_path.absolutePath());
     }

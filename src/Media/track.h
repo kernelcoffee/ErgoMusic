@@ -51,6 +51,7 @@ private:
     QFileInfo   *m_file;
 
     QHash<QString, QString>       m_data;
+
     int         m_uid, m_duration, m_track, m_year, m_bitrate, m_sampleRate, m_channels;
 };
 

@@ -33,8 +33,10 @@ public:
     Album*              getAlbum(QString, Artist*) const;
     Genre*              getGenre(QString) const;
 
-signals:
+    void                addTrack(Track*);
 
+signals:
+    void                tracksUpdated();
 public slots:
 
 protected:

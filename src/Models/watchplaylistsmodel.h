@@ -11,12 +11,6 @@ class WatchPlaylistsModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
-
-    enum Roles {
-        NameRole = Qt::UserRole,
-        TypeRole
-    };
-
     explicit WatchPlaylistsModel(QObject *parent = 0);
     QVariant                data(const QModelIndex & index, int role = Qt::DisplayRole) const;
     int                     rowCount(const QModelIndex &index = QModelIndex()) const;
@@ -33,9 +27,14 @@ public slots:
     QObject*    get(int); // retrieve an item
     void        setProperty(int index, const QString& property, const QVariant& value);
 private:
+    enum Roles {
+        NameRole = Qt::UserRole,
+        TypeRole
+    };
+
     QObject*                     m_parent;
     QVector<WatchPlaylist*>*     m_watchPlaylists;
-    QHash<int, QByteArray>       roles;
+    QHash<int, QByteArray>       m_roles;
 };
 
 #endif // WatchPlaylistsModel_H

@@ -4,6 +4,7 @@
 Library::Library(Collection* collection, QObject *parent) :
     AbstractPlaylist(parent)
 {
+    m_type = LIBRARY;
     m_collection = collection;
     qDebug() << "Library: "<< this <<  " - Collection " << m_collection;
 }

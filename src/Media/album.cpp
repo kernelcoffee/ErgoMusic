@@ -12,7 +12,11 @@ Album::Album(QString title, Artist *artist)
 }
 
 Album::~Album()
-{}
+{
+    while (!m_tracks->empty()) {
+        delete  m_tracks->takeFirst();
+    }
+}
 
 Artist* Album::albumArtist() const
 {

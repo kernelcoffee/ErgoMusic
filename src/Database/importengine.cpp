@@ -51,14 +51,11 @@ QList<Track*>*   ImportEngine::importPath(QString &path)
     return importPath(path, CoreManager::instance()->media()->collection());
 }
 
-
-
 QList<Track*>*   ImportEngine::importPath(QString &path, Collection* collection)
 {
     Track*  track;
 
     Logger::log("ImportEngine - importPath - " + path, LOG_DEBUG);
-    QList<Track*>*  list = new QList<Track*>;
     QDirIterator it(path, QDirIterator::Subdirectories);
     while (it.hasNext())
      {
@@ -72,9 +69,9 @@ QList<Track*>*   ImportEngine::importPath(QString &path, Collection* collection)
          {
             track = new Track(QUrl(it.fileInfo().absoluteFilePath()));
             track->extractTags(collection);
-            list->append(track);
+            collection->addTrack(track);
          }
      }
     Logger::log("Returning import list", LOG_DEBUG);
-    return list;
+    return collection->getTracks();
 }

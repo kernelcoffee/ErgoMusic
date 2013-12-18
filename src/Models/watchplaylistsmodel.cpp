@@ -8,8 +8,8 @@ WatchPlaylistsModel::WatchPlaylistsModel(QObject *parent) :
     QAbstractListModel(parent), m_parent(parent)
 {
     Logger::log("Create WatchPlaylistModel", LOG_DEBUG);
-    roles[NameRole] = "name";
-    roles[TypeRole] = "type";
+    m_roles[NameRole] = "name";
+    m_roles[TypeRole] = "type";
 
     m_watchPlaylists = new QVector<WatchPlaylist*>;
 }
@@ -27,7 +27,7 @@ QVariant WatchPlaylistsModel::data(const QModelIndex &index, int role) const
         return m_watchPlaylists->at(index.row())->type();
     break;
         default:
-            return "invali";
+            return "invalid";
     }
     return QVariant();
 }
@@ -40,7 +40,7 @@ int WatchPlaylistsModel::rowCount(const QModelIndex &index) const
 
 QHash<int, QByteArray> WatchPlaylistsModel::roleNames() const
 {
-    return roles;
+    return m_roles;
 }
 
 void WatchPlaylistsModel::addWatchPlaylist(QString path)

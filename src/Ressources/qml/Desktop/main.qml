@@ -59,12 +59,15 @@ ApplicationWindow {
 
         ListElement {
             name: "Music"
+            type: 12
         }
         ListElement {
             name: "Movies"
+            type: 13
         }
         ListElement {
             name: "Podcasts"
+            type: 14
         }
     }
 
@@ -78,6 +81,7 @@ ApplicationWindow {
                 id: label
                 text: name
                 font.weight: Font.Light
+                color: "white"
             }
             MouseArea {
                 anchors.fill: parent
