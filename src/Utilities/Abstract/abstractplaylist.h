@@ -30,6 +30,7 @@ public:
     Collection *collection();
 signals:
     void                countChanged();
+    void    updated();
 protected slots:
     virtual void        selectTrack(int);
     virtual void        insert(int, const Track*) = 0;
@@ -53,9 +54,6 @@ protected:
     Collection*             m_collection;
 
     QHash<int, QByteArray>  m_roles;
-
-signals:
-    void    updated();
 };
 
 #endif // ABSTRACTPLAYLIST_H
