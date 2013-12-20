@@ -60,18 +60,19 @@ bool AbstractPlaylist::isLocked()
     return !ret;
 }
 
+void AbstractPlaylist::setSignals()
+{
+    connect(m_collection, &Collection::tracksUpdated,
+            this, &AbstractPlaylist::countChanged);
+}
+
 QString AbstractPlaylist::name() const
 {
     return m_name;
 }
 
-void AbstractPlaylist::requestDisplay()
-{
-    Logger::log("AbstractPlaylist " + m_name + " emit requestDisplay Signal");
-    emit requestDisplay(this);
-}
-
-void AbstractPlaylist::select(int index)
+void AbstractPlaylist::selectTrack(int index)
 {
     Logger::log(m_collection->getTracks()->at(index)->title() + " selected");
+    emit select(index);
 }

@@ -24,13 +24,13 @@ public:
     virtual ViewType                type(void) const;
     virtual bool                    isLocked(void);
 
+    virtual void                    setSignals(void);
+
     virtual QString                 name(void) const;
-    Q_INVOKABLE virtual void        requestDisplay();
 signals:
-    void        countChanged();
-    void        requestDisplay(AbstractPlaylist*);
+    void                countChanged();
 protected slots:
-    virtual void        select(int);
+    virtual void        selectTrack(int);
     virtual void        insert(int, const Track*) = 0;
     virtual void        append(const Track*) = 0;
     virtual void        remove(int) = 0;
