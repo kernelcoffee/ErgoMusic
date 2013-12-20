@@ -27,6 +27,7 @@ public:
     virtual void                    setSignals(void);
 
     virtual QString                 name(void) const;
+    Collection *collection();
 signals:
     void                countChanged();
 protected slots:

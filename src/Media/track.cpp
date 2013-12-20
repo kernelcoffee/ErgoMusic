@@ -149,3 +149,8 @@ QString Track::getValue(QString value) const
         return m_data[value.toLower()];
     return "unavalable";
 }
+
+QFileInfo *Track::getFile() const
+{
+    return m_file;
+}

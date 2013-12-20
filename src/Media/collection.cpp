@@ -39,7 +39,7 @@ void Collection::reset()
      }
 }
 
-QList<Track*>* Collection::getTracks() const
+QList<Track*> *Collection::getTracks() const
 {
     return m_tracks;
 }

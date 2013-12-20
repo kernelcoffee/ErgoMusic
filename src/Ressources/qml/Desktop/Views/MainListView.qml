@@ -20,6 +20,6 @@ TableView {
 
     onDoubleClicked: {
         console.log("double click " + row)
-        model.select(row);
+        model.selectTrack(row);
     }
 }

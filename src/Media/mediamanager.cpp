@@ -22,6 +22,7 @@ void    MediaManager::init(QStringList &arguments)
 void MediaManager::initDummyData()
 {
     m_watchPlaylists->addWatchPlaylist("/Volumes/Data/Dropbox/Music/watchFolder/");
+    m_watchPlaylists->addWatchPlaylist("/home/amoore/Dropbox/Music/watchFolder/");
 }
 
 void MediaManager::setCurrentModel(AbstractPlaylist * model)

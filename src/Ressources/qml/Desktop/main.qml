@@ -40,22 +40,9 @@ ApplicationWindow {
     }
 
     // DEBUG
+
     ListModel {
         id: sidebarMenuModel
-
-        ListElement {
-            name: "Library"
-        }
-        ListElement {
-            name: "Devices"
-        }
-        ListElement {
-            name: "Playlists"
-        }
-    }
-
-    ListModel {
-        id: testSidebarModel
 
         ListElement {
             name: "Music"
@@ -80,7 +67,6 @@ ApplicationWindow {
             Text {
                 id: label
                 text: name
-                font.weight: Font.Light
                 color: "white"
             }
             MouseArea {
@@ -117,12 +103,6 @@ ApplicationWindow {
                 CollapsiblePanel {
                     title: "Library"
                     width: parent.width
-                    model: testSidebarModel
-                    delegate: sidebarSubmenuDelegate
-                }
-                CollapsiblePanel {
-                    width: parent.width
-                    title: "Devices"
                     model: sidebarMenuModel
                     delegate: sidebarSubmenuDelegate
                 }

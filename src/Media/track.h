@@ -27,6 +27,7 @@ public:
     void        extractTags(void);
     void        extractTags(Collection*);
     QString     getValue(QString) const;
+    QFileInfo   *getFile(void) const;
 
     void        setUid(int);
     void        setTitle(QString);

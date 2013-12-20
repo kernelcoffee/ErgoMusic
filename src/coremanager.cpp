@@ -44,6 +44,11 @@ NetworkManager*     CoreManager::network() const
     return m_networkManager;
 }
 
+AudioManager *CoreManager::audio() const
+{
+    return m_audioManager;
+}
+
 MediaManager *CoreManager::media() const
 {
     return m_mediaManager;

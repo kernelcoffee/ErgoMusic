@@ -23,6 +23,7 @@
 
 #include <QSqlQuery>
 #include <QStringList>
+#include <QMediaPlaylist>
 
 class ImportEngine
 {

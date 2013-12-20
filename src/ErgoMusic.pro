@@ -45,7 +45,9 @@ SOURCES += main.cpp\
     Models/watchplaylistsmodel.cpp \
     Media/mediamanager.cpp \
     UI/centralview.cpp \
-    UI/settingsview.cpp
+    UI/settingsview.cpp \
+    Audio/audiocontrols.cpp \
+    Models/abstractplaylistmodel.cpp
 
 HEADERS  += \
     Database/databasemanager.h \
@@ -73,7 +75,9 @@ HEADERS  += \
     Models/watchplaylistsmodel.h \
     Media/mediamanager.h \
     UI/centralview.h \
-    UI/settingsview.h
+    UI/settingsview.h \
+    Audio/audiocontrols.h \
+    Models/abstractplaylistmodel.h
 
 OTHER_FILES += \
     Ressources/qml/Desktop/main.qml \

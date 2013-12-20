@@ -2,6 +2,7 @@
 #include "Utilities/logger.h"
 #include "common.h"
 #include <QDebug>
+#include "coremanager.h"
 
 AbstractPlaylist::AbstractPlaylist(QObject *parent) :
     QAbstractListModel(parent)
@@ -71,8 +72,13 @@ QString AbstractPlaylist::name() const
     return m_name;
 }
 
+Collection *AbstractPlaylist::collection()
+{
+    return m_collection;
+}
+
 void AbstractPlaylist::selectTrack(int index)
 {
     Logger::log(m_collection->getTracks()->at(index)->title() + " selected");
-    emit select(index);
+    CoreManager::instance()->audio()->setSong(this, index);
 }
