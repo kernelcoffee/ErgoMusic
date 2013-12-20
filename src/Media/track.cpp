@@ -14,8 +14,7 @@
 //#include <attachedpictureframe.h>
 
 
-Track::Track(QUrl path) :
-    QMediaContent(path)
+Track::Track(QUrl path)
 {
     m_file = new QFileInfo(path.path());
 }
@@ -153,4 +152,9 @@ QString Track::getValue(QString value) const
 QFileInfo *Track::getFile() const
 {
     return m_file;
+}
+
+QMediaContent Track::getMedia() const
+{
+    return QMediaContent(QUrl::fromLocalFile(m_file->absoluteFilePath()));
 }

@@ -20,7 +20,7 @@ void    AudioManager::init(QStringList &arguments)
 void AudioManager::setSong(AbstractPlaylist *playlist, int index)
 {
     qDebug() << "set new song";
-    m_player->setMedia(QUrl(playlist->collection()->getTracks()->at(index)->getFile()->absoluteFilePath().toUtf8()));
+    m_player->setMedia(playlist->collection()->getTracks()->at(index)->getMedia());
     m_player->setVolume(100);
     m_player->play();
 }

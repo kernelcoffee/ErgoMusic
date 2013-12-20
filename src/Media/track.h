@@ -13,7 +13,7 @@ class Album;
 class Genre;
 class Collection;
 
-class Track : public QMediaContent
+class Track
 {
 public:
     Track(QUrl);
@@ -24,10 +24,12 @@ public:
     Artist*     artist();
     Album*      album();
 
-    void        extractTags(void);
-    void        extractTags(Collection*);
-    QString     getValue(QString) const;
-    QFileInfo   *getFile(void) const;
+    void            extractTags(void);
+    void            extractTags(Collection*);
+    QString         getValue(QString) const;
+    QFileInfo       *getFile(void) const;
+    QMediaContent   getMedia() const;
+
 
     void        setUid(int);
     void        setTitle(QString);
