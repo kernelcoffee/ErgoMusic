@@ -3,6 +3,7 @@
 
 #include <QQuickItem>
 #include <coremanager.h>
+#include "Models/playlistmodel.h"
 
 class CentralView : public QQuickItem
 {
@@ -14,7 +15,7 @@ public:
     
     Q_INVOKABLE void    setModel(int, int);
 
-    AbstractPlaylist*   model() const;
+    PlaylistModel*      model() const;
     QString             state() const;
 signals:
     void    modelChanged();

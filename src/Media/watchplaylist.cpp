@@ -17,7 +17,7 @@ WatchPlaylist::WatchPlaylist(QString path, QObject *parent) :
     m_name = m_path.dirName();
     m_watchfolder = new QFileSystemWatcher();
     m_collection = new Collection();
-    setSignals();
+//    setSignals();
     qDebug() << "WatchPlaylist " << this << " created with Collection " << m_collection;
     _update();
 }
@@ -69,6 +69,7 @@ void WatchPlaylist::remove(int)
 
 QObject *WatchPlaylist::get(int)
 {
+    return new QObject();
 }
 
 void WatchPlaylist::setProperty(int index, const QString &property, const QVariant &value)

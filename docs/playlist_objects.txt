@@ -1,0 +1,5 @@
+WatchPlaylist	AbstractPlaylust 
+Playlist
+SmartPlaylist
+
+PlaylistModel -> vue

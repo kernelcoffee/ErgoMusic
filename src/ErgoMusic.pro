@@ -47,7 +47,7 @@ SOURCES += main.cpp\
     UI/centralview.cpp \
     UI/settingsview.cpp \
     Audio/audiocontrols.cpp \
-    Models/songsmodel.cpp
+    Models/playlistmodel.cpp
 
 HEADERS  += \
     Database/databasemanager.h \
@@ -77,7 +77,7 @@ HEADERS  += \
     UI/centralview.h \
     UI/settingsview.h \
     Audio/audiocontrols.h \
-    Models/songsmodel.h
+    Models/playlistmodel.h
 
 OTHER_FILES += \
     Ressources/qml/Desktop/main.qml \

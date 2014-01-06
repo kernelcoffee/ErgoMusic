@@ -27,10 +27,10 @@ void MediaManager::initDummyData()
 
 void MediaManager::setCurrentModel(AbstractPlaylist * model)
 {
-    Logger::log("update set current model - " + model->name(), LOG_DEBUG);
-    m_currentModel = model;
-    Logger::log("currentModel -> " + model->name() + " " + QString::number(model->rowCount()), LOG_DEBUG);
-    emit    currentModelUpdated();
+//    Logger::log("update set current model - " + model->name(), LOG_DEBUG);
+//    m_currentModel = model;
+//    Logger::log("currentModel -> " + model->name() + " " + QString::number(model->rowCount()), LOG_DEBUG);
+//    emit    currentModelUpdated();
 }
 
 AbstractPlaylist *MediaManager::currentModel() const
