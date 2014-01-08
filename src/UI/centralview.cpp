@@ -26,7 +26,7 @@ void CentralView::setModel(int type, int index)
     emit stateChanged();
 }
 
-AbstractPlaylist *CentralView::model() const
+PlaylistModel *CentralView::model() const
 {
     if (CoreManager::instance()->media()->currentModel()) {
         Logger::log("CentralView - get Model -> " + CoreManager::instance()->media()->currentModel()->name(), LOG_DEBUG);

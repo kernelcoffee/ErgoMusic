@@ -7,6 +7,7 @@
 #include "collection.h"
 #include "library.h"
 #include "Models/watchplaylistsmodel.h"
+#include "Models/playlistmodel.h"
 
 class MediaManager : public QObject
 {
@@ -19,7 +20,7 @@ public:
 
     void                    setCurrentModel(AbstractPlaylist*);
 
-    AbstractPlaylist*       currentModel(void) const;
+    PlaylistModel*          currentModel(void) const;
 
     Library*                library(void) const;
     Collection*             collection(void) const;
@@ -32,7 +33,7 @@ private:
     Library*                m_library;
     Collection*             m_collection;
     WatchPlaylistsModel     *m_watchPlaylists;
-    AbstractPlaylist*       m_currentModel;
+    PlaylistModel*       m_currentModel;
 };
 
 #endif // MEDIAMANAGER_H
