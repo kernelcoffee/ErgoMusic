@@ -40,6 +40,13 @@ Collection *AbstractPlaylist::collection()
     return m_collection;
 }
 
+Track *AbstractPlaylist::at(int index) const
+{
+    if (m_type == WATCHPLAYLIST)
+        return m_collection->getTracks()->at(index);
+    return m_list.at(index);
+}
+
 int AbstractPlaylist::size() const
 {
     return m_list.size();
