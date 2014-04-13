@@ -10,14 +10,11 @@
 WatchPlaylist::WatchPlaylist(QString path, QObject *parent) :
     AbstractPlaylist(parent)
 {
-//    Logger::log("New WatchPlaylist " + name + " - " + path, LOG_DEBUG);
-
     m_type = WATCHPLAYLIST;
     m_path.setPath(path);
     m_name = m_path.dirName();
     m_watchfolder = new QFileSystemWatcher();
     m_collection = new Collection();
-//    setSignals();
     qDebug() << "WatchPlaylist " << this << " created with Collection " << m_collection;
     _update();
 }
@@ -50,31 +47,6 @@ void    WatchPlaylist::_refresh(QString path)
     CoreManager::instance()->database()->importEngine()->importPath(path, m_collection);
     m_mutex.unlock();
     updated();
-}
-
-void WatchPlaylist::insert(int, const Track *)
-{
-
-}
-
-void WatchPlaylist::append(const Track *)
-{
-
-}
-
-void WatchPlaylist::remove(int)
-{
-
-}
-
-QObject *WatchPlaylist::get(int)
-{
-    return new QObject();
-}
-
-void WatchPlaylist::setProperty(int index, const QString &property, const QVariant &value)
-{
-
 }
 
 void    WatchPlaylist::_update()

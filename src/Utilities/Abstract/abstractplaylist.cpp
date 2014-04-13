@@ -4,63 +4,31 @@
 #include <QDebug>
 #include "coremanager.h"
 
-AbstractPlaylist::AbstractPlaylist(QObject *parent)
+AbstractPlaylist::AbstractPlaylist(QObject *parent) :
+    QObject(parent)
+  , m_name("")
+  , m_type(INVALID)
+  , m_list()
+  , m_collection(NULL)
 {}
 
 AbstractPlaylist::~AbstractPlaylist()
 {}
 
-//QVariant AbstractPlaylist::data(const QModelIndex &index, int role) const
-//{
 
-//    if (index.row() < 0 || index.row() > rowCount())
-//        return QVariant();
+ViewType    AbstractPlaylist::type(void) const
+{
+    return m_type;
+}
 
-//    switch (role) {
-//    case Index:
-//        return index.row();
-//    case Title:
-//        return m_collection->getTracks()->at(index.row())->title();
-//        break;
-//    case Author:
-//        return m_collection->getTracks()->at(index.row())->artist()->name();
-//        break;
-//    default:
-//        return "invalid";
-//    }
-//    return QVariant();
-//}
+bool AbstractPlaylist::isLocked()
+{
+    bool    ret = m_mutex.tryLock();;
 
-//int AbstractPlaylist::rowCount(const QModelIndex &index) const
-//{
-//    Q_UNUSED(index);
-//    return m_collection->getTracks()->count();
-//}
-
-//QHash<int, QByteArray>  AbstractPlaylist::roleNames() const
-//{
-//    return m_roles;
-//}
-
-//ViewType    AbstractPlaylist::type(void) const
-//{
-//    return m_type;
-//}
-
-//bool AbstractPlaylist::isLocked()
-//{
-//    bool    ret = m_mutex.tryLock();;
-
-//    if (ret)
-//        m_mutex.unlock();
-//    return !ret;
-//}
-
-//void AbstractPlaylist::setSignals()
-//{
-//    connect(m_collection, &Collection::tracksUpdated,
-//            this, &AbstractPlaylist::countChanged);
-//}
+    if (ret)
+        m_mutex.unlock();
+    return !ret;
+}
 
 QString AbstractPlaylist::name() const
 {
@@ -72,8 +40,7 @@ Collection *AbstractPlaylist::collection()
     return m_collection;
 }
 
-//void AbstractPlaylist::selectTrack(int index)
-//{
-//    Logger::log(m_collection->getTracks()->at(index)->title() + " selected");
-//    CoreManager::instance()->audio()->setSong(this, index);
-//}
+int AbstractPlaylist::size() const
+{
+    return m_list.size();
+}

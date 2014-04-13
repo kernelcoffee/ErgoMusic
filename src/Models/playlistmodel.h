@@ -12,6 +12,7 @@ public:
     QVariant                data(const QModelIndex & index, int role = Qt::DisplayRole) const;
     int                     rowCount(const QModelIndex &index = QModelIndex()) const;
     QHash<int, QByteArray>  roleNames() const;
+    void                    setModel(AbstractPlaylist*);
 
 signals:
     void        countChanged();
@@ -29,7 +30,7 @@ public:
         Author
     };
     QHash<int, QByteArray>  m_roles;
-    AbstractPlaylist*       m_model;
+    AbstractPlaylist*       m_data;
 };
 
 #endif // PLAYLISTMODEL_H

@@ -16,10 +16,14 @@ class AbstractPlaylist : public QObject
 public:
     virtual ~AbstractPlaylist();
 
+
     virtual QString                 name(void) const;
     virtual Collection              *collection();
     virtual Track*                  at(int) const;
     virtual ViewType                type(void) const;
+    virtual int                     size() const;
+    virtual bool                    isLocked();
+
 signals:
     void    updated();
 protected:
@@ -27,8 +31,9 @@ protected:
 
     QString                 m_name;
     ViewType                m_type;
+    QList<Track*>           m_list;
     QMutex                  m_mutex;
-    Collection*             m_collection;
+    Collection              *m_collection;
 };
 
 #endif // ABSTRACTPLAYLIST_H

@@ -8,7 +8,6 @@ MediaManager::MediaManager(QObject *parent) :
     m_collection = new Collection;
     m_watchPlaylists = new WatchPlaylistsModel;
     m_library = new Library(m_collection);
-    m_currentModel = m_library;
 }
 
 MediaManager::~MediaManager()
@@ -25,15 +24,15 @@ void MediaManager::initDummyData()
     m_watchPlaylists->addWatchPlaylist("/home/amoore/Dropbox/Music/watchFolder/");
 }
 
-void MediaManager::setCurrentModel(AbstractPlaylist * model)
+void MediaManager::setCurrentModel(AbstractPlaylist *playlist)
 {
-//    Logger::log("update set current model - " + model->name(), LOG_DEBUG);
-//    m_currentModel = model;
+    Logger::log("update set current model - " + playlist->name(), LOG_DEBUG);
+    m_currentModel->setModel(playlist);
 //    Logger::log("currentModel -> " + model->name() + " " + QString::number(model->rowCount()), LOG_DEBUG);
-//    emit    currentModelUpdated();
+    emit    currentModelUpdated();
 }
 
-AbstractPlaylist *MediaManager::currentModel() const
+PlaylistModel *MediaManager::currentModel() const
 {
     return  m_currentModel;
 }

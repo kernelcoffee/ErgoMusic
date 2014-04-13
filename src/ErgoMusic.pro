@@ -2,11 +2,12 @@ QT       += core gui widgets sql network multimedia quick qml
 
 TARGET = ErgoMusic
 TEMPLATE = app
+CONFIG += c++11
 
 macx {
-	# FIX: issue where cache is not created on 5.1
+        # FIX: issue where cache is not created on 5.1
 	cache()
-	#using default path of MacPort
+        #using default path of MacPort
 	INCLUDEPATH += /opt/local/include/
 	LIBS += -L/opt/local/lib
 	#using default path of Homebrew

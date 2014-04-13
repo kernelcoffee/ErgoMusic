@@ -24,9 +24,9 @@ void Library::remove(int)
 
 }
 
-QObject *Library::get(int)
+QObject *Library::get(int index)
 {
-
+    return m_collection->getTracks()->at(index);
 }
 
 void Library::setProperty(int index, const QString &property, const QVariant &value)

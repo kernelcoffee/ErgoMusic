@@ -30,10 +30,10 @@ signals:
 public slots:
 
 private:
-    Library*                m_library;
-    Collection*             m_collection;
+    Library                 *m_library;
+    Collection              *m_collection;
     WatchPlaylistsModel     *m_watchPlaylists;
-    PlaylistModel*       m_currentModel;
+    PlaylistModel           *m_currentModel;
 };
 
 #endif // MEDIAMANAGER_H

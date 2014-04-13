@@ -13,8 +13,9 @@ class Album;
 class Genre;
 class Collection;
 
-class Track
+class Track : public QObject
 {
+    Q_OBJECT
 public:
     Track(QUrl);
     ~Track();

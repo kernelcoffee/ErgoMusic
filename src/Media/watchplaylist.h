@@ -24,13 +24,6 @@ public slots:
     void                update();
 private slots:
     void                _refresh(QString);
-protected slots:
-    virtual void        insert(int, const Track *);
-    virtual void        append(const Track *);
-    virtual void        remove(int);
-    virtual QObject*    get(int);
-    virtual void        setProperty(int index, const QString &property, const QVariant &value);
-
 private:
     QDir                m_path;
 

@@ -8,7 +8,7 @@
 class CentralView : public QQuickItem
 {
     Q_OBJECT
-    Q_PROPERTY(AbstractPlaylist* model READ model NOTIFY modelChanged)
+    Q_PROPERTY(PlaylistModel* model READ model NOTIFY modelChanged)
     Q_PROPERTY(QString state READ state WRITE setState NOTIFY stateChanged)
 public:
     explicit CentralView(QQuickItem *parent = 0);
@@ -24,6 +24,7 @@ public slots:
 
 private:
     QString             m_state;
+    MediaManager        *m_media;
 };
 
 #endif // CENTRALVIEW_H
