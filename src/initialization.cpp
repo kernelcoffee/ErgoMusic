@@ -1,104 +1,60 @@
-/**
- * ErgoMusic - Simple music player and music library manager.
- * Copyright (C) 2011-2012 Alexandre Moore <alexandre.moore@kernelcoffee.org>
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
-#include <QtCore/QSettings>
-#include <QtCore/QCoreApplication>
-#include <QtCore/QStandardPaths>
-#include <QPixmap>
-
 #include "initialization.h"
-#include "Utilities/logger.h"
+
+#include <QCoreApplication>
+#include <QTimer>
+#include <QTime>
+#include <QSettings>
+#include <QFile>
+#include <QDebug>
+
 #include "coremanager.h"
-#include "common.h"
-#include "Media/collection.h"
 
-Initialization::Initialization(void)
+Initialization::Initialization(QObject *parent) : QObject(parent)
 {
+    QCoreApplication::setOrganizationName("Kernelcoffee");
+    QCoreApplication::setOrganizationDomain("kernelcoffee.org");
+    QCoreApplication::setApplicationName("ErgoMusic");
 
-    Logger::log("Starting initialization.", LOG_DEBUG);
+    _translator = new QTranslator;
 
-    QCoreApplication::setApplicationName(APPLICATION_NAME);
-    QCoreApplication::setOrganizationName(ORGANIZATION_NAME);
-    QCoreApplication::setOrganizationDomain(ORGANIZATION_DOMAIN);
-
-    Q_INIT_RESOURCE(ErgoMusic);
-    Q_INIT_RESOURCE(Desktop);
-    Logger::log("Ressources Loaded.", LOG_DEBUG);
-
-    qApp->processEvents();
-    _arguments = qApp->arguments();
-    _translator = new QTranslator();
+    QTimer::singleShot(1, this, SLOT(delayedInit()));
+    qsrand((uint)QTime::currentTime().msec());
 }
 
 Initialization::~Initialization()
 {
+
 }
 
-void    Initialization::initSettings(void)
+void Initialization::initCores()
+{
+    CoreManager* cores = CoreManager::instance();
+    cores->init();
+
+    QObject::connect(qApp, &QCoreApplication::aboutToQuit,
+                     cores, &CoreManager::aboutToQuit);
+
+}
+
+void Initialization::initSettings()
 {
     QSettings settings;
 
-    if (_arguments.contains("--reset-all"))
+    CoreManager::instance()->initSettings();
+
+    QString lang(":/languages/languages/lang_" + settings.value("language", QLocale::system().name()).toString() + ".qm");
+    if (QFile::exists(lang))
     {
-        Logger::log("Reset all settings enabled", LOG_DEBUG);
-        settings.clear();
-    }
-
-    if (!settings.contains("initialized") || settings.value("initialized") == false)
-        initDefault();
-
-    if (settings.value("version").isNull())
-        settings.setValue("version", APPLICATION_VERSION);
-
-    if (settings.value("version") != APPLICATION_VERSION)
-    {
-        Logger::log("Version doesn't match, please do a migration");
-        // do migration
-    }
-
-    Logger::log("Language found : " + settings.value("language").toString(), LOG_DEBUG);
-    if (QFile::exists(":/qm_files/languages/lang_" + settings.value("language").toString() + ".qm") == false) {
-        Logger::log("lang file :/languages/lang_" + settings.value("language").toString() + "  not found");
-    } else {
-        _translator->load(":/languages/lang_" + settings.value("language").toString() + ".qm");
+        _translator->load(lang);
         qApp->installTranslator(_translator);
-        Logger::log("Language file " + settings.value("language").toString() + " Loaded.");
     }
+    else
+        qWarning() << "lang file " << lang << "  not found";
 
-    Logger::log("Settings initilized", LOG_DEBUG);
+    qDebug() << "Settings initilized";
 }
 
-void    Initialization::initDefault(void)
+void Initialization::delayedInit()
 {
-    QSettings	settings;
-
-    Logger::log("Initialization - set default values");
-    settings.setValue("language", QLocale::system().name());
-    settings.setValue("musicFolder", QStandardPaths::writableLocation(QStandardPaths::MusicLocation));
-    settings.setValue("database/type", "SQLITE");
-    settings.setValue("database/path", QStandardPaths::writableLocation(QStandardPaths::DataLocation));
-    settings.setValue("database/name", "ergomusic");
-    settings.setValue("database/login", "login");
-    settings.setValue("database/password", "password");
-    settings.setValue("initialized", true);
-    settings.sync();
-}
-
-void    Initialization::initManagers()
-{
-   CoreManager::instance()->initManagers(_arguments);
+    CoreManager::instance()->delayedInit();
 }

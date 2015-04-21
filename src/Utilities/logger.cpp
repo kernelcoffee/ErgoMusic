@@ -1,6 +1,5 @@
 /**
- * ErgoMusic - Simple music player and music library manager.
- * Copyright (C) 2011-2012 Alexandre Moore <alexandre.moore@kernelcoffee.org>
+ * Copyright (C) 2011-2014 Alexandre Moore <alexandre@kernelcoffee.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,69 +15,90 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "logger.h"
 
-#include <QDateTime>
+#include "logger.h"
 #include <QDir>
-#include <QDebug>
+#include <iostream>
+#include <QtCore/QStandardPaths>
+#include <QDateTime>
+
+const static QString    DEFAULT_LOG_DIR = QStandardPaths::writableLocation(QStandardPaths::DataLocation) + "/Kernelcoffee/ErgoMusic/logs";	///< Log directory
+const static QString    DEFAULT_LOG_FILE = "logFile";	///< Log file name
+const static QString    DEFAULT_LOG_EXT = "log";
+const static bool       WRITE_IN_LOGFILE = true;
 
 static const QString	logLevel_str[] = {
-    "CRITICAL",
-    "ERROR",
-    "WARNING",
-    "NOTICE",
-    "INFO",
-    "DEBUG"
+    "Debug",
+    "Warning",
+    "Critical",
+    "Fatal"
 };
 
-Logger::Logger()
-{
-    QDir	dir;
-
-    dir.mkpath(DEFAULT_LOG_DIR);
-    _logFile = new QFile(getLogFileName());
-    _logFile->open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text);
-    _logFile->write(getLogHeader().toLatin1());
-}
+Logger::Logger(QObject *parent) :
+    QObject(parent)
+  , _logFile(nullptr)
+{}
 
 Logger::~Logger()
 {
-    _logFile->close();
-    delete _logFile;
-}
-
-void	Logger::log(const QString &message, logLevel level)
-{
-    if (level < LOG_CRIT) {
-        exit(-1);
+    if (_logFile) {
+        if (_logFile->isOpen())
+            _logFile->close();
+         delete _logFile;
     }
-    Logger::instance()->update(message, level);
 }
 
-void	Logger::update(QString msg, logLevel level)
+void Logger::log(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
-    QString	logMessage;
+    QString message = Logger::instance()->_getLogPrefix()
+            + logLevel_str[type]
+            + ",\t" + context.file
+            + ",\t" + QString::number(context.line)
+            + ",\t" + context.function
+            + ",\t" + msg
+            + "\n";
+    std::cerr << message.toStdString();
+    Logger::instance()->_write(message);
+    if (type == QtFatalMsg) {
+        abort();
+    }
+}
 
-    logMessage = getLogPrefix();
-    logMessage += logLevel_str[level] + " : " + msg + "\n";
+void Logger::notice(const QString &msg)
+{
+    QString message = Logger::instance()->_getLogPrefix()
+            + msg
+            + "\n";
 
-    if (level == LOG_DEBUG && DEBUG_MODE)
-        qDebug() << logLevel_str[level] + " : " + msg;
-    _logFile->write(logMessage.toUtf8());
+    std::cout << message.toStdString();
+    Logger::instance()->_write(message);
+}
+
+void Logger::_write(const QString &msg)
+{
+    if (!WRITE_IN_LOGFILE)
+        return;
+
+    if (_logFile == nullptr) {
+        QDir dir(DEFAULT_LOG_DIR);
+        if (dir.exists() == false)
+            dir.mkpath(DEFAULT_LOG_DIR);
+        _logFile = new QFile(_getLogFileName());
+        if (_logFile->isOpen() == false)
+        _logFile->open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text);
+        _write(QStringLiteral("---- NEW SESSION ----\n"));
+    }
+
+    _logFile->write(msg.toLocal8Bit());
     _logFile->flush();
 }
 
-QString	Logger::getLogFileName()
+QString	Logger::_getLogFileName()
 {
     return DEFAULT_LOG_DIR + "/" + DEFAULT_LOG_FILE + "_" + QDateTime::currentDateTime().toString("yyyyMMdd") + "." + DEFAULT_LOG_EXT;
 }
 
-QString	Logger::getLogPrefix()
+QString	Logger::_getLogPrefix()
 {
     return "<" + QDateTime::currentDateTimeUtc().toString("yyyy-MM-dd-hh:mm:ss") + "> : ";
-}
-
-QString Logger::getLogHeader()
-{
-    return "\n# -- Starting new session --";
 }

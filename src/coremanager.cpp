@@ -1,55 +1,92 @@
 #include "coremanager.h"
-#include "Utilities/logger.h"
+#include <QDebug>
 
 
-CoreManager::CoreManager()
+CoreManager::CoreManager(QObject *parent) :
+    AbstractCore(parent)
+  , m_media(new MediaCore(this))
+  , m_database(new DatabaseCore(this))
+  , m_threads(new ThreadsCore(this))
+  , m_ui(new UiCore(this))
 {
-    Logger::log("CoreManager - contruction", LOG_DEBUG);
-    m_databaseManager = new DatabaseManager();
-    m_networkManager = new NetworkManager();
-    m_audioManager = new AudioManager();
-    m_mediaManager = new MediaManager();
+    m_cores["media"] = m_media;
+    m_cores["database"] = m_database;
+    m_cores["threasds"] = m_threads;
+    m_cores["ui"] = m_ui;
 }
 
 CoreManager::~CoreManager()
 {
+    qDeleteAll(m_cores);
 }
 
-
-void    CoreManager::aboutToQuit()
+void CoreManager::init()
 {
-    Logger::log("About to quit");
+    for (auto core : m_cores)
+    {
+        core->init();
+        qDebug() << core << "\tInitialized";
+    }
 }
 
-void    CoreManager::initManagers(QStringList &arguments)
+void CoreManager::initSettings()
 {
-    Logger::log("CoreManager - initManagers", LOG_DEBUG);
-    m_databaseManager->init(arguments);
-    m_networkManager->init(arguments);
-    m_audioManager->init(arguments);
-    m_mediaManager->init(arguments);
-    Logger::log("CoreManager - initManagers - End of managers initialization", LOG_DEBUG);
+    for (auto core : m_cores)
+    {
+        core->initSettings();
+    }
 }
 
-void    CoreManager::deleteManagers()
-{}
-
-DatabaseManager*    CoreManager::database() const
+void CoreManager::initArguments(QCommandLineParser &cmd)
 {
-    return m_databaseManager;
+    for (auto core : m_cores)
+    {
+        core->initArguments(cmd);
+    }
 }
 
-NetworkManager*     CoreManager::network() const
+void CoreManager::processArguments(QCommandLineParser &cmd)
 {
-    return m_networkManager;
+    for (auto core : m_cores)
+    {
+        core->processArguments(cmd);
+    }
 }
 
-AudioManager *CoreManager::audio() const
+MediaCore *CoreManager::media() const
 {
-    return m_audioManager;
+    return m_media;
 }
 
-MediaManager *CoreManager::media() const
+DatabaseCore *CoreManager::database() const
 {
-    return m_mediaManager;
+    return m_database;
 }
+
+ThreadsCore *CoreManager::threads() const
+{
+    return m_threads;
+}
+
+UiCore *CoreManager::ui() const
+{
+    return m_ui;
+}
+
+void CoreManager::delayedInit()
+{
+    for (auto core : m_cores)
+    {
+        core->delayedInit();
+    }
+}
+
+void CoreManager::aboutToQuit()
+{
+    for (auto core : m_cores)
+    {
+        core->aboutToQuit();
+    }
+
+}
+

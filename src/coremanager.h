@@ -1,35 +1,48 @@
 #ifndef COREMANAGER_H
 #define COREMANAGER_H
 
-#include "Database/databasemanager.h"
-#include "Network/networkmanager.h"
-#include "Audio/audiomanager.h"
-#include "Media/mediamanager.h"
-
+#include  "Abstracts/abstractcore.h"
 #include "Utilities/singleton.h"
 
-class CoreManager : public QObject, public Singleton<CoreManager>
+#include "Media/mediacore.h"
+#include "Database/databasecore.h"
+#include "Threads/threadscore.h"
+#include "Ui/uicore.h"
+
+#include <QMap>
+
+class CoreManager : public AbstractCore , public Singleton<CoreManager>
 {
     friend class Singleton<CoreManager>;
 
     Q_OBJECT
 public:
-    CoreManager();
+    explicit CoreManager(QObject *parent = 0);
     ~CoreManager();
-    void    initManagers(QStringList&);
-    void    deleteManagers();
 
-    DatabaseManager*    database() const;
-    NetworkManager*     network() const;
-    AudioManager*       audio() const;
-    MediaManager*       media() const;
+    void    init();
+    void    initSettings();
+    void    initArguments(QCommandLineParser &cmd);
+    void    processArguments(QCommandLineParser &cmd);
+
+    MediaCore*      media() const;
+    DatabaseCore*   database() const;
+    ThreadsCore*    threads() const;
+    UiCore*         ui() const;
+
+signals:
+
 public slots:
+    void    delayedInit();
     void    aboutToQuit();
+
 private:
-    DatabaseManager*    m_databaseManager;
-    NetworkManager*     m_networkManager;
-    AudioManager*       m_audioManager;
-    MediaManager*       m_mediaManager;
+    QMap<QString, AbstractCore*>   m_cores;
+
+    MediaCore       *m_media;
+    DatabaseCore    *m_database;
+    ThreadsCore     *m_threads;
+    UiCore          *m_ui;
 };
 
 #endif // COREMANAGER_H

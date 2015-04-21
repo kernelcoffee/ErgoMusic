@@ -1,62 +1,40 @@
 #ifndef TRACK_H
 #define TRACK_H
 
-#include "collection.h"
-
-#include <QFileInfo>
-#include <QUrl>
-#include <QMediaContent>
-#include <QHash>
-
-class Artist;
-class Album;
-class Genre;
-class Collection;
+#include <QObject>
 
 class Track : public QObject
 {
     Q_OBJECT
 public:
-    Track(QUrl);
+    explicit Track(QObject *parent = 0);
     ~Track();
 
-    int         uid();
-    QString     title();
-    Artist*     artist();
-    Album*      album();
+    QString title() const;
+    QString artist() const;
+    QString album() const;
 
-    void            extractTags(void);
-    void            extractTags(Collection*);
-    QString         getValue(QString) const;
-    QFileInfo       *getFile(void) const;
-    QMediaContent   getMedia() const;
+    QString filePath() const;
 
+signals:
+    void    titleChanged(QString title);
+    void    artistChanged(QString artist);
+    void    albumChanged(QString album);
 
-    void        setUid(int);
-    void        setTitle(QString);
-    void        setArtist(QString);
-    void        setArtist(Artist*);
-    void        setAlbum(QString);
-    void        setAlbum(Album*);
-    void        setYear(int);
-    void        setGenre(Genre*);
-    void        setGenre(QString);
-    void        setTrack(int);
+    void    filePathChanged(QString filePath);
+
+public slots:
+    void    setTitle(QString title);
+    void    setArtist(QString artist);
+    void    setAlbum(QString album);
+    void    setPath(QString path);
+
 private:
-    void        _setValue(QString, QString);
-    void        _setValue(QString, int);
+    QString m_title;
+    QString m_artist;
+    QString m_album;
 
-    void        _debugTags();
-    Album       *m_album;
-    Artist      *m_artist;
-    Genre       *m_genre;
-
-    QString     m_title;
-    QFileInfo   *m_file;
-
-    QHash<QString, QString>       m_data;
-
-    int         m_uid, m_duration, m_track, m_year, m_bitrate, m_sampleRate, m_channels;
+    QString m_filePath;
 };
 
 #endif // TRACK_H

@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/main.qml</file>
+        <file>qml/StatusBar/StatusWidget.qml</file>
+        <file>qml/MenuBar/MenuWidget.qml</file>
+        <file>qml/Dialogs/AddWatchPlaylistDialog.qml</file>
+        <file>qml/SideMenu/SideMenu.qml</file>
+        <file>qml/SideMenu/CollapsiblePanel.qml</file>
+        <file>qml/SideMenu/Delegates/SubMenuDelegate.qml</file>
+        <file>qml/SideMenu/Menus/WatchPlaylistMenu.qml</file>
+        <file>qml/TopBar/TopBar.qml</file>
+        <file>qml/Views/CentralView.qml</file>
+        <file>qml/Views/MainListView.qml</file>
+    </qresource>
+</RCC>
