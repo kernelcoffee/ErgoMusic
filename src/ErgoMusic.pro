@@ -47,7 +47,9 @@ SOURCES += main.cpp \
     Ui/Views/viewcontroller.cpp \
     Media/metadatahandler.cpp \
     Ui/Media/Models/watchplaylistsmenumodel.cpp \
-    Ui/Media/Models/trackmodel.cpp
+    Ui/Media/Models/trackmodel.cpp \
+    Media/Commands/addwatchplaylistcommand.cpp \
+    Media/Commands/removewatchplaylistcommand.cpp
 
 HEADERS += \
     coremanager.h \
@@ -76,7 +78,9 @@ HEADERS += \
     Media/metadatahandler.h \
     Ui/Media/Models/watchplaylistsmenumodel.h \
     Ui/uicommon.h \
-    Ui/Media/Models/trackmodel.h
+    Ui/Media/Models/trackmodel.h \
+    Media/Commands/addwatchplaylistcommand.h \
+    Media/Commands/removewatchplaylistcommand.h
 
 
 RESOURCES += Ressources/qml.qrc \

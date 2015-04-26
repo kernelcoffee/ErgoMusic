@@ -8,6 +8,7 @@ WatchPlaylist::WatchPlaylist(QString path, QObject *parent) :
   , m_path(path)
   , m_status(Idle)
 {
+    qDebug() << "WatchPlaylist created : " << m_path;
     _update();
 }
 

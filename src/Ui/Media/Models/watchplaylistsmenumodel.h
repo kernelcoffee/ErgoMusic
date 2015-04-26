@@ -20,6 +20,9 @@ public:
     int                     rowCount(const QModelIndex &parent = QModelIndex()) const override;
     QHash<int, QByteArray>  roleNames() const override;
 
+public slots:
+    bool    removeRow(int row, const QModelIndex &parent = QModelIndex());
+
 private:
     WatchPlaylists*  m_data;
 };

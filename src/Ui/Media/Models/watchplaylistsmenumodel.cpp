@@ -9,6 +9,8 @@ WatchPlaylistsMenuModel::WatchPlaylistsMenuModel(WatchPlaylists *watch, QObject 
 {
     connect(m_data, &WatchPlaylists::watchPlaylistsChanged,
             [=] { emit layoutChanged(); });
+    connect(m_data, &WatchPlaylists::watchPlaylistRemoved,
+            [=] (int index) { this->removeRow(index);});
     connect(m_data, &WatchPlaylists::watchPlaylistUpdated,
             [=] (int index) { emit dataChanged(this->index(index), this->index(index)); });
 }
@@ -45,5 +47,13 @@ QHash<int, QByteArray> WatchPlaylistsMenuModel::roleNames() const
         { Status, "status"},
         { Type, "type"}
     };
+}
+
+bool WatchPlaylistsMenuModel::removeRow(int row, const QModelIndex &parent)
+{
+    Q_UNUSED(parent)
+    beginRemoveRows(QModelIndex(), row, row);
+    endRemoveRows();
+    return true;
 }
 

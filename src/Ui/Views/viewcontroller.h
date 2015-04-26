@@ -16,6 +16,8 @@ public:
     explicit ViewController(QObject *parent = 0);
     ~ViewController();
 
+    Q_INVOKABLE void    undo();
+    Q_INVOKABLE void    redo();
 
     int         selectedIndex() const;
     ModelType   selectedType() const;

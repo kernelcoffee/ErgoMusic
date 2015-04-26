@@ -13,6 +13,16 @@ ViewController::~ViewController()
 
 }
 
+void ViewController::undo()
+{
+    CoreManager::instance()->undo();
+}
+
+void ViewController::redo()
+{
+    CoreManager::instance()->redo();
+}
+
 int ViewController::selectedIndex() const
 {
     return m_selectedIndex;

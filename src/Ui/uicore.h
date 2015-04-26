@@ -6,6 +6,7 @@
 #include "Views/viewcontroller.h"
 
 #include <QQmlApplicationEngine>
+#include <QUndoStack>
 
 class UiCore : public AbstractCore
 {

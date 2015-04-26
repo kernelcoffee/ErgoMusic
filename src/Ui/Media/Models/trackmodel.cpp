@@ -53,7 +53,6 @@ QHash<int, QByteArray> TrackModel::roleNames() const
 
 void TrackModel::setModel(AbstractPlaylist *model)
 {
-    qDebug() << "set new model " << model;
     beginResetModel();
     m_data = model;
     endResetModel();

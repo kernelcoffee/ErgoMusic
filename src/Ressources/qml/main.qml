@@ -39,8 +39,17 @@ ApplicationWindow {
         property alias sideMenuWidth: sideMenu.width
     }
 
-    Loader { id: dialogLoader }
-    Loader { id: menuLoader }
+    Loader {
+        id: dialogLoader
+        function open(path) {
+            dialogLoader.source = path
+            dialogLoader.item.visible = true
+        }
+        function popup(path) {
+            dialogLoader.source = path
+            dialogLoader.item.popup()
+        }
+    }
 
     TopBar {id: topWidget}
 

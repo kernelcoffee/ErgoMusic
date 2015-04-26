@@ -8,7 +8,7 @@ MenuBar {
         MenuItem {
             id: addWatchPlaylistMenuItem
             text: qsTr("&New WatchPlaylist")
-            onTriggered: dialogLoader.source = "qrc:/qml/Dialogs/AddWatchPlaylistDialog.qml"
+            onTriggered: dialogLoader.open("qrc:/qml/Dialogs/AddWatchPlaylistDialog.qml")
         }
         MenuItem {
             text: qsTr("&Open")
@@ -22,6 +22,20 @@ MenuBar {
     }
     Menu {
         title: qsTr("&Edit")
+        MenuItem {
+            id: undo
+            text: qsTr("&undo");
+            onTriggered: viewController.undo()
+        }
+        MenuItem {
+            id: redo
+            text: qsTr("&redo");
+            onTriggered: viewController.redo()
+        }
+        MenuItem {
+            id: options
+            text: qsTr("&options");
+        }
     }
     Menu {
         title: qsTr("&Help")

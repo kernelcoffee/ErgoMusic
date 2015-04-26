@@ -30,14 +30,22 @@ public:
     ThreadsCore*    threads() const;
     UiCore*         ui() const;
 
+    void    addCommand(QUndoCommand* command);
+    int     historyCount() const;
+
 signals:
+    void    historyCountChanged(int count);
 
 public slots:
     void    delayedInit();
     void    aboutToQuit();
 
+    void    undo();
+    void    redo();
+
 private:
     QMap<QString, AbstractCore*>   m_cores;
+    QUndoStack       m_historyStack;
 
     MediaCore       *m_media;
     DatabaseCore    *m_database;

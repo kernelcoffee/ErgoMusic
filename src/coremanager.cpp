@@ -73,6 +73,17 @@ UiCore *CoreManager::ui() const
     return m_ui;
 }
 
+void CoreManager::addCommand(QUndoCommand *command)
+{
+    m_historyStack.push(command);
+    emit historyCountChanged(historyCount());
+}
+
+int CoreManager::historyCount() const
+{
+    return m_historyStack.index();
+}
+
 void CoreManager::delayedInit()
 {
     for (auto core : m_cores)
@@ -87,6 +98,19 @@ void CoreManager::aboutToQuit()
     {
         core->aboutToQuit();
     }
+}
 
+void CoreManager::undo()
+{
+    qDebug() << "undo";
+    m_historyStack.undo();
+    emit historyCountChanged(historyCount());
+}
+
+void CoreManager::redo()
+{
+    qDebug() << "redo";
+    m_historyStack.redo();
+    emit historyCountChanged(historyCount());
 }
 

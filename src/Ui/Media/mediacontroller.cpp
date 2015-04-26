@@ -2,6 +2,8 @@
 #include "coremanager.h"
 
 #include <QDebug>
+#include "Media/Commands/addwatchplaylistcommand.h"
+#include "Media/Commands/removewatchplaylistcommand.h"
 
 MediaController::MediaController(QObject *parent) :
     QObject(parent)
@@ -17,7 +19,7 @@ MediaController::~MediaController()
 
 void MediaController::addWatchPlaylist(QString path)
 {
-    m_media->watchPlaylists()->addWatchPlaylist(path);
+    CoreManager::instance()->addCommand(new AddWatchPlaylistCommand(m_media->watchPlaylists(), path));
 }
 
 void MediaController::refreshWatchPlaylist(int index)
@@ -27,7 +29,7 @@ void MediaController::refreshWatchPlaylist(int index)
 
 void MediaController::removeWathPlaylist(int index)
 {
-    m_media->watchPlaylists()->removeWatchPlaylist(index);
+    CoreManager::instance()->addCommand(new RemoveWatchPlaylistCommand(m_media->watchPlaylists(), m_media->watchPlaylists()->at(index)));
 }
 
 WatchPlaylistsMenuModel& MediaController::watchPlaylistsModel()

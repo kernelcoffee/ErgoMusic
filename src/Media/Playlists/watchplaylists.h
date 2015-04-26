@@ -14,11 +14,14 @@ public:
     QList<WatchPlaylist*>   watchPlaylists() const;
     WatchPlaylist*          at(int index) const;
 
-    void    addWatchPlaylist(QString path);
+    void    addWatchPlaylist(QString &path);
     void    addWatchPlaylist(WatchPlaylist* playlist);
     void    refreshWatchPlaylist(int index);
+    void    removeWatchPlaylist(QString &path);
     void    removeWatchPlaylist(int index);
+    void    removeWatchPlaylist(WatchPlaylist* playlist);
 
+    bool    checkExistingPath(QString &path);
 signals:
     void    watchPlaylistsChanged(WatchPlaylists* watchPlaylists);
 

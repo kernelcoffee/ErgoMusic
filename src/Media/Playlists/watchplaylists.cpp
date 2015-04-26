@@ -1,11 +1,13 @@
 #include "watchplaylists.h"
 #include "../Jobs/watchplaylistjob.h"
 #include "coremanager.h"
-#include <QUrl>
 
-#include <QDebug>
+#include <QUrl>
 #include <QSqlQuery>
 #include <QSqlError>
+
+#include <QDebug>
+
 
 WatchPlaylists::WatchPlaylists(QObject *parent) :
     QObject(parent)
@@ -32,9 +34,10 @@ WatchPlaylist *WatchPlaylists::at(int index) const
 }
 
 // playlist added from action
-void WatchPlaylists::addWatchPlaylist(QString path)
+void WatchPlaylists::addWatchPlaylist(QString &path)
 {
-    WatchPlaylist* playlist = new WatchPlaylist(QUrl(path).toLocalFile());
+    qDebug() << "add watch playlist : " << path;
+    WatchPlaylist* playlist = new WatchPlaylist(path);
     m_data.append(playlist);
     _connectWatchPlaylist(m_data.count() - 1);
     playlist->refresh();
@@ -53,9 +56,16 @@ void WatchPlaylists::addWatchPlaylist(WatchPlaylist *playlist)
 
 void WatchPlaylists::refreshWatchPlaylist(int index)
 {
-    qDebug() << index;
     m_data.at(index)->clear();
     m_data.at(index)->refresh();
+}
+
+void WatchPlaylists::removeWatchPlaylist(QString &path)
+{
+    for (int i = 0; i < m_data.size(); i++) {
+        if (m_data.at(i)->path() == path)
+            removeWatchPlaylist(i);
+    }
 }
 
 void WatchPlaylists::removeWatchPlaylist(int index)
@@ -63,6 +73,26 @@ void WatchPlaylists::removeWatchPlaylist(int index)
     qDebug() << "removing watchPlaylist : " << index;
     emit watchPlaylistRemoved(index);
     delete m_data.takeAt(index);
+}
+
+void WatchPlaylists::removeWatchPlaylist(WatchPlaylist *playlist)
+{
+    for (int i = 0; i < m_data.count(); i++)
+        if (m_data.at(i) == playlist)
+            removeWatchPlaylist(i);
+}
+
+bool WatchPlaylists::checkExistingPath(QString &path)
+{
+    for (auto playlist : m_data)
+    {
+        if (playlist->path() == path)
+        {
+            qDebug() << "Watchfolder already existing";
+            return true;
+        }
+    }
+    return false;
 }
 
 void WatchPlaylists::_connectWatchPlaylist(int index)

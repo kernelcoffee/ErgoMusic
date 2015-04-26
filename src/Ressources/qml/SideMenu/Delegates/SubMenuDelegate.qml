@@ -8,7 +8,6 @@ Item {
     enabled: !status
 
     property string contextmenu
-    property int index: index
 
     Label {
         id: label
@@ -30,12 +29,11 @@ Item {
         acceptedButtons: Qt.LeftButton | Qt.RightButton
         onClicked: {
             if (mouse.button & Qt.RightButton) {
-                mediaController.contextIndex = sideMenuDelegate.index
-                menuLoader.source = contextmenu
-                menuLoader.item.popup()
+                mediaController.contextIndex = index
+                dialogLoader.popup(contextmenu)
             }
             else
-                viewController.setTrackModel(type, sideMenuDelegate.index);
+                viewController.setTrackModel(type, index);
         }
     }
 }
