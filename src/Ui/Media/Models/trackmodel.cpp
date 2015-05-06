@@ -4,7 +4,7 @@
 #include <QDebug>
 
 TrackModel::TrackModel(QObject *parent) :
-    QAbstractListModel(parent)
+    QAbstractTableModel(parent)
   , m_data(nullptr)
 {
     qRegisterMetaType<TrackModel*>("TrackModel");
@@ -20,6 +20,7 @@ QVariant TrackModel::data(const QModelIndex &index, int role) const
     if (m_data == nullptr || index.row() < 0 || index.row() > rowCount())
         return QVariant();
 
+    qDebug() << index.row() << " " << index.column();
     Track*  track = m_data->tracks().at(index.row());
 
     switch (role) {
@@ -33,12 +34,25 @@ QVariant TrackModel::data(const QModelIndex &index, int role) const
     return "Invalid";
 }
 
+QVariant TrackModel::headerData(int section, Qt::Orientation orientation, int role) const
+{
+    qDebug() << "header data " << section << " " << orientation << " " << role;
+    return QVariant();
+}
+
 int TrackModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
     if (m_data == nullptr)
         return 0;
     return m_data->tracks().count();
+}
+
+int TrackModel::columnCount(const QModelIndex &parent) const
+{
+    Q_UNUSED(parent)
+//    qDebug() << "column count";
+    return 4;
 }
 
 QHash<int, QByteArray> TrackModel::roleNames() const
