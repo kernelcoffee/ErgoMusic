@@ -49,7 +49,8 @@ SOURCES += main.cpp \
     Ui/Media/Models/watchplaylistsmenumodel.cpp \
     Ui/Media/Models/trackmodel.cpp \
     Media/Commands/addwatchplaylistcommand.cpp \
-    Media/Commands/removewatchplaylistcommand.cpp
+    Media/Commands/removewatchplaylistcommand.cpp \
+    Ui/Views/Model/tracksortmodel.cpp
 
 HEADERS += \
     coremanager.h \
@@ -80,7 +81,8 @@ HEADERS += \
     Ui/uicommon.h \
     Ui/Media/Models/trackmodel.h \
     Media/Commands/addwatchplaylistcommand.h \
-    Media/Commands/removewatchplaylistcommand.h
+    Media/Commands/removewatchplaylistcommand.h \
+    Ui/Views/Model/tracksortmodel.h
 
 
 RESOURCES += Ressources/qml.qrc \

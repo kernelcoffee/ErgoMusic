@@ -12,10 +12,14 @@ public:
         Index,
         Title,
         Artist,
-        Album
+        Album,
+        Length,
+        Genre,
+        TrackPos,
+        FilePath
     };
+
     explicit TrackModel(QObject *parent = 0);
-    ~TrackModel();
 
     QVariant                data(const QModelIndex &index, int role) const override;
     QVariant                headerData(int section, Qt::Orientation orientation, int role) const;

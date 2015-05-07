@@ -4,8 +4,9 @@
 ViewController::ViewController(QObject *parent) :
     QObject(parent)
   , m_trackModel(new TrackModel)
+  , m_trackSortModel(new TrackSortModel)
 {
-
+    m_trackSortModel->setSourceModel(m_trackModel);
 }
 
 ViewController::~ViewController()
@@ -38,6 +39,11 @@ TrackModel *ViewController::trackModel() const
     return m_trackModel;
 }
 
+TrackSortModel *ViewController::trackSortModel() const
+{
+    return m_trackSortModel;
+}
+
 void ViewController::setSelectedIndex(int index)
 {
     if (m_selectedIndex == index)
@@ -68,4 +74,13 @@ void ViewController::setTrackModel(ModelType type, int index)
         break;
     }
     emit trackModelChanged(m_trackModel);
+}
+
+void ViewController::setTrackSortModel(TrackSortModel *trackSortModel)
+{
+    if (m_trackSortModel == trackSortModel)
+        return;
+
+    m_trackSortModel = trackSortModel;
+    emit trackSortModelChanged(trackSortModel);
 }

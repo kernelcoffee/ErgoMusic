@@ -6,10 +6,6 @@ Track::Track( QObject *parent) :
 
 }
 
-Track::~Track()
-{
-}
-
 QString Track::title() const
 {
     return m_title;
@@ -23,6 +19,26 @@ QString Track::artist() const
 QString Track::album() const
 {
     return m_album;
+}
+
+int Track::year() const
+{
+    return m_year;
+}
+
+int Track::track() const
+{
+    return m_track;
+}
+
+QString Track::genre() const
+{
+    return m_genre;
+}
+
+int Track::length() const
+{
+    return m_length;
 }
 
 QString Track::filePath() const
@@ -52,6 +68,37 @@ void Track::setAlbum(QString album)
         return;
     m_album = album;
     emit albumChanged(album);
+}
+
+void Track::setYear(int year)
+{
+    if (m_year == year)
+        return;
+    m_year = year;
+    emit yearChanged(year);
+}
+
+void Track::setTrack(int track)
+{
+    if (m_track == track)
+        return;
+    m_track = track;
+    emit trackChanged(track);
+}
+
+void Track::setGenre(QString genre)
+{
+    if (m_genre == genre)
+        return;
+    emit genreChanged(genre);
+}
+
+void Track::setLength(int length)
+{
+    if (m_length == length)
+        return;
+    m_length = length;
+    emit lengthChanged(length);
 }
 
 void Track::setPath(QString path)

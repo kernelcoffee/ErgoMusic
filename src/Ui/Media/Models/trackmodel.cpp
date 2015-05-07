@@ -10,17 +10,11 @@ TrackModel::TrackModel(QObject *parent) :
     qRegisterMetaType<TrackModel*>("TrackModel");
 }
 
-TrackModel::~TrackModel()
-{
-
-}
-
 QVariant TrackModel::data(const QModelIndex &index, int role) const
 {
     if (m_data == nullptr || index.row() < 0 || index.row() > rowCount())
         return QVariant();
 
-    qDebug() << index.row() << " " << index.column();
     Track*  track = m_data->tracks().at(index.row());
 
     switch (role) {
@@ -30,6 +24,14 @@ QVariant TrackModel::data(const QModelIndex &index, int role) const
         return track->title();
     case Artist:
         return track->artist();
+    case Length:
+        return track->length();
+    case Genre:
+        return track->genre();
+    case TrackPos:
+        return track->track();
+    case FilePath:
+        return track->filePath();
     }
     return "Invalid";
 }
@@ -51,7 +53,6 @@ int TrackModel::rowCount(const QModelIndex &parent) const
 int TrackModel::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
-//    qDebug() << "column count";
     return 4;
 }
 
@@ -61,7 +62,10 @@ QHash<int, QByteArray> TrackModel::roleNames() const
         {Index, "index" },
         {Title, "title"},
         {Artist, "artist"},
-        {Album, "album"}
+        {Album, "album"},
+        {Length, "length"},
+        {Genre, "genre"},
+        {TrackPos, "track"}
     };
 }
 

@@ -23,6 +23,7 @@ void UiCore::init()
   m_mediaController = new MediaController(this);
 
   qRegisterMetaType<ModelType>("ModelType");
+  qRegisterMetaType<TrackSortModel*>("trackSortModel");
   context->setContextProperty("uiCore", this);
   context->setContextProperty("mediaController", m_mediaController);
   context->setContextProperty("watchPlaylistsMenuModel", &m_mediaController->watchPlaylistsModel());

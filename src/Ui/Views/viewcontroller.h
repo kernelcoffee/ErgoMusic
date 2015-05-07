@@ -4,6 +4,7 @@
 #include <QObject>
 #include "Ui/uicommon.h"
 #include "Ui/Media/Models/trackmodel.h"
+#include "Model/tracksortmodel.h"
 
 class ViewController : public QObject
 {
@@ -11,6 +12,7 @@ class ViewController : public QObject
     Q_PROPERTY(int selectedIndex READ selectedIndex WRITE setSelectedIndex NOTIFY selectedIndexChanged)
     Q_PROPERTY(ModelType selectedType READ selectedType WRITE setSelectedType NOTIFY selectedTypeChanged)
     Q_PROPERTY(TrackModel* trackModel READ trackModel NOTIFY trackModelChanged)
+    Q_PROPERTY(TrackSortModel* trackSortModel READ trackSortModel WRITE setTrackSortModel NOTIFY trackSortModelChanged)
 
 public:
     explicit ViewController(QObject *parent = 0);
@@ -22,11 +24,14 @@ public:
     int         selectedIndex() const;
     ModelType   selectedType() const;
     TrackModel* trackModel() const;
+    TrackSortModel* trackSortModel() const;
 
 signals:
     void selectedIndexChanged(int index);
     void selectedTypeChanged(ModelType type);
     void trackModelChanged(TrackModel* arg);
+
+    void trackSortModelChanged(TrackSortModel* trackSortModel);
 
 public slots:
     void setSelectedIndex(int index);
@@ -34,10 +39,13 @@ public slots:
 
     Q_INVOKABLE void    setTrackModel(ModelType type, int index);
 
+    void setTrackSortModel(TrackSortModel* trackSortModel);
+
 private:
     int         m_selectedIndex;
     ModelType   m_selectedType;
     TrackModel* m_trackModel;
+    TrackSortModel* m_trackSortModel;
 };
 
 #endif // VIEWCONTROLLER_H
