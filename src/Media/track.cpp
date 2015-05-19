@@ -6,6 +6,13 @@ Track::Track( QObject *parent) :
 
 }
 
+Track::Track(QString path, QObject *parent) :
+    QObject(parent)
+  , m_filePath(path)
+{
+
+}
+
 QString Track::title() const
 {
     return m_title;

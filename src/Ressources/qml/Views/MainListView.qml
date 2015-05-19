@@ -13,6 +13,7 @@ TableView {
     TableViewColumn{ role: "index" ; title: ""; width: 40}
     TableViewColumn{ role: "title"  ; title: "Title" ; width: 200 }
     TableViewColumn{ role: "artist" ; title: "Artist" ; width: 200 }
+    TableViewColumn{ role: "album" ; title: "Album" ; width: 200 }
     TableViewColumn{ role: "length" ; title: "Length" ; width: 200 }
     TableViewColumn{ role: "genre" ; title: "genre" ; width: 200 }
     TableViewColumn{ role: "track" ; title: "track" ; width: 200 }
@@ -23,7 +24,6 @@ TableView {
             id: itemLabel
             anchors.verticalCenter: parent.verticalCenter
             width: parent.width
-            color: styleData.textColor
             elide: styleData.elideMode
             text: styleData.value
         }

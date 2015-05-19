@@ -8,6 +8,7 @@ class Track : public QObject
     Q_OBJECT
 public:
     explicit Track(QObject *parent = 0);
+    explicit Track(QString path, QObject *parent = 0);
 
     QString title() const;
     QString artist() const;
@@ -41,15 +42,15 @@ public slots:
     void    setPath(QString path);
 
 private:
-    QString m_title;
-    QString m_artist;
-    QString m_album;
-    int     m_year;
-    int     m_track;
-    QString m_genre;
-    int     m_length;
+    QString m_title = "";
+    QString m_artist = "";
+    QString m_album = "";
+    int     m_year = -1;
+    int     m_track = -1;
+    QString m_genre = "";
+    int     m_length = -1;
 
-    QString m_filePath;
+    QString m_filePath = "";
 };
 
 #endif // TRACK_H

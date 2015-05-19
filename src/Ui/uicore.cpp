@@ -4,6 +4,7 @@
 #include <QApplication>
 #include <QQmlContext>
 #include <QFontMetrics>
+#include <QSystemTrayIcon>
 
 #include <QDebug>
 
@@ -31,6 +32,20 @@ void UiCore::init()
 
   QFontMetrics fm(qApp->font());
   context->setContextProperty("fontHeight", fm.height());
+
+
+  if (!QSystemTrayIcon::isSystemTrayAvailable())
+  {
+      qDebug() << "no system tray available";
+//      QMessageBox::critical(0, QObject::tr("Systray"),
+//                               QObject::tr("I couldn't detect any system tray "
+//                                           "on this system."));
+//      return 1;
+  }
+  else
+  {
+      qDebug() << "system tray available";
+  }
 }
 
 void UiCore::initSettings()
