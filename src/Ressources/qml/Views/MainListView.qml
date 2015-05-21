@@ -18,7 +18,6 @@ TableView {
     TableViewColumn{ role: "genre" ; title: "genre" ; width: 200 }
     TableViewColumn{ role: "track" ; title: "track" ; width: 200 }
 
-
     itemDelegate: Item {
         Label {
             id: itemLabel

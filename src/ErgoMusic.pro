@@ -45,12 +45,13 @@ SOURCES += main.cpp \
     Database/Handlers/watchplaylistdbhandler.cpp \
     Database/Handlers/dbhandlers.cpp \
     Ui/Views/viewcontroller.cpp \
-    Media/metadatahandler.cpp \
     Ui/Media/Models/watchplaylistsmenumodel.cpp \
     Ui/Media/Models/trackmodel.cpp \
     Media/Commands/addwatchplaylistcommand.cpp \
     Media/Commands/removewatchplaylistcommand.cpp \
-    Ui/Views/Model/tracksortmodel.cpp
+    Ui/Views/Model/tracksortmodel.cpp \
+    Media/MetaData/metadatahandler.cpp \
+    Media/MetaData/fmpsparser.cpp
 
 HEADERS += \
     coremanager.h \
@@ -76,13 +77,14 @@ HEADERS += \
     Database/Handlers/watchplaylistdbhandler.h \
     Database/Handlers/dbhandlers.h \
     Ui/Views/viewcontroller.h \
-    Media/metadatahandler.h \
     Ui/Media/Models/watchplaylistsmenumodel.h \
     Ui/uicommon.h \
     Ui/Media/Models/trackmodel.h \
     Media/Commands/addwatchplaylistcommand.h \
     Media/Commands/removewatchplaylistcommand.h \
-    Ui/Views/Model/tracksortmodel.h
+    Ui/Views/Model/tracksortmodel.h \
+    Media/MetaData/metadatahandler.h \
+    Media/MetaData/fmpsparser.h
 
 
 RESOURCES += Ressources/qml.qrc \

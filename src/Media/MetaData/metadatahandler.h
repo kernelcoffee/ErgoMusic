@@ -2,7 +2,7 @@
 #define METADATAHANDLER_H
 
 #include <QObject>
-#include "track.h"
+#include "../track.h"
 
 #include <taglib/mpegfile.h>
 #include <taglib/flacfile.h>
@@ -30,6 +30,8 @@ private:
     void    _parseMp4Tags(Track* track, TagLib::MP4::File* file);
     void    _parseAsfTags(Track* track, TagLib::ASF::File* file);
     void    _parseOggTags(Track* track, TagLib::Ogg::File* file);
+
+    void    _parseFMPSFrame(const QString& name, const QString& value, Track* track);
 
 };
 
