@@ -21,7 +21,6 @@ unix:!macx {
     LIBS += -ltag
 }
 
-
 SOURCES += main.cpp \
     coremanager.cpp \
     Utilities/logger.cpp \

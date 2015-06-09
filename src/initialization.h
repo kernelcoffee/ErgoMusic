@@ -19,7 +19,7 @@ signals:
 public slots:
     void    delayedInit();
 private:
-    QTranslator*    _translator;
+    QTranslator*    m_translator;
 
 
 };

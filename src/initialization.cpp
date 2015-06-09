@@ -15,7 +15,7 @@ Initialization::Initialization(QObject *parent) : QObject(parent)
     QCoreApplication::setOrganizationDomain("kernelcoffee.org");
     QCoreApplication::setApplicationName("ErgoMusic");
 
-    _translator = new QTranslator;
+    m_translator = new QTranslator;
 
     QTimer::singleShot(1, this, SLOT(delayedInit()));
     qsrand((uint)QTime::currentTime().msec());
@@ -45,8 +45,8 @@ void Initialization::initSettings()
     QString lang(":/languages/languages/lang_" + settings.value("language", QLocale::system().name()).toString() + ".qm");
     if (QFile::exists(lang))
     {
-        _translator->load(lang);
-        qApp->installTranslator(_translator);
+        m_translator->load(lang);
+        qApp->installTranslator(m_translator);
     }
     else
         qWarning() << "lang file " << lang << "  not found";
