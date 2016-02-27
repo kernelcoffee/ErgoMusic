@@ -5,7 +5,7 @@
 
 #include "collection.h"
 #include "Playlists/watchplaylists.h"
-#include "metadatahandler.h"
+#include "MetaData/metadatahandler.h"
 
 class MediaCore : public AbstractCore
 {
@@ -14,10 +14,8 @@ public:
     explicit MediaCore(QObject *parent = 0);
     ~MediaCore();
 
-    void    init();
-    void    initSettings();
-    void    initArguments(QCommandLineParser &cmd);
-    void    processArguments(QCommandLineParser &cmd);
+    void    init() override;
+    void    initSettings() override;
 
     Collection*         library() const;
     WatchPlaylists*     watchPlaylists() const;
@@ -26,7 +24,7 @@ signals:
 
 public slots:
     void    delayedInit();
-    void    aboutToQuit();
+    void    onAboutToQuit() override;
 
 private:
     Collection      *m_library;

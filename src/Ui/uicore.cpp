@@ -68,6 +68,6 @@ void UiCore::delayedInit()
     m_engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
 }
 
-void UiCore::aboutToQuit()
+void UiCore::onAboutToQuit()
 {
 }

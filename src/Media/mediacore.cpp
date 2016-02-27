@@ -10,6 +10,7 @@ MediaCore::MediaCore(QObject *parent) :
   , m_metaData(new MetaDataHandler)
 {
 
+    qDebug() << "MediaCore";
 }
 
 MediaCore::~MediaCore()
@@ -25,16 +26,6 @@ void MediaCore::init()
 void MediaCore::initSettings()
 {
 
-}
-
-void MediaCore::initArguments(QCommandLineParser &cmd)
-{
-    Q_UNUSED(cmd)
-}
-
-void MediaCore::processArguments(QCommandLineParser &cmd)
-{
-    Q_UNUSED(cmd)
 }
 
 Collection* MediaCore::library() const
@@ -64,7 +55,7 @@ void MediaCore::delayedInit()
             [=] (int index) { db->handlers()->WatchPlaylist()->remove(m_watchPlaylists->at(index)); });
 }
 
-void MediaCore::aboutToQuit()
+void MediaCore::onAboutToQuit()
 {
 
 }

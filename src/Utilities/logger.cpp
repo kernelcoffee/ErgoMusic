@@ -21,6 +21,8 @@
 #include <iostream>
 #include <QtCore/QStandardPaths>
 #include <QDateTime>
+#include <stdio.h>
+#include <stdlib.h>
 
 const static QString    DEFAULT_LOG_DIR = QStandardPaths::writableLocation(QStandardPaths::DataLocation) + "/Kernelcoffee/ErgoMusic/logs";	///< Log directory
 const static QString    DEFAULT_LOG_FILE = "logFile";	///< Log file name
@@ -31,7 +33,8 @@ static const QString	logLevel_str[] = {
     "Debug",
     "Warning",
     "Critical",
-    "Fatal"
+    "Fatal",
+    "Info"
 };
 
 Logger::Logger(QObject *parent) :
@@ -57,7 +60,24 @@ void Logger::log(QtMsgType type, const QMessageLogContext &context, const QStrin
             + ",\t" + context.function
             + ",\t" + msg
             + "\n";
-    std::cerr << message.toStdString();
+    switch (type) {
+
+    case QtDebugMsg:
+        std::cout << message.toLocal8Bit().constData();
+        break;
+    case QtInfoMsg:
+        std::cerr << message.toLocal8Bit().constData();
+        break;
+    case QtWarningMsg:
+        fprintf(stderr, "%s", message.toLocal8Bit().constData());
+        break;
+    case QtCriticalMsg:
+        fprintf(stderr, "%s", message.toLocal8Bit().constData());
+        break;
+    case QtFatalMsg:
+        fprintf(stderr, "%s", message.toLocal8Bit().constData());
+        abort();
+    }
     Logger::instance()->_write(message);
     if (type == QtFatalMsg) {
         abort();

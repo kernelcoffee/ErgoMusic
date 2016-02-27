@@ -91,7 +91,7 @@ void DatabaseCore::delayedInit()
     m_handlers->delayedInit();
 }
 
-void DatabaseCore::aboutToQuit()
+void DatabaseCore::onAboutToQuit()
 {
     m_db.close();
 }

@@ -20,10 +20,10 @@ public:
     explicit CoreManager(QObject *parent = 0);
     ~CoreManager();
 
-    void    init();
-    void    initSettings();
-    void    initArguments(QCommandLineParser &cmd);
-    void    processArguments(QCommandLineParser &cmd);
+    void    init() override;
+    void    initSettings() override;
+    void    initArguments(QCommandLineParser &cmd) override;
+    void    processArguments(QCommandLineParser &cmd) override;
 
     MediaCore*      media() const;
     DatabaseCore*   database() const;
@@ -37,8 +37,8 @@ signals:
     void    historyCountChanged(int count);
 
 public slots:
-    void    delayedInit();
-    void    aboutToQuit();
+    void    delayedInit() override;
+    void    onAboutToQuit() override;
 
     void    undo();
     void    redo();

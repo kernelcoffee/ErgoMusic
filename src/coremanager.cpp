@@ -33,6 +33,7 @@ void CoreManager::initSettings()
 {
     for (auto core : m_cores)
     {
+        qDebug() << "Init core " << core;
         core->initSettings();
     }
 }
@@ -92,11 +93,11 @@ void CoreManager::delayedInit()
     }
 }
 
-void CoreManager::aboutToQuit()
+void CoreManager::onAboutToQuit()
 {
     for (auto core : m_cores)
     {
-        core->aboutToQuit();
+        core->onAboutToQuit();
     }
 }
 

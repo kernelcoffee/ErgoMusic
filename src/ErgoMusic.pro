@@ -2,30 +2,28 @@ QT += qml quick widgets sql
 
 TARGET = ErgoMusic
 TEMPLATE = app
-CONFIG += c++14
+CONFIG += c++11 console
 
 macx {
-        # FIX: issue where cache is not created on 5.1
-        cache()
-        #using default path of MacPort
-        INCLUDEPATH += /opt/local/include/
-        LIBS += -L/opt/local/lib
-        #using default path of Homebrew
-        INCLUDEPATH += /usr/local/include/
-        LIBS += -L/usr/local/lib
+    # FIX: issue where cache is not created on 5.1
+    cache()
+    #using default path of MacPort
+    INCLUDEPATH += /opt/local/include/
+    LIBS += -L/opt/local/lib
+    #using default path of Homebrew
+    INCLUDEPATH += /usr/local/include/
+    LIBS += -L/usr/local/lib
 
-        LIBS += -ltag
+    LIBS += -ltag
 }
 
-unix:!macx {
+linux {
     LIBS += -ltag
 }
 
 SOURCES += main.cpp \
     coremanager.cpp \
     Utilities/logger.cpp \
-    initialization.cpp \
-    Abstracts/abstractcore.cpp \
     Media/mediacore.cpp \
     Media/track.cpp \
     Database/databasecore.cpp \
@@ -50,13 +48,13 @@ SOURCES += main.cpp \
     Media/Commands/removewatchplaylistcommand.cpp \
     Ui/Views/Model/tracksortmodel.cpp \
     Media/MetaData/metadatahandler.cpp \
-    Media/MetaData/fmpsparser.cpp
+    Media/MetaData/fmpsparser.cpp \
+    ergoapplication.cpp
 
 HEADERS += \
     coremanager.h \
     Utilities/logger.h \
     Utilities/singleton.h \
-    initialization.h \
     Abstracts/abstractcore.h \
     Media/mediacore.h \
     Media/track.h \
@@ -83,7 +81,8 @@ HEADERS += \
     Media/Commands/removewatchplaylistcommand.h \
     Ui/Views/Model/tracksortmodel.h \
     Media/MetaData/metadatahandler.h \
-    Media/MetaData/fmpsparser.h
+    Media/MetaData/fmpsparser.h \
+    ergoapplication.h
 
 
 RESOURCES += Ressources/qml.qrc \
@@ -98,3 +97,5 @@ QML_IMPORT_PATH =
 
 # Default rules for deployment.
 include(deployment.pri)
+
+message(CONFIG=$$CONFIG)

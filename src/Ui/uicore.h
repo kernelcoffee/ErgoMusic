@@ -26,7 +26,7 @@ signals:
 
 public slots:
     void    delayedInit();
-    void    aboutToQuit();
+    void    onAboutToQuit();
 
 private:
     QQmlApplicationEngine m_engine;

@@ -22,7 +22,7 @@ signals:
 
 public slots:
     void    delayedInit();
-    void    aboutToQuit();
+    void    onAboutToQuit();
 
 };
 

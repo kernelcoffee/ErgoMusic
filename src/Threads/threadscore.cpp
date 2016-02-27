@@ -45,7 +45,7 @@ void ThreadsCore::delayedInit()
 
 }
 
-void ThreadsCore::aboutToQuit()
+void ThreadsCore::onAboutToQuit()
 {
 
 }
