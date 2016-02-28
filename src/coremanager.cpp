@@ -22,6 +22,7 @@ CoreManager::~CoreManager()
 
 void CoreManager::init()
 {
+    qDebug() << "init" << m_cores;
     for (auto core : m_cores)
     {
         core->init();

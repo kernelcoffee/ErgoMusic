@@ -18,7 +18,6 @@ class MetaDataHandler : public QObject
     Q_OBJECT
 public:
     explicit MetaDataHandler(QObject *parent = 0);
-    ~MetaDataHandler();
 
     Track*  getTrackFromFile(QString path);
 signals:

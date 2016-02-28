@@ -7,7 +7,6 @@ MediaCore::MediaCore(QObject *parent) :
     AbstractCore(parent)
   , m_library(new Collection)
   , m_watchPlaylists(new WatchPlaylists)
-  , m_metaData(new MetaDataHandler)
 {
 
     qDebug() << "MediaCore";
@@ -36,11 +35,6 @@ Collection* MediaCore::library() const
 WatchPlaylists* MediaCore::watchPlaylists() const
 {
     return m_watchPlaylists;
-}
-
-MetaDataHandler *MediaCore::metaDataHandler() const
-{
-    return m_metaData;
 }
 
 void MediaCore::delayedInit()

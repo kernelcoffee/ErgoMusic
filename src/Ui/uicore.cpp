@@ -53,16 +53,6 @@ void UiCore::initSettings()
 
 }
 
-void UiCore::initArguments(QCommandLineParser &cmd)
-{
-    Q_UNUSED(cmd)
-}
-
-void UiCore::processArguments(QCommandLineParser &cmd)
-{
-    Q_UNUSED(cmd)
-}
-
 void UiCore::delayedInit()
 {
     m_engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));

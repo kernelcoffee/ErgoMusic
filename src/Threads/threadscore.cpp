@@ -25,16 +25,6 @@ void ThreadsCore::initSettings()
     settings.setValue("Threads/nbThreads", 10);
 }
 
-void ThreadsCore::initArguments(QCommandLineParser &cmd)
-{
-    Q_UNUSED(cmd)
-}
-
-void ThreadsCore::processArguments(QCommandLineParser &cmd)
-{
-    Q_UNUSED(cmd)
-}
-
 void ThreadsCore::AddJob(QRunnable *job)
 {
     QThreadPool::globalInstance()->start(job);

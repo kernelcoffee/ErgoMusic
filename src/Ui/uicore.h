@@ -6,7 +6,6 @@
 #include "Views/viewcontroller.h"
 
 #include <QQmlApplicationEngine>
-#include <QUndoStack>
 
 class UiCore : public AbstractCore
 {
@@ -17,16 +16,12 @@ public:
     explicit UiCore(QObject *parent = 0);
     ~UiCore();
 
-    void    init();
-    void    initSettings();
-    void    initArguments(QCommandLineParser &cmd);
-    void    processArguments(QCommandLineParser &cmd);
-
-signals:
+    void    init() override;
+    void    initSettings() override;
 
 public slots:
-    void    delayedInit();
-    void    onAboutToQuit();
+    void    delayedInit() override;
+    void    onAboutToQuit() override;
 
 private:
     QQmlApplicationEngine m_engine;

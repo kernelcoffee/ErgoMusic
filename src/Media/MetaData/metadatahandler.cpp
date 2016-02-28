@@ -30,12 +30,8 @@
 // some code may be borrowed from Clementine player
 // https://github.com/clementine-player/Clementine/tree/master/ext/libclementine-tagreader
 
-MetaDataHandler::MetaDataHandler(QObject *parent) : QObject(parent)
-{
-
-}
-
-MetaDataHandler::~MetaDataHandler()
+MetaDataHandler::MetaDataHandler(QObject *parent) :
+    QObject(parent)
 {
 
 }

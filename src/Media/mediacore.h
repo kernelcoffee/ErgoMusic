@@ -19,8 +19,6 @@ public:
 
     Collection*         library() const;
     WatchPlaylists*     watchPlaylists() const;
-    MetaDataHandler*    metaDataHandler() const;
-signals:
 
 public slots:
     void    delayedInit();
@@ -29,7 +27,6 @@ public slots:
 private:
     Collection      *m_library;
     WatchPlaylists  *m_watchPlaylists;
-    MetaDataHandler *m_metaData;
 };
 
 #endif // MEDIACORE_H

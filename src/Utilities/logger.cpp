@@ -17,6 +17,7 @@
 
 
 #include "logger.h"
+#include "common.h"
 #include <QDir>
 #include <iostream>
 #include <QtCore/QStandardPaths>
@@ -60,8 +61,8 @@ void Logger::log(QtMsgType type, const QMessageLogContext &context, const QStrin
             + ",\t" + context.function
             + ",\t" + msg
             + "\n";
-    switch (type) {
 
+    switch (type) {
     case QtDebugMsg:
         std::cout << message.toLocal8Bit().constData();
         break;

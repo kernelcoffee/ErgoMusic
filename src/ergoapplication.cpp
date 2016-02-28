@@ -1,12 +1,23 @@
 #include "ergoapplication.h"
+#include "Utilities/logger.h"
 
 #include <QSettings>
 #include <QFile>
+#include <QLoggingCategory>
+#include <QDebug>
+
 
 ErgoApplication::ErgoApplication(int &argc, char **argv) :
     QApplication(argc, argv),
     m_translator(new QTranslator)
 {
+
+#ifndef QT_NO_DEBUG_OUTPUT
+    QLoggingCategory::defaultCategory()->setEnabled(QtDebugMsg, true);
+#endif
+    qInstallMessageHandler(Logger::instance()->log);
+
+
     QCoreApplication::setOrganizationName("Kernelcoffee");
     QCoreApplication::setOrganizationDomain("kernelcoffee.org");
     QCoreApplication::setApplicationName("ErgoMusic");

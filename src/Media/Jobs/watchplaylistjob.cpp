@@ -14,6 +14,7 @@ void WatchPlaylistJob::run()
 {
     // get list from audio player
     QStringList supportedExtension {"mp3","wma","ogg", "wav", "flac", "aac", "m4a"};
+    MetaDataHandler handler;
 
     qDebug() << "watchplaylist job running";
     m_data->setStatus(WatchPlaylist::Busy);
@@ -26,7 +27,7 @@ void WatchPlaylistJob::run()
                 it.fileInfo().isReadable() &&
                 supportedExtension.contains(it.fileInfo().suffix().toLower()))
         {
-            m_data->addTrack(CoreManager::instance()->media()->metaDataHandler()->getTrackFromFile(it.fileInfo().absoluteFilePath()));
+            m_data->addTrack(handler.getTrackFromFile(it.fileInfo().absoluteFilePath()));
         }
     }
     m_data->setStatus(WatchPlaylist::Idle);

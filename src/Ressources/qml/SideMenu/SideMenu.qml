@@ -12,7 +12,6 @@ ScrollView {
     Column {
         id: sideMenuContainer
         width: sideMenu.width
-        height: sideMenu.height
         spacing: 10
 
         CollapsiblePanel {

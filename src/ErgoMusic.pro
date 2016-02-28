@@ -21,6 +21,8 @@ linux {
     LIBS += -ltag
 }
 
+INCLUDEPATH += $$PWD
+
 SOURCES += main.cpp \
     coremanager.cpp \
     Utilities/logger.cpp \
@@ -82,7 +84,8 @@ HEADERS += \
     Ui/Views/Model/tracksortmodel.h \
     Media/MetaData/metadatahandler.h \
     Media/MetaData/fmpsparser.h \
-    ergoapplication.h
+    ergoapplication.h \
+    common.h
 
 
 RESOURCES += Ressources/qml.qrc \

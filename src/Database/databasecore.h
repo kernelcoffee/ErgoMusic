@@ -12,10 +12,10 @@ public:
     explicit DatabaseCore(QObject *parent = 0);
     ~DatabaseCore();
 
-    void    init();
-    void    initSettings();
-    void    initArguments(QCommandLineParser &cmd);
-    void    processArguments(QCommandLineParser &cmd);
+    void    init() override;
+    void    initSettings() override;
+    void    initArguments(QCommandLineParser &parser) override;
+    void    processArguments(QCommandLineParser &parser) override;
 
     int     currentMigration() const;   //< Get the current migration number
 
@@ -23,8 +23,8 @@ public:
 signals:
 
 public slots:
-    void    delayedInit();
-    void    onAboutToQuit();
+    void    delayedInit() override;
+    void    onAboutToQuit() override;
 
 private:
     void    _openDatabase();

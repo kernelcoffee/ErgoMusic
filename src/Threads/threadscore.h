@@ -11,18 +11,14 @@ public:
     explicit ThreadsCore(QObject *parent = 0);
     ~ThreadsCore();
 
-    void    init();
-    void    initSettings();
-    void    initArguments(QCommandLineParser &cmd);
-    void    processArguments(QCommandLineParser &cmd);
-
+    void    init() override;
+    void    initSettings() override;
 
     void    AddJob(QRunnable* job);
-signals:
 
 public slots:
-    void    delayedInit();
-    void    onAboutToQuit();
+    void    delayedInit() override;
+    void    onAboutToQuit() override;
 
 };
 

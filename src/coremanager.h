@@ -10,6 +10,7 @@
 #include "Ui/uicore.h"
 
 #include <QMap>
+#include <QUndoCommand>
 
 class CoreManager : public AbstractCore , public Singleton<CoreManager>
 {
