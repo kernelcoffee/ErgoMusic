@@ -10,7 +10,8 @@ class WatchPlaylist : public AbstractPlaylist
 public:
     enum Status {
         Idle,
-        Busy
+        Busy,
+        Broken
     };
 
     explicit WatchPlaylist(QString path, QObject *parent = 0);

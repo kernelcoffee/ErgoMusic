@@ -30,8 +30,8 @@ void WatchPlaylistDBHandler::loadAll()
         QString name = query.value(1).toString();
         QString	path = query.value(2).toString();
 
-        playlists->addWatchPlaylist(new WatchPlaylist(id, name, path));
         qDebug() << id << name << path;
+        playlists->addWatchPlaylist(new WatchPlaylist(id, name, path));
     }
 }
 

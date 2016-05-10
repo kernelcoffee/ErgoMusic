@@ -9,10 +9,7 @@ CoreManager::CoreManager(QObject *parent) :
   , m_threads(new ThreadsCore(this))
   , m_ui(new UiCore(this))
 {
-    m_cores["media"] = m_media;
-    m_cores["database"] = m_database;
-    m_cores["threasds"] = m_threads;
-    m_cores["ui"] = m_ui;
+    m_cores << m_media << m_database << m_threads << m_ui;
 }
 
 CoreManager::~CoreManager()

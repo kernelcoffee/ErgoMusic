@@ -45,6 +45,7 @@ void WatchPlaylist::clear()
 
 void    WatchPlaylist::refresh()
 {
+    qDebug();
     emit requestRefresh();
 }
 
@@ -75,6 +76,7 @@ void    WatchPlaylist::_update()
     else
     {
         qDebug() << "Path incorrect : " + dir.absolutePath();
+        setStatus(Broken);
     }
 }
 

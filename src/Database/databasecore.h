@@ -3,13 +3,16 @@
 
 #include "Abstracts/abstractcore.h"
 #include "Handlers/dbhandlers.h"
+
 #include <QSqlDatabase>
+
+class CoreManager;
 
 class DatabaseCore : public AbstractCore
 {
     Q_OBJECT
 public:
-    explicit DatabaseCore(QObject *parent = 0);
+    explicit DatabaseCore(CoreManager *cores);
     ~DatabaseCore();
 
     void    init() override;
@@ -30,6 +33,7 @@ private:
     void    _openDatabase();
     void    _initDBInterfaces();
 
+    CoreManager     *m_cores;
     QSqlDatabase    m_db;
     DbHandlers      *m_handlers;
 };

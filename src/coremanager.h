@@ -45,13 +45,13 @@ public slots:
     void    redo();
 
 private:
-    QMap<QString, AbstractCore*>   m_cores;
+    QList<AbstractCore*>   m_cores;
     QUndoStack       m_historyStack;
 
-    MediaCore       *m_media;
-    DatabaseCore    *m_database;
-    ThreadsCore     *m_threads;
-    UiCore          *m_ui;
+    MediaCore       *m_media = nullptr;
+    DatabaseCore    *m_database = nullptr;
+    ThreadsCore     *m_threads = nullptr;
+    UiCore          *m_ui = nullptr;
 };
 
 #endif // COREMANAGER_H

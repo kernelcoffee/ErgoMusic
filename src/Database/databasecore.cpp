@@ -1,5 +1,6 @@
 ﻿#include "databasecore.h"
 #include "Migration/migrationengine.h"
+#include "coremanager.h"
 
 #include <QSettings>
 #include <QDir>
@@ -12,8 +13,9 @@
 #include <QJsonObject>
 #include <QDebug>
 
-DatabaseCore::DatabaseCore(QObject *parent) :
-    AbstractCore(parent)
+DatabaseCore::DatabaseCore(CoreManager *cores) :
+    AbstractCore(cores)
+  , m_cores(cores)
   , m_handlers(new DbHandlers)
 {
 }
@@ -55,9 +57,12 @@ void DatabaseCore::initSettings()
 {
     QSettings settings;
 
-    settings.setValue("database/type", "QSQLITE");
-    settings.setValue("database/path", QStandardPaths::writableLocation(QStandardPaths::DataLocation) + QDir::separator());
-    settings.setValue("database/name", qAppName() + ".sqlite");
+
+    settings.beginGroup("database");
+    settings.setValue("type", "QSQLITE");
+    settings.setValue("path", QStandardPaths::writableLocation(QStandardPaths::DataLocation) + QDir::separator());
+    settings.setValue("name", qAppName() + ".sqlite");
+    settings.endGroup();
 }
 
 void DatabaseCore::initArguments(QCommandLineParser &cmd)

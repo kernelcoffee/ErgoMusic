@@ -45,8 +45,8 @@ ApplicationWindow {
             dialogLoader.source = path
             dialogLoader.item.visible = true
         }
-        function popup(path) {
-            dialogLoader.source = path
+        function popup(path, arguments) {
+            dialogLoader.setSource(path, arguments)
             dialogLoader.item.popup()
         }
     }
@@ -60,6 +60,10 @@ ApplicationWindow {
         height: root.height - topWidget.height - statusWidget.height
         width: parent.width
 
+        CentralView {
+            id: mainWindow
+            Layout.fillWidth: true
+        }
         SideMenu {
             id: sideMenu
             width: scaleUnit(300)
@@ -68,9 +72,5 @@ ApplicationWindow {
             Layout.maximumWidth: scaleUnit(400)
         }
 
-        CentralView {
-            id: mainWindow
-            Layout.fillWidth: true
-        }
     }
 }

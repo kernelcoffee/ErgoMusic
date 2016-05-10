@@ -29,8 +29,7 @@ Item {
         acceptedButtons: Qt.LeftButton | Qt.RightButton
         onClicked: {
             if (mouse.button & Qt.RightButton) {
-                mediaController.contextIndex = index
-                dialogLoader.popup(contextmenu)
+                dialogLoader.popup(contextmenu, {index: index})
             }
             else
                 viewController.setTrackModel(type, index);

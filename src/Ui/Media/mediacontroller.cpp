@@ -36,17 +36,3 @@ WatchPlaylistsMenuModel& MediaController::watchPlaylistsModel()
 {
     return m_watchPlaytlistsModel;
 }
-
-int MediaController::contextIndex() const
-{
-    return m_contextIndex;
-}
-
-void MediaController::setContextIndex(int arg)
-{
-    if (m_contextIndex == arg)
-        return;
-
-    m_contextIndex = arg;
-    emit contextIndexChanged(arg);
-}

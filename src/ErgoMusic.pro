@@ -1,8 +1,8 @@
-QT += qml quick widgets sql
+QT += qml quick widgets sql xml
 
 TARGET = ErgoMusic
 TEMPLATE = app
-CONFIG += c++11 console
+CONFIG += c++11
 
 macx {
     # FIX: issue where cache is not created on 5.1
