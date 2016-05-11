@@ -97,16 +97,16 @@ bool	Migration::dropTable(const QString name)
 MigrationEngine::MigrationEngine(DatabaseCore* dbCore) :
     m_dbCore(dbCore)
 {
-    m_migrations.push_back(new WatchPlaylistMigration("WatchPlaylists"));
+    m_migrations << new WatchPlaylistMigration("WatchPlaylists");
 }
 
 MigrationEngine::~MigrationEngine()
 {
-    while (!m_migrations.empty())
+    for (auto recipes : m_migrations)
     {
-        delete m_migrations.back();
-        m_migrations.pop_back();
+        delete recipes;
     }
+    m_migrations.clear();
 }
 
 int		MigrationEngine::migrationsCount()

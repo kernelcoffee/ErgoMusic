@@ -7,7 +7,7 @@ Item {
     anchors.left: parent.left
     anchors.right: parent.right
 
-    height: scaleUnit(60)
+    height: 60
 
     Item {
         id: controls

@@ -20,12 +20,6 @@ ApplicationWindow {
     height: minimumHeight
     visible: true
 
-    // TODO: move to a separate file -> qml singleton
-    property real scaleRatio: fontHeight * 0.053 // magic number that's look good
-    function scaleUnit(val) {
-        return Math.round(val * scaleRatio)
-    }
-
     menuBar: MenuWidget { id: menuWidget}
     statusBar: StatusWidget{ id: statusWidget }
 
@@ -59,18 +53,17 @@ ApplicationWindow {
         orientation: Qt.Horizontal
         height: root.height - topWidget.height - statusWidget.height
         width: parent.width
+        SideMenu {
+            id: sideMenu
+            width: 300
+            height: parent.height
+            Layout.minimumWidth: 200
+            Layout.maximumWidth: 400
+        }
 
         CentralView {
             id: mainWindow
             Layout.fillWidth: true
         }
-        SideMenu {
-            id: sideMenu
-            width: scaleUnit(300)
-            height: parent.height
-            Layout.minimumWidth: scaleUnit(200)
-            Layout.maximumWidth: scaleUnit(400)
-        }
-
     }
 }

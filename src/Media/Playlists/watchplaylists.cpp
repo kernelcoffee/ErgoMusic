@@ -78,8 +78,10 @@ void WatchPlaylists::removeWatchPlaylist(int index)
 void WatchPlaylists::removeWatchPlaylist(WatchPlaylist *playlist)
 {
     for (int i = 0; i < m_data.count(); i++)
+    {
         if (m_data.at(i) == playlist)
             removeWatchPlaylist(i);
+    }
 }
 
 bool WatchPlaylists::checkExistingPath(QString &path)

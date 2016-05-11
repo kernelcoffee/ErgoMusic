@@ -3,8 +3,9 @@
 
 #include <QDebug>
 
-MediaCore::MediaCore(QObject *parent) :
+MediaCore::MediaCore(CoreManager *parent) :
     AbstractCore(parent)
+  , m_cores(parent)
   , m_library(new Collection)
   , m_watchPlaylists(new WatchPlaylists)
 {
@@ -39,7 +40,7 @@ WatchPlaylists* MediaCore::watchPlaylists() const
 
 void MediaCore::delayedInit()
 {
-    DatabaseCore*   db = CoreManager::instance()->database();
+    DatabaseCore *db = m_cores->database();
 
     connect(m_watchPlaylists, &WatchPlaylists::watchPlaylistAdded,
             [=] (int index) { db->handlers()->WatchPlaylist()->save(m_watchPlaylists->at(index)); });

@@ -7,11 +7,13 @@
 #include "Playlists/watchplaylists.h"
 #include "MetaData/metadatahandler.h"
 
+class CoreManager;
+
 class MediaCore : public AbstractCore
 {
     Q_OBJECT
 public:
-    explicit MediaCore(QObject *parent = 0);
+    explicit MediaCore(CoreManager *parent = 0);
     ~MediaCore();
 
     void    init() override;
@@ -25,8 +27,9 @@ public slots:
     void    onAboutToQuit() override;
 
 private:
-    Collection      *m_library;
-    WatchPlaylists  *m_watchPlaylists;
+    CoreManager     *m_cores = nullptr;
+    Collection      *m_library = nullptr;
+    WatchPlaylists  *m_watchPlaylists = nullptr;
 };
 
 #endif // MEDIACORE_H

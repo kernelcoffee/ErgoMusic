@@ -17,7 +17,6 @@ ErgoApplication::ErgoApplication(int &argc, char **argv) :
 #endif
     qInstallMessageHandler(Logger::instance()->log);
 
-
     QCoreApplication::setOrganizationName("Kernelcoffee");
     QCoreApplication::setOrganizationDomain("kernelcoffee.org");
     QCoreApplication::setApplicationName("ErgoMusic");

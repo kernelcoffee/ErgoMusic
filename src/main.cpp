@@ -3,7 +3,6 @@
 
 #include <QTime>
 #include <QTimer>
-#include <QDebug>
 
 int main(int argc, char *argv[])
 {

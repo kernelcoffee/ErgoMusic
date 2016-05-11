@@ -8,6 +8,8 @@
 
 #include <QDebug>
 
+const QString dbName = "watchplaylists";
+
 WatchPlaylistDBHandler::WatchPlaylistDBHandler(QObject *parent) :
     QObject(parent)
 {
@@ -24,6 +26,7 @@ void WatchPlaylistDBHandler::loadAll()
     WatchPlaylists* playlists = CoreManager::instance()->media()->watchPlaylists();
     QSqlQuery query("SELECT * FROM watchplaylists");
     query.exec();
+
     while(query.next())
     {
         int		id = query.value(0).toInt();
@@ -37,8 +40,10 @@ void WatchPlaylistDBHandler::loadAll()
 
 void WatchPlaylistDBHandler::save(WatchPlaylist *playlist)
 {
+    qDebug() << "Saving watchplaylist " << playlist->name();
+
     QSqlQuery query;
-    query.prepare("INSERT INTO watchplaylists(name, path) VALUES (:name, :path)");
+    query.prepare("INSERT INTO " + dbName + "(name, path) VALUES (:name, :path)");
     query.bindValue(":name", playlist->name());
     query.bindValue(":path", playlist->path());
 
@@ -51,9 +56,10 @@ void WatchPlaylistDBHandler::save(WatchPlaylist *playlist)
 
 void WatchPlaylistDBHandler::update(WatchPlaylist *playlist)
 {
-    QSqlQuery query;
+    qDebug() << "Updating watchplaylist " << playlist->name();
 
-    query.prepare("UPDATE watchplaylists SET 'name' = :name, 'path' = :path WHERE  'id' = :id");
+    QSqlQuery query;
+    query.prepare("UPDATE " + dbName + " SET 'name' = :name, 'path' = :path WHERE  'id' = :id");
     query.bindValue(":id", playlist->id());
     query.bindValue(":name", playlist->name());
     query.bindValue(":path", playlist->path());
@@ -64,8 +70,9 @@ void WatchPlaylistDBHandler::update(WatchPlaylist *playlist)
 
 void WatchPlaylistDBHandler::remove(WatchPlaylist *playlist)
 {
-    QSqlQuery query;
+    qDebug() << "Removing watchplaylist " << playlist->name();
 
+    QSqlQuery query;
     query.prepare("DELETE FROM watchplaylists WHERE id = :id");
     query.bindValue(":id", playlist->id());
 

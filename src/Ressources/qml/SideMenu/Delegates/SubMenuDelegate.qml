@@ -30,9 +30,9 @@ Item {
         onClicked: {
             if (mouse.button & Qt.RightButton) {
                 dialogLoader.popup(contextmenu, {index: index})
-            }
-            else
+            } else {
                 viewController.setTrackModel(type, index);
+            }
         }
     }
 }

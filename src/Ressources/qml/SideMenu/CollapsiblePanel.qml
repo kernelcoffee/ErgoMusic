@@ -26,7 +26,7 @@ Item{
             anchors.verticalCenter: parent.verticalCenter
             font.capitalization: Font.SmallCaps
             font.weight: Font.Black
-            font.pointSize: 15
+            font.pointSize: 12
         }
 
         Label {
@@ -35,7 +35,7 @@ Item{
             anchors.rightMargin: 5
             anchors.verticalCenter: parent.verticalCenter
             text: "hide"
-            font.pointSize: 11
+            font.pointSize: 10
             opacity: 0
 
             Behavior on opacity { NumberAnimation {duration: 200}}
@@ -59,7 +59,7 @@ Item{
 
     ListView{
         id: listView
-        leftMargin: scaleUnit(10)
+        leftMargin: 10
         width: parent.width
         height: childrenRect.height
         anchors.top: titleItem.bottom

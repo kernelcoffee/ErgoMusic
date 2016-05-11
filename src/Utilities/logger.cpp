@@ -56,10 +56,10 @@ void Logger::log(QtMsgType type, const QMessageLogContext &context, const QStrin
 {
     QString message = Logger::instance()->_getLogPrefix()
             + logLevel_str[type]
-            + ",\t" + context.file
-            + ",\t" + QString::number(context.line)
-            + ",\t" + context.function
-            + ",\t" + msg
+            + ", " + context.file
+            + ", " + QString::number(context.line)
+            + ", " + context.function
+            + ", " + msg
             + "\n";
 
     switch (type) {
