@@ -1,11 +1,10 @@
-QT += qml quick widgets sql xml
+QT += qml quick widgets sql
 
 TARGET = ErgoMusic
 TEMPLATE = app
-CONFIG += c++11
 
 macx {
-    # FIX: issue where cache is not created on 5.1
+    # FIX: issue where cache is not created
     cache()
     #using default path of MacPort
     INCLUDEPATH += /opt/local/include/
@@ -40,7 +39,6 @@ SOURCES += main.cpp \
     Media/Playlists/watchplaylists.cpp \
     Database/Migration/migrationengine.cpp \
     Database/Migration/Recipies/watchplaylists_migration.cpp \
-    Database/Migration/Interfaces/interfaces.cpp \
     Database/Handlers/watchplaylistdbhandler.cpp \
     Database/Handlers/dbhandlers.cpp \
     Ui/Views/viewcontroller.cpp \
@@ -72,7 +70,6 @@ HEADERS += \
     Media/Playlists/watchplaylists.h \
     Database/Migration/migrationengine.h \
     Database/Migration/migration_list.h \
-    Database/Migration/Interfaces/interfaces.h \
     Database/Handlers/watchplaylistdbhandler.h \
     Database/Handlers/dbhandlers.h \
     Ui/Views/viewcontroller.h \

@@ -27,11 +27,6 @@ DatabaseCore::~DatabaseCore()
 
 void DatabaseCore::init()
 {
-    QSettings settings;
-
-    if(!(settings.value("database/type", "QSQLITE").toString() == "QSQLITE"))
-        qCritical() << "Database type proper value " << settings.value("database/type").toString();
-
     _openDatabase();
 
     qDebug() << "pre migration DB tables : ";
@@ -40,23 +35,11 @@ void DatabaseCore::init()
 
     MigrationEngine mEngine(this);
     mEngine.migrate();
-
-
-    // set reset database
-//    if (getParameter("reset", false) == true)
-//    {
-        // qDebug() << "DB reset requested";
-        // Undo all migrations
-//       mEngine.undo();
-        // Migrate database to new schema
-//        mEngine.migrate();
-//    }
 }
 
 void DatabaseCore::initSettings()
 {
     QSettings settings;
-
 
     settings.beginGroup("database");
     settings.setValue("type", "QSQLITE");
@@ -77,13 +60,20 @@ void DatabaseCore::processArguments(QCommandLineParser &cmd)
 
 int DatabaseCore::currentMigration() const
 {
-    QSettings   settings;
+    QSettings settings;
 
-    QVariant	value = settings.value("database/migration");
+    QVariant value = settings.value("database/migration");
     if (value.isNull())
         return 0;
     else
         return value.toInt();
+
+    int schema_version = 0;
+
+    QSqlQuery query("SELECT version FROM schema_version");
+    if (query.next()) {
+        schema_version = query.value(0).toInt();'
+    }
 }
 
 DbHandlers *DatabaseCore::handlers() const
@@ -103,9 +93,9 @@ void DatabaseCore::onAboutToQuit()
 
 void DatabaseCore::_openDatabase()
 {
-    QSettings   settings;
+    QSettings settings;
+    QDir dir(settings.value("database/path").toString());
 
-    QDir        dir(settings.value("database/path").toString());
     dir.mkpath(dir.absolutePath());
 
     m_db = QSqlDatabase::addDatabase(settings.value("database/type").toString());

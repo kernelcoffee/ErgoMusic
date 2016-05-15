@@ -31,7 +31,6 @@ public slots:
 
 private:
     void    _openDatabase();
-    void    _initDBInterfaces();
 
     CoreManager     *m_cores;
     QSqlDatabase    m_db;
