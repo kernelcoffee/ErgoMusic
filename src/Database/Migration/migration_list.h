@@ -46,12 +46,13 @@
     } \
 
 /** This is how you should define a new migration.
-      * You also need to create a cpp file in the migrations folder containing your migration.
-      * The class name is the same as MIGRATION_TEMPLATE argument.
-      * You also need to add your migration to the load list (migration.cpp)
-      **/
-MIGRATION_TEMPLATE(WatchPlaylistMigration);
+  * You also need to create a cpp file in the migrations folder containing your migration.
+  * The class name is the same as MIGRATION_TEMPLATE argument.
+  * You also need to add your migration to the load list (migration.cpp)
+  **/
 
+MIGRATION_TEMPLATE(InitialMigration);
+MIGRATION_TEMPLATE(WatchPlaylistMigration);
 
 #endif // MIGRATION_LIST
 

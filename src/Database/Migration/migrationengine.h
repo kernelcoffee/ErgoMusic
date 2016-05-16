@@ -31,13 +31,13 @@
 #ifndef MIGRATIONENGINE_H
 #define MIGRATIONENGINE_H
 
-#include <QList>
-
 #include "Database/databasecore.h"
+
+#include <QList>
 
 /** This is the superclass used to define migration to be done on the database.
   * Create a subclass in the migrations folder, and fill the up and down methods.
-  * Then add your subclass to the global migrations list (migration_list.hpp).
+  * Then add your subclass to the global migrations list (migration_list.h).
   * You also need to add your migration to the load list (migration.cpp)
   *
   * Migration number is stored and represent the position BETWEEN migrations
@@ -56,28 +56,28 @@ public:
       * Put inside this method all the database changes you want. return false if you want
       * to cancel the migration
       **/
-    virtual void	up() = 0;
+    virtual void up() = 0;
     /**
       * The down() method can be called by the Migration engine to undo the migration.
       * Put inside this method the oposite changes of your up() method. return false if
       * you want to cancel the migration
       **/
-    virtual void	down() = 0;
+    virtual void down() = 0;
     const QString&	name();
     /** This method will run the up() or down() method depending on the argument
       * it will also wrap the migration into a SQL transaction and throw on errors
       **/
-    bool			run(bool forward = true);
+    bool run(bool forward = true);
 
     /** Next function are helper methods to build your migrations.
       * they make the syntax shorter and allow a better errors handling
       **/
-    bool	exec(const QString sql);
-    bool	createTable(const QString name, const QString definition);
-    bool	dropTable(const QString name);
+    bool exec(const QString sql);
+    bool createTable(const QString name, const QString definition);
+    bool dropTable(const QString name);
 
 private:
-    const QString	_name;
+    const QString _name;
 };
 
 class MigrationEngine
@@ -85,14 +85,18 @@ class MigrationEngine
 public:
     MigrationEngine(DatabaseCore* dbCore);
     ~MigrationEngine();
-    bool	migrate(int from, int to);	///< Run all migration from the first to the second
-    bool	migrate(int to);			///< Run all migration from the actual to the given one
-    bool	migrate();					///< Run all migration from the actual to the end
-    bool	undo();						///< Undo all migration from the actual to the begining
-    int		migrationsCount();			///< Get the number of available migrations
+
+    bool migrate(int from, int to); ///< Run all migration from the first to the second
+    bool migrate(int to);           ///< Run all migration from the actual to the given one
+    bool migrate();                 ///< Run all migration from the actual to the end
+    bool undo();                    ///< Undo all migration from the actual to the begining
+
+    int	migrationsCount();          ///< Get the number of available migrations
+    int currentMigration();
+
 private:
-    QList<Migration*>	m_migrations;		///< Ordered list of all migrations
-    DatabaseCore*       m_dbCore;
+    QList<Migration*> m_migrations; ///< Ordered list of all migrations
+    DatabaseCore* m_dbCore;
 };
 
 #endif // MIGRATIONENGINE_H

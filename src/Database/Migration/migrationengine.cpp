@@ -52,7 +52,7 @@ const QString&	Migration::name()
     return (_name);
 }
 
-bool	Migration::run(bool forward)
+bool Migration::run(bool forward)
 {
     QSqlDatabase db = QSqlDatabase::database();
     qDebug() << db.databaseName();
@@ -79,17 +79,23 @@ bool	Migration::run(bool forward)
     }
 }
 
-bool	Migration::exec(const QString sql)
+bool Migration::exec(const QString sql)
 {
-    return QSqlQuery().exec(sql);
+    QSqlQuery q;
+    if (!q.exec(sql)) {
+        qWarning() << "Migration query error : " << q.lastError();
+        return false;
+    }
+
+    return true;
 }
 
-bool	Migration::createTable(const QString name, const QString definition)
+bool Migration::createTable(const QString name, const QString definition)
 {
     return exec(QString("create table %1 (%2)").arg(name, definition));
 }
 
-bool	Migration::dropTable(const QString name)
+bool Migration::dropTable(const QString name)
 {
     return exec(QString("drop table %1").arg(name));
 }
@@ -97,6 +103,7 @@ bool	Migration::dropTable(const QString name)
 MigrationEngine::MigrationEngine(DatabaseCore* dbCore) :
     m_dbCore(dbCore)
 {
+    m_migrations << new InitialMigration("Initial migration");
     m_migrations << new WatchPlaylistMigration("WatchPlaylists");
 }
 
@@ -109,37 +116,55 @@ MigrationEngine::~MigrationEngine()
     m_migrations.clear();
 }
 
-int		MigrationEngine::migrationsCount()
+int	MigrationEngine::migrationsCount()
 {
     return (m_migrations.size());
 }
 
+int MigrationEngine::currentMigration()
+{
+    int schema_version = 0;
+    QSqlQuery query("SELECT version FROM schema_version");
 
-bool	MigrationEngine::migrate()
+    if (query.next()) {
+        schema_version = query.value(0).toInt();
+    }
+
+    return schema_version;
+}
+
+bool MigrationEngine::migrate()
 {
     return migrate(migrationsCount());
 }
 
-bool	MigrationEngine::undo()
+bool MigrationEngine::undo()
 {
     return migrate(0);
 }
 
-bool	MigrationEngine::migrate(int to)
+bool MigrationEngine::migrate(int to)
 {
-    return migrate(m_dbCore->currentMigration(), to);
+    return migrate(currentMigration(), to);
 }
 
-bool	MigrationEngine::migrate(int from, int to)
+bool MigrationEngine::migrate(int from, int to)
 {
-    int i;
-    int step = (from > to ? -1 : 1);
-    QSettings settings;
+    if (from == to) {
+        qDebug() << "Database up-to-date";
+        return true;
+    }
 
     if (from < 0 || from > migrationsCount()) {
-        qCritical() << QObject::tr("Initial migration outside bounds");
+        qCritical() << "Initial migration outside bounds";
         return false;
     }
+
+    int i;
+    int step = (from > to ? -1 : 1);
+
+    qDebug() << "Migration : " << QString::number(from) << " -> " << QString::number(to);
+
     Q_ASSERT(to >= 0 && to <= migrationsCount());
 
     // from = 4; to = 8; => 4..5..6..7..8
@@ -153,7 +178,7 @@ bool	MigrationEngine::migrate(int from, int to)
             break;
         if (newMig > 0) {
             qDebug() << "store new update of migration " << newMig << " : " << mig->name();
-            settings.setValue("database/migration", newMig);
+            mig->exec("UPDATE `schema_version` SET `version`=" + QString::number(newMig)+ " WHERE `id`='1'");
         }
     }
     if (i != to)

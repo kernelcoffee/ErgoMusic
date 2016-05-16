@@ -49,7 +49,8 @@ SOURCES += main.cpp \
     Ui/Views/Model/tracksortmodel.cpp \
     Media/MetaData/metadatahandler.cpp \
     Media/MetaData/fmpsparser.cpp \
-    ergoapplication.cpp
+    ergoapplication.cpp \
+    Database/Migration/Recipies/initial_migration.cpp
 
 HEADERS += \
     coremanager.h \

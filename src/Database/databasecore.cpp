@@ -58,24 +58,6 @@ void DatabaseCore::processArguments(QCommandLineParser &cmd)
     Q_UNUSED(cmd)
 }
 
-int DatabaseCore::currentMigration() const
-{
-    QSettings settings;
-
-    QVariant value = settings.value("database/migration");
-    if (value.isNull())
-        return 0;
-    else
-        return value.toInt();
-
-    int schema_version = 0;
-
-    QSqlQuery query("SELECT version FROM schema_version");
-    if (query.next()) {
-        schema_version = query.value(0).toInt();'
-    }
-}
-
 DbHandlers *DatabaseCore::handlers() const
 {
     return m_handlers;
