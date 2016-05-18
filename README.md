@@ -24,7 +24,7 @@ How to compile
 ==============
 
 Dependency Client:
-Qt >= 5.1
+Qt >= 5.6
 TagLib (tested with TagLib 1.8).
 Doxygen for documentation
 
@@ -32,11 +32,13 @@ Doxygen for documentation
 
 *How I do it ?*
 
-I am currently using Fedora 19 with QtCreator and Qt 5 from git.
+I am currently using Fedora 23 with QtCreator and Qt 5 SDK from Qt.io.
 
 *How you can do it ?*
 
-TODO
+Install taglib package
+Install Qt SDK from the qt.io website
+Open project in Qt Creator.
 
 ### OS X
 
@@ -68,10 +70,4 @@ Nothing currently planned
 Contributing
 ============
 
-Please contact me.
-
-Support
-=======
-
-The project is still non-functionnal and is being somewhat activly developped
-No support at this time.
+I don't think it is worth contributing yet but feedback are always welcome.
