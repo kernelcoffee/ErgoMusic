@@ -1,3 +1,3 @@
 #!/bin/sh
 
-sudo yum install taglib-devel graphviz
+sudo dnf install taglib-devel graphviz
