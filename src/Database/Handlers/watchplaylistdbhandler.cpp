@@ -34,7 +34,13 @@ void WatchPlaylistDBHandler::loadAll()
         QString	path = query.value(2).toString();
 
         qDebug() << id << name << path;
-        playlists->addWatchPlaylist(new WatchPlaylist(id, name, path));
+        WatchPlaylist* playlist = new WatchPlaylist(id, name, path);
+        if (playlists->checkExistingPath(playlist->path())) {
+            remove(playlist);
+            delete playlist;
+        } else {
+            playlists->addWatchPlaylist(playlist);
+        }
     }
 }
 

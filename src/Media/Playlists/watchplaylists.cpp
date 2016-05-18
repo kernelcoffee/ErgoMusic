@@ -37,21 +37,16 @@ WatchPlaylist *WatchPlaylists::at(int index) const
 void WatchPlaylists::addWatchPlaylist(QString &path)
 {
     qDebug() << "add watch playlist : " << path;
-    WatchPlaylist* playlist = new WatchPlaylist(path);
-    m_data.append(playlist);
-    _connectWatchPlaylist(m_data.count() - 1);
-    playlist->refresh();
-
-    emit watchPlaylistAdded(m_data.count() - 1);
+    emit watchPlaylistAdded(addWatchPlaylist(new WatchPlaylist(path)));
 }
 
 // playlist added from DB
-void WatchPlaylists::addWatchPlaylist(WatchPlaylist *playlist)
+int WatchPlaylists::addWatchPlaylist(WatchPlaylist *playlist)
 {
     m_data.append(playlist);
     _connectWatchPlaylist(m_data.count() - 1);
     playlist->refresh();
-    emit watchPlaylistAdded(m_data.count() -1);
+    return m_data.count() - 1;
 }
 
 void WatchPlaylists::refreshWatchPlaylist(int index)
@@ -62,10 +57,9 @@ void WatchPlaylists::refreshWatchPlaylist(int index)
 
 void WatchPlaylists::removeWatchPlaylist(QString &path)
 {
-    for (int i = 0; i < m_data.size(); i++) {
-        if (m_data.at(i)->path() == path)
-            removeWatchPlaylist(i);
-    }
+    for (auto playlist : m_data)
+        if (playlist->path() == path)
+            removeWatchPlaylist(playlist);
 }
 
 void WatchPlaylists::removeWatchPlaylist(int index)
@@ -84,17 +78,26 @@ void WatchPlaylists::removeWatchPlaylist(WatchPlaylist *playlist)
     }
 }
 
-bool WatchPlaylists::checkExistingPath(QString &path)
+bool WatchPlaylists::checkExistingPath(const QString &path)
 {
-    for (auto playlist : m_data)
-    {
-        if (playlist->path() == path)
-        {
-            qDebug() << "Watchfolder already existing";
+    for (auto playlist : m_data) {
+        if (playlist->path() == path) {
+            qDebug() << "Watchfolder already exists";
             return true;
         }
     }
     return false;
+}
+
+void WatchPlaylists::cleanDuplicates()
+{
+    for (int i = 0; i < m_data.size(); ++i) {
+        for (int n = m_data.size() -1; n > 0; --n) {
+            if (m_data.at(i)->path() == m_data.at(n)->path()) {
+                removeWatchPlaylist(n);
+            }
+        }
+    }
 }
 
 void WatchPlaylists::_connectWatchPlaylist(int index)
