@@ -14,7 +14,7 @@ public:
   }
 protected:
   Singleton() {}
-  ~Singleton() {}
+  ~Singleton() { delete m_pInstance; }
 private:
   Singleton(Singleton const&);
   Singleton& operator=(Singleton const&);
