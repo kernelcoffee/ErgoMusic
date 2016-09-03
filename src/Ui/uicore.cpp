@@ -25,14 +25,11 @@ void UiCore::init()
 
   qRegisterMetaType<ModelType>("ModelType");
   qRegisterMetaType<TrackSortModel*>("trackSortModel");
+
+  qmlRegisterType<MediaController>("ErgoMusic", 1, 0, "MediaController");
+
   context->setContextProperty("uiCore", this);
-  context->setContextProperty("mediaController", m_mediaController);
-  context->setContextProperty("watchPlaylistsMenuModel", &m_mediaController->watchPlaylistsModel());
   context->setContextProperty("viewController", m_viewController);
-
-  QFontMetrics fm(qApp->font());
-  context->setContextProperty("fontHeight", fm.height());
-
 
   if (!QSystemTrayIcon::isSystemTrayAvailable())
   {
@@ -51,6 +48,11 @@ void UiCore::init()
 void UiCore::initSettings()
 {
 
+}
+
+MediaController* UiCore::mediaController() const
+{
+    return m_mediaController;
 }
 
 void UiCore::delayedInit()

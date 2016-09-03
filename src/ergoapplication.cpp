@@ -29,14 +29,12 @@ ErgoApplication::ErgoApplication(int &argc, char **argv) :
 bool ErgoApplication::updateLanguage(const QString &language)
 {
     QString path(":/languages/languages/lang_" + language  + ".qm");
-    if (QFile::exists(path))
-    {
-        m_translator->load(path);
-        installTranslator(m_translator);
-    }
-    else {
+    if (!QFile::exists(path))
         return false;
-    }
+
+    m_translator->load(path);
+    installTranslator(m_translator);
+
     return true;
 }
 

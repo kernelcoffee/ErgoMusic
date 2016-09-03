@@ -4,7 +4,7 @@
 #include <QAbstractListModel>
 #include "Media/Playlists/watchplaylists.h"
 
-class WatchPlaylistsMenuModel : public QAbstractListModel
+class WatchPlaylistsModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
@@ -14,7 +14,7 @@ public:
         Type
     };
 
-    WatchPlaylistsMenuModel(WatchPlaylists* watch, QObject *parent = 0);
+    WatchPlaylistsModel(WatchPlaylists* watch, QObject *parent = 0);
 
     QVariant                data(const QModelIndex &index, int role) const override;
     int                     rowCount(const QModelIndex &parent = QModelIndex()) const override;

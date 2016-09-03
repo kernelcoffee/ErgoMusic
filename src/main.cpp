@@ -6,6 +6,8 @@
 
 int main(int argc, char *argv[])
 {
+    QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+
     ErgoApplication app(argc, argv);
 
     CoreManager* cores = CoreManager::instance();

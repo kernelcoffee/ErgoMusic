@@ -59,6 +59,8 @@ ApplicationWindow {
             height: parent.height
             Layout.minimumWidth: 200
             Layout.maximumWidth: 400
+
+            media: uiCore.mediaController
         }
 
         CentralView {

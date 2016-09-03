@@ -42,7 +42,6 @@ SOURCES += main.cpp \
     Database/Handlers/watchplaylistdbhandler.cpp \
     Database/Handlers/dbhandlers.cpp \
     Ui/Views/viewcontroller.cpp \
-    Ui/Media/Models/watchplaylistsmenumodel.cpp \
     Ui/Media/Models/trackmodel.cpp \
     Media/Commands/addwatchplaylistcommand.cpp \
     Media/Commands/removewatchplaylistcommand.cpp \
@@ -50,7 +49,8 @@ SOURCES += main.cpp \
     Media/MetaData/metadatahandler.cpp \
     Media/MetaData/fmpsparser.cpp \
     ergoapplication.cpp \
-    Database/Migration/Recipies/initial_migration.cpp
+    Database/Migration/Recipies/initial_migration.cpp \
+    Ui/Media/Models/watchplaylistsmodel.cpp
 
 HEADERS += \
     coremanager.h \
@@ -74,7 +74,6 @@ HEADERS += \
     Database/Handlers/watchplaylistdbhandler.h \
     Database/Handlers/dbhandlers.h \
     Ui/Views/viewcontroller.h \
-    Ui/Media/Models/watchplaylistsmenumodel.h \
     Ui/uicommon.h \
     Ui/Media/Models/trackmodel.h \
     Media/Commands/addwatchplaylistcommand.h \
@@ -83,7 +82,8 @@ HEADERS += \
     Media/MetaData/metadatahandler.h \
     Media/MetaData/fmpsparser.h \
     ergoapplication.h \
-    common.h
+    common.h \
+    Ui/Media/Models/watchplaylistsmodel.h
 
 
 RESOURCES += Ressources/qml.qrc \

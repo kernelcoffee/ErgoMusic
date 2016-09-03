@@ -8,7 +8,7 @@
 MediaController::MediaController(QObject *parent) :
     QObject(parent)
   , m_media(CoreManager::instance()->media())
-  , m_watchPlaytlistsModel(m_media->watchPlaylists())
+  , m_watchPlaytlistsModel(new WatchPlaylistsModel(m_media->watchPlaylists()))
 {
 }
 
@@ -32,7 +32,7 @@ void MediaController::removeWathPlaylist(int index)
     CoreManager::instance()->addCommand(new RemoveWatchPlaylistCommand(m_media->watchPlaylists(), m_media->watchPlaylists()->at(index)));
 }
 
-WatchPlaylistsMenuModel& MediaController::watchPlaylistsModel()
+WatchPlaylistsModel* MediaController::watchPlaylistsModel() const
 {
     return m_watchPlaytlistsModel;
 }
