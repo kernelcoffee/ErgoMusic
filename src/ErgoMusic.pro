@@ -93,6 +93,8 @@ TRANSLATIONS += \
     Ressources/languages/lang_en_US.ts \
     Ressources/languages/lang_fr_FR.ts
 
+DISTFILES += .astylerc
+
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
 
