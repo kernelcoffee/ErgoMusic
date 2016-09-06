@@ -8,7 +8,7 @@ WatchPlaylistsModel::WatchPlaylistsModel(WatchPlaylists *watch, QObject *parent)
   , m_data(watch)
 {
     connect(m_data, &WatchPlaylists::watchPlaylistsChanged,
-            [=] { emit layoutChanged(); });
+            [=] () { emit layoutChanged(); });
     connect(m_data, &WatchPlaylists::watchPlaylistRemoved,
             [=] (int index) { this->removeRow(index);});
     connect(m_data, &WatchPlaylists::watchPlaylistUpdated,

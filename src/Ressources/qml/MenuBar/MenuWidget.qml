@@ -7,7 +7,7 @@ MenuBar {
         title: qsTr("&File")
         MenuItem {
             id: addWatchPlaylistMenuItem
-            text: qsTr("&New WatchPlaylist")
+            text: qsTr("New WatchPlaylist")
             onTriggered: dialogLoader.open("qrc:/qml/Dialogs/AddWatchPlaylistDialog.qml")
         }
         MenuItem {
@@ -15,7 +15,7 @@ MenuBar {
             onTriggered: messageDialog.show(qsTr("Open action triggered"))
         }
         MenuItem {
-            text: qsTr("&Exit")
+            text: qsTr("&Quitt")
             shortcut: "alt + F4"
             onTriggered: Qt.quit()
         }
@@ -34,7 +34,9 @@ MenuBar {
         }
         MenuItem {
             id: options
-            text: qsTr("&options");
+            text: qsTr("&preferences");
+            shortcut: "ctrl + ,"
+            onTriggered: dialogLoader.open("qrc:/qml/Dialogs/ConfigurationPanel.qml")
         }
     }
     Menu {

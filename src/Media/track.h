@@ -17,6 +17,7 @@ public:
     int     track() const;
     QString genre() const;
     int     length() const;
+    QString lengthAsFormatedString() const;
 
     QString filePath() const;
 

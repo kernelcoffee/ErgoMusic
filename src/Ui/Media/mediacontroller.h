@@ -8,7 +8,7 @@ class MediaController : public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(WatchPlaylistsModel* watchPlaylistsModel READ watchPlaylistsModel CONSTANT)
+    Q_PROPERTY(WatchPlaylistsModel *watchPlaylistsModel READ watchPlaylistsModel CONSTANT)
 
 public:
     explicit MediaController(QObject *parent = 0);
@@ -18,11 +18,11 @@ public:
     Q_INVOKABLE void refreshWatchPlaylist(int index);
     Q_INVOKABLE void removeWathPlaylist(int index);
 
-    WatchPlaylistsModel* watchPlaylistsModel() const;
+    WatchPlaylistsModel *watchPlaylistsModel() const;
 
 private:
     MediaCore *m_media;
-    WatchPlaylistsModel* m_watchPlaytlistsModel;
+    WatchPlaylistsModel *m_watchPlaytlistsModel;
 };
 
 #endif // MEDIACONTROLLER_H

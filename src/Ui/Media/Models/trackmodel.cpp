@@ -27,7 +27,7 @@ QVariant TrackModel::data(const QModelIndex &index, int role) const
     case Artist:
         return track->artist();
     case Length:
-        return track->length();
+        return track->lengthAsFormatedString();
     case Genre:
         return track->genre();
     case TrackPos:

@@ -48,6 +48,20 @@ int Track::length() const
     return m_length;
 }
 
+QString Track::lengthAsFormatedString() const
+{
+    QString res;
+    int duration = m_length;
+    int seconds = (int) (duration % 60);
+    duration /= 60;
+    int minutes = (int) (duration % 60);
+    duration /= 60;
+    int hours = (int) (duration % 24);
+    if(hours == 0)
+        return res.sprintf("%02d:%02d", minutes, seconds);
+    return res.sprintf("%02d:%02d:%02d", hours, minutes, seconds);
+}
+
 QString Track::filePath() const
 {
     return m_filePath;

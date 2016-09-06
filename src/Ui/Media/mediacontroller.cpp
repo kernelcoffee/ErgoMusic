@@ -1,9 +1,10 @@
 #include "mediacontroller.h"
 #include "coremanager.h"
 
-#include <QDebug>
 #include "Media/Commands/addwatchplaylistcommand.h"
 #include "Media/Commands/removewatchplaylistcommand.h"
+
+#include <QDebug>
 
 MediaController::MediaController(QObject *parent) :
     QObject(parent)

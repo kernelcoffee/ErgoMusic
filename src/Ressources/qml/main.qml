@@ -1,5 +1,5 @@
-import QtQuick 2.4
-import QtQuick.Controls 1.3
+import QtQuick 2.7
+import QtQuick.Controls 1.4
 import QtQuick.Window 2.2
 import QtQuick.Layouts 1.1
 
@@ -20,7 +20,7 @@ ApplicationWindow {
     height: minimumHeight
     visible: true
 
-    menuBar: MenuWidget { id: menuWidget}
+    menuBar: MenuWidget { id: menuWidget }
     statusBar: StatusWidget{ id: statusWidget }
 
     Settings {
@@ -45,7 +45,7 @@ ApplicationWindow {
         }
     }
 
-    TopBar {id: topWidget}
+    TopBar { id: topWidget }
 
     SplitView {
         id: mainView
@@ -53,6 +53,7 @@ ApplicationWindow {
         orientation: Qt.Horizontal
         height: root.height - topWidget.height - statusWidget.height
         width: parent.width
+
         SideMenu {
             id: sideMenu
             width: 300

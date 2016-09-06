@@ -11,5 +11,6 @@
         <file>qml/TopBar/TopBar.qml</file>
         <file>qml/Views/CentralView.qml</file>
         <file>qml/Views/MainListView.qml</file>
+        <file>qml/Dialogs/ConfigurationPanel.qml</file>
     </qresource>
 </RCC>

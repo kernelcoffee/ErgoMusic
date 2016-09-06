@@ -3,6 +3,7 @@ import QtQuick.Controls 1.4
 
 StatusBar {
     height: 30
+
     Row {
         id: leftRow
         anchors.left: parent.left
@@ -12,6 +13,7 @@ StatusBar {
             text: "+"
         }
     }
+
     Row {
         id: middleRow
         anchors.centerIn: parent

@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 
     ErgoApplication app(argc, argv);
 
-    CoreManager* cores = CoreManager::instance();
+    CoreManager *cores = CoreManager::instance();
 
     QObject::connect(&app, &ErgoApplication::aboutToQuit,
                      cores, &CoreManager::onAboutToQuit);

@@ -35,14 +35,6 @@ Item {
         radius: 4.0
         border.width: 1
         border.color: "grey"
-
-//        InnerShadow {
-//            anchors.fill: playerScreen
-//            radius: 20.0
-//            samples: 16
-//            color: "#000"
-//            source: playerScreen
-//        }
     }
 
 

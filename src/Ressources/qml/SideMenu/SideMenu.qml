@@ -27,6 +27,7 @@ ScrollView {
             }
             delegate: SubMenuDelegate {}
         }
+
         CollapsiblePanel {
             title: qsTr("WatchPlaylists")
             model: media.watchPlaylistsModel
