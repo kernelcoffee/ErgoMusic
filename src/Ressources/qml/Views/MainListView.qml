@@ -3,7 +3,7 @@ import QtQuick.Controls 1.2
 
 TableView {
     id: mainListView
-    model: viewController.trackSortModel
+    model: uiCore.viewController.trackSortModel
     sortIndicatorVisible: true
     selectionMode: SelectionMode.ExtendedSelection
 

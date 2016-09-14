@@ -1,6 +1,6 @@
-import QtQuick 2.0
+import QtQuick 2.7
 import QtQuick.Layouts 1.1
-import QtQuick.Controls 1.3
+import QtQuick.Controls 1.4
 import ErgoMusic 1.0
 
 import "Delegates"
@@ -11,6 +11,7 @@ ScrollView {
     frameVisible: false
 
     property MediaController media
+    property ViewController view
 
     Column {
         id: sideMenuContainer
@@ -31,6 +32,7 @@ ScrollView {
         CollapsiblePanel {
             title: qsTr("WatchPlaylists")
             model: media.watchPlaylistsModel
+            focus: viewController
             delegate: SubMenuDelegate {
                 contextmenu: "qrc:/qml/SideMenu/Menus/WatchPlaylistMenu.qml"
             }

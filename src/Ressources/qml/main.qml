@@ -62,6 +62,7 @@ ApplicationWindow {
             Layout.maximumWidth: 400
 
             media: uiCore.mediaController
+            view: uiCore.viewController
         }
 
         CentralView {

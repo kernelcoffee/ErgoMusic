@@ -11,7 +11,8 @@ class UiCore : public AbstractCore
 {
     Q_OBJECT
 
-    Q_PROPERTY(MediaController* mediaController READ mediaController CONSTANT)
+    Q_PROPERTY(MediaController *mediaController READ mediaController CONSTANT)
+    Q_PROPERTY(ViewController *viewController READ viewController CONSTANT)
 
 public:
     explicit UiCore(QObject *parent = 0);
@@ -20,7 +21,8 @@ public:
     void    init() override;
     void    initSettings() override;
 
-    MediaController* mediaController() const;
+    MediaController *mediaController() const;
+    ViewController *viewController() const;
 
 public slots:
     void    delayedInit() override;
@@ -29,8 +31,8 @@ public slots:
 private:
     QQmlApplicationEngine m_engine;
 
-    MediaController*    m_mediaController;
-    ViewController*     m_viewController;
+    MediaController    *m_mediaController;
+    ViewController     *m_viewController;
 };
 
 #endif // UICORE_H

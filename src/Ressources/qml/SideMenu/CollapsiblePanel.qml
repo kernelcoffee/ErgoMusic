@@ -1,7 +1,7 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.2
 
-Item{
+Item {
     id: collapsiblePanel
     anchors.left: parent.left
     anchors.right: parent.right
@@ -13,7 +13,7 @@ Item{
     property alias model: listView.model
     property alias delegate: listView.delegate
 
-    Item{
+    Item {
         id: titleItem
         height: titleTxt.height
         width: parent.width
@@ -40,6 +40,7 @@ Item{
 
             Behavior on opacity { NumberAnimation {duration: 200}}
         }
+
         MouseArea {
             id: titleMA
             anchors.fill: parent
@@ -64,7 +65,19 @@ Item{
         height: childrenRect.height
         anchors.top: titleItem.bottom
         interactive: false
+        highlight: highlightBar
     }
+
+    Component {
+        id: highlightBar
+        Rectangle {
+            width: 200; height: 50
+            color: "#FFFF88"
+            y: listView.currentItem.y;
+            Behavior on y { SpringAnimation { spring: 2; damping: 0.1 } }
+        }
+    }
+
 
     states: [
         State {

@@ -10,7 +10,6 @@
 
 UiCore::UiCore(QObject *parent) :
     AbstractCore(parent)
-  , m_viewController(new ViewController)
 {
 }
 
@@ -20,29 +19,28 @@ UiCore::~UiCore()
 
 void UiCore::init()
 {
-  QQmlContext* context = m_engine.rootContext();
-  m_mediaController = new MediaController(this);
+    m_mediaController = new MediaController(this);
+    m_viewController = new ViewController(this);
 
-  qRegisterMetaType<ModelType>("ModelType");
-  qRegisterMetaType<TrackSortModel*>("trackSortModel");
+    QQmlContext *context = m_engine.rootContext();
 
-  qmlRegisterType<MediaController>("ErgoMusic", 1, 0, "MediaController");
+    qRegisterMetaType<ModelType>("ModelType");
+    qRegisterMetaType<TrackSortModel *>("trackSortModel");
 
-  context->setContextProperty("uiCore", this);
-  context->setContextProperty("viewController", m_viewController);
+    qmlRegisterType<MediaController>("ErgoMusic", 1, 0, "MediaController");
+    qmlRegisterType<ViewController>("ErgoMusic", 1, 0, "ViewController");
 
-  if (!QSystemTrayIcon::isSystemTrayAvailable())
-  {
-      qDebug() << "no system tray available";
-//      QMessageBox::critical(0, QObject::tr("Systray"),
-//                               QObject::tr("I couldn't detect any system tray "
-//                                           "on this system."));
-//      return 1;
-  }
-  else
-  {
-      qDebug() << "system tray available";
-  }
+    context->setContextProperty("uiCore", this);
+
+    if (!QSystemTrayIcon::isSystemTrayAvailable()) {
+        qDebug() << "no system tray available";
+        //      QMessageBox::critical(0, QObject::tr("Systray"),
+        //                               QObject::tr("I couldn't detect any system tray "
+        //                                           "on this system."));
+        //      return 1;
+    } else {
+        qDebug() << "system tray available";
+    }
 }
 
 void UiCore::initSettings()
@@ -50,9 +48,14 @@ void UiCore::initSettings()
 
 }
 
-MediaController* UiCore::mediaController() const
+MediaController *UiCore::mediaController() const
 {
     return m_mediaController;
+}
+
+ViewController *UiCore::viewController() const
+{
+    return m_viewController;
 }
 
 void UiCore::delayedInit()

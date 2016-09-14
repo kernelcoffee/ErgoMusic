@@ -9,7 +9,6 @@ MediaCore::MediaCore(CoreManager *parent) :
   , m_library(new Collection)
   , m_watchPlaylists(new WatchPlaylists)
 {
-
     qDebug() << "MediaCore";
 }
 
