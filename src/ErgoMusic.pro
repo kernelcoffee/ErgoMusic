@@ -50,7 +50,8 @@ SOURCES += main.cpp \
     Media/MetaData/fmpsparser.cpp \
     ergoapplication.cpp \
     Database/Migration/Recipies/initial_migration.cpp \
-    Ui/Media/Models/watchplaylistsmodel.cpp
+    Ui/Media/Models/watchplaylistsmodel.cpp \
+    Utilities/singleinstance.cpp
 
 HEADERS += \
     coremanager.h \
@@ -83,7 +84,8 @@ HEADERS += \
     Media/MetaData/fmpsparser.h \
     ergoapplication.h \
     common.h \
-    Ui/Media/Models/watchplaylistsmodel.h
+    Ui/Media/Models/watchplaylistsmodel.h \
+    Utilities/singleinstance.h
 
 
 RESOURCES += Ressources/qml.qrc \

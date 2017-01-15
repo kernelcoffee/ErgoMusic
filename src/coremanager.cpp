@@ -10,6 +10,7 @@ CoreManager::CoreManager(QObject *parent) :
   , m_ui(new UiCore(this))
 {
     m_cores << m_media << m_database << m_threads << m_ui;
+    qDebug() << "Cores available : " << m_cores;
 }
 
 CoreManager::~CoreManager()
@@ -19,11 +20,11 @@ CoreManager::~CoreManager()
 
 void CoreManager::init()
 {
-    qDebug() << "init" << m_cores;
     for (auto core : m_cores)
     {
+        qDebug() << core << "\tinitializing";
         core->init();
-        qDebug() << core << "\tInitialized";
+        qDebug() << core << "\tinitialized";
     }
 }
 
@@ -31,7 +32,7 @@ void CoreManager::initSettings()
 {
     for (auto core : m_cores)
     {
-        qDebug() << "Init core " << core;
+        qDebug() << "Init settings " << core;
         core->initSettings();
     }
 }

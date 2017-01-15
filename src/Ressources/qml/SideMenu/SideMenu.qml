@@ -32,7 +32,7 @@ ScrollView {
         CollapsiblePanel {
             title: qsTr("WatchPlaylists")
             model: media.watchPlaylistsModel
-            focus: viewController
+           // focus: viewController
             delegate: SubMenuDelegate {
                 contextmenu: "qrc:/qml/SideMenu/Menus/WatchPlaylistMenu.qml"
             }
