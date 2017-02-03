@@ -1,5 +1,6 @@
-import QtQuick 2.0
-import QtQuick.Controls 1.2
+import QtQuick 2.8
+import QtQuick.Controls 1.4
+import ErgoMusic 1.0
 
 Menu {
     id: watchPlaylistsMenu
@@ -13,11 +14,11 @@ Menu {
 
     MenuItem {
         text: qsTr("&Refresh")
-        onTriggered: mediaController.refreshWatchPlaylist(index);
+        onTriggered: uiCore.mediaController.refreshWatchPlaylist(index);
     }
 
     MenuItem {
         text: qsTr("&Remove")
-        onTriggered: mediaController.removeWathPlaylist(index)
+        onTriggered: uiCore.mediaController.removeWathPlaylist(index)
     }
 }

@@ -2,8 +2,10 @@
 #define LOGGER_H
 
 #include "singleton.h"
+#include <QObject>
 #include <QString>
-#include <QFile>
+
+class QFile;
 
 // This log class was made to be used within the Qt messageHandler system
 // http://qt-project.org/doc/qt-5/qtglobal.html#qInstallMessageHandler
@@ -18,22 +20,14 @@ public:
     static void	log(QtMsgType type, const QMessageLogContext &context, const QString &msg);
     static void	notice(const QString &msg);
 
-signals:
-    void    notify(QString, QString);
-
 protected:
     explicit Logger(QObject *parent = 0);
     ~Logger();
 private:
     void		_write(const QString &msg);
-    QString		_getLogFileName();
-    QString		_getLogPrefix();
-    QString		_getLogHeader();
-    QString		_getLogFilePath();
 
-    QString		_logFilePath;
-
-    QFile*		_logFile;
+    QString		m_logFilePath;
+    QFile*		m_logFile;
 };
 
 #endif // LOGGER_H

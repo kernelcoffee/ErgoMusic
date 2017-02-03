@@ -2,21 +2,23 @@ import QtQuick 2.5
 import QtQuick.Controls 1.4
 import QtQuick.Dialogs 1.2
 
+import ErgoMusic 1.0
+
 MenuBar {
+    id: menubar
+    property MediaController mediaController
+
     Menu {
         title: qsTr("&File")
         MenuItem {
             id: addWatchPlaylistMenuItem
-            text: qsTr("New WatchPlaylist")
+            text: qsTr("New &WatchPlaylist")
+            shortcut: "Ctrl+Shift+N"
             onTriggered: dialogLoader.open("qrc:/qml/Dialogs/AddWatchPlaylistDialog.qml")
         }
         MenuItem {
-            text: qsTr("&Open")
-            onTriggered: messageDialog.show(qsTr("Open action triggered"))
-        }
-        MenuItem {
             text: qsTr("&Quitt")
-            shortcut: "alt + F4"
+            shortcut: "Ctrl+Q"
             onTriggered: Qt.quit()
         }
     }
@@ -26,6 +28,7 @@ MenuBar {
             id: undo
             text: qsTr("&undo");
             onTriggered: viewController.undo()
+            shortcut: "Ctrl+Z"
         }
         MenuItem {
             id: redo

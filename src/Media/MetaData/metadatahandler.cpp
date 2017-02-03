@@ -36,7 +36,7 @@ MetaDataHandler::MetaDataHandler(QObject *parent) :
 
 }
 
-Track *MetaDataHandler::getTrackFromFile(QString path)
+Track *MetaDataHandler::getTrackFromFile(const QString &path)
 {
     TagLib::FileRef fileref(path.toLocal8Bit());
     Track* track = new Track(path);

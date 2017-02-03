@@ -6,6 +6,6 @@ FileDialog {
     selectExisting: false
     selectFolder: true
     selectMultiple: false
-    onAccepted: mediaController.addWatchPlaylist(folder)
+    onAccepted: uiCore.mediaController.addWatchPlaylist(folder)
     Component.onCompleted: open()
 }

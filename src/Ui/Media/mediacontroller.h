@@ -18,6 +18,8 @@ public:
     Q_INVOKABLE void refreshWatchPlaylist(int index);
     Q_INVOKABLE void removeWathPlaylist(int index);
 
+//    Q_INVOKABLE void play(int, int, int index);
+
     WatchPlaylistsModel *watchPlaylistsModel() const;
 
 private:

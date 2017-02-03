@@ -1,5 +1,5 @@
-import QtQuick 2.4
-import QtQuick.Controls 1.2
+import QtQuick 2.8
+import QtQuick.Controls 1.5
 
 TableView {
     id: mainListView
@@ -18,13 +18,21 @@ TableView {
     TableViewColumn{ role: "genre" ; title: "genre" ; width: 200 }
     TableViewColumn{ role: "track" ; title: "track" ; width: 200 }
 
-    itemDelegate: Item {
-        Label {
-            id: itemLabel
-            anchors.verticalCenter: parent.verticalCenter
-            width: parent.width
-            elide: styleData.elideMode
-            text: styleData.value
-        }
+    onDoubleClicked: {
+        console.log("double click " + currentRow)
+//        uiCore.mediaController.play(
+//                    uiCore.viewController.selectedType,
+//                    uiCore.viewController.selectedIndex,
+//                    currentRow)
     }
+
+    //    itemDelegate: Item {
+    //        Label {
+    //            id: itemLabel
+    //            anchors.verticalCenter: parent.verticalCenter
+    //            width: parent.width
+    //            elide: styleData.elideMode
+    //            text: styleData.value
+    //        }
+    //    }
 }

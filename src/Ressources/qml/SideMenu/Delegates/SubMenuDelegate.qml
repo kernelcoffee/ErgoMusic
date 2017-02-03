@@ -1,5 +1,6 @@
-import QtQuick 2.4
-import QtQuick.Controls 1.2
+import QtQuick 2.8
+import QtQuick.Controls 1.4
+import ErgoMusic 1.0
 
 Item {
     id: sideMenuDelegate
@@ -8,6 +9,7 @@ Item {
     enabled: !status
 
     property string contextmenu
+    property MediaController media
 
     Label {
         id: label
@@ -31,7 +33,7 @@ Item {
             if (mouse.button & Qt.RightButton) {
                 dialogLoader.popup(contextmenu, {index: index})
             } else {
-                viewController.setTrackModel(type, index);
+                uiCore.viewController.setTrackModel(type, index);
             }
         }
     }

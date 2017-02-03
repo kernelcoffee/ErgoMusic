@@ -27,7 +27,7 @@ SingleInstance::~SingleInstance()
 
 bool SingleInstance::check()
 {
-    return true;
+    return false;
 }
 
 bool SingleInstance::lock()
@@ -52,7 +52,6 @@ void SingleInstance::unlock()
 {
     if(m_server) {
         m_server->removeServer(m_name);
-        m_server->close();
-        delete m_server;
+        m_server->deleteLater();
     }
 }

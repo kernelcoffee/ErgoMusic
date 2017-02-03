@@ -20,7 +20,10 @@ ApplicationWindow {
     height: minimumHeight
     visible: true
 
-    menuBar: MenuWidget { id: menuWidget }
+    menuBar: MenuWidget {
+        id: menuWidget
+        mediaController: uiCore.mediaController
+    }
     statusBar: StatusWidget{ id: statusWidget }
 
     Settings {

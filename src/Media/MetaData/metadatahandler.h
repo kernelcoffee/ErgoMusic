@@ -19,7 +19,7 @@ class MetaDataHandler : public QObject
 public:
     explicit MetaDataHandler(QObject *parent = 0);
 
-    Track*  getTrackFromFile(QString path);
+    Track*  getTrackFromFile(const QString &path);
 signals:
 
 public slots:

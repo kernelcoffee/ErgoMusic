@@ -10,11 +10,9 @@ class ViewController : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(int selectedIndex READ selectedIndex WRITE setSelectedIndex NOTIFY selectedIndexChanged)
-    Q_PROPERTY(ModelType selectedType READ selectedType WRITE setSelectedType
-               NOTIFY selectedTypeChanged)
+    Q_PROPERTY(ModelType selectedType READ selectedType WRITE setSelectedType NOTIFY selectedTypeChanged)
     Q_PROPERTY(TrackModel *trackModel READ trackModel NOTIFY trackModelChanged)
-    Q_PROPERTY(TrackSortModel *trackSortModel READ trackSortModel WRITE setTrackSortModel
-               NOTIFY trackSortModelChanged)
+    Q_PROPERTY(TrackSortModel *trackSortModel READ trackSortModel WRITE setTrackSortModel NOTIFY trackSortModelChanged)
 
 public:
     explicit ViewController(QObject *parent = 0);

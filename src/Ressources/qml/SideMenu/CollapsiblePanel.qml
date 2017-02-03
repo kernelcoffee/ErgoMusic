@@ -65,18 +65,18 @@ Item {
         height: childrenRect.height
         anchors.top: titleItem.bottom
         interactive: false
-        highlight: highlightBar
+//        highlight: highlightBar
     }
 
-    Component {
-        id: highlightBar
-        Rectangle {
-            width: 200; height: 50
-            color: "#FFFF88"
-            y: listView.currentItem.y;
-            Behavior on y { SpringAnimation { spring: 2; damping: 0.1 } }
-        }
-    }
+//    Component {
+//        id: highlightBar
+//        Rectangle {
+//            width: 200; height: 50
+//            color: "black"
+//            y: listView.currentItem.y;
+//            Behavior on y { SpringAnimation { spring: 2; damping: 0.1 } }
+//        }
+//    }
 
 
     states: [

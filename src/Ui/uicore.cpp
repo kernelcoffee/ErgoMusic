@@ -34,10 +34,6 @@ void UiCore::init()
 
     if (!QSystemTrayIcon::isSystemTrayAvailable()) {
         qDebug() << "no system tray available";
-        //      QMessageBox::critical(0, QObject::tr("Systray"),
-        //                               QObject::tr("I couldn't detect any system tray "
-        //                                           "on this system."));
-        //      return 1;
     } else {
         qDebug() << "system tray available";
     }
